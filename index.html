@@ -2,35 +2,107 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Luis Armando | Portafolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luis Armando | Portafolio Profesional</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="store.html">Store</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <img src="assets/img/profile.jpg" alt="Luis Armando">
-      <h1>Luis Armando</h1>
-      <p>Software Tester | IA | Automatización</p>
-      <div class="social">
-        <a href="https://github.com/luisarmandobr">GitHub</a>
-        <a href="https://linkedin.com/in/luisarmandobr">LinkedIn</a>
-        <a href="mailto:luisarmandobr@gmail.com">Email</a>
+  <div class="container-main">
+    <!-- SIDEBAR IZQUIERDO -->
+    <aside class="sidebar">
+      <div class="profile-section">
+        <img src="assets/img/profile.jpg" alt="Luis Armando" class="profile-image">
+        <h1 class="profile-name">Luis Armando</h1>
+        <p class="profile-pronouns">(he/him)</p>
+        <p class="profile-title">Software Tester & AI Specialist</p>
+        <p class="profile-company">Mi Empresa</p>
+        
+        <div class="social-links">
+          <a href="mailto:luisarmandobr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://twitter.com" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://github.com/luisarmandobr" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/luisarmandobr" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="#" title="Personal Site"><i class="fas fa-globe"></i></a>
+        </div>
       </div>
-    </section>
-  </main>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      <!-- HEADER CON NAVEGACIÓN -->
+      <header class="top-header">
+        <div class="header-left">
+          <h2>Your Name</h2>
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Bio</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+          <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+        </div>
+      </header>
+
+      <!-- SECCIÓN DE RESUMEN PROFESIONAL -->
+      <section class="professional-section">
+        <div class="section-header">
+          <i class="fas fa-briefcase section-icon"></i>
+          <h2>Professional Summary</h2>
+        </div>
+        <p class="section-content">
+          Luis Armando es un especialista en pruebas de software y desarrollo con enfoque en IA y automatización. 
+          Su experiencia abarca múltiples tecnologías y plataformas, con un enfoque en calidad y eficiencia. 
+          Apasionado por resolver problemas complejos y mentorizar el talento del futuro.
+        </p>
+        <a href="cv.html" class="download-btn">
+          <i class="fas fa-download"></i> Download CV
+        </a>
+      </section>
+
+      <!-- SECCIÓN DE EDUCACIÓN -->
+      <section class="education-section">
+        <div class="section-header">
+          <i class="fas fa-graduation-cap section-icon"></i>
+          <h2>Education</h2>
+        </div>
+        <div class="education-grid">
+          <div class="education-card">
+            <div class="card-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Master's Degree</h3>
+            <p class="card-subtitle">Computer Science</p>
+            <p class="card-institution">Your University</p>
+          </div>
+          <div class="education-card">
+            <div class="card-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Bachelor's Degree</h3>
+            <p class="card-subtitle">Information Technology</p>
+            <p class="card-institution">Your University</p>
+          </div>
+          <div class="education-card">
+            <div class="card-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Certifications</h3>
+            <p class="card-subtitle">Various Tech Skills</p>
+            <p class="card-institution">Online Platforms</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
