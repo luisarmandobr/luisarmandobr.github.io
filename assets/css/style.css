@@ -238,6 +238,21 @@ body.dark .theme-toggle:hover { color: #93c5fd; }
 .lang-switch {
   display: flex;
   gap: 8px;
+  position: relative;
+}
+
+/* Separador "|" antes de los botones de idioma */
+.lang-switch::before {
+  content: "|";
+  color: #d1d5db;
+  font-size: 18px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+body.dark .lang-switch::before {
+  color: #4b5563;
 }
 
 .lang-btn {
@@ -486,10 +501,16 @@ body.dark .education-card .card-icon:has(.fa-youtube) {
     justify-content: flex-end;
     gap: 12px;
     width: 100%;
+    margin-top: 8px;
   }
 
   .lang-switch {
     gap: 6px;
+  }
+
+  /* Ocultar separador en responsive para evitar choque */
+  .lang-switch::before {
+    display: none;
   }
 
   .education-grid {

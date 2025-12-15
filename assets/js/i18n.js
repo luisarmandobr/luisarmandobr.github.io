@@ -97,24 +97,25 @@
     document.body.classList.add('dark');
   }
 
-  // Actualizar ícono del tema al cargar la página
-  const themeIcon = document.querySelector('.theme-toggle i');
-  if (themeIcon) {
-    const isDark = document.body.classList.contains('dark');
-    themeIcon.classList.toggle('fa-moon', !isDark);
-    themeIcon.classList.toggle('fa-sun', isDark);
+  // Función para actualizar el ícono del tema
+  function updateThemeIcon() {
+    const themeIcon = document.querySelector('.theme-toggle i');
+    if (themeIcon) {
+      const isDark = document.body.classList.contains('dark');
+      themeIcon.classList.remove('fa-moon', 'fa-sun');
+      themeIcon.classList.add(isDark ? 'fa-sun' : 'fa-moon');
+    }
   }
+
+  // Actualizar ícono al cargar la página (con pequeño delay para Firefox)
+  setTimeout(updateThemeIcon, 0);
 
   document.addEventListener('click', (ev) => {
     const tbtn = ev.target.closest('.theme-toggle');
     if (!tbtn) return;
     const isDark = document.body.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    // Toggle icon moon/sun
-    const icon = tbtn.querySelector('i');
-    if (icon) {
-      icon.classList.toggle('fa-moon', !isDark);
-      icon.classList.toggle('fa-sun', isDark);
-    }
+    // Actualizar ícono
+    updateThemeIcon();
   });
 })();
