@@ -1,0 +1,1129 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashcards | Luis Armando</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script defer src="assets/js/i18n.js"></script>
+    <style>
+      /* ========== ANIMACIÓN TARJETA DE VISITA ========== */
+      .cards-animation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 0;
+        perspective: 800px;
+      }
+
+      .flip-card {
+        width: 280px;
+        height: 160px;
+        position: relative;
+        animation: flipCard 3s ease-in-out infinite;
+        transform-style: preserve-3d;
+      }
+
+      .flip-card .card-face {
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        backface-visibility: hidden;
+        border: 2px solid rgba(99, 102, 241, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .flip-card .card-front {
+        background: linear-gradient(145deg, #ffffff, #e6e6e6);
+      }
+
+      .flip-card .card-back {
+        background: linear-gradient(145deg, #e6e6e6, #ffffff);
+        transform: rotateY(180deg);
+      }
+
+      @keyframes flipCard {
+        0%   { transform: perspective(600px) rotateY(0deg); }
+        40%  { transform: perspective(600px) rotateY(180deg); }
+        60%  { transform: perspective(600px) rotateY(180deg); }
+        100% { transform: perspective(600px) rotateY(360deg); }
+      }
+
+      .flip-card i {
+        font-size: 48px;
+        color: #f59e0b;
+        margin-bottom: 6px;
+      }
+
+      .flip-card .card-back i {
+        color: #6366f1;
+      }
+
+      .flip-card .card-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #999;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      body.dark .flip-card .card-front {
+        background: linear-gradient(145deg, #4a4a4a, #3c3c3c);
+        border-color: rgba(129, 140, 248, 0.3);
+      }
+
+      body.dark .flip-card .card-back {
+        background: linear-gradient(145deg, #3c3c3c, #4a4a4a);
+        border-color: rgba(129, 140, 248, 0.3);
+      }
+
+      body.dark .flip-card .card-back i {
+        color: #818cf8;
+      }
+
+      /* ========== DASHBOARD ========== */
+      .flashcard-dashboard { width: 100%; }
+
+      .dashboard-nav {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .dashboard-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      }
+
+      .dashboard-btn i { font-size: 16px; }
+
+      .dashboard-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      }
+
+      body.dark .dashboard-btn {
+        background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+        box-shadow: 0 4px 15px rgba(129, 140, 248, 0.3);
+      }
+
+      body.dark .dashboard-btn:hover {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        box-shadow: 0 6px 20px rgba(129, 140, 248, 0.5);
+      }
+
+      /* ========== FORMULARIO ========== */
+      .flashcard-form {
+        background: #f8f9fa;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        padding: 30px;
+        max-width: 600px;
+        display: none;
+      }
+
+      .flashcard-form.visible {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      body.dark .flashcard-form {
+        background: #4a4a4a;
+        border-color: #5a5a5a;
+      }
+
+      .form-group { margin-bottom: 20px; }
+
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      body.dark .form-group label { color: #e5e7eb; }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        font-size: 14px;
+        color: #333;
+        background: #fff;
+        transition: border-color 0.3s ease;
+        outline: none;
+      }
+
+      .form-group input:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+      }
+
+      body.dark .form-group input {
+        background: #3c3c3c;
+        border-color: #5a5a5a;
+        color: #e5e7eb;
+      }
+
+      body.dark .form-group input:focus {
+        border-color: #818cf8;
+        box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 10px;
+      }
+
+      .btn-submit {
+        padding: 10px 24px;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+      }
+
+      .btn-cancel {
+        padding: 10px 24px;
+        background: #e5e7eb;
+        color: #666;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-cancel:hover { background: #d1d5db; }
+
+      body.dark .btn-cancel {
+        background: #5a5a5a;
+        color: #cbd5e1;
+      }
+
+      body.dark .btn-cancel:hover { background: #6a6a6a; }
+
+      /* ========== ERRORES ========== */
+      .form-group { position: relative; }
+
+      .form-group .error-msg {
+        display: none;
+        color: #ef4444;
+        font-size: 12px;
+        font-weight: 500;
+        margin-top: 6px;
+      }
+
+      .form-group.has-error .error-msg { display: block; }
+
+      .form-group.has-error input {
+        border-color: #ef4444;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+      }
+
+      body.dark .form-group.has-error input {
+        border-color: #f87171;
+        box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15);
+      }
+
+      .success-msg {
+        display: none;
+        color: #10b981;
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 12px;
+        padding: 10px 16px;
+        background: rgba(16, 185, 129, 0.1);
+        border-radius: 8px;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+      }
+
+      .success-msg.visible {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      body.dark .success-msg {
+        background: rgba(16, 185, 129, 0.15);
+        border-color: rgba(16, 185, 129, 0.3);
+      }
+
+      /* ========== NOTIFICACIONES ========== */
+      .notification {
+        display: none;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        padding: 14px 22px;
+        border-radius: 10px;
+        text-align: center;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .notification.visible { display: block; }
+
+      .notification.success {
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+      }
+
+      .notification.error {
+        color: #ef4444;
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+      }
+
+      .notification.info {
+        color: #6366f1;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+      }
+
+      body.dark .notification.success {
+        background: rgba(16, 185, 129, 0.15);
+        border-color: rgba(16, 185, 129, 0.3);
+      }
+
+      body.dark .notification.error {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+
+      body.dark .notification.info {
+        background: rgba(99, 102, 241, 0.15);
+        border-color: rgba(99, 102, 241, 0.3);
+      }
+
+      /* ========== VISOR DE FLASHCARDS ========== */
+      .flashcard-viewer {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .flashcard-viewer.visible {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .viewer-empty {
+        text-align: center;
+        color: #999;
+        padding: 40px 0;
+      }
+
+      .viewer-empty i {
+        font-size: 64px;
+        color: #d1d5db;
+        margin-bottom: 16px;
+      }
+
+      .viewer-empty p {
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      body.dark .viewer-empty i { color: #5a5a5a; }
+      body.dark .viewer-empty p { color: #9ca3af; }
+
+      .viewer-card-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .viewer-nav-arrow {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .viewer-nav-arrow:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+      }
+
+      .viewer-nav-arrow:active {
+        transform: scale(0.95);
+      }
+
+      body.dark .viewer-nav-arrow {
+        background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+      }
+
+      .viewer-card-container {
+        width: 320px;
+        height: 200px;
+        perspective: 800px;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: pan-y;
+      }
+
+      .viewer-card {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease;
+      }
+
+      .viewer-card.flipped {
+        transform: rotateY(180deg);
+      }
+
+      .viewer-card .viewer-face {
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+        backface-visibility: hidden;
+        border: 2px solid rgba(99, 102, 241, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        word-break: break-word;
+        overflow-y: auto;
+      }
+
+      .viewer-card .viewer-front {
+        background: linear-gradient(145deg, #ffffff, #e6e6e6);
+      }
+
+      .viewer-card .viewer-back {
+        background: linear-gradient(145deg, #e6e6e6, #ffffff);
+        transform: rotateY(180deg);
+      }
+
+      .viewer-face h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 4px;
+      }
+
+      .viewer-face p {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      .viewer-face .viewer-label {
+        font-size: 11px;
+        font-weight: 600;
+        color: #999;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      body.dark .viewer-card .viewer-front {
+        background: linear-gradient(145deg, #4a4a4a, #3c3c3c);
+        border-color: rgba(129, 140, 248, 0.3);
+      }
+
+      body.dark .viewer-card .viewer-back {
+        background: linear-gradient(145deg, #3c3c3c, #4a4a4a);
+        border-color: rgba(129, 140, 248, 0.3);
+      }
+
+      body.dark .viewer-face h3 { color: #f9fafb; }
+      body.dark .viewer-face p { color: #cbd5e1; }
+      body.dark .viewer-face .viewer-label { color: #9ca3af; }
+
+      .viewer-counter {
+        font-size: 13px;
+        color: #999;
+        font-weight: 500;
+      }
+
+      body.dark .viewer-counter { color: #9ca3af; }
+
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 50%, 90% { transform: translateX(-8px); }
+        30%, 70% { transform: translateX(8px); }
+      }
+
+      .viewer-card-container.shake .viewer-card {
+        animation: shake 0.5s ease-in-out;
+      }
+
+      /* ========== BUSCAR = GRID DE FLASHCARDS ========== */
+      .flashcard-grid-container {
+        display: none;
+        width: 100%;
+      }
+
+      .flashcard-grid-container.visible {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .flashcard-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        padding: 20px;
+        border: 2px solid #6366f1;
+        border-radius: 20px;
+        background: #f8f9fa;
+      }
+
+      body.dark .flashcard-grid {
+        background: #3c3c3c;
+        border-color: #818cf8;
+      }
+
+      .flashcard-grid-item {
+        background: #fff;
+        border: 1.5px solid #6366f1;
+        border-radius: 12px;
+        padding: 20px 12px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 80px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: default;
+        word-break: break-word;
+      }
+
+      .flashcard-grid-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);
+      }
+
+      body.dark .flashcard-grid-item {
+        background: #4a4a4a;
+        border-color: #818cf8;
+      }
+
+      .flashcard-grid-item .grid-label {
+        font-size: 10px;
+        font-weight: 600;
+        color: #818cf8;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      body.dark .flashcard-grid-item .grid-label {
+        color: #a78bfa;
+      }
+
+      .flashcard-grid-item .grid-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #333;
+        line-height: 1.3;
+      }
+
+      body.dark .flashcard-grid-item .grid-title {
+        color: #f9fafb;
+      }
+
+      .flashcard-grid-item .grid-meaning {
+        font-size: 12px;
+        color: #666;
+        margin-top: 2px;
+        line-height: 1.3;
+      }
+
+      body.dark .flashcard-grid-item .grid-meaning {
+        color: #cbd5e1;
+      }
+
+      @media (max-width: 768px) {
+        .flashcard-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .flashcard-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .viewer-nav-arrow { display: none; }
+        .viewer-card-container { width: 280px; height: 180px; }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-main">
+      <aside class="sidebar">
+        <div class="profile-section">
+          <img src="assets/img/profile.jpg" alt="Luis Armando" class="profile-image" />
+          <h1 class="profile-name">Luis Armando</h1>
+          <p class="profile-pronouns">Ingeniero de Computación</p>
+          <p class="profile-title" data-i18n="profile.title">
+            16+ Senior QA Automation Engineer | Playwright | Cypress | WebDriverIO | Salesforce QA | AccelQ | Selenium | AWS | AI Driven
+          </p>
+          <br />
+          <p class="profile-company">Última empresa: OLACLICK</p>
+          <div class="social-links">
+            <a href="mailto:luisarmandobr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/luisarmandobr" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/luisarmandobr" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </div>
+          <a href="apps.html" class="apps-btn"><i class="fas fa-th"></i> MyApps</a>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="top-header">
+          <div class="header-left">
+            <h2>Luis Armando Benitez Rodriguez</h2>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="index.html" data-i18n="nav.bio">Bio</a></li>
+              <li><a href="certifications.html" data-i18n="nav.certifications">Certificaciones</a></li>
+              <li><a href="workhistory.html" data-i18n="nav.workhistory">Experiencia</a></li>
+            </ul>
+          </nav>
+          <div class="header-right">
+            <div class="lang-switch" role="group" aria-label="Language switch">
+              <button class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
+              <button class="lang-btn" data-lang="pt" aria-pressed="false">PT</button>
+              <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+            </div>
+            <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+          </div>
+        </header>
+
+        <!-- FLASHCARDS DASHBOARD -->
+        <section class="professional-section">
+          <div class="section-header">
+            <i class="fas fa-address-card section-icon"></i>
+            <h2>Flashcards</h2>
+          </div>
+
+          <div class="flashcard-dashboard">
+            <div class="dashboard-nav">
+              <button class="dashboard-btn" id="btnCrear"><i class="fas fa-cubes"></i> Crear</button>
+              <button class="dashboard-btn" id="btnVer"><i class="fas fa-eye"></i> Ver</button>
+              <button class="dashboard-btn" id="btnBuscar"><i class="fas fa-search"></i> Buscar</button>
+              <button class="dashboard-btn" id="btnExport" style="background:linear-gradient(135deg,#10b981,#059669);"><i class="fas fa-download"></i> Export</button>
+              <button class="dashboard-btn" id="btnImport" style="background:linear-gradient(135deg,#f59e0b,#d97706);"><i class="fas fa-upload"></i> Import</button>
+              <button class="dashboard-btn" id="btnReset" style="background:linear-gradient(135deg,#ef4444,#dc2626);"><i class="fas fa-trash"></i> Reset</button>
+              <input type="file" id="fileInput" accept=".json" style="display:none;" />
+            </div>
+
+            <!-- NOTIFICACIÓN GLOBAL -->
+            <div id="globalNotification" class="notification"></div>
+
+            <!-- ANIMACIÓN INICIAL -->
+            <div class="cards-animation" id="cardsAnimation">
+              <div class="flip-card">
+                <div class="card-face card-front">
+                  <i class="fas fa-sun"></i>
+                  <span class="card-label">MEMORIZAR</span>
+                </div>
+                <div class="card-face card-back">
+                  <i class="fas fa-lightbulb"></i>
+                  <span class="card-label">RESPUESTA</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- FORMULARIO CREAR -->
+            <div class="flashcard-form" id="formCrear">
+              <div class="form-group" id="grupoTitulo">
+                <label for="titulo">1. Título del flashcard</label>
+                <input type="text" id="titulo" placeholder="Ej: What is Playwright?" />
+                <span class="error-msg">⚠️ El título es obligatorio</span>
+              </div>
+              <div class="form-group" id="grupoSignificado">
+                <label for="significado">2. Significado</label>
+                <input type="text" id="significado" placeholder="Ej: Framework de testing end-to-end de Microsoft" />
+                <span class="error-msg">⚠️ El significado es obligatorio</span>
+              </div>
+              <div class="success-msg" id="successMsg">✅ Flashcard guardado correctamente</div>
+              <div class="form-actions">
+                <button class="btn-submit" id="btnGuardar"><i class="fas fa-save"></i> Guardar</button>
+                <button class="btn-cancel" id="btnCancelar"><i class="fas fa-times"></i> Cancelar</button>
+              </div>
+            </div>
+
+            <!-- GRID BUSCAR -->
+            <div class="flashcard-grid-container" id="flashcardGridContainer">
+              <div class="viewer-empty" id="gridEmpty">
+                <i class="fas fa-layer-group"></i>
+                <p>No hay flashcards guardados todavía</p>
+              </div>
+              <div class="flashcard-grid" id="flashcardGrid"></div>
+            </div>
+
+            <!-- VISOR DE FLASHCARDS -->
+            <div class="flashcard-viewer" id="flashcardViewer">
+              <div class="viewer-empty" id="viewerEmpty">
+                <i class="fas fa-layer-group"></i>
+                <p>No hay flashcards guardados todavía</p>
+              </div>
+
+              <div class="viewer-card-wrapper" id="viewerWrapper" style="display:none;">
+                <button class="viewer-nav-arrow" id="navPrev"><i class="fas fa-chevron-left"></i></button>
+
+                <div class="viewer-card-container" id="viewerCardContainer">
+                  <div class="viewer-card" id="viewerCard">
+                    <div class="viewer-face viewer-front">
+                      <span class="viewer-label">MEMORIZAR</span>
+                      <h3 id="viewerTitle">Título</h3>
+                    </div>
+                    <div class="viewer-face viewer-back">
+                      <span class="viewer-label">RESPUESTA</span>
+                      <p id="viewerMeaning">Significado</p>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="viewer-nav-arrow" id="navNext"><i class="fas fa-chevron-right"></i></button>
+              </div>
+
+              <div class="viewer-counter" id="viewerCounter" style="display:none;"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // ===== REFERENCIAS DOM =====
+        const btnCrear         = document.getElementById('btnCrear');
+        const btnVer           = document.getElementById('btnVer');
+        const btnBuscar        = document.getElementById('btnBuscar');
+        const formCrear        = document.getElementById('formCrear');
+        const cardsAnimation   = document.getElementById('cardsAnimation');
+        const btnCancelar      = document.getElementById('btnCancelar');
+        const btnGuardar       = document.getElementById('btnGuardar');
+        const inputTitulo      = document.getElementById('titulo');
+        const inputSignificado = document.getElementById('significado');
+        const grupoTitulo      = document.getElementById('grupoTitulo');
+        const grupoSignificado = document.getElementById('grupoSignificado');
+        const successMsg       = document.getElementById('successMsg');
+        const flashcardViewer  = document.getElementById('flashcardViewer');
+        const viewerEmpty      = document.getElementById('viewerEmpty');
+        const viewerWrapper    = document.getElementById('viewerWrapper');
+        const viewerCard       = document.getElementById('viewerCard');
+        const viewerCardContainer = document.getElementById('viewerCardContainer');
+        const viewerTitle      = document.getElementById('viewerTitle');
+        const viewerMeaning    = document.getElementById('viewerMeaning');
+        const viewerCounter    = document.getElementById('viewerCounter');
+        const navPrev          = document.getElementById('navPrev');
+        const navNext          = document.getElementById('navNext');
+        const globalNotif      = document.getElementById('globalNotification');
+        const flashcardGrid    = document.getElementById('flashcardGrid');
+        const flashcardGridContainer = document.getElementById('flashcardGridContainer');
+        const gridEmpty        = document.getElementById('gridEmpty');
+
+        // ===== NOTIFICACIÓN GLOBAL =====
+        function mostrarNotificacion(mensaje, tipo) {
+          globalNotif.className = 'notification ' + tipo + ' visible';
+          globalNotif.textContent = mensaje;
+          clearTimeout(globalNotif._timeout);
+          globalNotif._timeout = setTimeout(function () {
+            globalNotif.classList.remove('visible');
+          }, 4000);
+        }
+
+        // ===== ESTADO DEL VISOR =====
+        let currentIndex = 0;
+        let sortedCards = [];
+        let isFlipped = false;
+
+        function ocultarTodo() {
+          cardsAnimation.style.display = 'none';
+          formCrear.classList.remove('visible');
+          flashcardViewer.classList.remove('visible');
+          flashcardGridContainer.classList.remove('visible');
+        }
+
+        function getFlashcards() {
+          let flashcards = [];
+          try {
+            const stored = localStorage.getItem('flashcards');
+            if (stored) flashcards = JSON.parse(stored);
+          } catch (_) { flashcards = []; }
+          return flashcards;
+        }
+
+        // ===== CREAR =====
+        btnCrear.addEventListener('click', function () {
+          ocultarTodo();
+          resetFormulario();
+          formCrear.classList.add('visible');
+        });
+
+        btnCancelar.addEventListener('click', function () {
+          formCrear.classList.remove('visible');
+          cardsAnimation.style.display = 'flex';
+          resetFormulario();
+        });
+
+        function resetFormulario() {
+          inputTitulo.value = '';
+          inputSignificado.value = '';
+          grupoTitulo.classList.remove('has-error');
+          grupoSignificado.classList.remove('has-error');
+          successMsg.classList.remove('visible');
+        }
+
+        inputTitulo.addEventListener('input', function () { grupoTitulo.classList.remove('has-error'); });
+        inputSignificado.addEventListener('input', function () { grupoSignificado.classList.remove('has-error'); });
+
+        // ===== GUARDAR =====
+        btnGuardar.addEventListener('click', function () {
+          const titulo      = inputTitulo.value.trim().toUpperCase();
+          const significado = inputSignificado.value.trim();
+          let valid = true;
+
+          if (!titulo) { grupoTitulo.classList.add('has-error'); valid = false; }
+          else { grupoTitulo.classList.remove('has-error'); }
+
+          if (!significado) { grupoSignificado.classList.add('has-error'); valid = false; }
+          else { grupoSignificado.classList.remove('has-error'); }
+
+          if (!valid) return;
+
+          let flashcards = getFlashcards();
+
+          flashcards.push({
+            id: Date.now(),
+            english: titulo,
+            spanish: significado,
+            portuguese: '',
+            createdAt: Date.now()
+          });
+
+          localStorage.setItem('flashcards', JSON.stringify(flashcards));
+          successMsg.classList.add('visible');
+          setTimeout(function () {
+            inputTitulo.value = '';
+            inputSignificado.value = '';
+            successMsg.classList.remove('visible');
+          }, 1500);
+        });
+
+        // ===== RESET =====
+        const btnReset = document.getElementById('btnReset');
+        btnReset.addEventListener('click', function () {
+          if (confirm('¿Eliminar todos los flashcards guardados?')) {
+            localStorage.removeItem('flashcards');
+            ocultarTodo();
+            cardsAnimation.style.display = 'flex';
+            mostrarNotificacion('Todos los flashcards han sido eliminados', 'info');
+          }
+        });
+
+        // ===== EXPORT =====
+        const btnExport = document.getElementById('btnExport');
+        btnExport.addEventListener('click', function () {
+          let flashcards = getFlashcards();
+
+          if (flashcards.length === 0) {
+            mostrarNotificacion('No hay flashcards para exportar.', 'error');
+            return;
+          }
+
+          const blob = new Blob([JSON.stringify(flashcards, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'apiflashcards.json';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          mostrarNotificacion('Archivo apiflashcards.json descargado correctamente.', 'success');
+        });
+
+        // ===== IMPORT =====
+        const fileInput = document.getElementById('fileInput');
+        const btnImport = document.getElementById('btnImport');
+
+        btnImport.addEventListener('click', function () {
+          fileInput.value = '';
+          fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function (e) {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          // Validate file name
+          if (file.name !== 'apiflashcards.json') {
+            mostrarNotificacion('Error: El archivo debe llamarse "apiflashcards.json".', 'error');
+            fileInput.value = '';
+            return;
+          }
+
+          // Validate file size (5MB max)
+          const MAX_SIZE = 5 * 1024 * 1024;
+          if (file.size > MAX_SIZE) {
+            mostrarNotificacion('Error: El archivo es demasiado grande (máximo 5MB).', 'error');
+            fileInput.value = '';
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = function (ev) {
+            let imported = [];
+            try {
+              imported = JSON.parse(ev.target.result);
+            } catch (_) {
+              mostrarNotificacion('Error: El archivo no contiene un JSON válido.', 'error');
+              fileInput.value = '';
+              return;
+            }
+
+            if (!Array.isArray(imported)) {
+              mostrarNotificacion('Error: El JSON debe ser un array de flashcards.', 'error');
+              fileInput.value = '';
+              return;
+            }
+
+            for (let i = 0; i < imported.length; i++) {
+              const card = imported[i];
+              if (!card.id || !card.english || !card.spanish || !card.createdAt) {
+                mostrarNotificacion('Error: El flashcard #' + (i + 1) + ' no tiene los campos requeridos (id, english, spanish, createdAt).', 'error');
+                fileInput.value = '';
+                return;
+              }
+            }
+
+            if (imported.length === 0) {
+              mostrarNotificacion('El archivo no contiene flashcards.', 'error');
+              fileInput.value = '';
+              return;
+            }
+
+            let existing = getFlashcards();
+            const existingIds = new Set(existing.map(c => c.id));
+            let added = 0;
+            for (const card of imported) {
+              if (!existingIds.has(card.id)) {
+                existing.push(card);
+                existingIds.add(card.id);
+                added++;
+              }
+            }
+
+            existing.sort((a, b) => b.createdAt - a.createdAt);
+            localStorage.setItem('flashcards', JSON.stringify(existing));
+            fileInput.value = '';
+
+            mostrarNotificacion(
+              'Importación completada: ' + added + ' flashcards nuevos añadidos de ' + imported.length + ' en el archivo. Total: ' + existing.length + ' flashcards.',
+              'success'
+            );
+            ocultarTodo();
+            cardsAnimation.style.display = 'flex';
+          };
+          reader.readAsText(file);
+        });
+
+        // ===== BUSCAR =====
+        btnBuscar.addEventListener('click', function () {
+          ocultarTodo();
+          flashcardGridContainer.classList.add('visible');
+          cargarGrid();
+        });
+
+        function cargarGrid() {
+          const flashcards = getFlashcards();
+
+          if (flashcards.length === 0) {
+            gridEmpty.style.display = 'block';
+            flashcardGrid.style.display = 'none';
+            return;
+          }
+
+          gridEmpty.style.display = 'none';
+          flashcardGrid.style.display = 'grid';
+
+          // Sort by newest first
+          const sorted = [...flashcards].sort((a, b) => b.createdAt - a.createdAt);
+
+          flashcardGrid.innerHTML = '';
+          for (const card of sorted) {
+            const div = document.createElement('div');
+            div.className = 'flashcard-grid-item';
+            div.innerHTML =
+              '<span class="grid-label">MEMORIZAR</span>' +
+              '<span class="grid-title">' + escapeHtml(card.english) + '</span>' +
+              '<span class="grid-meaning">' + escapeHtml(card.spanish) + '</span>';
+            flashcardGrid.appendChild(div);
+          }
+        }
+
+        function escapeHtml(text) {
+          const div = document.createElement('div');
+          div.textContent = text;
+          return div.innerHTML;
+        }
+
+        // ===== VER =====
+        btnVer.addEventListener('click', function () {
+          ocultarTodo();
+          flashcardViewer.classList.add('visible');
+          cargarVisor();
+        });
+
+        function cargarVisor() {
+          let flashcards = getFlashcards();
+
+          sortedCards = flashcards.sort((a, b) => b.id - a.id);
+
+          if (sortedCards.length === 0) {
+            viewerEmpty.style.display = 'block';
+            viewerWrapper.style.display = 'none';
+            viewerCounter.style.display = 'none';
+            return;
+          }
+
+          viewerEmpty.style.display = 'none';
+          viewerWrapper.style.display = 'flex';
+          viewerCounter.style.display = 'block';
+          currentIndex = 0;
+          isFlipped = false;
+          viewerCard.classList.remove('flipped');
+          mostrarCard(currentIndex);
+        }
+
+        function mostrarCard(index) {
+          const card = sortedCards[index];
+          viewerTitle.textContent = card.english;
+          viewerMeaning.textContent = card.spanish;
+          viewerCounter.textContent = (index + 1) + ' / ' + sortedCards.length;
+        }
+
+        // ===== FLIP =====
+        viewerCardContainer.addEventListener('click', function () {
+          if (sortedCards.length === 0) return;
+          isFlipped = !isFlipped;
+          viewerCard.classList.toggle('flipped', isFlipped);
+        });
+
+        // ===== NAVEGACIÓN =====
+        function navegarSiguiente() {
+          if (sortedCards.length === 0) return;
+          if (currentIndex < sortedCards.length - 1) {
+            currentIndex++;
+            isFlipped = false;
+            viewerCard.classList.remove('flipped');
+            mostrarCard(currentIndex);
+          } else {
+            viewerCardContainer.classList.remove('shake');
+            void viewerCardContainer.offsetWidth;
+            viewerCardContainer.classList.add('shake');
+            setTimeout(function () { viewerCardContainer.classList.remove('shake'); }, 500);
+          }
+        }
+
+        function navegarAnterior() {
+          if (sortedCards.length === 0) return;
+          if (currentIndex > 0) {
+            currentIndex--;
+            isFlipped = false;
+            viewerCard.classList.remove('flipped');
+            mostrarCard(currentIndex);
+          } else {
+            viewerCardContainer.classList.remove('shake');
+            void viewerCardContainer.offsetWidth;
+            viewerCardContainer.classList.add('shake');
+            setTimeout(function () { viewerCardContainer.classList.remove('shake'); }, 500);
+          }
+        }
+
+        navNext.addEventListener('click', navegarSiguiente);
+        navPrev.addEventListener('click', navegarAnterior);
+
+        // ===== SWIPE MOBILE =====
+        let touchStartX = 0, touchEndX = 0;
+        viewerCardContainer.addEventListener('touchstart', function (e) {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        viewerCardContainer.addEventListener('touchend', function (e) {
+          touchEndX = e.changedTouches[0].screenX;
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) navegarSiguiente();
+            else navegarAnterior();
+          }
+        }, { passive: true });
+
+        // ===== TECLADO =====
+        document.addEventListener('keydown', function (e) {
+          if (!flashcardViewer.classList.contains('visible')) return;
+          if (e.key === 'ArrowRight') { e.preventDefault(); navegarSiguiente(); }
+          else if (e.key === 'ArrowLeft') { e.preventDefault(); navegarAnterior(); }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -168,6 +168,38 @@ body.dark .profile-title {
   transform: translateY(-3px);
 }
 
+/* APPS BUTTON */
+.apps-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 30px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.apps-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+}
+
+body.dark .apps-btn {
+  background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+  box-shadow: 0 4px 15px rgba(129, 140, 248, 0.3);
+}
+
+body.dark .apps-btn:hover {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  box-shadow: 0 6px 20px rgba(129, 140, 248, 0.5);
+}
+
 /* MAIN CONTENT */
 .main-content {
   flex: 1;
