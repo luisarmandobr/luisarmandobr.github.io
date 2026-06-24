@@ -42,6 +42,7 @@
           </div>
 
           <a href="apps.html" class="apps-btn"><i class="fas fa-th"></i> MyApps</a>
+          <a href="#" class="apps-btn" id="myNotesBtn" style="margin-top: 8px;"><i class="fas fa-book"></i> MyNotes</a>
         </div>
       </aside>
 
@@ -157,5 +158,25 @@
         </section>
       </main>
     </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var myNotesBtn = document.getElementById('myNotesBtn');
+      if (myNotesBtn) {
+        myNotesBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var storedHash = 'NDA5MTY3ODBFcnM=';
+          var pwd = prompt('Ingrese contrase\u00f1a para acceder a MyNotes:', '');
+          if (pwd === null) return;
+          var encoded = btoa(pwd);
+          if (encoded === storedHash) {
+            window.location.href = 'mynotes.html';
+          } else {
+            alert('Credenciales incorrectas. Acceso denegado.');
+            myNotesBtn.style.display = 'none';
+          }
+        });
+      }
+    });
+  </script>
   </body>
 </html>
