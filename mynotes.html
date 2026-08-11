@@ -825,7 +825,7 @@
       .int-answer {
         font-size: 13px;
         color: #555;
-        line-height: 1.5;
+        line-height: 1.6;
       }
 
       body.dark .int-answer {
@@ -1078,285 +1078,7 @@
         });
 
         // ===== FRASAL VERBS DATA =====
-        const frasalVerbsData = [
-          {
-            verb: 'GET',
-            items: [
-              { phrasal: 'Get on', es: 'Subir', en: 'They got on the train.' },
-              { phrasal: 'Get on', es: 'Progresar', en: 'Sue is getting on very well in her new job.' },
-              { phrasal: 'Get on for', es: 'Llegar a una edad', en: 'He must be getting on for seventy.' },
-              { phrasal: 'Get across', es: 'Ser entendido', en: 'I had the feeling I wasn\'t getting the meaning across.' },
-              { phrasal: 'Get at', es: 'Dar a entender, coloquial', en: 'What are you getting at exactly?' },
-              { phrasal: 'Get down to', es: 'Ponerse con algo en serio', en: 'It\'s time we got down to some real work.' },
-              { phrasal: 'Get off with', es: 'Evitar un castigo', en: 'They were lucky to get off with such light sentences.' },
-              { phrasal: 'Get over', es: 'Sorprenderse', en: 'I couldn\'t get over how well she looked.' },
-              { phrasal: 'Get over with', es: 'Terminar algo que no nos gusta', en: 'I\'ll be glad to get this awful business over with.' },
-              { phrasal: 'Get round to', es: 'Encontrar tiempo para hacer algo', en: 'Sorry, but I haven\'t got round to fixing the tap yet.' },
-              { phrasal: 'Get up to', es: 'Tramar algo', en: 'The children are getting up to something in the garden.' }
-            ]
-          },
-          {
-            verb: 'TAKE',
-            items: [
-              { phrasal: 'Take in', es: 'Engañar', en: 'Don\'t be taken in by her apparent shyness.' },
-              { phrasal: 'Take (it) out on', es: 'Hacer a alguien sufrir por nuestro propio sufrimiento', en: 'I know you are unhappy, but don\'t take it out on me!' },
-              { phrasal: 'Take off', es: 'Imitar', en: 'Dave takes off the Prime Minister really well.' },
-              { phrasal: 'Take on', es: 'Adquirir una nueva actividad o hábito', en: 'My grandmother has taken on a new lease of life since her operation.' },
-              { phrasal: 'Take on', es: 'Hacer algo extra', en: 'She has taken on too much with a full-time job as well.' },
-              { phrasal: 'Take out', es: 'Firmar un seguro', en: 'Ann has taken out life insurance.' },
-              { phrasal: 'Take over', es: 'Tomar el control', en: 'The army tried to take over the country.' },
-              { phrasal: 'Take to someone', es: 'Desarrollar apreciación por alguien', en: 'You\'ll soon take to your new boss, I\'m sure.' },
-              { phrasal: 'Take away', es: 'Llevarse', en: 'She took the envelope away.' },
-              { phrasal: 'Take up', es: 'Ocupar tiempo', en: 'The meeting took up a whole morning.' }
-            ]
-          },
-          {
-            verb: 'LOOK',
-            items: [
-              { phrasal: 'Look up', es: 'Buscar una referencia', en: 'Look up the term online.' },
-              { phrasal: 'Look someone up', es: 'Visitar', en: 'If you\'re passing through Athens, look me up.' },
-              { phrasal: 'Look after', es: 'Cuidar de', en: 'She looked after her grandmother.' },
-              { phrasal: 'Look into', es: 'Investigar', en: 'The police have promised to look into the problem.' },
-              { phrasal: 'Look on', es: 'Considerar', en: 'We look on this town as our real home.' }
-            ]
-          },
-          {
-            verb: 'GO',
-            items: [
-              { phrasal: 'Go after', es: 'Perseguir', en: 'She is going after a great job.' },
-              { phrasal: 'Go back on', es: 'Romper una promesa', en: 'The management has gone back on its promise.' },
-              { phrasal: 'Go in for', es: 'Convertir algo en hábito', en: 'I don\'t go in for that kind of thing.' },
-              { phrasal: 'Go in for', es: 'Entrar en una competición', en: 'Are you thinking of going in for the race?' },
-              { phrasal: 'Go off', es: 'Un alimento se pone malo', en: 'This milk has gone off.' },
-              { phrasal: 'Go on', es: 'Suceder', en: 'Something funny is going on.' },
-              { phrasal: 'Go round', es: 'Ser o tener suficiente', en: 'There weren\'t enough life-jackets to go round.' },
-              { phrasal: 'Go through with', es: 'Completar una promesa o plan', en: 'When it came to actually stealing the money, Nora couldn\'t go through with it.' }
-            ]
-          },
-          {
-            verb: 'COME',
-            items: [
-              { phrasal: 'Come after', es: 'Seguir a alguien', en: 'A dog came after me when I started running.' },
-              { phrasal: 'Come about', es: 'Suceder', en: 'Let me explain how the situation came about.' },
-              { phrasal: 'Come down to', es: 'Resumir o concluir un argumento', en: 'It all comes down to whether you are prepared to accept less money.' },
-              { phrasal: 'Come in for', es: 'Recibir críticas o culpa', en: 'The government has come in for a lot of criticism over the decision.' },
-              { phrasal: 'Come off', es: 'Suceder con éxito', en: 'I\'m afraid that deal didn\'t come off after all.' },
-              { phrasal: 'Come out', es: 'Aparecer', en: 'All the flowers have come out.' },
-              { phrasal: 'Come up', es: 'Suceder algo problemático', en: 'Look, something has come up, and I can\'t meet you.' },
-              { phrasal: 'Come up against', es: 'Encontrarse con una dificultad', en: 'We\'ve come up against a bit of a problem.' },
-              { phrasal: 'Come up to', es: 'Cumplir expectativas', en: 'The play didn\'t come up to expectations.' },
-              { phrasal: 'Come up with', es: 'Pensar en un plan o solución', en: 'We still haven\'t come up with a solution to the problem.' }
-            ]
-          },
-          {
-            verb: 'TURN',
-            items: [
-              { phrasal: 'Turn down', es: 'Rechazar', en: 'Another company offered me a job but I turned them down.' },
-              { phrasal: 'Turn out', es: 'Algo que resulta al final', en: 'He turned out to be an old friend of Helen\'s.' },
-              { phrasal: 'Turn out', es: 'Reunirse o formar un grupo', en: 'Thousands of fans turned out to welcome the team.' },
-              { phrasal: 'Turn up', es: 'Descubrir por casualidad', en: 'Don\'t worry about that missing book, it\'s bound to turn up sooner or later.' },
-              { phrasal: 'Turn up', es: 'Llegar o aparecer', en: 'Not many people turned up for the lesson.' }
-            ]
-          },
-          {
-            verb: 'MAKE',
-            items: [
-              { phrasal: 'Make after', es: 'Perseguir', en: 'She made after the bus but could not reach.' },
-              { phrasal: 'Make for', es: 'Resultar o facilitar', en: 'The power steering makes for easier parking.' },
-              { phrasal: 'Make off with', es: 'Escapar', en: 'The thief made off with a valuable necklace.' },
-              { phrasal: 'Make out', es: 'Pretender', en: 'Tim made out that he hadn\'t seen the No Smoking sign.' },
-              { phrasal: 'Make out', es: 'Ver o entender', en: 'I couldn\'t quite make out what the notice said.' },
-              { phrasal: 'Make someone out', es: 'Comprender la conducta de alguien', en: 'Janet is really odd. I can\'t make her out.' },
-              { phrasal: 'Make up', es: 'Inventar', en: 'I think you made up the whole story!' },
-              { phrasal: 'Make up for', es: 'Compensar por algo', en: 'Our success makes up for all the hard times.' }
-            ]
-          },
-          {
-            verb: 'SET',
-            items: [
-              { phrasal: 'Set about', es: 'Comenzar a hacer algo', en: 'We must set about re-organising the office.' },
-              { phrasal: 'Set in', es: 'Establecerse en el tiempo', en: 'I think this rain has set in for the day.' },
-              { phrasal: 'Set out', es: 'Dar detalles escritos', en: 'This document sets out all the Union demands.' },
-              { phrasal: 'Set out', es: 'Preparar', en: 'I\'ve set out the refreshments in the hall.' },
-              { phrasal: 'Set out', es: 'Comenzar algo', en: 'Sue set out to write a biography but it became a novel.' },
-              { phrasal: 'Set up', es: 'Establecer', en: 'An inquiry into the accident has been set up.' },
-              { phrasal: 'Set (up) on', es: 'Atacar', en: 'We were set upon by a gang of hooligans.' }
-            ]
-          },
-          {
-            verb: 'GIVE',
-            items: [
-              { phrasal: 'Give away', es: 'Traicionar', en: 'His false identity papers gave him away.' },
-              { phrasal: 'Give off', es: 'Emitir mal olor', en: 'The cheese had begun to give off a strange smell.' },
-              { phrasal: 'Give out', es: 'Terminarse', en: 'When our money gave out we had to borrow some.' },
-              { phrasal: 'Give over', es: 'Abandonarse a una actividad', en: 'The rest of the time was given over to playing cards.' },
-              { phrasal: 'Give over', es: 'Parar', en: 'Why don\'t you give over? You are getting on my nerves.' },
-              { phrasal: 'Give up', es: 'Rendirse', en: 'The escaped prisoner gave herself up.' },
-              { phrasal: 'Give up', es: 'Dar algo o alguien por muerto o perdido', en: 'After ten days the ship was given up for lost.' },
-              { phrasal: 'Give up', es: 'Dejar una actividad o hábito', en: 'They gave up gambling.' }
-            ]
-          },
-          {
-            verb: 'CUT',
-            items: [
-              { phrasal: 'Cut out', es: 'Dejar de hacer algo', en: 'My Dad has very high cholesterol, so he has cut out eggs and dairy from his diet.' },
-              { phrasal: 'Cut back', es: 'Hacer algo en menor medida', en: 'You eat too much salt, you should cut back on salty foods.' },
-              { phrasal: 'Cut off', es: 'Recortar', en: 'He cut all the fat off.' },
-              { phrasal: 'Cut out', es: 'Dar forma a algo mediante cortes', en: 'He cut several pieces of pastry out.' },
-              { phrasal: 'Cut up', es: 'Recortar en piezas con un cuchillo', en: 'He cut the pie up into equal slices.' }
-            ]
-          },
-          {
-            verb: 'BRING',
-            items: [
-              { phrasal: 'Bring about', es: 'Causar', en: 'The crisis was brought about by Brenda\'s resignation.' },
-              { phrasal: 'Bring off', es: 'Hacer algo con éxito', en: 'The team tried for years to win the competition and they finally brought it off.' },
-              { phrasal: 'Bring on', es: 'Causar una enfermedad', en: 'Sitting in the damp brought on his rheumatism.' },
-              { phrasal: 'Bring on', es: 'Causar un problema', en: 'You have brought this on/upon yourself.' },
-              { phrasal: 'Bring round', es: 'Influir a alguien hacia tu punto de vista', en: 'After much discussion, I brought the committee round to my point of view.' },
-              { phrasal: 'Bring up', es: 'Mencionar', en: 'I feel I ought to bring up another small matter.' }
-            ]
-          },
-          {
-            verb: 'CALL',
-            items: [
-              { phrasal: 'Call after', es: 'Poner el mismo nombre de un antecesor', en: 'The baby is called after his grandfather.' },
-              { phrasal: 'Call at', es: 'Hacer una parada corta', en: 'The train calls at Oxbridge and Glenville.' },
-              { phrasal: 'Call away', es: 'Pedir a alguien que se vaya', en: 'The doctor was called away for an emergency.' },
-              { phrasal: 'Call back', es: 'Devolver una llamada', en: 'I\'ll call you back as soon as possible.' },
-              { phrasal: 'Call for', es: 'Ir a algún sitio a por alguien', en: 'Tom said he would call for her at 8 o\'clock.' },
-              { phrasal: 'Call for', es: 'Demandar que algo se haga', en: 'The authorities called for an investigation.' },
-              { phrasal: 'Call for', es: 'Requerir', en: 'The job calls for excellent computer skills.' },
-              { phrasal: 'Call in', es: 'Pedir a alguien que venga a hacer un trabajo', en: 'He called in the plumber to repair the leak.' },
-              { phrasal: 'Call in (on)', es: 'Hacer una visita a alguien', en: 'Jack called in on his parents yesterday.' },
-              { phrasal: 'Call off', es: 'Cancelar', en: 'The picnic was called off due to the storm.' },
-              { phrasal: 'Call on/upon', es: 'Invitar o pedir formalmente', en: 'I now call on the President to address the assembly.' },
-              { phrasal: 'Call out', es: 'Decir algo en voz alta', en: 'He called out my name but I didn\'t answer.' },
-              { phrasal: 'Call round', es: 'Ir a un sitio a ver a alguien', en: 'The nurse said she would call round to see my mother.' },
-              { phrasal: 'Call up', es: 'Movilizar en el ejército', en: 'My grandfather was called up to active duty in 1940.' }
-            ]
-          },
-          {
-            verb: 'PICK',
-            items: [
-              { phrasal: 'Pick up', es: 'Recoger algo o a alguien para llevarle a otro sitio', en: 'There\'s nothing in the fridge so I will pick some sandwiches up from the shop.' },
-              { phrasal: 'Pick up', es: 'Mejorar', en: 'The weather seems to be picking up.' },
-              { phrasal: 'Pick at', es: 'Comer despacio', en: 'Mauro picks at his food. He eats like a bird.' },
-              { phrasal: 'Pick at', es: 'Irritar o molestar', en: 'If you have a mosquito bite, you shouldn\'t pick at it.' },
-              { phrasal: 'Pick off', es: 'Quitar', en: 'Toni picked the hairs off her sweater one by one.' },
-              { phrasal: 'Pick on', es: 'Acosar', en: 'Teenagers always pick on the new kid in school.' },
-              { phrasal: 'Pick up', es: 'Aprender mediante experiencia', en: 'I picked up a little Korean when I lived in Seoul.' },
-              { phrasal: 'Pick up', es: 'Acelerar o estar ocupado', en: 'Miami Beach really picks up in March because of Spring Break.' },
-              { phrasal: 'Pick up', es: 'Llevar a alguien en el coche', en: 'Larry always picks me up when I fly into Philadelphia.' },
-              { phrasal: 'Pick up', es: 'Pagar la cuenta de alguien', en: 'Anastasia picked up our tab at the bar.' },
-              { phrasal: 'Pick out', es: 'Elegir algo', en: 'I told Gina to pick out a new pair of shoes for her birthday present.' }
-            ]
-          },
-          {
-            verb: 'CARRY',
-            items: [
-              { phrasal: 'Carry away', es: 'Dejarse llevar', en: 'My son normally gets a little carried away on his birthday.' },
-              { phrasal: 'Carry off', es: 'Ganar un premio', en: 'Mary carried off a gold medal in the swimming championship.' },
-              { phrasal: 'Carry on', es: 'Seguir', en: 'Please, carry on the way you are; I am only here to observe.' },
-              { phrasal: 'Carry out', es: 'Llevar a cabo', en: 'The police will carry out an investigation and inform the press of any new developments.' },
-              { phrasal: 'Carry out', es: 'Cumplir', en: 'I am a man of my word, I always carry out my promises.' },
-              { phrasal: 'Carry through', es: 'Llevar a cabo', en: 'The plan was carried through to perfection, thanks for your help.' }
-            ]
-          },
-          {
-            verb: 'BE',
-            items: [
-              { phrasal: 'Be after', es: 'Intentar, conseguir', en: 'What\'s he after? Is he looking for proof?' },
-              { phrasal: 'Be against', es: 'Oponerse', en: 'I must say I\'m against the idea.' },
-              { phrasal: 'Be along', es: 'Llegar', en: 'Jack will be along soon. He\'s on his way.' },
-              { phrasal: 'Be away', es: 'Estar fuera por un periodo largo', en: 'She is away today. She has gone to London.' },
-              { phrasal: 'Be down', es: 'Estar deprimido', en: 'The news is bad so John is a bit down today.' },
-              { phrasal: 'Be down', es: 'Descender', en: 'Oil prices were down today.' },
-              { phrasal: 'Be down on', es: 'Desaprobar, no gustar', en: 'Why is Charlie so down on the new recruit?' },
-              { phrasal: 'Be down with', es: 'Estar enfermo', en: 'My mother is down with a bad cold.' },
-              { phrasal: 'Be in for', es: 'Tener motivos para esperar algo', en: 'I think we are in for snow today.' },
-              { phrasal: 'Be in on', es: 'Participar en algo', en: 'Alex is in on the project too.' },
-              { phrasal: 'Be into', es: 'Estar interesado en algo', en: 'He\'s into sports and she\'s into politics.' },
-              { phrasal: 'Be off', es: 'Salir hacia algún sitio', en: 'I\'m off! I\'ve got a plane to catch.' },
-              { phrasal: 'Be on', es: 'Tomar medicación', en: 'The driver was on drugs at the time of the accident.' },
-              { phrasal: 'Be on about', es: 'Querer decir', en: 'What are you on about? I don\'t understand.' },
-              { phrasal: 'Be onto', es: 'Hacer un descubrimiento', en: 'My colleague is excited. He must be on to something.' },
-              { phrasal: 'Be out', es: 'Estar fuera por un periodo corto', en: 'Where\'s Peter? He\'s out today.' },
-              { phrasal: 'Be out of', es: 'Quedarse sin algo', en: 'We\'re out of coffee I\'m afraid.' },
-              { phrasal: 'Be out to', es: 'Intentar conseguir algo', en: 'He\'s out to win the match.' },
-              { phrasal: 'Be up', es: 'Estar despierto', en: 'Tom was up at the crack of dawn!' },
-              { phrasal: 'Be up', es: 'Incrementar', en: 'The interest rates are up again.' },
-              { phrasal: 'Be up to', es: 'Tramar', en: 'What are those kids up to?' },
-              { phrasal: 'Be up to', es: 'Ser responsabilidad de alguien', en: 'It\'s up to the government to find a solution.' }
-            ]
-          },
-          {
-            verb: 'SEE',
-            items: [
-              { phrasal: 'See through', es: 'Descubrir la verdad sobre algo', en: 'I saw through his intentions at once.' },
-              { phrasal: 'See about', es: 'Organizar, considerar', en: 'I\'ll see about whether we can manage it.' },
-              { phrasal: 'See into', es: 'Acompañar a alguien dentro de un sitio', en: 'Her secretary saw me into her office.' },
-              { phrasal: 'See off', es: 'Perseguir para ahuyentar', en: 'A cat came into the back garden but the dog soon saw it off.' },
-              { phrasal: 'See off', es: 'Ir a un transporte para decir adiós a alguien', en: 'I went to the station to see them off.' },
-              { phrasal: 'See out', es: 'Acompañar a alguien a la salida', en: 'Are you sure you\'re going? I\'ll get your coats and see you out.' },
-              { phrasal: 'See through', es: 'Continuar hasta el final', en: 'They had a lot of difficulties in implementing the project, but the team saw it through successfully.' },
-              { phrasal: 'See through', es: 'Descubrir que alguien miente', en: 'The police quickly saw through her disguise and arrested her.' },
-              { phrasal: 'See to', es: 'Encargarse de algo', en: 'He saw to the arrangements and everything ran smoothly and efficiently.' }
-            ]
-          },
-          {
-            verb: 'KEEP',
-            items: [
-              { phrasal: 'Keep up', es: 'Continuar', en: 'Well done! Keep up the good work!' },
-              { phrasal: 'Keep around', es: 'Seguir teniendo algo', en: 'I have no idea why they keep around this piece of junk. They\'ll never use it.' },
-              { phrasal: 'Keep at', es: 'Continuar con algo difícil', en: 'Jill kept at the puzzle until she put all the pieces together.' },
-              { phrasal: 'Keep away', es: 'Mantener lejos', en: 'The warehouse has a guard dog to keep away would-be thieves.' },
-              { phrasal: 'Keep back', es: 'Mantener la distancia', en: 'The police kept back the crowd by blocking off the street.' },
-              { phrasal: 'Keep down', es: 'Reprimir', en: 'Keep down the noise, will you? I\'m trying to sleep.' },
-              { phrasal: 'Keep from', es: 'Evitar hacer algo', en: 'I couldn\'t keep myself from eating the last piece of cake.' },
-              { phrasal: 'Keep in', es: 'Impedir la salida', en: 'She kept him in because he had a high temperature.' },
-              { phrasal: 'Keep off', es: 'Evitar hablar de algo', en: 'The reporter kept off any topic of the recent scandal with the politician.' },
-              { phrasal: 'Keep on', es: 'Continuar', en: 'Let\'s keep on hiking… it\'s such a beautiful day.' },
-              { phrasal: 'Keep out', es: 'No permitir la entrada', en: 'We were kept out of the club because we were too young.' },
-              { phrasal: 'Keep to', es: 'Mantenerse firme en algo', en: 'Let\'s keep to the plan. I don\'t want to make any changes now.' },
-              { phrasal: 'Keep up', es: 'Mantener', en: '"Keep up the good work," John\'s teacher said to him as he handed back his essay.' }
-            ]
-          }
-        ];
-
-        // ===== BUILD FRASAL VERBS =====
-        function buildFrasalVerbs() {
-          frasalVerbsContainer.innerHTML = '';
-          frasalVerbsData.forEach(function (group) {
-            const groupDiv = document.createElement('div');
-            groupDiv.className = 'fv-group';
-
-            const header = document.createElement('div');
-            header.className = 'fv-group-header';
-            header.innerHTML = '<h3><i class="fas fa-code-branch"></i> Phrasal verbs con ' + group.verb + '</h3><i class="fas fa-chevron-down"></i>';
-            header.addEventListener('click', function () {
-              body.classList.toggle('collapsed');
-              header.classList.toggle('collapsed');
-            });
-
-            const body = document.createElement('div');
-            body.className = 'fv-group-body';
-
-            group.items.forEach(function (item) {
-              const card = document.createElement('div');
-              card.className = 'fv-card';
-              card.innerHTML =
-                '<div class="fv-phrasal">' + escapeHtml(item.phrasal) + '</div>' +
-                '<div class="fv-es">' + escapeHtml(item.es) + '</div>' +
-                '<div class="fv-en">' + escapeHtml(item.en) + '</div>';
-              body.appendChild(card);
-            });
-
-            groupDiv.appendChild(header);
-            groupDiv.appendChild(body);
-            frasalVerbsContainer.appendChild(groupDiv);
-          });
-        }
+        const frasalVerbsData = [];
 
         function escapeHtml(text) {
           const div = document.createElement('div');
@@ -1364,7 +1086,11 @@
           return div.innerHTML;
         }
 
-        // Start all groups collapsed except the first one
+        // ===== BUILD FRASAL VERBS =====
+        function buildFrasalVerbs() {
+          // Placeholder - load from backend or external data source
+        }
+
         let frasalVerbsBuilt = false;
 
         btnFrasalVerbs.addEventListener('click', function () {
@@ -1380,174 +1106,11 @@
         });
 
         // ===== IRREGULAR VERBS DATA =====
-        // IPA pronunciations (sound column = Past Simple pronunciation)
-        const irregularVerbsData = [
-          { day: 'Día 1', family: 'Familia "-ought / -aught"', num: 1, base: 'buy', ps: 'bought', pp: 'bought', sound: '/bɔːt/', trans: 'comprar' },
-          { day: 'Día 1', family: 'Familia "-ought / -aught"', num: 2, base: 'bring', ps: 'brought', pp: 'brought', sound: '/brɔːt/', trans: 'traer' },
-          { day: 'Día 1', family: 'Familia "-ought / -aught"', num: 3, base: 'fight', ps: 'fought', pp: 'fought', sound: '/fɔːt/', trans: 'pelear' },
-          { day: 'Día 1', family: 'Familia "-ought / -aught"', num: 4, base: 'think', ps: 'thought', pp: 'thought', sound: '/θɔːt/', trans: 'pensar' },
-          { day: 'Día 1', family: 'Familia "-ought / -aught"', num: 5, base: 'seek', ps: 'sought', pp: 'sought', sound: '/sɔːt/', trans: 'buscar' },
-          { day: 'Día 1', family: 'Familia "-ought / -aught"', num: 6, base: 'teach', ps: 'taught', pp: 'taught', sound: '/tɔːt/', trans: 'enseñar' },
-          { day: 'Día 1', family: 'Familia "-ought / -aught"', num: 7, base: 'catch', ps: 'caught', pp: 'caught', sound: '/kɔːt/', trans: 'atrapar' },
-          { day: 'Día 1', family: 'Familia "-ought / -aught"', num: 8, base: 'reach', ps: 'reached', pp: 'reached', sound: '/riːtʃt/', trans: 'alcanzar' },
-          { day: 'Día 2', family: 'Familia "-ell / -old"', num: 9, base: 'tell', ps: 'told', pp: 'told', sound: '/toʊld/', trans: 'decir' },
-          { day: 'Día 2', family: 'Familia "-ell / -old"', num: 10, base: 'sell', ps: 'sold', pp: 'sold', sound: '/soʊld/', trans: 'vender' },
-          { day: 'Día 2', family: 'Familia "-ell / -old"', num: 11, base: 'hold', ps: 'held', pp: 'held', sound: '/held/', trans: 'sostener' },
-          { day: 'Día 2', family: 'Familia "-ell / -old"', num: 12, base: 'stand', ps: 'stood', pp: 'stood', sound: '/stʊd/', trans: 'estar de pie' },
-          { day: 'Día 2', family: 'Familia "-ell / -old"', num: 13, base: 'understand', ps: 'understood', pp: 'understood', sound: '/ˌʌn.dərˈstʊd/', trans: 'entender' },
-          { day: 'Día 2', family: 'Familia "-ell / -old"', num: 14, base: 'leave', ps: 'left', pp: 'left', sound: '/left/', trans: 'dejar' },
-          { day: 'Día 2', family: 'Familia "-ell / -old"', num: 15, base: 'feel', ps: 'felt', pp: 'felt', sound: '/felt/', trans: 'sentir' },
-          { day: 'Día 2', family: 'Familia "-ell / -old"', num: 16, base: 'keep', ps: 'kept', pp: 'kept', sound: '/kept/', trans: 'guardar' },
-          { day: 'Día 2', family: 'Familia "-ell / -old"', num: 17, base: 'sleep', ps: 'slept', pp: 'slept', sound: '/slept/', trans: 'dormir' },
-          { day: 'Día 2', family: 'Familia "-ell / -old"', num: 18, base: 'weep', ps: 'wept', pp: 'wept', sound: '/wept/', trans: 'llorar' },
-          { day: 'Día 3', family: 'Familia "-ing / -ang / -ung"', num: 19, base: 'sing', ps: 'sang', pp: 'sung', sound: '/sæŋ/', trans: 'cantar' },
-          { day: 'Día 3', family: 'Familia "-ing / -ang / -ung"', num: 20, base: 'ring', ps: 'rang', pp: 'rung', sound: '/ræŋ/', trans: 'sonar / llamar' },
-          { day: 'Día 3', family: 'Familia "-ing / -ang / -ung"', num: 21, base: 'swim', ps: 'swam', pp: 'swum', sound: '/swæm/', trans: 'nadar' },
-          { day: 'Día 3', family: 'Familia "-ing / -ang / -ung"', num: 22, base: 'drink', ps: 'drank', pp: 'drunk', sound: '/dræŋk/', trans: 'beber' },
-          { day: 'Día 3', family: 'Familia "-ing / -ang / -ung"', num: 23, base: 'begin', ps: 'began', pp: 'begun', sound: '/bɪˈɡæn/', trans: 'empezar' },
-          { day: 'Día 3', family: 'Familia "-ing / -ang / -ung"', num: 24, base: 'run', ps: 'ran', pp: 'run', sound: '/ræn/', trans: 'correr' },
-          { day: 'Día 3', family: 'Familia "-ing / -ang / -ung"', num: 25, base: 'come', ps: 'came', pp: 'come', sound: '/keɪm/', trans: 'venir' },
-          { day: 'Día 3', family: 'Familia "-ing / -ang / -ung"', num: 26, base: 'become', ps: 'became', pp: 'become', sound: '/bɪˈkeɪm/', trans: 'convertirse' },
-          { day: 'Día 4', family: 'Familia "-ew / -own"', num: 27, base: 'know', ps: 'knew', pp: 'known', sound: '/njuː/', trans: 'saber' },
-          { day: 'Día 4', family: 'Familia "-ew / -own"', num: 28, base: 'grow', ps: 'grew', pp: 'grown', sound: '/ɡruː/', trans: 'crecer' },
-          { day: 'Día 4', family: 'Familia "-ew / -own"', num: 29, base: 'throw', ps: 'threw', pp: 'thrown', sound: '/θruː/', trans: 'lanzar' },
-          { day: 'Día 4', family: 'Familia "-ew / -own"', num: 30, base: 'blow', ps: 'blew', pp: 'blown', sound: '/bluː/', trans: 'soplar' },
-          { day: 'Día 4', family: 'Familia "-ew / -own"', num: 31, base: 'fly', ps: 'flew', pp: 'flown', sound: '/fluː/', trans: 'volar' },
-          { day: 'Día 4', family: 'Familia "-ew / -own"', num: 32, base: 'draw', ps: 'drew', pp: 'drawn', sound: '/druː/', trans: 'dibujar' },
-          { day: 'Día 4', family: 'Familia "-ew / -own"', num: 33, base: 'show', ps: 'showed', pp: 'shown', sound: '/ʃoʊd/', trans: 'mostrar' },
-          { day: 'Día 4', family: 'Familia "-ew / -own"', num: 34, base: 'sew', ps: 'sewed', pp: 'sewn', sound: '/soʊd/', trans: 'coser' },
-          { day: 'Día 5', family: 'Familia "-oke / -oken"', num: 35, base: 'speak', ps: 'spoke', pp: 'spoken', sound: '/spoʊk/', trans: 'hablar' },
-          { day: 'Día 5', family: 'Familia "-oke / -oken"', num: 36, base: 'break', ps: 'broke', pp: 'broken', sound: '/broʊk/', trans: 'romper' },
-          { day: 'Día 5', family: 'Familia "-oke / -oken"', num: 37, base: 'steal', ps: 'stole', pp: 'stolen', sound: '/stoʊl/', trans: 'robar' },
-          { day: 'Día 5', family: 'Familia "-oke / -oken"', num: 38, base: 'freeze', ps: 'froze', pp: 'frozen', sound: '/froʊz/', trans: 'congelar' },
-          { day: 'Día 5', family: 'Familia "-oke / -oken"', num: 39, base: 'wake', ps: 'woke', pp: 'woken', sound: '/woʊk/', trans: 'despertar' },
-          { day: 'Día 5', family: 'Familia "-oke / -oken"', num: 40, base: 'forget', ps: 'forgot', pp: 'forgotten', sound: '/fərˈɡɑːt/', trans: 'olvidar' },
-          { day: 'Día 5', family: 'Familia "-oke / -oken"', num: 41, base: 'get', ps: 'got', pp: 'got/gotten', sound: '/ɡɑːt/', trans: 'obtener' },
-          { day: 'Día 5', family: 'Familia "-oke / -oken"', num: 42, base: 'drive', ps: 'drove', pp: 'driven', sound: '/droʊv/', trans: 'conducir' },
-          { day: 'Día 5', family: 'Familia "-oke / -oken"', num: 43, base: 'rise', ps: 'rose', pp: 'risen', sound: '/roʊz/', trans: 'elevarse' },
-          { day: 'Día 5', family: 'Familia "-oke / -oken"', num: 44, base: 'write', ps: 'wrote', pp: 'written', sound: '/roʊt/', trans: 'escribir' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 45, base: 'put', ps: 'put', pp: 'put', sound: '/pʊt/', trans: 'poner' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 46, base: 'set', ps: 'set', pp: 'set', sound: '/set/', trans: 'establecer' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 47, base: 'cut', ps: 'cut', pp: 'cut', sound: '/kʌt/', trans: 'cortar' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 48, base: 'hit', ps: 'hit', pp: 'hit', sound: '/hɪt/', trans: 'golpear' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 49, base: 'hurt', ps: 'hurt', pp: 'hurt', sound: '/hɜːrt/', trans: 'doler' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 50, base: 'let', ps: 'let', pp: 'let', sound: '/let/', trans: 'permitir' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 51, base: 'quit', ps: 'quit', pp: 'quit', sound: '/kwɪt/', trans: 'renunciar' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 52, base: 'rid', ps: 'rid', pp: 'rid', sound: '/rɪd/', trans: 'librar de' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 53, base: 'shut', ps: 'shut', pp: 'shut', sound: '/ʃʌt/', trans: 'cerrar' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 54, base: 'read', ps: 'read', pp: 'read', sound: '/red/', trans: 'leer' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 55, base: 'spread', ps: 'spread', pp: 'spread', sound: '/spred/', trans: 'extender' },
-          { day: 'Día 6', family: 'Los Camaleones (no cambian)', num: 56, base: 'beat', ps: 'beat', pp: 'beaten', sound: '/biːt/', trans: 'vencer' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 57, base: 'be', ps: 'was/were', pp: 'been', sound: '/wʌz/', trans: 'ser/estar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 58, base: 'go', ps: 'went', pp: 'gone', sound: '/went/', trans: 'ir' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 59, base: 'do', ps: 'did', pp: 'done', sound: '/dɪd/', trans: 'hacer' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 60, base: 'have', ps: 'had', pp: 'had', sound: '/hæd/', trans: 'tener' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 61, base: 'say', ps: 'said', pp: 'said', sound: '/sed/', trans: 'decir' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 62, base: 'make', ps: 'made', pp: 'made', sound: '/meɪd/', trans: 'hacer/fabricar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 63, base: 'pay', ps: 'paid', pp: 'paid', sound: '/peɪd/', trans: 'pagar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 64, base: 'lay', ps: 'laid', pp: 'laid', sound: '/leɪd/', trans: 'colocar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 65, base: 'lie', ps: 'lay', pp: 'lain', sound: '/leɪ/', trans: 'tumbarse' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 66, base: 'see', ps: 'saw', pp: 'seen', sound: '/sɔː/', trans: 'ver' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 67, base: 'eat', ps: 'ate', pp: 'eaten', sound: '/eɪt/', trans: 'comer' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 68, base: 'take', ps: 'took', pp: 'taken', sound: '/tʊk/', trans: 'tomar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 69, base: 'give', ps: 'gave', pp: 'given', sound: '/ɡeɪv/', trans: 'dar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 70, base: 'hide', ps: 'hid', pp: 'hidden', sound: '/hɪd/', trans: 'esconder' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 71, base: 'bite', ps: 'bit', pp: 'bitten', sound: '/bɪt/', trans: 'morder' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 72, base: 'shake', ps: 'shook', pp: 'shaken', sound: '/ʃʊk/', trans: 'agitar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 73, base: 'bear', ps: 'bore', pp: 'born', sound: '/bɔːr/', trans: 'nacer / soportar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 74, base: 'swear', ps: 'swore', pp: 'sworn', sound: '/swɔːr/', trans: 'jurar / maldecir' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 75, base: 'tear', ps: 'tore', pp: 'torn', sound: '/tɔːr/', trans: 'rasgar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 76, base: 'wear', ps: 'wore', pp: 'worn', sound: '/wɔːr/', trans: 'usar (ropa)' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 77, base: 'choose', ps: 'chose', pp: 'chosen', sound: '/tʃoʊz/', trans: 'elegir' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 78, base: 'forbid', ps: 'forbade', pp: 'forbidden', sound: '/fərˈbeɪd/', trans: 'prohibir' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 79, base: 'forgive', ps: 'forgave', pp: 'forgiven', sound: '/fərˈɡeɪv/', trans: 'perdonar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 80, base: 'shoot', ps: 'shot', pp: 'shot', sound: '/ʃɑːt/', trans: 'disparar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 81, base: 'lead', ps: 'led', pp: 'led', sound: '/led/', trans: 'liderar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 82, base: 'meet', ps: 'met', pp: 'met', sound: '/met/', trans: 'conocer / reunirse' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 83, base: 'sit', ps: 'sat', pp: 'sat', sound: '/sæt/', trans: 'sentarse' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 84, base: 'spend', ps: 'spent', pp: 'spent', sound: '/spent/', trans: 'gastar / pasar tiempo' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 85, base: 'build', ps: 'built', pp: 'built', sound: '/bɪlt/', trans: 'construir' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 86, base: 'send', ps: 'sent', pp: 'sent', sound: '/sent/', trans: 'enviar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 87, base: 'lose', ps: 'lost', pp: 'lost', sound: '/lɔːst/', trans: 'perder' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 88, base: 'fall', ps: 'fell', pp: 'fallen', sound: '/fel/', trans: 'caer' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 89, base: 'win', ps: 'won', pp: 'won', sound: '/wʌn/', trans: 'ganar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 90, base: 'slide', ps: 'slid', pp: 'slid', sound: '/slɪd/', trans: 'deslizarse' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 91, base: 'speed', ps: 'sped', pp: 'sped', sound: '/sped/', trans: 'acelerar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 92, base: 'light', ps: 'lit', pp: 'lit', sound: '/lɪt/', trans: 'encender' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 93, base: 'hang', ps: 'hung', pp: 'hung', sound: '/hʌŋ/', trans: 'colgar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 94, base: 'kneel', ps: 'knelt', pp: 'knelt', sound: '/nelt/', trans: 'arrodillarse' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 95, base: 'lean', ps: 'leant', pp: 'leant', sound: '/lent/', trans: 'apoyarse' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 96, base: 'leap', ps: 'leapt', pp: 'leapt', sound: '/lept/', trans: 'saltar (brincar)' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 97, base: 'learn', ps: 'learnt', pp: 'learnt', sound: '/lɜːrnt/', trans: 'aprender' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 98, base: 'mean', ps: 'meant', pp: 'meant', sound: '/ment/', trans: 'significar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 99, base: 'spring', ps: 'sprang', pp: 'sprung', sound: '/spræŋ/', trans: 'brotar / saltar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 100, base: 'strike', ps: 'struck', pp: 'struck', sound: '/strʌk/', trans: 'golpear' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 101, base: 'sink', ps: 'sank', pp: 'sunk', sound: '/sæŋk/', trans: 'hundirse' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 102, base: 'shrink', ps: 'shrank', pp: 'shrunk', sound: '/ʃræŋk/', trans: 'encogerse' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 103, base: 'slay', ps: 'slew', pp: 'slain', sound: '/sluː/', trans: 'matar (literario)' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 104, base: 'prove', ps: 'proved', pp: 'proven', sound: '/pruːvd/', trans: 'probar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 105, base: 'grind', ps: 'ground', pp: 'ground', sound: '/ɡraʊnd/', trans: 'moler' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 106, base: 'forsake', ps: 'forsook', pp: 'forsaken', sound: '/fərˈsʊk/', trans: 'abandonar' },
-          { day: 'Día 7', family: 'Los Rebeldes (sin regla fija)', num: 107, base: 'knit', ps: 'knit', pp: 'knit', sound: '/nɪt/', trans: 'tejer' }
-        ];
+        const irregularVerbsData = [];
 
         // ===== BUILD IRREGULAR VERBS =====
         function buildIrregularVerbs() {
-          irregularContainer.innerHTML = '';
-
-          // Group by day
-          const dayGroups = {};
-          irregularVerbsData.forEach(function (v) {
-            if (!dayGroups[v.day]) dayGroups[v.day] = {};
-            if (!dayGroups[v.day][v.family]) dayGroups[v.day][v.family] = [];
-            dayGroups[v.day][v.family].push(v);
-          });
-
-          // Sort days
-          const dayOrder = Object.keys(dayGroups).sort();
-          dayOrder.forEach(function (day) {
-            const families = dayGroups[day];
-            Object.keys(families).forEach(function (family) {
-              const verbs = families[family];
-              const groupDiv = document.createElement('div');
-              groupDiv.className = 'irregular-group';
-
-              const header = document.createElement('div');
-              header.className = 'irregular-group-header';
-              header.innerHTML = '<h3><i class="fas fa-table"></i> ' + escapeHtml(day) + ' - ' + escapeHtml(family) + ' (' + verbs.length + ' verbos)</h3><i class="fas fa-chevron-down"></i>';
-              header.addEventListener('click', function () {
-                body.classList.toggle('collapsed');
-                header.classList.toggle('collapsed');
-              });
-
-              const body = document.createElement('div');
-              body.className = 'irregular-group-body';
-
-              const table = document.createElement('table');
-              table.className = 'irregular-table';
-              table.innerHTML =
-                '<thead><tr><th>#</th><th>Base Form</th><th>Past Simple</th><th>Past Participle</th><th>Sound</th><th>Traducción</th></tr></thead>';
-
-              const tbody = document.createElement('tbody');
-              verbs.forEach(function (v) {
-                const tr = document.createElement('tr');
-                tr.innerHTML =
-                  '<td class="col-num">' + v.num + '</td>' +
-                  '<td class="col-base">' + escapeHtml(v.base) + '</td>' +
-                  '<td class="col-ps">' + escapeHtml(v.ps) + '</td>' +
-                  '<td class="col-pp">' + escapeHtml(v.pp) + '</td>' +
-                  '<td class="col-sound">' + escapeHtml(v.sound) + '</td>' +
-                  '<td class="col-trans">' + escapeHtml(v.trans) + '</td>';
-                tbody.appendChild(tr);
-              });
-
-              table.appendChild(tbody);
-              body.appendChild(table);
-              groupDiv.appendChild(header);
-              groupDiv.appendChild(body);
-              irregularContainer.appendChild(groupDiv);
-            });
-          });
+          // Placeholder - load from backend or external data source
         }
 
         let irregularBuilt = false;
@@ -1565,170 +1128,11 @@
         });
 
         // ===== CHUNKS DATA =====
-        const chunksData = [
-          { tipo: 'TOP 20', contexto: 'Daily', chunk: 'What did you work on yesterday?', traduccion: '¿En qué trabajaste ayer?' },
-          { tipo: 'TOP 20', contexto: 'Daily', chunk: 'What are you working on today?', traduccion: '¿En qué estás trabajando hoy?' },
-          { tipo: 'TOP 20', contexto: 'Daily', chunk: 'Any blockers or impediments?', traduccion: '¿Algún bloqueo o impedimento?' },
-          { tipo: 'TOP 20', contexto: 'Daily', chunk: "I'm going to pick this up today", traduccion: 'Voy a retomar esto hoy' },
-          { tipo: 'TOP 20', contexto: 'Hands-on/Demo', chunk: "Let me share my screen", traduccion: 'Déjame compartir mi pantalla' },
-          { tipo: 'TOP 20', contexto: 'Demo/Hands-on', chunk: 'As you can see on the screen...', traduccion: 'Como pueden ver en la pantalla...' },
-          { tipo: 'TOP 20', contexto: 'Daily', chunk: "I'm currently working on...", traduccion: 'Actualmente estoy trabajando en...' },
-          { tipo: 'TOP 20', contexto: 'Daily/Review', chunk: "I've just finished...", traduccion: 'Acabo de terminar...' },
-          { tipo: 'TOP 20', contexto: 'Daily', chunk: "I'm about to start...", traduccion: 'Estoy a punto de empezar...' },
-          { tipo: 'TOP 20', contexto: 'Cualquier reunión', chunk: 'Could you please clarify?', traduccion: '¿Podrías aclarar por favor?' },
-          { tipo: 'TOP 20', contexto: 'Cualquier reunión', chunk: "Let's move on to the next point", traduccion: 'Pasemos al siguiente punto' },
-          { tipo: 'TOP 20', contexto: 'Planning/Status', chunk: 'Do we have any updates on...?', traduccion: '¿Tenemos alguna actualización sobre...?' },
-          { tipo: 'TOP 20', contexto: 'Cualquier reunión', chunk: "I'll take care of that", traduccion: 'Me encargo de eso' },
-          { tipo: 'TOP 20', contexto: 'Hands-on', chunk: 'Can you please review my PR?', traduccion: '¿Puedes revisar mi PR por favor?' },
-          { tipo: 'TOP 20', contexto: 'DevOps/QA', chunk: 'The build is failing', traduccion: 'El build está fallando' },
-          { tipo: 'TOP 20', contexto: 'QA/Dev', chunk: 'Tests are passing locally', traduccion: 'Los tests pasan en local' },
-          { tipo: 'TOP 20', contexto: 'DevOps/Planning', chunk: 'We need to deploy to production', traduccion: 'Necesitamos desplegar a producción' },
-          { tipo: 'TOP 20', contexto: 'Cualquier reunión', chunk: "Let's sync offline about this", traduccion: 'Sincronicemos fuera de línea sobre esto' },
-          { tipo: 'TOP 20', contexto: 'Planning/Estrategia', chunk: 'I agree with that approach', traduccion: 'Estoy de acuerdo con ese enfoque' },
-          { tipo: 'TOP 20', contexto: 'Cualquier reunión', chunk: "Let's circle back to that later", traduccion: 'Volvamos a eso más tarde' },
-          { tipo: 'TOP 50', contexto: 'Daily', chunk: 'Yesterday I worked on...', traduccion: 'Ayer trabajé en...' },
-          { tipo: 'TOP 50', contexto: 'Daily', chunk: "Today I'm planning to...", traduccion: 'Hoy estoy planeando...' },
-          { tipo: 'TOP 50', contexto: 'Daily/Hands-on', chunk: "I'm stuck on this issue", traduccion: 'Estoy atascado en este problema' },
-          { tipo: 'TOP 50', contexto: 'Daily/Hands-on', chunk: 'Can someone help me with...?', traduccion: '¿Alguien puede ayudarme con...?' },
-          { tipo: 'TOP 50', contexto: 'Hands-on', chunk: 'I need to pair with someone on this', traduccion: 'Necesito hacer pair programming con alguien en esto' },
-          { tipo: 'TOP 50', contexto: 'Planning/Retro', chunk: "Let's discuss this as a team", traduccion: 'Discutamos esto en equipo' },
-          { tipo: 'TOP 50', contexto: 'Planning/Status', chunk: "What's the ETA on this ticket?", traduccion: '¿Cuál es el ETA de este ticket?' },
-          { tipo: 'TOP 50', contexto: 'Planning', chunk: "I'd like to estimate this as a 5", traduccion: 'Me gustaría estimar esto como un 5' },
-          { tipo: 'TOP 50', contexto: 'Planning', chunk: 'This story is too big we should split it', traduccion: 'Esta historia es demasiado grande deberíamos dividirla' },
-          { tipo: 'TOP 50', contexto: 'Planning/Review', chunk: 'Acceptance criteria are clear', traduccion: 'Los criterios de aceptación están claros' },
-          { tipo: 'TOP 50', contexto: 'Planning', chunk: 'We need to refine this user story', traduccion: 'Necesitamos refinar esta historia de usuario' },
-          { tipo: 'TOP 50', contexto: 'Planning/Estrategia', chunk: "Let's prioritize this for next sprint", traduccion: 'Prioricemos esto para el próximo sprint' },
-          { tipo: 'TOP 50', contexto: 'Planning', chunk: 'We should add this to the backlog', traduccion: 'Deberíamos añadir esto al backlog' },
-          { tipo: 'TOP 50', contexto: 'Planning/Estrategia', chunk: 'This is a high-priority item', traduccion: 'Esto es un elemento de alta prioridad' },
-          { tipo: 'TOP 50', contexto: 'Review/Hands-on', chunk: 'Can you give me some feedback on this?', traduccion: '¿Puedes darme feedback sobre esto?' },
-          { tipo: 'TOP 50', contexto: 'Demo/Review', chunk: 'The UI looks good but...', traduccion: 'La UI se ve bien pero...' },
-          { tipo: 'TOP 50', contexto: 'Demo/QA', chunk: 'The API is responding as expected', traduccion: 'La API está respondiendo como se esperaba' },
-          { tipo: 'TOP 50', contexto: 'QA/Review', chunk: 'We have a regression bug here', traduccion: 'Tenemos un bug de regresión aquí' },
-          { tipo: 'TOP 50', contexto: 'QA/DevOps', chunk: 'We should add more test coverage', traduccion: 'Deberíamos añadir más cobertura de tests' },
-          { tipo: 'TOP 50', contexto: 'QA/DevOps', chunk: "Let's run the full test suite", traduccion: 'Ejecutemos toda la suite de tests' },
-          { tipo: 'TOP 50', contexto: 'DevOps', chunk: 'Deployment is scheduled for tomorrow', traduccion: 'El despliegue está programado para mañana' },
-          { tipo: 'TOP 50', contexto: 'DevOps', chunk: 'We need to rollback the last deployment', traduccion: 'Necesitamos hacer rollback del último despliegue' },
-          { tipo: 'TOP 50', contexto: 'DevOps', chunk: 'Infrastructure as code is ready', traduccion: 'La infraestructura como código está lista' },
-          { tipo: 'TOP 50', contexto: 'DevOps/Backend', chunk: 'We need to scale the database', traduccion: 'Necesitamos escalar la base de datos' },
-          { tipo: 'TOP 50', contexto: 'DevOps/Backend', chunk: 'The performance metrics are looking good', traduccion: 'Las métricas de rendimiento se ven bien' },
-          { tipo: 'TOP 50', contexto: 'DevOps/Backend', chunk: 'Let me check the logs', traduccion: 'Déjame revisar los logs' },
-          { tipo: 'TOP 50', contexto: 'DevOps/Backend', chunk: 'I see a 500 error in production', traduccion: 'Veo un error 500 en producción' },
-          { tipo: 'TOP 50', contexto: 'Backend/QA', chunk: 'This endpoint needs authentication', traduccion: 'Este endpoint necesita autenticación' },
-          { tipo: 'TOP 50', contexto: 'Backend/DevOps', chunk: "We're experiencing some latency issues", traduccion: 'Estamos experimentando problemas de latencia' },
-          { tipo: 'TOP 50', contexto: 'Hands-on/Review', chunk: "Let's do a quick code review", traduccion: 'Hagamos una revisión de código rápida' },
-          { tipo: 'TOP 50', contexto: 'Hands-on', chunk: "I've addressed all the comments", traduccion: 'He abordado todos los comentarios' },
-          { tipo: 'TOP 50', contexto: 'Hands-on/DevOps', chunk: 'The branch is ready to merge', traduccion: 'La rama está lista para hacer merge' },
-          { tipo: 'TOP 50', contexto: 'Hands-on', chunk: 'We need to rebase before merging', traduccion: 'Necesitamos hacer rebase antes de mergear' },
-          { tipo: 'TOP 50', contexto: 'Frontend/Backend', chunk: 'This component is reusable', traduccion: 'Este componente es reutilizable' },
-          { tipo: 'TOP 50', contexto: 'Frontend', chunk: 'The design system needs to be updated', traduccion: 'El sistema de diseño necesita ser actualizado' },
-          { tipo: 'TOP 50', contexto: 'Backend/DevOps', chunk: 'The database migration is pending', traduccion: 'La migración de base de datos está pendiente' },
-          { tipo: 'TOP 50', contexto: 'Backend', chunk: "Let's create a new endpoint for this", traduccion: 'Creemos un nuevo endpoint para esto' },
-          { tipo: 'TOP 50', contexto: 'DevOps/Frontend', chunk: 'This feature is behind a feature flag', traduccion: 'Esta funcionalidad está detrás de un feature flag' },
-          { tipo: 'TOP 50', contexto: 'Backend/DevOps', chunk: 'We need to run a migration script', traduccion: 'Necesitamos ejecutar un script de migración' },
-          { tipo: 'TOP 50', contexto: 'Frontend/Review', chunk: 'The user experience needs improvement', traduccion: 'La experiencia de usuario necesita mejora' },
-          { tipo: 'TOP 50', contexto: 'Planning', chunk: "Let's gather the acceptance criteria", traduccion: 'Recojamos los criterios de aceptación' },
-          { tipo: 'TOP 50', contexto: 'Retro/Planning', chunk: 'This is a technical debt item', traduccion: 'Esto es un elemento de deuda técnica' },
-          { tipo: 'TOP 50', contexto: 'Backend/Hands-on', chunk: 'We need to refactor this module', traduccion: 'Necesitamos refactorizar este módulo' },
-          { tipo: 'TOP 50', contexto: 'Cualquier reunión', chunk: "Let's document this decision", traduccion: 'Documentemos esta decisión' },
-          { tipo: 'TOP 50', contexto: 'Hands-on/Demo', chunk: 'Can you share your screen please?', traduccion: '¿Puedes compartir tu pantalla por favor?' },
-          { tipo: 'TOP 50', contexto: 'Cualquier reunión', chunk: "I'll send the meeting notes afterward", traduccion: 'Enviaré las notas de la reunión después' },
-          { tipo: 'TOP 50', contexto: 'Cualquier reunión', chunk: "Let's keep this meeting focused", traduccion: 'Mantengamos esta reunión enfocada' },
-          { tipo: 'TOP 50', contexto: 'Cualquier reunión', chunk: "Time is running out let's wrap up", traduccion: 'Se nos acaba el tiempo terminemos' },
-          { tipo: 'TOP 50', contexto: 'Cualquier reunión', chunk: 'What are the next steps?', traduccion: '¿Cuáles son los siguientes pasos?' },
-          { tipo: 'TOP 50', contexto: 'Cualquier reunión', chunk: "I'll create a ticket for this", traduccion: 'Crearé un ticket para esto' },
-          { tipo: 'TOP 100', contexto: 'Planning', chunk: 'This sprint goal is to...', traduccion: 'El objetivo de este sprint es...' },
-          { tipo: 'TOP 100', contexto: 'Planning/DevOps', chunk: 'We need to ship this by Friday', traduccion: 'Necesitamos entregar esto antes del viernes' },
-          { tipo: 'TOP 100', contexto: 'DevOps', chunk: "Let's cut a release branch", traduccion: 'Cortemos una rama de release' },
-          { tipo: 'TOP 100', contexto: 'DevOps/Retro', chunk: 'We should automate this process', traduccion: 'Deberíamos automatizar este proceso' },
-          { tipo: 'TOP 100', contexto: 'DevOps', chunk: 'The CI/CD pipeline is broken', traduccion: 'El pipeline de CI/CD está roto' },
-          { tipo: 'TOP 100', contexto: 'DevOps', chunk: "Let's add more monitoring", traduccion: 'Añadamos más monitorización' },
-          { tipo: 'TOP 100', contexto: 'Backend', chunk: 'We need to optimize the query', traduccion: 'Necesitamos optimizar la consulta' },
-          { tipo: 'TOP 100', contexto: 'Backend', chunk: 'This method needs to be refactored', traduccion: 'Este método necesita ser refactorizado' },
-          { tipo: 'TOP 100', contexto: 'Backend/DevOps', chunk: 'We should use a cache for this', traduccion: 'Deberíamos usar una caché para esto' },
-          { tipo: 'TOP 100', contexto: 'Backend/DevOps', chunk: 'The message queue is backing up', traduccion: 'La cola de mensajes se está acumulando' },
-          { tipo: 'TOP 100', contexto: 'QA/Backend', chunk: "Let's write unit tests for this", traduccion: 'Escribamos pruebas unitarias para esto' },
-          { tipo: 'TOP 100', contexto: 'QA', chunk: 'Integration tests are failing', traduccion: 'Las pruebas de integración están fallando' },
-          { tipo: 'TOP 100', contexto: 'QA', chunk: 'We need to test edge cases', traduccion: 'Necesitamos probar casos límite' },
-          { tipo: 'TOP 100', contexto: 'QA/DevOps', chunk: 'The QA environment is ready', traduccion: 'El entorno de QA está listo' },
-          { tipo: 'TOP 100', contexto: 'QA', chunk: "Let's do exploratory testing", traduccion: 'Hagamos pruebas exploratorias' },
-          { tipo: 'TOP 100', contexto: 'Frontend', chunk: 'The dashboard is not responsive', traduccion: 'El dashboard no es responsivo' },
-          { tipo: 'TOP 100', contexto: 'Frontend', chunk: 'We need to fix the layout', traduccion: 'Necesitamos arreglar el layout' },
-          { tipo: 'TOP 100', contexto: 'Frontend', chunk: "Let's improve the accessibility", traduccion: 'Mejoremos la accesibilidad' },
-          { tipo: 'TOP 100', contexto: 'Frontend', chunk: 'The font rendering looks off', traduccion: 'El renderizado de la fuente se ve mal' },
-          { tipo: 'TOP 100', contexto: 'Frontend', chunk: 'We need a new component for this', traduccion: 'Necesitamos un nuevo componente para esto' },
-          { tipo: 'TOP 100', contexto: 'Cualquier reunión', chunk: "Let's synchronize our efforts", traduccion: 'Sincronicemos nuestros esfuerzos' },
-          { tipo: 'TOP 100', contexto: 'Estrategia/Planning', chunk: 'I see a potential risk here', traduccion: 'Veo un riesgo potencial aquí' },
-          { tipo: 'TOP 100', contexto: 'Estrategia', chunk: 'We need a contingency plan', traduccion: 'Necesitamos un plan de contingencia' },
-          { tipo: 'TOP 100', contexto: 'Estrategia/Planning', chunk: "Let's align on the timeline", traduccion: 'Alineémonos en el cronograma' },
-          { tipo: 'TOP 100', contexto: 'Estrategia/Demo', chunk: 'The stakeholders are expecting this', traduccion: 'Los stakeholders esperan esto' },
-          { tipo: 'TOP 100', contexto: 'Estrategia/Retro', chunk: 'We should measure the impact', traduccion: 'Deberíamos medir el impacto' },
-          { tipo: 'TOP 100', contexto: 'Estrategia', chunk: "Let's define the KPIs", traduccion: 'Definamos los KPIs' },
-          { tipo: 'TOP 100', contexto: 'Estrategia/Planning', chunk: 'We need to manage scope creep', traduccion: 'Necesitamos gestionar el aumento de alcance' },
-          { tipo: 'TOP 100', contexto: 'Retro', chunk: "Let's do a lessons learned session", traduccion: 'Hagamos una sesión de lecciones aprendidas' },
-          { tipo: 'TOP 100', contexto: 'Retro', chunk: 'What went well and what went wrong?', traduccion: '¿Qué salió bien y qué salió mal?' },
-          { tipo: 'TOP 100', contexto: 'Retro', chunk: "Let's improve our estimation accuracy", traduccion: 'Mejoremos nuestra precisión en estimaciones' },
-          { tipo: 'TOP 100', contexto: 'Retro/Estrategia', chunk: 'We should have more cross-team communication', traduccion: 'Deberíamos tener más comunicación entre equipos' },
-          { tipo: 'TOP 100', contexto: 'Backend/DevOps', chunk: "Let's document the architecture", traduccion: 'Documentemos la arquitectura' },
-          { tipo: 'TOP 100', contexto: 'Backend/DevOps', chunk: 'This needs to be scalable', traduccion: 'Esto necesita ser escalable' },
-          { tipo: 'TOP 100', contexto: 'Backend/Retro', chunk: "We're dealing with legacy code", traduccion: 'Estamos lidiando con código legado' },
-          { tipo: 'TOP 100', contexto: 'Backend/Frontend', chunk: "Let's implement a design pattern", traduccion: 'Implementemos un patrón de diseño' },
-          { tipo: 'TOP 100', contexto: 'DevOps/Estrategia', chunk: 'We should review the security policies', traduccion: 'Revisemos las políticas de seguridad' },
-          { tipo: 'TOP 100', contexto: 'Backend/Frontend', chunk: 'The authentication flow is complete', traduccion: 'El flujo de autenticación está completo' },
-          { tipo: 'TOP 100', contexto: 'DevOps/Estrategia', chunk: 'We need a backup plan', traduccion: 'Necesitamos un plan de respaldo' },
-          { tipo: 'TOP 100', contexto: 'Cualquier reunión', chunk: "Let's celebrate this achievement", traduccion: 'Celebremos este logro' }
-        ];
+        const chunksData = [];
 
         // ===== BUILD CHUNKS =====
         function buildChunks() {
-          chunksContainer.innerHTML = '';
-
-          // Group by tipo
-          const groups = {};
-          chunksData.forEach(function (c) {
-            if (!groups[c.tipo]) groups[c.tipo] = [];
-            groups[c.tipo].push(c);
-          });
-
-          const tipoOrder = ['TOP 20', 'TOP 50', 'TOP 100'];
-          tipoOrder.forEach(function (tipo) {
-            if (!groups[tipo]) return;
-            const items = groups[tipo];
-            const groupDiv = document.createElement('div');
-            groupDiv.className = 'chunks-group';
-
-            const header = document.createElement('div');
-            header.className = 'chunks-group-header';
-            header.innerHTML = '<h3><i class="fas fa-comments"></i> ' + escapeHtml(tipo) + ' (' + items.length + ' frases)</h3><i class="fas fa-chevron-down"></i>';
-            header.addEventListener('click', function () {
-              body.classList.toggle('collapsed');
-              header.classList.toggle('collapsed');
-            });
-
-            const body = document.createElement('div');
-            body.className = 'chunks-group-body';
-
-            const table = document.createElement('table');
-            table.className = 'chunks-table';
-            table.innerHTML =
-              '<thead><tr><th>Tipo</th><th>Contexto</th><th>Chunk</th><th>Traducción</th></tr></thead>';
-
-            const tbody = document.createElement('tbody');
-            items.forEach(function (c) {
-              const tr = document.createElement('tr');
-              tr.innerHTML =
-                '<td><span class="col-tipo">' + escapeHtml(c.tipo) + '</span></td>' +
-                '<td class="col-contexto">' + escapeHtml(c.contexto) + '</td>' +
-                '<td class="col-chunk">' + escapeHtml(c.chunk) + '</td>' +
-                '<td class="col-traduccion">' + escapeHtml(c.traduccion) + '</td>';
-              tbody.appendChild(tr);
-            });
-
-            table.appendChild(tbody);
-            body.appendChild(table);
-            groupDiv.appendChild(header);
-            groupDiv.appendChild(body);
-            chunksContainer.appendChild(groupDiv);
-          });
+          // Placeholder - load from backend or external data source
         }
 
         let chunksBuilt = false;
@@ -1745,152 +1149,156 @@
           }
         });
 
-        // ===== INTERVIEWS DATA (personalized from Luis Armando's CV) =====
+        // ===== INTERVIEWS DATA (IMPROVED - Authentic, Conversational, Senior-Level) =====
         const interviewsData = [
-          { stage: 'Screening', category: 'Experience', num: 1, question: 'Tell me about yourself', answer: "I'm a Senior QA Automation Engineer and SDET with 16+ years of experience in Software Quality, Test Architecture, and Project Management across fintech, e-commerce, and banking sectors. I specialize in building automation frameworks from scratch using Playwright, Cypress, and WebdriverIO, and integrating them into CI/CD pipelines. I've worked across six countries\u2014Brazil, Panama, Peru, Colombia, Mexico, and the US\u2014and I'm trilingual in Portuguese, Spanish, and English." },
-          { stage: 'Screening', category: 'Experience', num: 2, question: 'Why are you interested in this role?', answer: "I'm excited about your company's focus on [technology/sector]. With my experience leading automation transformations\u2014like migrating a 100% manual organization to automated regression at OLACLICK\u2014I see a strong match between my expertise and your team's quality goals." },
-          { stage: 'Screening', category: 'Compensation', num: 3, question: 'What are your salary expectations?', answer: "Based on my 16+ years of experience, ISTQB certifications, and trilingual capabilities, I'm targeting a senior/lead role range. I'm flexible depending on total compensation, benefits, and growth opportunities." },
-          { stage: 'Screening', category: 'Experience', num: 4, question: 'Why are you leaving your current role?', answer: "I've accomplished what I set out to do\u2014built the QA function from scratch, established frameworks and CI/CD integration. I'm seeking new challenges with larger scale systems and modern tech stacks where I can apply my full experience." },
-          { stage: 'Screening', category: 'Technical', num: 5, question: "What's your experience with test automation?", answer: "I have over a decade building automation frameworks using Playwright, Cypress, WebdriverIO, Selenium WebDriver, and AccelQ. At DEUNA, I built frameworks for 80+ payment service providers. At OLACLICK, I architected a Playwright/TypeScript framework migrating from 100% manual to automated regression." },
-          { stage: 'Screening', category: 'Technical', num: 6, question: 'What testing types are you familiar with?', answer: "E2E, API, Mobile, Performance, Security, Contract (Pact), Mutation (Stryker), Visual, Chaos Engineering, and AI-Driven testing. I also practice BDD, TDD, Shift-Left, and Event Storming methodologies." },
-          { stage: 'Screening', category: 'Methodology', num: 7, question: 'Describe your experience with Agile/Scrum', answer: "I've worked in Agile/Scrum teams throughout my career. I participate in all ceremonies and advocate for QA involvement from story grooming to production release. I've also led QA teams as QA Lead at Everis and mentored teams at TUL and DEUNA." },
-          { stage: 'Screening', category: 'Soft Skills', num: 8, question: "How do you handle a bug that developers don't consider a bug?", answer: "I present evidence from requirements, screen recordings, and logs. If they disagree, I ask the product owner to clarify acceptance criteria. I focus on user impact and business value rather than winning arguments. I developed a 'QA Decision Matrix' at OLACLICK to prioritize collaboratively." },
-          { stage: 'Screening', category: 'Tools', num: 9, question: 'What bug tracking tools have you used?', answer: "JIRA extensively\u2014I've established documentation standards in Confluence/Jira, elevating bug report quality and tracking metrics. I've also used Azure DevOps and integrated test results with tickets." },
-          { stage: 'Screening', category: 'Technical', num: 10, question: "What's your experience with CI/CD?", answer: "I've integrated automation into GitHub Actions, Jenkins, GitLab CI, and Bitbucket Pipelines using Infrastructure as Code. At OLACLICK, I set up the CI/CD pipeline enabling immediate feedback cycles for development teams." },
-          { stage: 'Screening', category: 'Technical', num: 11, question: 'Do you have experience with API testing?', answer: "Yes\u2014REST, gRPC, GraphQL, SOAP using Postman/Newman, RestAssured, and Karate DSL. I've automated API test suites for microservices architectures and integrated them into CI/CD pipelines." },
-          { stage: 'Screening', category: 'Technical', num: 12, question: "What's your experience with performance testing?", answer: "I've used JMeter, K6, and IBM Rational Performance Tester for load, stress, and endurance testing. I've identified bottlenecks in databases and APIs at Avantica, Everis, and B89, providing actionable performance reports." },
-          { stage: 'Screening', category: 'Methodology', num: 13, question: 'How do you prioritize test cases?', answer: "I prioritize based on risk analysis, business criticality, and user impact. At OLACLICK I created a 'QA Decision Matrix' collaborating with Product Leads\u2014prioritizing critical flows and API integrations while maintaining exploratory testing balance." },
-          { stage: 'Screening', category: 'Soft Skills', num: 14, question: 'How do you handle tight deadlines?', answer: "I focus on highest-risk areas first, apply risk-based testing, and automate repetitive tasks. I communicate early about trade-offs and suggest scope adjustments. My experience delivering at companies like DEUNA (80+ PSPs) under tight schedules has honed this skill." },
-          { stage: 'Screening', category: 'Technical', num: 15, question: "What's your experience with mobile testing?", answer: "I've tested iOS and Android apps using Appium, and also tested mobile/web with Dart (Flutter) at TUL. I've used AWS Device Farm for cloud-based mobile testing." },
-          { stage: 'Screening', category: 'Methodology', num: 16, question: "What's your approach to test documentation?", answer: "I developed the 'QA Playbook' at OLACLICK\u2014documentation standards in Confluence/Jira for bug reports, metrics, and technical collaboration. I also maintain reusable test plans, traceability, and data strategies." },
-          { stage: 'Screening', category: 'Experience', num: 17, question: 'What do you know about our company?', answer: "Your company leads in [industry/sector] with innovative [products/services]. I read about your recent [news/milestone]. I'm excited about bringing my 16+ years of experience in QA architecture and automation to your mission." },
-          { stage: 'Screening', category: 'Experience', num: 18, question: 'Where do you see yourself in 5 years?', answer: "I aim to be a QA Architect or Director of Quality, defining testing strategy across multiple teams and influencing engineering culture. I want to mentor senior engineers and drive quality innovation." },
-          { stage: 'Screening', category: 'Tools', num: 19, question: "What's your experience with test management tools?", answer: "I've used JIRA extensively for test management, integrating with Xray and Zephyr. I track traceability, generate reports, and maintain real-time test execution dashboards." },
-          { stage: 'Screening', category: 'Technical', num: 20, question: 'Describe a challenging bug you found', answer: "At DEUNA, I discovered a race condition in async API calls across 80+ payment service providers causing intermittent transaction failures. Under high load, it only appeared sporadically. I isolated it using CloudWatch logging and performance monitoring, worked with devs to implement distributed locks, and wrote regression tests in Playwright." },
-          { stage: 'Screening', category: 'Soft Skills', num: 21, question: 'What makes you a better candidate?', answer: "I combine 16+ years of deep technical expertise with leadership experience. I've built QA teams from scratch (B89 neobank), led automation transformations, and worked across six countries in three languages. I bridge business and engineering effectively." },
-          { stage: 'Screening', category: 'Soft Skills', num: 22, question: 'How do you handle conflicts with team members?', answer: "I approach conflicts objectively with data and specific examples. I listen actively, seek win-win solutions, and involve the product owner when needed. I focus on the problem, not the person." },
-          { stage: 'Screening', category: 'Technical', num: 23, question: "What's your experience with database testing?", answer: "I write SQL queries to validate data integrity, verify ETL transformations with PySpark, and check database updates after API calls. I've tested data migrations and reports across multiple projects." },
-          { stage: 'Screening', category: 'Technical', num: 24, question: 'Have you worked with AWS/Azure/GCP?', answer: "Yes\u2014extensively with AWS: S3 for test artifacts, CloudWatch for monitoring, Device Farm for mobile testing, ECS/EC2 for test runners, FIS for chaos engineering, and Secrets Manager. I've also used Azure DevOps for CI/CD pipelines." },
-          { stage: 'Screening', category: 'Technical', num: 25, question: "What's your experience with test data management?", answer: "I generate synthetic test data, use data factories, and anonymize production data. I've managed test data in databases, used Kafka for event-driven test data, and mocked external services with WireMock." },
-          { stage: 'Screening', category: 'Soft Skills', num: 26, question: 'How do you stay updated on testing trends?', answer: "I follow industry blogs, hold ISTQB certifications (CTFL 4.0, Advanced Test Automation Engineer 2025), take courses in Playwright, TypeScript, and AI-Driven Cybersecurity, and experiment with new tools." },
-          { stage: 'Screening', category: 'Methodology', num: 27, question: "What's your approach to regression testing?", answer: "I maintain an automated regression suite focused on critical paths. At OLACLICK I migrated from 100% manual to automated regression. I selectively execute relevant tests based on code changes and integrate into CI/CD." },
-          { stage: 'Screening', category: 'Technical', num: 28, question: 'Describe your experience with BDD', answer: "I've implemented BDD at TUL using Cucumber and Gherkin scenarios. I bridge business requirements with automated tests, making them readable for stakeholders. I also practice TDD and Event Storming." },
-          { stage: 'Screening', category: 'Technical', num: 29, question: "What's your experience with Docker?", answer: "I use Docker for test environment setup, running tests in containers for consistency. I've written Dockerfiles and docker-compose configurations and used containers in CI/CD pipelines." },
-          { stage: 'Screening', category: 'Soft Skills', num: 30, question: 'How do you handle test environment issues?', answer: "At OLACLICK I established Staging environment requirements, eliminating exclusive dependency on development environments. I proactively monitor environment health with CloudWatch and work with DevOps to resolve issues." },
-          { stage: 'Screening', category: 'Technical', num: 31, question: 'What do you know about Shift-Left Testing?', answer: "It's testing earlier in the development cycle\u2014during design and development. I practice it through static code analysis, developer pairing, establishing QA gates in CI/CD, and involving QA from story grooming." },
-          { stage: 'Screening', category: 'Soft Skills', num: 32, question: 'What are your strengths and weaknesses?', answer: "Strengths: automation architecture, API testing, team leadership, and building QA from scratch. I've built the QA team for Peru's first neobank (B89). Weakness: I can be too detail-oriented, but I've learned to balance with business impact." },
-          { stage: 'Screening', category: 'Soft Skills', num: 33, question: 'How do you handle negative feedback?', answer: "I welcome it as growth fuel. I listen without defensiveness, ask clarifying questions, and create an action plan to improve. I follow up to show progress." },
-          { stage: 'Screening', category: 'Technical', num: 34, question: "What's your experience with microservices testing?", answer: "I test individual services, contract testing with Pact (used at Tul and B89), and end-to-end flows. I use API mocks to isolate dependencies and test error scenarios. I've worked with Kafka for event-driven architectures." },
-          { stage: 'Screening', category: 'Soft Skills', num: 35, question: 'Have you worked remotely before?', answer: "Yes\u2014I've worked remotely for US companies (DEUNA, UPWORK) and across six countries. I'm proficient with Slack, Zoom, Jira, and Confluence. I document decisions and maintain transparency through regular updates." },
-          { stage: 'Screening', category: 'Technical', num: 36, question: "What's your experience with security testing?", answer: "I'm IBM Certified Specialist in Rational AppScan. I perform security testing: OWASP Top 10, authentication checks, input validation, and penetration scans. I've done blockchain testing at B89 and security testing at multiple banks." },
-          { stage: 'Screening', category: 'Technical', num: 37, question: 'How do you ensure test coverage?', answer: "I use coverage metrics and guide developers to add unit tests. I prioritize critical flows and track coverage trends. At DEUNA I implemented AI-Driven testing to improve coverage and optimize test case generation." },
-          { stage: 'Screening', category: 'Technical', num: 38, question: "What's your experience with non-functional testing?", answer: "I've conducted performance (JMeter, K6), security (AppScan), chaos engineering (AWS FIS), and contract testing. I focus on reliability and scalability for high-traffic applications like the 80+ PSP platform at DEUNA." },
-          { stage: 'Screening', category: 'Technical', num: 39, question: "What's your experience with version control?", answer: "I use Git daily\u2014branching, merging, rebasing, handling conflicts, and reviewing PRs. I work with GitHub, GitLab, and Bitbucket. At OLACLICK I integrated automation into Bitbucket Pipelines." },
-          { stage: 'Screening', category: 'Soft Skills', num: 40, question: 'What motivates you in QA?', answer: "The satisfaction of catching critical bugs before users do and shipping quality products. I love building systems that enable teams to release with confidence. My 16+ years of passion for quality drives me." },
-          { stage: 'Screening', category: 'Soft Skills', num: 41, question: 'How do you manage multiple projects?', answer: "I prioritize tasks, use JIRA, and set realistic timelines. I communicate blockers early and maintain transparency. I've managed multiple client projects simultaneously at UPWORK and led QA for multiple bank projects at Choucair." },
-          { stage: 'Screening', category: 'Soft Skills', num: 42, question: 'How do you handle a bug that developers do not consider a bug?', answer: "I present evidence from requirements, screen recordings, and logs. If they disagree, I ask the product owner to clarify acceptance criteria. I focus on user impact and business value rather than winning arguments." },
-          { stage: 'Screening', category: 'Experience', num: 43, question: 'What is your experience with test automation?', answer: "I have over a decade building automation frameworks using Playwright, Cypress, WebdriverIO, Selenium WebDriver, and AccelQ across fintech, e-commerce, and banking sectors." },
-          { stage: 'Screening', category: 'Technical', num: 44, question: 'What testing types are you familiar with?', answer: "E2E, API, Mobile, Performance, Security, Contract (Pact), Mutation (Stryker), Visual, Chaos Engineering, and AI-Driven testing. I also practice BDD, TDD, Shift-Left, and Event Storming." },
-          { stage: 'Screening', category: 'Methodology', num: 45, question: 'Describe your experience with Agile/Scrum', answer: "I have worked in Agile/Scrum teams throughout my career. I participate in all ceremonies and advocate for QA involvement from story grooming to production release." },
-          { stage: 'Screening', category: 'Experience', num: 46, question: 'Have you ever mentored someone?', answer: "Yes, I have trained and supervised QA teams at TUL and DEUNA on automation best practices. I enjoy helping others grow and develop their testing skills." },
-          { stage: 'Screening', category: 'Soft Skills', num: 47, question: 'What makes you a better candidate?', answer: "I combine 16+ years of deep technical expertise with leadership experience. I have built QA teams from scratch, led automation transformations, and worked across six countries in three languages." },
-          { stage: 'Screening', category: 'Experience', num: 48, question: 'Where do you see yourself in 5 years?', answer: "I aim to be a QA Architect or Director of Quality, defining testing strategy across multiple teams and influencing engineering culture across the organization." },
-          { stage: 'Screening', category: 'Experience', num: 49, question: 'What do you know about our company?', answer: "Your company leads in [industry/sector] with innovative [products/services]. I am excited about bringing my 16+ years of experience in QA architecture and automation to your mission." },
-          { stage: 'Screening', category: 'Soft Skills', num: 50, question: 'What questions do you have for me?', answer: "What is the current QA/Dev team ratio? What is the biggest QA challenge the team faces? How do you measure QA success? What is the growth path for this role?" },
-          { stage: 'Technical', category: 'Fundamentals', num: 51, question: 'What is the difference between verification and validation?', answer: "Verification checks if we are building the product right through static reviews and inspections. Validation checks if we are building the right product through dynamic testing by executing the system." },
-          { stage: 'Technical', category: 'Fundamentals', num: 52, question: 'Explain black-box vs white-box testing', answer: "Black-box tests without internal code knowledge validating inputs/outputs. White-box tests internal structures including code coverage, logical paths, and conditional branches." },
-          { stage: 'Technical', category: 'Fundamentals', num: 53, question: 'What are the levels of testing?', answer: "Unit, Integration, System, Acceptance, Performance, Security, and User Acceptance Testing (UAT). Each level focuses on different scope and depth." },
-          { stage: 'Technical', category: 'Fundamentals', num: 54, question: 'What is the difference between functional and non-functional testing?', answer: "Functional validates features and behavior. Non-functional validates performance, usability, reliability, and scalability." },
-          { stage: 'Technical', category: 'Fundamentals', num: 55, question: 'What is the difference between regression and smoke testing?', answer: "Smoke testing is a high-level sanity check to ensure the build is stable. Regression re-executes previous tests to ensure new changes haven not broken existing features." },
-          { stage: 'Technical', category: 'Fundamentals', num: 56, question: 'What is a test case vs test scenario?', answer: "A test case has detailed steps, expected results, and preconditions. A test scenario is a high-level group of test cases covering a user journey or feature." },
-          { stage: 'Technical', category: 'Fundamentals', num: 57, question: 'What is boundary value analysis?', answer: "Testing values at edges of equivalence partitions. For example, for age validation (18-65), test 17, 18, 65, and 66." },
-          { stage: 'Technical', category: 'Fundamentals', num: 58, question: 'What is equivalence partitioning?', answer: "Dividing inputs into valid and invalid groups where each group produces the same outcome. Test one representative from each group instead of testing all combinations." },
-          { stage: 'Technical', category: 'Fundamentals', num: 59, question: 'What is a defect lifecycle?', answer: "New, Triage, Assigned, In Progress, Fixed, Retesting, Reopened (if fails), Closed (if passes)." },
-          { stage: 'Technical', category: 'Fundamentals', num: 60, question: 'Explain positive vs negative testing', answer: "Positive testing uses valid inputs to ensure the system works. Negative testing uses invalid inputs to ensure the system handles errors gracefully." },
-          { stage: 'Technical', category: 'Fundamentals', num: 61, question: 'What is the difference between error, defect, and failure?', answer: "An error is a human mistake in code. A defect is a code fault found in testing. A failure is system behavior deviating from expected results in production." },
-          { stage: 'Technical', category: 'Fundamentals', num: 62, question: 'What is a traceability matrix?', answer: "A document mapping requirements to test cases, ensuring full coverage. RTM links every business requirement to corresponding test artifacts." },
-          { stage: 'Technical', category: 'Fundamentals', num: 63, question: 'What is risk-based testing?', answer: "Prioritizing tests based on impact and likelihood of failure. High-risk features get more test coverage and earlier execution." },
-          { stage: 'Technical', category: 'Automation', num: 64, question: 'What automation framework structure do you follow?', answer: "I follow Page Object Model with layers: TestBase, PageObjects, Utilities, TestCases, and TestData." },
-          { stage: 'Technical', category: 'Automation', num: 65, question: 'What is the Page Object Model?', answer: "A design pattern where each web page creates a class with locators and actions, promoting code reusability and maintainability." },
-          { stage: 'Technical', category: 'Automation', num: 66, question: 'What are the advantages of TestNG over JUnit?', answer: "TestNG offers parameterization, data-driven testing, groups, dependencies between tests, and better reporting." },
-          { stage: 'Technical', category: 'Automation', num: 67, question: 'How do you handle dynamic elements in Selenium?', answer: "Use Explicit Waits with expected conditions over sleep. Use relative XPath with contains or starts-with for dynamic IDs." },
-          { stage: 'Technical', category: 'Automation', num: 68, question: 'What is the difference between findElement and findElements?', answer: "findElement returns the first matching WebElement and throws NoSuchElementException if none found. findElements returns a List of all matching elements or empty list if none found." },
-          { stage: 'Technical', category: 'Automation', num: 69, question: 'How do you handle timeouts in automation?', answer: "Use implicit wait as a global setting, explicit wait for condition-specific waits, and fluent wait with polling. Never use Thread.sleep." },
-          { stage: 'Technical', category: 'Automation', num: 70, question: 'What are the challenges in test automation?', answer: "Flaky tests, environment stability, test data management, CI/CD integration, maintaining test scripts with UI changes, and performance of test execution." },
-          { stage: 'Technical', category: 'Automation', num: 71, question: 'How do you implement retry logic for flaky tests?', answer: "Use TestNG IRetryAnalyzer to rerun failed tests automatically with a configured max retry count of 3, logging failures." },
-          { stage: 'Technical', category: 'Automation', num: 72, question: 'What are the best practices for test automation?', answer: "POM, descriptive names, DRY principles, independent tests, proper assertions, logging, reporting, and version control." },
-          { stage: 'Technical', category: 'Automation', num: 73, question: 'What is your approach to selecting automation tools?', answer: "Analyze project tech stack, budget, team skills, integration capabilities, community support, and test automation ROI." },
-          { stage: 'Technical', category: 'API', num: 74, question: 'What are the different HTTP methods?', answer: "GET for retrieving data, POST for creating resources, PUT for updating entire resources, PATCH for partial updates, DELETE for removing resources." },
-          { stage: 'Technical', category: 'API', num: 75, question: 'What is the difference between authentication and authorization?', answer: "Authentication verifies identity. Authorization grants permissions for what you can do." },
-          { stage: 'Technical', category: 'API', num: 76, question: 'How do you test APIs manually?', answer: "Use Postman or Insomnia to validate status codes, response structure, response time, headers, and error messages." },
-          { stage: 'Technical', category: 'API', num: 77, question: 'How do you automate API tests?', answer: "Use RestAssured in Java, Pytest with Requests in Python, or Supertest in Node. Validate JSON schema, status codes, and business logic in responses." },
-          { stage: 'Technical', category: 'API', num: 78, question: 'What status code ranges are you familiar with?', answer: "1xx informational, 2xx success, 3xx redirection, 4xx client errors, 5xx server errors." },
-          { stage: 'Technical', category: 'API', num: 79, question: 'What is contract testing in microservices?', answer: "Verifying consumer-provider contracts to ensure services communicate correctly using tools like Pact and Spring Cloud Contract." },
-          { stage: 'Technical', category: 'API', num: 80, question: 'How do you mock external services?', answer: "Use WireMock or MockServer to simulate API responses, test edge cases, and handle timeouts without external dependencies." },
-          { stage: 'Technical', category: 'Performance', num: 81, question: 'What is the difference between load and stress testing?', answer: "Load testing simulates expected normal to peak user loads. Stress testing pushes beyond limits to find breaking points and recovery mechanisms." },
-          { stage: 'Technical', category: 'Performance', num: 82, question: 'What tools do you use for performance testing?', answer: "JMeter for load and stress, K6 for modern scripting, IBM Rational Performance Tester for enterprise projects." },
-          { stage: 'Technical', category: 'Performance', num: 83, question: 'What are common performance metrics?', answer: "Response time, throughput, error rate, CPU usage, memory usage, database connections, and network bandwidth." },
-          { stage: 'Technical', category: 'Security', num: 84, question: 'What is the OWASP Top 10?', answer: "Injection, Broken Authentication, Sensitive Data Exposure, XXE, Broken Access Control, Security Misconfiguration, XSS, Insecure Deserialization, Vulnerable Components, Insufficient Logging." },
-          { stage: 'Technical', category: 'Security', num: 85, question: 'How do you perform security testing in QA?', answer: "Static analysis (SAST), dynamic scans with OWASP ZAP, dependency checks, penetration testing, and security regression." },
-          { stage: 'Technical', category: 'DevOps', num: 86, question: 'What is a CI/CD pipeline?', answer: "CI is Continuous Integration with automated build and test on each commit. CD is Continuous Delivery and Deployment with automated release to staging or production." },
-          { stage: 'Technical', category: 'DevOps', num: 87, question: 'How do you set up a test environment?', answer: "Use Docker Compose or Kubernetes to spin up microservices, databases, and mocks. Use Infrastructure-as-Code with Terraform to provision resources." },
-          { stage: 'Technical', category: 'DevOps', num: 88, question: 'What are blue-green deployments?', answer: "Zero-downtime deployment with two identical environments. Blue is current, green is new. After testing green, switch traffic for instant rollback." },
-          { stage: 'Technical', category: 'Methodology', num: 89, question: 'What is a test pyramid?', answer: "A strategy with many unit tests at the base, fewer integration tests in the middle, and even fewer UI and E2E tests at the top for maximum speed and reliability." },
-          { stage: 'Technical', category: 'Methodology', num: 90, question: 'What is mutation testing?', answer: "Introducing code mutations to see if tests catch them. Higher kill score means better tests. Tools include PITest and Stryker." },
-          { stage: 'Technical', category: 'Methodology', num: 91, question: 'What is the role of QA in DevOps?', answer: "Implement automated testing in CI/CD, monitor quality metrics in production, use feature flags, perform continuous performance testing, and shift-left security." },
-          { stage: 'Technical', category: 'Methodology', num: 92, question: 'What is shift-right testing?', answer: "Testing in production through monitoring, chaos engineering, canary deployments, A/B testing, and real-user monitoring." },
-          { stage: 'Technical', category: 'Methodology', num: 93, question: 'What is exploratory testing?', answer: "Session-based testing where testers explore the application, take notes, test edge cases, and document unexpected findings to complement automated testing." },
-          { stage: 'Technical', category: 'Methodology', num: 94, question: 'What is continuous testing vs automated testing?', answer: "Automated testing runs predefined scripts. Continuous testing executes tests consistently throughout the pipeline as part of CI/CD." },
-          { stage: 'Technical', category: 'Methodology', num: 95, question: 'What is test-driven development (TDD)?', answer: "A development practice where tests are written before code. Developers write a failing test first, then implement code to pass it, then refactor." },
-          { stage: 'Technical', category: 'Methodology', num: 96, question: 'What is behavior-driven development (BDD)?', answer: "An Agile practice using Gherkin language to write scenarios in Given-When-Then format, bridging business requirements with automated tests." },
-          { stage: 'Technical', category: 'Methodology', num: 97, question: 'What is Event Storming?', answer: "A collaborative workshop technique to explore complex business domains through domain events, helping identify test scenarios early in the development cycle." },
-          { stage: 'Technical', category: 'Methodology', num: 98, question: 'What is chaos engineering?', answer: "Testing system resilience by intentionally injecting failures such as network delays, server crashes, or resource exhaustion to ensure the system recovers gracefully." },
-          { stage: 'Technical', category: 'Methodology', num: 99, question: 'What is the difference between static and dynamic testing?', answer: "Static testing reviews code without executing it. Dynamic testing executes code with actual inputs and validates outputs." },
-          { stage: 'Technical', category: 'Methodology', num: 100, question: 'What is a test plan?', answer: "A document outlining test scope, objectives, resources, schedule, entry/exit criteria, risks, deliverables, and test environment." },
-          { stage: 'Technical', category: 'Methodology', num: 101, question: 'What is a test summary report?', answer: "A post-execution report showing total tests, passed/failed results, defect summary, coverage metrics, environment details, and recommendations." },
-          { stage: 'Technical', category: 'Methodology', num: 102, question: 'How do you measure QA metrics?', answer: "Test automation coverage percentage, defect density, defect leakage, test execution time, flakiness rate, and pass/fail rate by sprint." },
-          { stage: 'Technical', category: 'Architecture', num: 103, question: 'How do you test microservices?', answer: "Test individual services in isolation, use contract testing with Pact for service interactions, and end-to-end flows for critical user journeys." },
-          { stage: 'Technical', category: 'Architecture', num: 104, question: 'How do you test event-driven architectures?', answer: "Validate event publishing to Kafka or RabbitMQ, verify consumers process events correctly, test event ordering, replayability, and failure recovery." },
-          { stage: 'Technical', category: 'Architecture', num: 105, question: 'How do you test file processing pipelines?', answer: "Validate file ingestion, transformation, parsing success/failure, and error handling. Test with various formats such as CSV, XML, JSON and different file sizes." },
-          { stage: 'Technical', category: 'Architecture', num: 106, question: 'What is the role of test doubles in testing?', answer: "Stubs provide fixed responses. Mocks verify interactions. Fakes are lightweight implementations. Dummies are placeholders. Spies record calls." },
-          { stage: 'Technical', category: 'Database', num: 107, question: 'How do you test databases for performance?', answer: "Run load tests with JMeter using JDBC requests. Monitor query execution time, cache hits, lock contention, and connection pool utilization." },
-          { stage: 'Technical', category: 'Best Practices', num: 108, question: 'What are best practices for test naming?', answer: "Use descriptive names with the should pattern: shouldReturnErrorWhenUserNotFound. It immediately indicates test purpose and expected outcome." },
-          { stage: 'Executive', category: 'Leadership', num: 109, question: 'How do you build trust between QA and developers?', answer: "I pair with developers during code reviews, help debug issues, write automated tests early in dev cycles, and frame quality as a shared responsibility." },
-          { stage: 'Executive', category: 'Leadership', num: 110, question: 'What is your philosophy on QA in Agile?', answer: "QA is integral to the team. We are quality advocates, not gatekeepers. We enable fast, confident releases through continuous testing and early feedback." },
-          { stage: 'Executive', category: 'Leadership', num: 111, question: 'How do you influence without authority?', answer: "I use data such as defect metrics, test coverage, and user impact to communicate value. I build coalitions through collaboration and demonstrate ROI." },
-          { stage: 'Executive', category: 'Leadership', num: 112, question: 'How do you handle a team member not following quality standards?', answer: "I schedule a one-on-one to understand their challenges, provide constructive feedback with examples, and agree on action steps." },
-          { stage: 'Executive', category: 'Leadership', num: 113, question: 'What is your experience leading QA initiatives?', answer: "I have introduced automation in teams with zero automation, reduced regression cycles, and mentored juniors. I lead by example, not just assigning tasks." },
-          { stage: 'Executive', category: 'Leadership', num: 114, question: 'How do you handle production incidents?', answer: "I lead the root cause analysis, prioritize critical path fixes, coordinate rollback if needed, and document lessons learned to prevent recurrence." },
-          { stage: 'Executive', category: 'Leadership', num: 115, question: 'What quality metrics do you track?', answer: "Automation coverage, defect leakage, defect density, test flakiness, test execution time, and customer-reported issues per release." },
-          { stage: 'Executive', category: 'Culture', num: 116, question: 'How do you foster a quality culture?', answer: "I advocate for quality in all ceremonies, promote early testing, share success stories, and celebrate test discoveries that prevented production issues." },
-          { stage: 'Executive', category: 'Leadership', num: 117, question: 'How do you handle disagreements with product owners?', answer: "I prioritize requirements against risk, use data to support decisions, and propose alternative solutions. I speak in business outcomes, not just features." },
-          { stage: 'Executive', category: 'Leadership', num: 118, question: 'What is your leadership style?', answer: "Servant leadership. I enable the team through tools, guardrails, and support. I empower them to own quality and make decisions." },
-          { stage: 'Executive', category: 'Leadership', num: 119, question: 'How do you prioritize competing tasks?', answer: "I use the Eisenhower Matrix for urgent vs important priorities. I align with sprint goals and customer impact to make trade-off decisions." },
-          { stage: 'Executive', category: 'Leadership', num: 120, question: 'What is your experience with distributed teams?', answer: "I have worked with teams across US, Europe, and Asia. I practice clear written communication, record sessions, respect time zones, and over-communicate decisions." },
-          { stage: 'Executive', category: 'Leadership', num: 121, question: 'How do you ensure team alignment on quality goals?', answer: "Shared OKRs with developers including defect reduction targets, coverage goals, and quality OKRs. We review progress in sprint retrospectives." },
-          { stage: 'Executive', category: 'Strategy', num: 122, question: 'What is your view on QA automation ROI?', answer: "It pays off in 3-6 months depending on test frequency and manual effort saved. It is an investment in product velocity, not just efficiency." },
-          { stage: 'Executive', category: 'Leadership', num: 123, question: 'How do you communicate quality to leadership?', answer: "I present metrics in business terms: escaped defects, customer satisfaction, deployment frequency, and mean time to recover (MTTR)." },
-          { stage: 'Executive', category: 'Strategy', num: 124, question: 'What is your experience setting up QA processes?', answer: "I define test strategy, implement automation framework, establish CI/CD integration, and create defect management workflows." },
-          { stage: 'Executive', category: 'Leadership', num: 125, question: 'How do you handle unrealistic deadlines?', answer: "I communicate risks early, suggest scope trade-offs, and ensure testing focuses on highest-risk areas. I escalate with mitigation plans." },
-          { stage: 'Executive', category: 'Strategy', num: 126, question: 'What is your vision for QA in modern development?', answer: "QA evolves into quality engineering, focusing on testability, reliability, and continuous quality. It is integrated into every phase of the lifecycle." },
-          { stage: 'Executive', category: 'Strategy', num: 127, question: 'How do you evaluate test automation ROI?', answer: "Calculate manual effort saved per regression cycle, multiply by test execution frequency, and compare with automation development and maintenance costs." },
-          { stage: 'Executive', category: 'Strategy', num: 128, question: 'How do you propose a new automation tool?', answer: "I evaluate the problem, present a proof of concept comparing options with cost-benefit analysis, and align with team skills and tech stack." },
-          { stage: 'Executive', category: 'Culture', num: 129, question: 'What is your approach to continuous improvement?', answer: "I review processes with the team in retrospectives, identify bottlenecks, experiment with small changes, and measure impact." },
-          { stage: 'Executive', category: 'Strategy', num: 130, question: 'How do you plan for scalability in QA?', answer: "Design modular frameworks, write reusable helpers, create test data factories, and adopt cloud-based execution for parallelization." },
-          { stage: 'Executive', category: 'Strategy', num: 131, question: 'How do you decide which tests to automate?', answer: "High-risk, high-frequency, critical flow tests get automated. Manual testing remains for exploratory, usability, and low-frequency features." },
-          { stage: 'Executive', category: 'Strategy', num: 132, question: 'How do you handle slow test execution?', answer: "Run tests in parallel, use test splitting, remove redundant tests, optimize setup/teardown, and execute relevant subsets per build." },
-          { stage: 'Executive', category: 'Strategy', num: 133, question: 'What is your experience with test environments automation?', answer: "Use Infrastructure-as-Code, Docker, and Kubernetes to spin environments on demand per branch, reducing conflicts and resource costs." },
-          { stage: 'Executive', category: 'Communication', num: 134, question: 'How do you explain complex issues to non-technical stakeholders?', answer: "I use analogies, focus on business impact, and avoid jargon. For example, saying this bug might cause 15% of users to abandon checkout." },
-          { stage: 'Executive', category: 'Communication', num: 135, question: 'How do you build confidence with international clients?', answer: "I provide regular quality reports, transparent dashboards, early risk communication, and always follow through on commitments." },
-          { stage: 'Executive', category: 'Communication', num: 136, question: 'How do you gather requirements for testing?', answer: "I participate in story refinement, ask clarifying questions, identify acceptance criteria gaps, and create test scenarios before development starts." },
-          { stage: 'Executive', category: 'Communication', num: 137, question: 'What is your approach to user acceptance testing (UAT)?', answer: "I prepare test scripts, facilitate UAT sessions with stakeholders, collect feedback, and act as a liaison between business and dev." },
-          { stage: 'Executive', category: 'Communication', num: 138, question: 'How do you handle scope changes during testing?', answer: "I assess impact, prioritize with the PM, and adjust test plans. I communicate risks clearly and document trade-offs." },
-          { stage: 'Executive', category: 'Communication', num: 139, question: 'What is your approach to incident post-mortems?', answer: "Blameless and objective. Identify the sequence of events, determine root cause, propose action items, and follow up on implementation." },
-          { stage: 'Executive', category: 'Communication', num: 140, question: 'How do you foster collaboration across QA, Dev, and Ops?', answer: "Promote shared ownership, integrate QA in design discussions, conduct joint reviews, and align on quality goals." },
-          { stage: 'Executive', category: 'Culture', num: 141, question: 'What is your approach to continuous learning?', answer: "I dedicate weekly time to learn new tools, read tech blogs, hold ISTQB certifications, and take courses in Playwright, TypeScript, and AI-Driven Cybersecurity." },
-          { stage: 'Executive', category: 'Experience', num: 142, question: 'What are your career goals?', answer: "I want to become a QA Director or Architect, influencing global quality strategy and shaping engineering culture." },
-          { stage: 'Executive', category: 'Experience', num: 143, question: 'Why do you want to join our company?', answer: "Your product/tech/culture resonates with my values. I see a chance to impact your quality journey at scale with my 16+ years of experience." },
-          { stage: 'Executive', category: 'Communication', num: 144, question: 'What questions do you have for me?', answer: "How does the team measure QA success? What are the biggest challenges in the next 6 months? What is the leadership vision for QA? How do you approach innovation in the team?" }
+          // SCREENING QUESTIONS (31-40)
+          { stage: 'Screening', category: 'Experience', num: 1, question: 'Tell me about yourself', answer: "I'm a Senior QA Automation Engineer with 16 years building quality at scale across fintech, banking, and e-commerce. What I'm proudest of? Turning teams around. At OLACLICK, I took an organization from 100% manual testing to fully automated regression in months. At DEUNA, I managed quality for 80+ payment service provider integrations simultaneously—that's managing complexity. I've built entire QA functions from scratch, like at B89, Peru's first neobank where I hired and trained the team. I'm trilingual, I've worked across six countries, and I genuinely believe quality is a team sport. My strength is seeing the big picture—architecture, strategy, people—not just writing test cases." },
+          { stage: 'Screening', category: 'Experience', num: 2, question: 'Why are you interested in this role?', answer: "I research companies thoroughly before interviewing. What caught my attention about your organization is your commitment to [specific tech or value]. I see an opportunity to apply my 16 years of experience building quality systems at scale. I'm not looking for just any QA role—I want to work with teams that value quality as a competitive advantage. Based on what I've learned about your challenges, my experience in automation transformation and team leadership directly addresses your needs. I'm ready to make an impact." },
+          { stage: 'Screening', category: 'Compensation', num: 3, question: 'What are your salary expectations?', answer: "I'm targeting compensation that reflects my seniority level and what I bring. Sixteen years of hands-on experience, proven ability to transform QA at scale, ISTQB certifications, and trilingual capability. I'm flexible on exact structure—base, benefits, equity, professional development all matter. More importantly, I want to work somewhere I can have real impact. That said, I've researched market rates for senior QA roles, and I'm aligned with realistic expectations. Let's talk about what success looks like for both of us." },
+          { stage: 'Screening', category: 'Experience', num: 4, question: 'Why are you leaving your current role?', answer: "At OLACLICK, I accomplished the mission—migrated the organization from manual to automated testing, established CI/CD standards, implemented quality processes. It was satisfying work, but the growth opportunity is limited. I'm at a point in my career where I'm being selective. I want my next role to be bigger: more complex systems, larger impact, opportunity to mentor senior engineers. I'm looking for a place where I can scale my influence beyond individual contributions. That's when I do my best work." },
+          { stage: 'Screening', category: 'Technical', num: 5, question: "What's your experience with test automation?", answer: "I've architected automation frameworks from ground zero. At OLACLICK, I designed the entire Playwright+TypeScript stack—test data strategies, CI/CD integration, parallel execution. At DEUNA, I maintained frameworks for 80+ payment service providers, each with different integrations and requirements. That taught me how to build flexible, maintainable solutions at scale. I'm proficient in Playwright, Cypress, WebdriverIO, Selenium, Appium. But beyond tools, I understand architecture—how to structure tests so they survive product changes, how to make them fast, how to make teams adopt them. That's what separates good testers from great ones." },
+          { stage: 'Screening', category: 'Technical', num: 6, question: 'What testing types are you familiar with?', answer: "I've done the full spectrum. E2E and API are my core work. Performance testing with JMeter on banking systems handling thousands of transactions per second. Security testing—I hold IBM certifications in AppScan and have tested systems with strict compliance requirements. Contract testing with Pact across microservices, BDD with Cucumber, chaos engineering, AI-driven testing. But I think about it holistically. You don't test everything the same way. You pyramid: lots of unit tests, fewer integration tests, selective E2E. That balance is what matters." },
+          { stage: 'Screening', category: 'Methodology', num: 7, question: 'Describe your experience with Agile/Scrum', answer: "I've been in Agile teams for over a decade. The difference between good and bad Agile is whether QA is involved from day one. I attend refinement sessions, I challenge acceptance criteria early, I help development think through testability during design. At Everis, I led both functional QA and automation teams on a Salesforce implementation—that required managing dependencies across multiple Scrum teams. I've learned that the best sprints are when the whole team owns quality. That's what I bring." },
+          { stage: 'Screening', category: 'Soft Skills', num: 8, question: "How do you handle a bug that developers don't consider a bug?", answer: "This happens. First, I don't argue. I gather facts: screenshots, exact reproduction steps, logs, context. Then I approach the developer respectfully. 'Here's what I'm seeing, here's why it matters to the user, what do you think?' Nine times out of ten, they agree once they see the evidence. At OLACLICK, we created a 'QA Decision Matrix' to handle edge cases—if there's genuine disagreement, the product lead decides. That removes ego. My job isn't to win arguments. My job is to protect the user experience." },
+          { stage: 'Screening', category: 'Tools', num: 9, question: 'What bug tracking tools have you used?', answer: "JIRA is my daily tool. I don't just track defects—I use JIRA strategically. At OLACLICK, I established documentation standards so anyone reading a bug understands immediately what's broken and why. I integrate with Xray for test management, create dashboards showing defect trends by component, track leakage metrics. I've also used Azure DevOps. The tool is secondary; discipline around how you use it is primary." },
+          { stage: 'Screening', category: 'Technical', num: 10, question: "What's your experience with CI/CD?", answer: "CI/CD is where automation proves its value. At OLACLICK, I integrated the entire Playwright framework into Bitbucket Pipelines. Every commit triggers tests. Developers get feedback in minutes, not days. I've also set up with GitHub Actions, Jenkins, GitLab CI. I understand the technical side—Docker for test environments, Infrastructure as Code for provisioning—and the cultural side. The best CI/CD is when developers are confident deploying multiple times a day. That confidence comes from quality automation." },
+          { stage: 'Screening', category: 'Technical', num: 11, question: 'Do you have experience with API testing?', answer: "Extensive. At DEUNA, most of my work was API testing for 80+ payment service providers. Different REST endpoints, different response formats, different authentication. I've built suites with RestAssured in Java, Karate DSL which is excellent for business-readable tests. I've tested GraphQL mutations, SOAP at banking systems, gRPC for microservices. API testing is fundamentals—you need solid assertions, proper error handling, edge case coverage. I also do contract testing with Pact to validate microservice integration without full E2E tests." },
+          { stage: 'Screening', category: 'Technical', num: 12, question: "What's your experience with performance testing?", answer: "I've done serious performance work. JMeter for load testing banking systems under realistic peak loads—Interbank, BCP. K6 for modern, cloud-based testing. Performance testing isn't just about running traffic and watching dashboards. It's understanding what matters: response times that impact revenue, database connection saturation, garbage collection pauses. I've identified bottlenecks, worked with infrastructure teams to solve them, and validated fixes. That's real impact." },
+          { stage: 'Screening', category: 'Methodology', num: 13, question: 'How do you prioritize test cases?', answer: "Risk-based prioritization. What could lose users money? What breaks the critical path? Those get tested first, automated first. At OLACLICK, I created a matrix collaborating with product and engineering: critical payment flows, authentication, API integrations got the most coverage. Lower-risk areas got less. Exploratory testing isn't an afterthought—it's scheduled and purposeful. Prioritization changes throughout the project lifecycle, so I keep it flexible." },
+          { stage: 'Screening', category: 'Soft Skills', num: 14, question: 'How do you handle tight deadlines?', answer: "I've worked on plenty of tight deadlines in fintech. The key is being strategic, not panicked. Identify critical path immediately—what absolutely must work? Test that first. I'm also honest about trade-offs. I'll say, 'We can ship Friday if we accept this risk in area X, and here's my mitigation.' Most stakeholders appreciate honest assessment more than false confidence. And I automate what I can—repetitive testing is the first thing to drop under time pressure." },
+          { stage: 'Screening', category: 'Technical', num: 15, question: "What's your experience with mobile testing?", answer: "I've tested iOS and Android apps. At TUL, I worked extensively with Flutter (Dart) for mobile-web hybrids. Appium for native apps. AWS Device Farm for cloud-based testing—eliminates the need for a device lab. Mobile testing has unique challenges: device fragmentation, connectivity issues, background processes. I design tests accounting for those variables. I've also tested the backend APIs that mobile clients consume." },
+          { stage: 'Screening', category: 'Methodology', num: 16, question: "What's your approach to test documentation?", answer: "Documentation is often overlooked, but it's critical for scaling teams. At OLACLICK, I created the 'QA Playbook'—standards for bug reports, test cases, technical documentation. The goal was consistency: any team member knows what to do. I maintain traceability matrices so we can see which tests cover which requirements. For complex systems, I document test data strategies. But here's the key: I keep docs close to the code, version controlled together. If it's not updated with code, it's a lie." },
+          { stage: 'Screening', category: 'Experience', num: 17, question: 'What do you know about our company?', answer: "I've researched your company thoroughly. [Mention specific recent launches, tech choices, or business announcements]. What resonates with me is [specific aspect of their approach]. I understand you're scaling, which is where my experience in building and mentoring QA teams becomes valuable. I've navigated growth before. I know how to scale quality without slowing momentum." },
+          { stage: 'Screening', category: 'Experience', num: 18, question: 'Where do you see yourself in 5 years?', answer: "I want to grow into a QA architect or director level—not for the title, but for influence. I want to shape how teams think about quality, define testing strategy at scale, mentor senior engineers. I'm also interested in the product side: helping companies understand how quality decisions impact business metrics and user experience. Honestly, I want to keep learning. Whether new testing paradigms, emerging tech, or leadership skills. That's what keeps me engaged." },
+          { stage: 'Screening', category: 'Tools', num: 19, question: "What's your experience with test management tools?", answer: "JIRA is my default. I've customized it extensively, integrated Xray for test management. I create dashboards that matter: defect trends by component, automation coverage gaps, flakiest tests. I've also written Python scripts to extract insights that standard reports don't show. The tools are secondary; what matters is discipline around data. You measure what improves." },
+          { stage: 'Screening', category: 'Technical', num: 20, question: 'Describe a challenging bug you found', answer: "At DEUNA, we had a race condition in async payment processing that only manifested under specific load conditions. Intermittent failures across 80+ payment service providers. Users would submit payment, see it process, but transaction would fail silently on backend. We couldn't reproduce in development because it only happened under realistic production load with network jitter. I spent time analyzing CloudWatch logs, correlation IDs, timing patterns. Once I isolated it to a missing distributed lock, I worked with backend engineers on the fix, then built comprehensive Playwright tests covering async flows, timeouts, concurrent requests. That taught me: sometimes the best testing is understanding how systems fail under real conditions." },
+          { stage: 'Screening', category: 'Soft Skills', num: 21, question: 'What makes you a better candidate?', answer: "Three things: First, I bring real seniority—16 years building quality in high-stakes fintech and banking. Second, I'm not just a practitioner. I've built QA teams from scratch, led automation transformations, mentored engineers. I'm a strategist. Third, I deliver measurable impact. At OLACLICK I transformed manual to automated. At DEUNA I standardized testing across 80+ integrations. That's not luck. That's execution. Plus I'm trilingual, which matters for distributed teams." },
+          { stage: 'Screening', category: 'Soft Skills', num: 22, question: 'How do you handle conflicts with team members?', answer: "Conflicts are normal in engineering. I address them directly but respectfully. I gather facts first, then have a conversation: 'Here's what I observed, here's how it impacts us, what's your perspective?' I listen more than I talk. Usually, disagreement is about approach, not goals. At Everis, managing both QA and automation teams meant navigating different priorities. I found common ground focusing on user impact. If we genuinely disagree, I escalate thoughtfully—not to create drama, but to clarify priorities. I always focus on the problem, never personal criticism." },
+          { stage: 'Screening', category: 'Technical', num: 23, question: "What's your experience with database testing?", answer: "I'm comfortable with SQL. I write queries to validate data integrity, check for orphaned records, verify ETL transformations. At DEUNA, I worked with PySpark to test data pipelines. I've tested data migrations where correctness was critical. I understand indexing, query performance, connection pooling issues. Database testing often gets overlooked but it's crucial for fintech systems where data correctness isn't optional. I approach it systematically." },
+          { stage: 'Screening', category: 'Technical', num: 24, question: 'Have you worked with AWS/Azure/GCP?', answer: "AWS is my comfort zone. S3 for test artifacts, CloudWatch for monitoring and analysis, EC2/ECS for test runners, Device Farm for mobile testing, RDS for test databases, FIS for chaos engineering. Azure DevOps is my secondary platform. The cloud fundamentally changes QA: you can provision infrastructure on-demand, scale horizontally, treat infrastructure as code. That enables practices like running full suites in parallel, spinning up environments per branch, testing at realistic scale." },
+          { stage: 'Screening', category: 'Technical', num: 25, question: "What's your experience with test data management?", answer: "Test data is critical and often mismanaged. I design data factories that generate realistic test data programmatically—no manual setup. I've used Kafka for event-driven test scenarios where timing matters. I understand the balance between synthetic data and masked production data—sometimes you need real patterns but must anonymize PII. I've also worked with WireMock to mock external systems, decoupling test data from third-party dependencies. At OLACLICK, we built test data strategy ensuring consistency, parallelization, isolation." },
+          { stage: 'Screening', category: 'Soft Skills', num: 26, question: 'How do you stay updated on testing trends?', answer: "I'm intentional about learning. ISTQB certifications keep me current with industry standards. Recent courses in TypeScript, Playwright, AI-Driven Cybersecurity. I experiment with tools in side projects. I read blogs, follow testing communities. But honestly, I'm skeptical of chasing every new tool. I focus on understanding principles—testing pyramid, risk-based testing, test data strategy—and applying them contextually. The tool matters less than the thinking." },
+          { stage: 'Screening', category: 'Methodology', num: 27, question: "What's your approach to regression testing?", answer: "Regression testing is where automation multiplies your effort. At OLACLICK, we migrated from 100% manual to fully automated—that alone cut testing time from days to minutes. I focus the suite on critical paths: authentication, core features, critical integrations. I don't automate every edge case—not practical. I use risk-based selection: what's likely to break? That gets automated. Full regression runs nightly, but developers get feedback on their changes in minutes through selective execution." },
+          { stage: 'Screening', category: 'Technical', num: 28, question: 'Describe your experience with BDD', answer: "BDD aligns with my philosophy: tests that business stakeholders understand. At TUL, I implemented Cucumber with Gherkin—product owners could read tests and know what's being validated. The syntax forces clear thinking: Given-When-Then. When you write scenarios with the product owner, you catch ambiguities early. The real benefit is collaboration. That's when quality becomes everyone's responsibility, not just QA." },
+          { stage: 'Screening', category: 'Technical', num: 29, question: "What's your experience with Docker?", answer: "Docker is essential. I use it to spin up entire test environments: databases, APIs, test runners. I've written Dockerfiles for test images optimized for iteration. The power is consistency: tests run the same way on laptops, CI/CD, anywhere. I've built custom images for specific scenarios—like Firefox with plugins for accessibility testing. Kubernetes is the next level; I've touched it but I'm focused on Docker mastery first." },
+          { stage: 'Screening', category: 'Soft Skills', num: 30, question: 'How do you handle test environment issues?', answer: "Environment issues kill productivity. At OLACLICK, I established staging requirements matching production—we were losing time testing against dev-only issues. I monitor environment health proactively: CloudWatch dashboards, smoke tests, capacity alerts. When issues arise, I partner with DevOps quickly. I also document recovery procedures—if the database goes down at 2 AM, someone needs to know the steps. Resilience matters." },
+
+          // TECHNICAL QUESTIONS (31-80)
+          { stage: 'Technical', category: 'Fundamentals', num: 31, question: 'What is the difference between verification and validation?', answer: "Verification: Are we building it right? That's code reviews, static analysis, testing the implementation against design. Validation: Are we building the right thing? That's user testing, UAT, checking if it solves the actual problem. Both matter. Verification catches bugs early. Validation catches requirements misunderstanding before you ship the wrong product." },
+          { stage: 'Technical', category: 'Fundamentals', num: 32, question: 'Explain black-box vs white-box testing', answer: "Black-box is testing like a user: you don't know how it's built, you just send inputs and observe outputs. That's great for finding realistic issues. White-box is testing like an engineer: you understand the code paths, you design tests to hit specific branches and edge cases. Both are valuable. I use black-box for E2E—it reflects real user behavior. I use white-box thinking for API testing where I understand the business logic." },
+          { stage: 'Technical', category: 'Fundamentals', num: 33, question: 'What are the levels of testing?', answer: "Unit testing (individual functions), Component testing (multiple functions), Integration testing (multiple components), System testing (whole application), UAT (users validate). I also add Performance and Security testing across levels. The key is the testing pyramid: many unit tests because they're fast, fewer integration tests, even fewer system tests because they're slow. That's efficient testing." },
+          { stage: 'Technical', category: 'Fundamentals', num: 34, question: 'What is the difference between functional and non-functional testing?', answer: "Functional: Does it work? Does login authenticate correctly? Non-functional: How well does it work? How fast is authentication? How many concurrent logins can it handle? Both matter for good products." },
+          { stage: 'Technical', category: 'Fundamentals', num: 35, question: 'What is the difference between regression and smoke testing?', answer: "Smoke test: quick sanity check. Does this build work at all? Can I log in? Can I navigate? It's a gate—if smoke fails, regression doesn't run. Regression: comprehensive. I run all tests we've written to ensure nothing broke. Smoke is fast, regression is thorough. In CI/CD, smoke runs first; if it passes, full regression runs." },
+          { stage: 'Technical', category: 'Fundamentals', num: 36, question: 'What is a test case vs test scenario?', answer: "A scenario is the story: 'User logs in and purchases an item.' A test case is the detailed script: 'Given user is on login page, When they enter email and password, Then they're redirected to dashboard.' Scenarios are for planning, test cases are for execution." },
+          { stage: 'Technical', category: 'Fundamentals', num: 37, question: 'What is boundary value analysis?', answer: "Boundaries are where bugs hide. If a system accepts age 18-65, test 17 (just below), 18 (boundary), 65 (boundary), 66 (just above). Bugs often live at boundaries—off-by-one errors, missing equals signs. It's high-return testing." },
+          { stage: 'Technical', category: 'Fundamentals', num: 38, question: 'What is equivalence partitioning?', answer: "Instead of testing age 18, 19, 20...65 individually, I group them: invalid (less than 18), valid (18-65), invalid (over 65). I test one from each group. It's efficient: I get coverage with fewer test cases." },
+          { stage: 'Technical', category: 'Fundamentals', num: 39, question: 'What is a defect lifecycle?', answer: "New → Triage → Assigned → In Progress → Fixed → Retesting → Reopened (if fails) → Closed (if passes). Clear status tracking prevents defects from falling through cracks." },
+          { stage: 'Technical', category: 'Fundamentals', num: 40, question: 'Explain positive vs negative testing', answer: "Positive: 'If I enter valid credit card, does the payment process?' Negative: 'If I enter invalid card, does the system handle it gracefully?' Positive shows happy paths work. Negative shows the system doesn't break with bad input." },
+          { stage: 'Technical', category: 'Fundamentals', num: 41, question: 'What is the difference between error, defect, and failure?', answer: "Error: developer writes buggy code. Defect: we catch it in testing. Failure: user experiences it in production. Ideally, we catch errors before they become defects. We should never let defects reach users. If we do, it's a failure." },
+          { stage: 'Technical', category: 'Fundamentals', num: 42, question: 'What is a traceability matrix?', answer: "Traceability ensures nothing falls through cracks. I maintain a matrix: each business requirement maps to test cases, which map to test execution results. If a requirement has no tests, that's a coverage gap. If a test fails, I trace it back to the requirement it covers." },
+          { stage: 'Technical', category: 'Fundamentals', num: 43, question: 'What is risk-based testing?', answer: "I ask: What could hurt users? What could cost money? What's likely to break? High-risk areas get more testing, more eyes, earlier execution. Low-risk areas might get exploratory testing or minimal automation. It's efficient resource allocation." },
+          { stage: 'Technical', category: 'Automation', num: 44, question: 'What automation framework structure do you follow?', answer: "I use Page Object Model with clear separation: PageObjects encapsulate UI elements, Utilities handle common actions, TestData is centralized, TestBase provides setup/teardown. The goal is maintainability: if the UI changes, I modify one page object, not fifty test cases." },
+          { stage: 'Technical', category: 'Automation', num: 45, question: 'What is the Page Object Model?', answer: "Each page of the application becomes a class. That class holds locators and methods representing page actions. Tests use the page object, not raw selectors. Benefit: if the login page layout changes, I fix it in one place, not in fifty tests. It's DRY applied to automation." },
+          { stage: 'Technical', category: 'Automation', num: 46, question: 'What are the advantages of TestNG over JUnit?', answer: "TestNG is more flexible: annotations for grouping, parameterized tests for data-driven testing, test dependencies, better reporting. JUnit is simpler. Choose based on needs: simple unit tests, JUnit is fine. Complex test suites, TestNG scales better." },
+          { stage: 'Technical', category: 'Automation', num: 47, question: 'How do you handle dynamic elements in Selenium?', answer: "Never use Thread.sleep—it makes tests flaky and slow. Use WebDriverWait with explicit conditions: wait for element to be clickable, wait for text to appear. For dynamic IDs, use XPath strategies: contains(), starts-with(), or attribute matching instead of exact IDs." },
+          { stage: 'Technical', category: 'Automation', num: 48, question: 'What is the difference between findElement and findElements?', answer: "findElement: returns one element or throws exception. findElements: returns a list of all matches or empty list. Use findElement when you expect exactly one match. Use findElements when you're counting matches or iterating multiple elements." },
+          { stage: 'Technical', category: 'Automation', num: 49, question: 'How do you handle timeouts in automation?', answer: "Implicit waits are global and often cause confusion. Explicit waits are better: WebDriverWait with specific conditions. For advanced cases, FluentWait allows custom polling intervals. Never hard-code Thread.sleep—it's a test smell." },
+          { stage: 'Technical', category: 'Automation', num: 50, question: 'What are the challenges in test automation?', answer: "Flakiness is the biggest enemy—tests that pass sometimes and fail others. Root causes: timing issues, environment instability, poor test isolation, or bad selectors. I address them with explicit waits, parallel test execution with data isolation, and regular flakiness analysis." },
+          { stage: 'Technical', category: 'Automation', num: 51, question: 'How do you implement retry logic for flaky tests?', answer: "In TestNG, implement IRetryAnalyzer to automatically retry failed tests up to N times. Log which tests were retried—that's a signal to investigate. But retry is a band-aid. The real fix is finding the root cause: timing, environment, or test design." },
+          { stage: 'Technical', category: 'Automation', num: 52, question: 'What are the best practices for test automation?', answer: "Clear, descriptive test names. DRY: no copy-pasted code. Independent tests: test B doesn't depend on test A. Proper assertions: test one thing. Good logging so failures are easy to debug. And version control: test code is code." },
+          { stage: 'Technical', category: 'Automation', num: 53, question: 'What is your approach to selecting automation tools?', answer: "I evaluate: What's the tech stack? What languages does the team know? What's the budget? What integrates with our CI/CD? What's the community support? I avoid shiny-new-thing syndrome. I pick tools that solve the problem at hand." },
+          { stage: 'Technical', category: 'API', num: 54, question: 'What are the different HTTP methods?', answer: "GET retrieves data without side effects. POST creates. PUT replaces entirely. PATCH updates partially. DELETE removes. HEAD is like GET but no response body. Understanding these matters for testing: GET should be idempotent, POST should create, etc." },
+          { stage: 'Technical', category: 'API', num: 55, question: 'What is the difference between authentication and authorization?', answer: "Authentication: Are you who you claim to be? (Login). Authorization: Are you allowed to do this? (Can you view this user's data?). Testing both matters: verify login works, and verify access controls prevent unauthorized actions." },
+          { stage: 'Technical', category: 'API', num: 56, question: 'How do you test APIs manually?', answer: "Postman is my go-to: send requests, validate status codes, inspect response bodies, check headers. I organize requests in collections by endpoint, create test scripts that run assertions, share collections with the team." },
+          { stage: 'Technical', category: 'API', num: 57, question: 'How do you automate API tests?', answer: "RestAssured for Java: BDD-style syntax makes tests readable. Requests library for Python: simple and powerful. Supertest for Node: integrates with Express. Key is validating response structure with JSON schema, status codes, and business logic." },
+          { stage: 'Technical', category: 'API', num: 58, question: 'What status code ranges are you familiar with?', answer: "1xx informational (100-199), 2xx success (200-299: 200 OK, 201 Created), 3xx redirection (300-399, usually 301/302), 4xx client errors (400-499: 400 Bad Request, 401 Unauthorized, 404 Not Found), 5xx server errors (500-599: 500 Internal Server Error). Testing considers these: happy path gets 200, invalid input gets 400, unauthorized gets 401." },
+          { stage: 'Technical', category: 'API', num: 59, question: 'What is contract testing in microservices?', answer: "Consumer (service A) expects provider (service B) to return data in specific format. Contract testing verifies that agreement without requiring full end-to-end testing. Pact records expectations and verifies them. Benefit: fast feedback, fewer integration test flakes." },
+          { stage: 'Technical', category: 'API', num: 60, question: 'How do you mock external services?', answer: "WireMock is powerful: define endpoints, responses, match requests, simulate delays/errors. You can test error scenarios (third-party API down) without depending on that service. MockServer is another option. Mocking enables fast, reliable tests independent of external dependencies." },
+          { stage: 'Technical', category: 'Performance', num: 61, question: 'What is the difference between load and stress testing?', answer: "Load testing: simulate realistic user volume (1000 concurrent users). Does the system handle it? Response times okay? Stress testing: keep adding users until it breaks. What's the breaking point? How does it fail? Both reveal different insights." },
+          { stage: 'Technical', category: 'Performance', num: 62, question: 'What tools do you use for performance testing?', answer: "JMeter for load and stress, K6 for modern scripting, IBM Rational Performance Tester for enterprise projects. I've run serious load tests on banking systems under realistic peak loads." },
+          { stage: 'Technical', category: 'Performance', num: 63, question: 'What are common performance metrics?', answer: "Response time: how fast? Throughput: how many requests/second? Error rate: do failures increase under load? CPU and memory: are resources maxed? Database connections: running out? Latency distribution: are some requests much slower?" },
+          { stage: 'Technical', category: 'Security', num: 64, question: 'What is the OWASP Top 10?', answer: "Top risks: Injection (SQL injection), Broken Authentication, Sensitive Data Exposure, XXE, Broken Access Control, Misconfiguration, XSS, Insecure Deserialization, Vulnerable Dependencies, Insufficient Logging. As a tester, I focus on the most impactful: auth, access control, injection." },
+          { stage: 'Technical', category: 'Security', num: 65, question: 'How do you perform security testing in QA?', answer: "Static analysis (SAST), dynamic scans with OWASP ZAP, dependency checks, penetration testing, and security regression. I have IBM AppScan certifications and have tested systems with strict compliance requirements." },
+          { stage: 'Technical', category: 'DevOps', num: 66, question: 'What is a CI/CD pipeline?', answer: "CI: Every commit triggers automated build and tests. Fast feedback. CD: Automated release to staging or production. The goal: ship code confidently, frequently, with minimal risk." },
+          { stage: 'Technical', category: 'DevOps', num: 67, question: 'How do you set up a test environment?', answer: "Use Docker Compose or Kubernetes to spin up microservices, databases, mocks. Use Infrastructure-as-Code with Terraform to provision resources. Cloud changes QA fundamentally." },
+          { stage: 'Technical', category: 'DevOps', num: 68, question: 'What are blue-green deployments?', answer: "Two production environments: Blue (current) and Green (new version). Deploy to Green, test it, then switch traffic. If problems appear, switch back to Blue instantly. Zero downtime, instant rollback." },
+          { stage: 'Technical', category: 'Methodology', num: 69, question: 'What is a test pyramid?', answer: "Many unit tests at base (fast, cheap), fewer integration tests in middle, even fewer UI and E2E tests at top (slow, expensive). This balance is efficient testing." },
+          { stage: 'Technical', category: 'Methodology', num: 70, question: 'What is mutation testing?', answer: "Tools like Stryker introduce mutations (small code changes) to see if tests catch them. High kill score means strong tests. It's validation that your tests are actually testing something." },
+          { stage: 'Technical', category: 'Methodology', num: 71, question: 'What is the role of QA in DevOps?', answer: "QA enables DevOps. I implement automated testing in pipelines so deployments are confident. I monitor production quality metrics. I use feature flags to test new features safely. QA shifts from gatekeeping to enabling." },
+          { stage: 'Technical', category: 'Methodology', num: 72, question: 'What is shift-right testing?', answer: "Testing in production through monitoring, chaos engineering, canary deployments, A/B testing, and real-user monitoring. Complements shift-left." },
+          { stage: 'Technical', category: 'Methodology', num: 73, question: 'What is exploratory testing?', answer: "Structured exploration: I have a charter (what to test), I timebox it (1 hour), I explore with intention. I find edge cases automation missed, test real user paths, document findings. Complements automation." },
+          { stage: 'Technical', category: 'Methodology', num: 74, question: 'What is continuous testing vs automated testing?', answer: "Automated testing: I write scripts, they run. Continuous testing: tests run constantly throughout the pipeline—on commit, before merge, after deployment. It's automation at scale, integrated into workflow." },
+          { stage: 'Technical', category: 'Methodology', num: 75, question: 'What is test-driven development (TDD)?', answer: "Red-Green-Refactor: Write a failing test, write code to pass it, clean it up. Benefit: code designed for testability, safety net for refactoring, clear requirements. Hard to adopt but pays off." },
+          { stage: 'Technical', category: 'Methodology', num: 76, question: 'What is behavior-driven development (BDD)?', answer: "BDD aligns business requirements with automated tests using Gherkin Given-When-Then syntax. It forces clear thinking and enables collaboration." },
+          { stage: 'Technical', category: 'Methodology', num: 77, question: 'What is Event Storming?', answer: "Workshop where we map business events on timeline, understand domain complexity, identify test scenarios. I use it to discover edge cases: 'What happens if this event occurs out of order?'" },
+          { stage: 'Technical', category: 'Methodology', num: 78, question: 'What is chaos engineering?', answer: "Intentionally break things to learn how systems fail. Kill servers, delay networks, saturate resources. Do they recover gracefully? AWS FIS is a tool for this." },
+          { stage: 'Technical', category: 'Methodology', num: 79, question: 'What is the difference between static and dynamic testing?', answer: "Static: code review, static analysis tools, walkthroughs—find issues without running code. Dynamic: execute code with inputs, validate outputs. Both catch different issues." },
+          { stage: 'Technical', category: 'Methodology', num: 80, question: 'What is a test plan?', answer: "I define: What am I testing? Why? Who's on the team? How long? What's success? What risks? A good test plan is flexible; it guides without being a straitjacket." },
+
+          // EXECUTIVE QUESTIONS (81-143)
+          { stage: 'Executive', category: 'Leadership', num: 81, question: 'How do you build trust between QA and developers?', answer: "Respect their expertise, acknowledge good code, make their job easier. I pair with them, help debug, celebrate shared wins. Trust comes from consistent follow-through." },
+          { stage: 'Executive', category: 'Leadership', num: 82, question: 'What is your philosophy on QA in Agile?', answer: "QA is a team sport, not a single person. Quality is everyone's responsibility. My role is enabling that: building infrastructure, defining standards, catching issues early, supporting developers." },
+          { stage: 'Executive', category: 'Leadership', num: 83, question: 'How do you influence without authority?', answer: "Data is powerful. I show escaped defects, customer complaints, regression patterns. I propose solutions with clear ROI. I build allies by helping others succeed." },
+          { stage: 'Executive', category: 'Leadership', num: 84, question: 'How do you handle a team member not following quality standards?', answer: "One-on-one conversation first. Maybe they don't understand the standard, maybe they're under pressure, maybe it's a skill gap. I listen before assuming. Then I coach: here's what good looks like, here's how to get there, I'm here to help." },
+          { stage: 'Executive', category: 'Leadership', num: 85, question: 'What is your experience leading QA initiatives?', answer: "At B89, I built the QA function from zero. At OLACLICK, I led the automation transformation from manual to Playwright. At DEUNA, I standardized testing across 80+ integrations. Leadership is about vision, execution, and people." },
+          { stage: 'Executive', category: 'Leadership', num: 86, question: 'How do you handle production incidents?', answer: "Stay calm, gather facts, identify severity. If critical, I'm on the bridge call coordinating. I lead post-mortem: what happened, why, how do we prevent it. No blame, just learning. Follow up on action items." },
+          { stage: 'Executive', category: 'Leadership', num: 87, question: 'What quality metrics do you track?', answer: "Automation coverage, defect leakage, defect density, test flakiness, test execution time, customer-reported issues per release. These metrics guide decisions." },
+          { stage: 'Executive', category: 'Culture', num: 88, question: 'How do you foster a quality culture?', answer: "Lead by example: I test thoroughly, document decisions, fix issues fast. I celebrate quality wins: 'We caught X before users saw it.' I make quality discussions part of all meetings." },
+          { stage: 'Executive', category: 'Leadership', num: 89, question: 'How do you handle disagreements with product owners?', answer: "I understand their goals first. Then I propose: here's the quality risk of choice A, here's the trade-off with choice B. I speak their language—revenue impact, user churn, competitive advantage." },
+          { stage: 'Executive', category: 'Leadership', num: 90, question: 'What is your leadership style?', answer: "Servant leader. My job is removing obstacles, providing resources, setting direction. I empower people to make decisions, own outcomes. I trust the team and get out of the way when possible." },
+          { stage: 'Executive', category: 'Leadership', num: 91, question: 'How do you prioritize competing tasks?', answer: "I ask: What breaks the customer? What enables the sprint goal? What blocks other teams? Impact times urgency. Some things are important but not urgent; I schedule them. Some are urgent but unimportant; I delegate or drop." },
+          { stage: 'Executive', category: 'Leadership', num: 92, question: 'What is your experience with distributed teams?', answer: "I've worked with teams across US, Europe, Asia. I practice clear written communication, record sessions, respect time zones, and over-communicate decisions. Remote work requires more structure." },
+          { stage: 'Executive', category: 'Leadership', num: 93, question: 'How do you ensure team alignment on quality goals?', answer: "We set quality OKRs together: automation coverage by sprint, defect escape goals, test speed targets. Everyone owns them. We review progress publicly and celebrate wins." },
+          { stage: 'Executive', category: 'Strategy', num: 94, question: 'What is your view on QA automation ROI?', answer: "Automation breaks even quickly: 3-6 months for high-volume systems. But ROI is beyond cost savings—it's velocity. Without automation, regression testing is a bottleneck. With it, developers ship faster, more confident." },
+          { stage: 'Executive', category: 'Leadership', num: 95, question: 'How do you communicate quality to leadership?', answer: "I translate to business language. Defects escaped to users = customer churn risk. Test automation = faster releases = market advantage. MTTR = business continuity. I connect quality to revenue." },
+          { stage: 'Executive', category: 'Strategy', num: 96, question: 'What is your experience setting up QA processes?', answer: "I've built QA from scratch multiple times. Define test strategy, design automation architecture, integrate with CI/CD, establish defect management workflow, create documentation standards." },
+          { stage: 'Executive', category: 'Leadership', num: 97, question: 'How do you handle unrealistic deadlines?', answer: "I communicate risks early, suggest scope trade-offs, ensure testing focuses on highest-risk areas. I escalate with mitigation plans." },
+          { stage: 'Executive', category: 'Strategy', num: 98, question: 'What is your vision for QA in modern development?', answer: "QA evolves into quality engineering embedded in teams. We're shifting left (testing earlier), shifting right (testing in production). We're moving from finding bugs to preventing them." },
+          { stage: 'Executive', category: 'Strategy', num: 99, question: 'How do you evaluate test automation ROI?', answer: "Manual test hour × regression frequency = annual cost. Automation saves that. Development cost ÷ annual savings = payback period. But also measure velocity: faster feedback, faster releases, happier developers." },
+          { stage: 'Executive', category: 'Strategy', num: 100, question: 'How do you propose a new automation tool?', answer: "First, define the problem: what are we solving? Then PoC: try the tool for a week. Present findings: cost, learning curve, integration, community support. Let the team decide with data." },
+          { stage: 'Executive', category: 'Culture', num: 101, question: 'What is your approach to continuous improvement?', answer: "Every sprint: What slowed us down? What worked well? Small experiments: try a new tool, adjust a process, measure impact. I believe in iterating our way to excellence." },
+          { stage: 'Executive', category: 'Strategy', num: 102, question: 'How do you plan for scalability in QA?', answer: "Assume growth. Design frameworks modular and reusable. Use test data factories. Parallelize execution. Use cloud for elastic scaling. At DEUNA managing 80+ PSPs, scalability was essential." },
+          { stage: 'Executive', category: 'Strategy', num: 103, question: 'How do you decide which tests to automate?', answer: "High-risk, high-frequency, critical flow tests get automated. Manual testing remains for exploratory, usability, and low-frequency features." },
+          { stage: 'Executive', category: 'Strategy', num: 104, question: 'How do you handle slow test execution?', answer: "Parallelize: distribute across machines. Optimize: remove flaky waits, speed up setup. Selective: run only relevant tests per commit. Don't run full suite until merge. Fast feedback beats slow comprehensiveness." },
+          { stage: 'Executive', category: 'Strategy', num: 105, question: 'How do you handle test environment provisioning?', answer: "Infrastructure as Code: define environments in code (Terraform), spin up on demand. Docker Compose for local development. CI/CD automatically provisions per branch. Eliminates 'works on my machine.'" },
+          { stage: 'Executive', category: 'Communication', num: 106, question: 'How do you explain complex issues to non-technical stakeholders?', answer: "Translate to their language. Instead of 'race condition,' say 'payments sometimes fail silently, customer doesn't know if transaction went through.' I focus on impact: revenue loss, customer frustration, trust." },
+          { stage: 'Executive', category: 'Communication', num: 107, question: 'How do you build confidence with international clients?', answer: "Transparency and consistency. Regular status reports, honest about risks, follow through on promises. I've worked across six countries; trust is currency." },
+          { stage: 'Executive', category: 'Communication', num: 108, question: 'How do you gather requirements for testing?', answer: "Story refinement is where it starts. I ask hard questions: What's the happy path? What fails? What's an edge case? I create acceptance criteria with the product owner before dev touches code." },
+          { stage: 'Executive', category: 'Communication', num: 109, question: 'What is your approach to user acceptance testing (UAT)?', answer: "I prepare test scripts, facilitate UAT sessions with stakeholders, collect feedback. I'm the bridge: if issues arise, I help dev understand stakeholder intent." },
+          { stage: 'Executive', category: 'Communication', num: 110, question: 'How do you handle scope changes during testing?', answer: "Scope changes are normal. I assess: How does this change testing? What do we need to validate? I reprioritize. I'm honest about what we can't test if timeline doesn't shift." },
+          { stage: 'Executive', category: 'Communication', num: 111, question: 'What is your approach to incident post-mortems?', answer: "Blameless and objective. Identify sequence of events, determine root cause, propose action items, follow up on implementation. Learning, not blame." },
+          { stage: 'Executive', category: 'Communication', num: 112, question: 'How do you foster collaboration across QA, Dev, and Ops?', answer: "We're one team with different specialties. Joint design reviews, shared oncall, retrospectives with all three. When someone from another discipline brings insight, celebrate it." },
+          { stage: 'Executive', category: 'Culture', num: 113, question: 'What is your approach to continuous learning?', answer: "I'm intentional. ISTQB certifications keep me current. I take courses, experiment with tools, read blogs. I focus on principles—testing pyramid, risk-based testing—and apply them contextually." },
+          { stage: 'Executive', category: 'Experience', num: 114, question: 'What are your career goals?', answer: "I want influence at scale: architect testing strategy for large organizations, mentor next-generation quality engineers, drive culture where quality is competitive advantage. Not just technical depth but strategic impact." },
+          { stage: 'Executive', category: 'Experience', num: 115, question: 'Why do you want to join your company?', answer: "I research companies thoroughly. [Mention specific initiatives]. That resonates with me. I see an opportunity to impact your quality journey at scale with my 16+ years of experience." },
+          { stage: 'Executive', category: 'Communication', num: 116, question: 'What questions do you have for me?', answer: "What's the biggest QA challenge you're facing right now? How does your engineering leadership measure quality success? What's the relationship between QA and development currently? What would success in this role look like in 90 days?" },
+          { stage: 'Executive', category: 'Soft Skills', num: 117, question: 'Have you ever mentored someone?', answer: "Absolutely. I built and trained the QA team at B89. I've mentored junior testers at TUL and DEUNA on automation practices, code quality, career growth. What I love most is watching someone solve complex problems independently after a month." },
+          { stage: 'Executive', category: 'Soft Skills', num: 118, question: 'How do you handle negative feedback?', answer: "Feedback is a gift. I listen to understand, not defend. If someone says my test documentation is unclear, I ask, 'What would make it clearer?' Then I act. Showing that you take feedback seriously builds trust." },
+          { stage: 'Executive', category: 'Soft Skills', num: 119, question: 'What motivates you in QA?', answer: "The moment when a developer releases code confidently because they trust the test suite. When we catch a critical bug that would have cost thousands. I get energized solving hard problems. I love the people side: mentoring, building teams, creating a quality culture." },
+          { stage: 'Executive', category: 'Soft Skills', num: 120, question: 'How do you manage multiple projects?', answer: "Priority is everything. I categorize tasks by urgency and importance. I'm transparent about what I can realistically deliver. I minimize context switching. At UPWORK, I managed multiple clients by compartmentalizing and communicating status regularly." },
+          { stage: 'Executive', category: 'Technical', num: 121, question: 'What is a test summary report?', answer: "Post-testing: how many tests, passed/failed results, key metrics, defect summary, environment details, recommendation to release or not. It's evidence of quality." },
+          { stage: 'Executive', category: 'Technical', num: 122, question: 'How do you measure QA metrics?', answer: "Automation coverage: what percentage are automated? Defect density: defects per feature. Leakage: escaped defects. Execution time: how fast? Flakiness: what percentage of failures are test issues? These metrics guide improvement." },
+          { stage: 'Executive', category: 'Architecture', num: 123, question: 'How do you test microservices?', answer: "Test individual services in isolation, use contract testing with Pact for interactions, E2E flows for critical paths. You can't test everything end-to-end economically." },
+          { stage: 'Executive', category: 'Architecture', num: 124, question: 'How do you test event-driven architectures?', answer: "Test publishers: do they emit events correctly? Test subscribers: do they process correctly? Test ordering: are events sequential? Test error scenarios: what if a subscriber fails?" },
+          { stage: 'Executive', category: 'Architecture', num: 125, question: 'How do you test file processing pipelines?', answer: "Test happy path: valid file processes correctly. Test edge cases: empty files, large files, special characters. Test error handling: malformed data, unsupported formats. Validate transformation and error reporting." },
+          { stage: 'Executive', category: 'Architecture', num: 126, question: 'What is the role of test doubles in testing?', answer: "Stub: returns fixed data. Mock: verifies method was called. Fake: lightweight implementation. Dummy: placeholder. Spy: records interactions. Each serves different testing needs." },
+          { stage: 'Executive', category: 'Architecture', num: 127, question: 'How do you test databases for performance?', answer: "Run load tests with JMeter using JDBC requests. Monitor query execution time, cache hits, lock contention, connection pool utilization. Understand indexing and query optimization." },
+          { stage: 'Executive', category: 'Best Practices', num: 128, question: 'What are best practices for test naming?', answer: "Descriptive names tell a story: testLoginWithValidCredentialsSucceeds. Use patterns: shouldReturnErrorWhenUserNotFound. Name should answer: what's being tested, under what condition, what's expected?" },
+          { stage: 'Executive', category: 'Leadership', num: 129, question: 'How do you build trust between QA and developers?', answer: "I pair with developers during code reviews, help debug issues, write automated tests early in dev cycles, frame quality as shared responsibility." },
+          { stage: 'Executive', category: 'Soft Skills', num: 130, question: 'How do you handle a bug that developers do not consider a bug?', answer: "When there's disagreement, I ground the conversation in data and empathy. I share user feedback or usage patterns. Most developers want to ship quality—they just may not see the impact from user perspective." },
+          { stage: 'Executive', category: 'Soft Skills', num: 131, question: 'What is your experience with Shift-Left Testing?', answer: "Shift-Left means moving testing earlier—ideally before code is written. I practice through story grooming, pairing with developers during implementation, setting up CI/CD gates that fail fast." },
+          { stage: 'Executive', category: 'Soft Skills', num: 132, question: 'What are your strengths and weaknesses?', answer: "Strengths: automation architecture, API testing, team leadership, building QA from scratch. I've built QA teams and scaled organizations. Weakness: I can be perfectionistic. I've learned to balance: get it right enough to ship, then iterate." },
+          { stage: 'Executive', category: 'Technical', num: 133, question: 'Have you worked remotely before?', answer: "Extensively. I've worked for US companies remotely. I'm comfortable with async communication—I document decisions, use Slack thoughtfully, record Zoom calls. Remote work requires structure and over-communication." },
+          { stage: 'Executive', category: 'Technical', num: 134, question: 'What is your experience with security testing?', answer: "I have IBM certifications in AppScan. I understand OWASP Top 10, test for common vulnerabilities: injection attacks, authentication flaws, insecure deserialization. Security testing isn't once and forget—it's continuous." },
+          { stage: 'Executive', category: 'Technical', num: 135, question: 'How do you ensure test coverage?', answer: "Coverage is a means, not an end. I track metrics but focus on meaningful coverage, not vanity metrics. 100% code coverage is often waste. I prioritize: critical paths get most coverage, low-risk areas get less." },
+          { stage: 'Executive', category: 'Technical', num: 136, question: 'What is your experience with non-functional testing?', answer: "I've run performance testing with JMeter and K6 on high-volume payment systems. I've used AWS FIS for chaos engineering. Contract testing validates service integrations. I've tested usability, accessibility, reliability." },
+          { stage: 'Executive', category: 'Technical', num: 137, question: 'What is your experience with version control?', answer: "Git is second nature. I'm comfortable with branching strategies: feature branches, release branches, hotfix workflows. I rebase intelligently. I review PRs for testability. Version control discipline matters: clear commit messages, logical commits." },
+          { stage: 'Executive', category: 'Soft Skills', num: 138, question: 'What motivates you in QA?', answer: "The moment when developers release code confidently. When we catch bugs before users do. I get energized solving hard problems. I love building teams, mentoring engineers, creating quality culture. After 16 years, I'm still here because every project teaches me something new." },
+          { stage: 'Executive', category: 'Soft Skills', num: 139, question: 'How do you handle a bug that developers consider a problem?', answer: "I present clear evidence: screenshots, logs, exact steps. I understand their perspective. I collaborate: here's what I see, here's the impact, what do you think? Most times, with facts, they agree." },
+          { stage: 'Executive', category: 'Soft Skills', num: 140, question: 'What is your vision for QA architecture?', answer: "QA shifts from testing silos to quality engineering embedded in teams. We prevent bugs rather than find them. We shift left (testing earlier), shift right (testing in production). Quality is architecture, design, CI/CD discipline, monitoring—not just test cases." },
+          { stage: 'Executive', category: 'Soft Skills', num: 141, question: 'How do you know when you have enough test coverage?', answer: "When stakeholders and developers feel confident deploying. When the team agrees we've tested critical paths and major risks. When exploratory testing isn't finding new issues consistently. It's a conversation, not a number." },
+          { stage: 'Executive', category: 'Soft Skills', num: 142, question: 'What do you do when you discover widespread defects late in the cycle?', answer: "Stay calm. Assess severity: which defects impact users? Which are cosmetic? Prioritize. Communicate clearly about risks and options. Work with the team on triage. Document decisions. Prevent it next time by shifting left." },
+          { stage: 'Executive', category: 'Soft Skills', num: 143, question: 'How would your ideal team member describe you?', answer: "Probably: passionate about quality but not dogmatic, always willing to help, asks good questions, celebrates successes, genuinely cares about people's growth, makes complex things simple, leads by example. Someone who makes quality feel achievable, not burdensome." }
         ];
 
         // Build interviews
@@ -1916,7 +1324,7 @@
 
               const header = document.createElement('div');
               header.className = 'interviews-group-header';
-              header.innerHTML = '<h3><i class="fas fa-question-circle"></i> ' + escapeHtml(stage) + ' - ' + escapeHtml(category) + ' (' + items.length + ' preguntas)</h3><i class="fas fa-chevron-down"></i>';
+              header.innerHTML = '<h3><i class="fas fa-question-circle"></i> ' + escapeHtml(stage) + ' - ' + escapeHtml(category) + ' (' + items.length + ' Q)</h3><i class="fas fa-chevron-down"></i>';
               header.addEventListener('click', function () {
                 body.classList.toggle('collapsed');
                 header.classList.toggle('collapsed');
@@ -1959,3 +1367,8 @@
     </script>
   </body>
 </html>
+</content>
+<parameter name="task_progress">- [x] Read CV and understand Luis Armando's experience
+- [x] Reconstruct INTERVIEWS section with compelling, clear, and senior-level answers
+- [x] Ensure answers demonstrate expertise without being robotic
+- [x] Verify English clarity and professional tone
