@@ -1,7 +1,7 @@
 (function(){
   const translations = {
     en: {
-      'profile.title': '16+ Senior SDET & QA Automation Architect | Playwright | TypeScript | Contract Testing (Pact) | CI/CD | AWS | AI Driven',
+      'profile.title': 'Sr. SDET & AI Quality Engineer | 16+ YOE | Playwright, TypeScript, Python | Generative AI & LLM Evaluation, RAG | Fintech, Banking & Payments | LATAM, SPAIN & US',
       'nav.bio': 'Bio',
       'nav.certifications': 'Certifications',
       'nav.workhistory': 'Work History',
@@ -19,7 +19,7 @@
       'edu.skills': 'Various Tech Skills'
     },
     es: {
-      'profile.title': '16+ Senior SDET & QA Automation Architect | Playwright | TypeScript | Contract Testing (Pact) | CI/CD | AWS | AI Driven',
+      'profile.title': 'Sr. SDET & AI Quality Engineer | 16+ YOE | Playwright, TypeScript, Python | Generative AI & LLM Evaluation, RAG | Fintech, Banking & Payments | LATAM, SPAIN & US',
       'nav.bio': 'Bio',
       'nav.certifications': 'Certificaciones',
       'nav.workhistory': 'Experiencia',
@@ -37,7 +37,7 @@
       'edu.skills': 'Habilidades Técnicas Variadas'
     },
     pt: {
-      'profile.title': '16+ Senior SDET & QA Automation Architect | Playwright | TypeScript | Contract Testing (Pact) | CI/CD | AWS | AI Driven',
+      'profile.title': 'Sr. SDET & AI Quality Engineer | 16+ YOE | Playwright, TypeScript, Python | Generative AI & LLM Evaluation, RAG | Fintech, Banking & Payments | LATAM, SPAIN & US',
       'nav.bio': 'Bio',
       'nav.certifications': 'Treinamentos',
       'nav.workhistory': 'Experiência',
