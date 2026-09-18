@@ -22,8 +22,10 @@
 ```
 brain/project-vision.md   ← Steering / memoria del proyecto
 flashcards.html            ← Página principal del dashboard + visor de flashcards
-apps.html                  ← Lanzador de apps (grilla con 8 tarjetas)
+apps.html                  ← Lanzador de apps (grilla de tarjetas)
 mynotes.html               ← Notas de estudio: Uncounables, Frasal Verbs, Irregular Verbs, Chunks & Interviews
+myformat.html              ← Formateador de textos (camelCase, snake_case, kebab-case, etc.)
+myjwt.html                 ← Decoder / Encoder de JSON Web Tokens (JWT) con verificación de firma
 ```
 
 ## Persistencia (LocalStorage)
@@ -179,6 +181,103 @@ El formulario está en **español**:
   - Chunks: rosa (`#ec4899`)
   - Interviews: índigo (`#6366f1`)
 
+---
+
+# 🔤 MyFormat — Documentación
+
+## Arquitectura
+
+**Single Page Application (SPA)** embebida en `myformat.html`, 100% client-side. Sin backend, sin LocalStorage y sin dependencias externas (salvo Font Awesome vía CDN).
+
+## Objetivo
+
+En la automatización se necesita diversos tipos de formateadores de texto según el lenguaje de programación: camelCase en JavaScript/Java, snake_case en Python, kebab-case en CSS/HTML, CONSTANT_CASE para constantes, etc. MyFormat permite escribir un texto, elegir el botón con el formato deseado y obtener el resultado al instante en una caja de salida.
+
+## Funcionamiento
+
+- **Entrada**: caja de texto `#formatInput`, **vacía**, con `Your  text here` mostrado únicamente como **placeholder** de ejemplo junto al texto guía "Escribe o pega tu texto aquí...".
+- **Salida**: caja de texto de sólo lectura `#formatOutput`, **vacía** al cargar la página (sólo se ve su placeholder "El resultado aparecerá aquí..."); se llena únicamente cuando el usuario pulsa un botón de formato. No hay autocompletado ni texto vivo al cargar.
+- Todas las funciones aplican primero `trim` y colapsan los espacios vacíos repetidos, y luego deciden dónde colocar la **letra capital** según el formato.
+- `splitWords()` corta camelCase/PascalCase y normaliza separadores (espacios, guiones, guiones bajos y símbolos) en palabras.
+- `cleanText()` hace el trim y la limpieza de espacios.
+- El resultado se re-formatea en vivo mientras se escribe (evento `input`).
+
+## Formatos disponibles
+
+| Grupo | Botón (`data-format`) | Ejemplo con `Your  text here` |
+|-------|-----------------------|-------------------------------|
+| 1. Limpieza | Trim (`trim`) | `Your text here` |
+| 2. Programación | camelCase (`camel`) | `yourTextHere` |
+| 2. Programación | PascalCase (`pascal`) | `YourTextHere` |
+| 2. Programación | snake_case (`snake`) | `your_text_here` |
+| 2. Programación | kebab-case (`kebab`) | `your-text-here` |
+| 2. Programación | CONSTANT_CASE (`constant`) | `YOUR_TEXT_HERE` |
+| 2. Programación | dot.case (`dot`) | `your.text.here` |
+| 3. Texto | Title Case (`title`) | `Your Text Here` |
+| 3. Texto | Sentence case (`sentence`) | `Your text here` |
+| 3. Texto | MAYÚSCULAS (`upper`) | `YOUR TEXT HERE` |
+| 3. Texto | minúsculas (`lower`) | `your text here` |
+| 4. Automatización | SQL IN list (`sql`) | `'Your', 'text', 'here'` |
+| 4. Automatización | CSV / comas (`csv`) | `Your, text, here` |
+| 4. Automatización | JSON array (`json`) | `["Your","text","here"]` |
+| 4. Automatización | Escapar texto (`escape`) | `\n`, `\t`, `\"` |
+
+## Acciones
+
+- **Copiar resultado**: usa `navigator.clipboard` con fallback a `document.execCommand('copy')`.
+- **Usar resultado como entrada**: reemplaza la entrada por la salida y re-aplica el formato activo.
+- **Limpiar**: vacía ambas cajas y reinicia el formato activo.
+
+---
+
+# 🔑 MyJWT — Documentación
+
+## Arquitectura
+
+**Single Page Application (SPA)** embebida en `myjwt.html`, 100% client-side, sin backend ni dependencias externas (Font Awesome vía CDN). El firmado y la verificación usan **WebCrypto (`crypto.subtle`)**, por lo que requieren contexto seguro (HTTPS o localhost).
+
+## Objetivo
+
+Decodificar, inspeccionar y verificar JSON Web Tokens, y codificar/firmar tokens nuevos sin depender de sitios de terceros. Nada sale del navegador: no hay llamadas de red.
+
+## Funcionalidades
+
+### Decoder
+- **Encoded Token**: se pega el token (acepta el prefijo `Bearer `). Botones: Generar ejemplo, Copiar, Limpiar.
+- **Header / Payload / Signature**: se decodifican en vivo (Base64URL → JSON) al escribir.
+- **Claims Breakdown**: tabla con cada claim, su valor y detalle; `iat`, `exp`, `nbf`, `auth_time` y `updated_at` se convierten a fecha local, indicando ⛔ expirado / ⏳ aún no válido.
+- **JWT Signature Verification (opcional)**: algoritmo (autodetectado del header), secret o clave pública, y opción "Secret en Base64URL".
+
+### Encoder
+- **Header / Payload (JSON editable)**: el header sincroniza su `alg` con el selector y agrega `typ: "JWT"` si falta.
+- **Algoritmo**: HS256/384/512, RS256/384/512, PS256/384/512, ES256/384/512 y `none`.
+- **Llave**: secret para HMAC; clave privada PEM (PKCS#8) para RS/PS/ES; opción "Secret en Base64URL".
+- **Agregar iat / exp**: fija `iat = now` y `exp = now + 1 hora`.
+- **Token generado**: token firmado y copiable, que además se carga automáticamente en el Decoder.
+
+## Algoritmos soportados
+
+| Familia | Algoritmos | API WebCrypto |
+|---------|-----------|----------------|
+| HMAC | HS256, HS384, HS512 | `HMAC` |
+| RSA PKCS#1 v1.5 | RS256, RS384, RS512 | `RSASSA-PKCS1-v1_5` |
+| RSA-PSS | PS256, PS384, PS512 | `RSA-PSS` |
+| ECDSA | ES256, ES384, ES512 | `ECDSA` (P-256 / P-384 / P-521) |
+| Sin firma | none | solo decodificar (inseguro) |
+
+## Flujo de datos
+
+1. `strToB64url()` / `b64urlToStr()` convierten texto UTF-8 ↔ Base64URL.
+2. `signToken()` / `verifyToken()` importan la llave y firman/verifican con `crypto.subtle`.
+3. `decodeToken()` separa las 3 partes (`header.payload.signature`) y hace `JSON.parse` de las dos primeras.
+4. La firma ECDSA que devuelve WebCrypto ya está en formato JOSE (r‖s), por lo que es compatible con JWT.
+
+## Seguridad
+
+- Todo el cálculo ocurre localmente en el navegador.
+- `alg: "none"` se marca explícitamente como inseguro y la verificación siempre falla.
+- Si WebCrypto no está disponible (p. ej. abriendo el archivo con `file://`), el decoder sigue funcionando y se avisa que no se puede firmar/verificar.
+
 ## Reglas de Desarrollo
 
 ### Para `flashcards.html`
@@ -198,3 +297,21 @@ El formulario está en **español**:
 5. Los datos están hardcodeados en JavaScript (no hay backend ni API externa).
 6. La app debe funcionar completamente offline una vez cargada.
 7. El password gate usa `sessionStorage` para mantener la sesión durante la pestaña activa.
+
+### Para `myformat.html`
+1. **Todo en un solo archivo HTML** (SPA).
+2. Los estilos específicos van dentro de `<style>` en el mismo HTML.
+3. El JavaScript va dentro de `<script>` al final del body.
+4. Sin frameworks ni librerías externas (excepto Font Awesome vía CDN).
+5. Cada botón de formato se identifica con el atributo `data-format` y su función se registra en el objeto `FORMATS`.
+6. Las funciones de formato son puras (texto de entrada → texto de salida) y nunca recargan la página.
+7. La app debe funcionar completamente offline una vez cargada.
+
+### Para `myjwt.html`
+1. **Todo en un solo archivo HTML** (SPA).
+2. Los estilos específicos van dentro de `<style>` en el mismo HTML.
+3. El JavaScript va dentro de `<script>` al final del body.
+4. Sin frameworks ni librerías externas (excepto Font Awesome vía CDN).
+5. El firmado/verificado usa exclusivamente WebCrypto (`crypto.subtle`); no hay backend ni servicio externo.
+6. Nunca se envían tokens, secrets ni claves por la red: todo el procesamiento es local.
+7. La app debe funcionar completamente offline una vez cargada (en contexto seguro: HTTPS o localhost).

@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyFormat | Luis Armando</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script defer src="assets/js/i18n.js"></script>
+    <style>
+      /* ========== MYFORMAT ========== */
+      .formatter-panel {
+        background: linear-gradient(135deg, #f5f7fa 0%, #fafbfc 100%);
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 24px;
+        margin-top: 20px;
+      }
+
+      body.dark .formatter-panel {
+        background: #666666;
+        border-color: #4f4f4f;
+      }
+
+      .formatter-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .formatter-field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        color: #374151;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .formatter-field label i {
+        color: #6366f1;
+        margin-right: 6px;
+      }
+
+      body.dark .formatter-field label {
+        color: #e5e7eb;
+      }
+
+      .formatter-textarea {
+        width: 100%;
+        min-height: 140px;
+        resize: vertical;
+        padding: 14px;
+        border-radius: 10px;
+        border: 2px solid #e5e7eb;
+        background: #ffffff;
+        color: #111827;
+        font-family: 'SFMono-Regular', Menlo, Consolas, 'Courier New', monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        outline: none;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .formatter-textarea:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+      }
+
+      body.dark .formatter-textarea {
+        background: #3c3c3c;
+        color: #f9fafb;
+        border-color: #4f4f4f;
+      }
+
+      body.dark .formatter-textarea:focus {
+        border-color: #818cf8;
+      }
+
+      .formatter-output {
+        background: #f9fafb;
+      }
+
+      body.dark .formatter-output {
+        background: #2f2f2f;
+      }
+
+      .formatter-output.filled {
+        border-color: #10b981;
+      }
+
+      .formatter-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+
+      .formatter-counter {
+        font-size: 12px;
+        color: #9ca3af;
+        font-weight: 600;
+      }
+
+      .formatter-groups {
+        margin-top: 24px;
+        display: grid;
+        gap: 20px;
+      }
+
+      .format-group-title {
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #6b7280;
+        margin-bottom: 10px;
+      }
+
+      body.dark .format-group-title {
+        color: #d1d5db;
+      }
+
+      .format-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .format-btn {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        padding: 10px 16px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 13px;
+        font-family: inherit;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+      }
+
+      .format-btn .format-sample {
+        font-weight: 500;
+        font-size: 11px;
+        opacity: 0.8;
+        font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+      }
+
+      .format-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(99, 102, 241, 0.45);
+      }
+
+      .format-btn.active {
+        border-color: #111827;
+        box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.2);
+      }
+
+      body.dark .format-btn.active {
+        border-color: #f9fafb;
+        box-shadow: 0 0 0 3px rgba(249, 250, 251, 0.35);
+      }
+
+      .format-btn.alt {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+      }
+
+      .format-btn.alt:hover {
+        box-shadow: 0 6px 18px rgba(16, 185, 129, 0.45);
+      }
+
+      .format-btn.warm {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+      }
+
+      .format-btn.warm:hover {
+        box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
+      }
+
+      .format-btn.cool {
+        background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+        box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+      }
+
+      .format-btn.cool:hover {
+        box-shadow: 0 6px 18px rgba(14, 165, 233, 0.45);
+      }
+
+      .format-btn.gray {
+        background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+        box-shadow: 0 4px 12px rgba(107, 114, 128, 0.25);
+      }
+
+      .format-btn.gray:hover {
+        box-shadow: 0 6px 18px rgba(107, 114, 128, 0.45);
+      }
+
+      .formatter-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 22px;
+      }
+
+      .formatter-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 10px;
+        background: #111827;
+        color: #fff;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .formatter-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .formatter-btn.success {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      }
+
+      .formatter-btn.secondary {
+        background: #e5e7eb;
+        color: #374151;
+      }
+
+      body.dark .formatter-btn.secondary {
+        background: #4f4f4f;
+        color: #e5e7eb;
+      }
+
+      .formatter-toast {
+        position: fixed;
+        left: 50%;
+        bottom: 30px;
+        transform: translate(-50%, 20px);
+        background: #111827;
+        color: #fff;
+        padding: 12px 22px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        z-index: 10000;
+      }
+
+      .formatter-toast.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      @media (max-width: 768px) {
+        .formatter-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-main">
+      <!-- SIDEBAR IZQUIERDO -->
+      <aside class="sidebar">
+        <div class="profile-section">
+          <img
+            src="assets/img/profile.jpg"
+            alt="Luis Armando"
+            class="profile-image"
+          />
+          <h1 class="profile-name">Luis Armando</h1>
+          <p class="profile-pronouns">Ingeniero de Computación</p>
+          <p class="profile-title" data-i18n="profile.title">
+            16+ Senior QA Automation Engineer | Playwright | Cypress |
+            WebDriverIO | Salesforce QA | AccelQ | Selenium | AWS | AI Driven
+          </p>
+          <br />
+          <p class="profile-company">Última empresa: OLACLICK</p>
+          <div class="social-links">
+            <a href="mailto:luisarmandobr@gmail.com" title="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+            <a href="https://github.com/luisarmandobr" title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="https://linkedin.com/in/luisarmandobr" title="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </div>
+
+          <a href="apps.html" class="apps-btn"><i class="fas fa-th"></i> MyApps</a>
+          <a href="#" class="apps-btn" id="myNotesBtn" style="margin-top: 8px;"><i class="fas fa-book"></i> MyNotes</a>
+          <a href="myformat.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-font"></i> MyFormat</a>
+          <a href="myjwt.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-key"></i> MyJWT</a>
+        </div>
+      </aside>
+
+      <!-- CONTENIDO PRINCIPAL -->
+      <main class="main-content">
+        <!-- HEADER CON NAVEGACIÓN -->
+        <header class="top-header">
+          <div class="header-left">
+            <h2>Luis Armando Benitez Rodriguez</h2>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="index.html" data-i18n="nav.bio">Bio</a></li>
+              <li>
+                <a href="certifications.html" data-i18n="nav.certifications"
+                  >Certificaciones</a
+                >
+              </li>
+              <li>
+                <a href="workhistory.html" data-i18n="nav.workhistory"
+                  >Experiencia</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <div class="header-right">
+            <div class="lang-switch" role="group" aria-label="Language switch">
+              <button class="lang-btn" data-lang="es" aria-pressed="false">
+                ES
+              </button>
+              <button class="lang-btn" data-lang="pt" aria-pressed="false">
+                PT
+              </button>
+              <button class="lang-btn" data-lang="en" aria-pressed="false">
+                EN
+              </button>
+            </div>
+            <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+          </div>
+        </header>
+
+
+        <!-- SECCIÓN MYFORMAT -->
+        <section class="professional-section">
+          <div class="section-header">
+            <i class="fas fa-font section-icon"></i>
+            <h2>Bienvenido a mi formateador de textos</h2>
+          </div>
+          <p class="section-content">
+            En la automatización se necesita diversos tipos de formateadores de
+            texto según el lenguaje de programación: cada tecnología tiene su
+            propio estilo para nombrar variables, funciones, constantes,
+            atributos, selectores o datos de prueba. Por ejemplo, JavaScript y
+            Java suelen usar <strong>camelCase</strong>, Python prefiere
+            <strong>snake_case</strong>, CSS y HTML usan
+            <strong>kebab-case</strong>, y las constantes se escriben en
+            <strong>CONSTANT_CASE</strong>.
+            <br />
+            Por eso ingreso a mi formateador de textos: escribo o pego cualquier
+            texto en la caja de entrada, elijo el botón con el formato que
+            necesito y las funciones hacen el trabajo por mí — aplican
+            <strong>trim</strong> a los espacios vacíos, colapsan los espacios
+            repetidos y colocan la <strong>letra capital</strong> donde
+            corresponde. El resultado aparece al instante en la caja de salida,
+            listo para copiar y usar en mis scripts.
+          </p>
+
+          <div class="formatter-panel">
+            <div class="formatter-grid">
+              <div class="formatter-field">
+                <label for="formatInput"
+                  ><i class="fas fa-keyboard"></i> Texto de entrada</label
+                >
+                <textarea
+                  id="formatInput"
+                  class="formatter-textarea"
+                  spellcheck="false"
+                  placeholder="Escribe o pega tu texto aquí... Ej: Your  text here"
+                ></textarea>
+              </div>
+              <div class="formatter-field">
+                <label for="formatOutput"
+                  ><i class="fas fa-arrow-right-arrow-left"></i> Texto de
+                  salida</label
+                >
+                <textarea
+                  id="formatOutput"
+                  class="formatter-textarea formatter-output"
+                  spellcheck="false"
+                  readonly
+                  placeholder="El resultado aparecerá aquí..."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="formatter-toolbar">
+              <span class="formatter-counter" id="formatCounter"></span>
+              <span class="formatter-counter" id="formatActive">Formato: —</span>
+            </div>
+
+            <div class="formatter-groups">
+              <div class="format-group">
+                <p class="format-group-title">1. Limpieza de espacios</p>
+                <div class="format-buttons">
+                  <button type="button" class="format-btn gray" data-format="trim">
+                    Trim
+                    <span class="format-sample">quita y colapsa espacios vacíos</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="format-group">
+                <p class="format-group-title">2. Estilos de programación</p>
+                <div class="format-buttons">
+                  <button type="button" class="format-btn" data-format="camel">
+                    camelCase<span class="format-sample">yourTextHere</span>
+                  </button>
+                  <button type="button" class="format-btn" data-format="pascal">
+                    PascalCase<span class="format-sample">YourTextHere</span>
+                  </button>
+                  <button type="button" class="format-btn" data-format="snake">
+                    snake_case<span class="format-sample">your_text_here</span>
+                  </button>
+                  <button type="button" class="format-btn" data-format="kebab">
+                    kebab-case<span class="format-sample">your-text-here</span>
+                  </button>
+                  <button type="button" class="format-btn" data-format="constant">
+                    CONSTANT_CASE<span class="format-sample">YOUR_TEXT_HERE</span>
+                  </button>
+                  <button type="button" class="format-btn" data-format="dot">
+                    dot.case<span class="format-sample">your.text.here</span>
+                  </button>
+                </div>
+              </div>
+
+
+              <div class="format-group">
+                <p class="format-group-title">3. Texto legible</p>
+                <div class="format-buttons">
+                  <button type="button" class="format-btn cool" data-format="title">
+                    Title Case<span class="format-sample">Your Text Here</span>
+                  </button>
+                  <button type="button" class="format-btn cool" data-format="sentence">
+                    Sentence case<span class="format-sample">Your text here</span>
+                  </button>
+                  <button type="button" class="format-btn warm" data-format="upper">
+                    MAYÚSCULAS<span class="format-sample">YOUR TEXT HERE</span>
+                  </button>
+                  <button type="button" class="format-btn warm" data-format="lower">
+                    minúsculas<span class="format-sample">your text here</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="format-group">
+                <p class="format-group-title">4. Datos para automatización</p>
+                <div class="format-buttons">
+                  <button type="button" class="format-btn alt" data-format="sql">
+                    SQL IN list
+                    <span class="format-sample">'Your', 'text', 'here'</span>
+                  </button>
+                  <button type="button" class="format-btn alt" data-format="csv">
+                    CSV / comas<span class="format-sample">Your, text, here</span>
+                  </button>
+                  <button type="button" class="format-btn alt" data-format="json">
+                    JSON array
+                    <span class="format-sample">["Your","text","here"]</span>
+                  </button>
+                  <button type="button" class="format-btn alt" data-format="escape">
+                    Escapar texto
+                    <span class="format-sample">\\n · \\t · \\"</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="formatter-actions">
+              <button type="button" class="formatter-btn success" id="copyBtn">
+                <i class="fas fa-copy"></i> Copiar resultado
+              </button>
+              <button type="button" class="formatter-btn secondary" id="swapBtn">
+                <i class="fas fa-arrows-rotate"></i> Usar resultado como entrada
+              </button>
+              <button type="button" class="formatter-btn secondary" id="clearBtn">
+                <i class="fas fa-trash"></i> Limpiar
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+
+    <script>
+      (function () {
+        // --- Acceso a MyNotes (mismo gate que el resto del portafolio) ---
+        var myNotesBtn = document.getElementById('myNotesBtn');
+        if (myNotesBtn) {
+          myNotesBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var storedHash = 'NDA5MTY3ODBFcnM=';
+            var pwd = prompt('Ingrese contrase\u00f1a para acceder a MyNotes:', '');
+            if (pwd === null) return;
+            if (btoa(pwd) === storedHash) {
+              window.location.href = 'mynotes.html';
+            } else {
+              alert('Credenciales incorrectas. Acceso denegado.');
+              myNotesBtn.style.display = 'none';
+            }
+          });
+        }
+
+        // --- Motor del formateador de textos ---
+        var input = document.getElementById('formatInput');
+        var output = document.getElementById('formatOutput');
+        var counter = document.getElementById('formatCounter');
+        var activeLabel = document.getElementById('formatActive');
+        var buttons = Array.prototype.slice.call(
+          document.querySelectorAll('.format-btn')
+        );
+        var activeFormat = '';
+
+        // trim + colapsa los espacios vacíos repetidos
+        function cleanText(text) {
+          return String(text == null ? '' : text)
+            .replace(/\s+/g, ' ')
+            .trim();
+        }
+
+        // Separa en palabras: corta camelCase/PascalCase y cambia
+        // separadores (espacios, guiones, símbolos) por un único espacio.
+        function splitWords(text) {
+          return cleanText(text)
+            .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+            .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+            .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+            .trim()
+            .split(/\s+/)
+            .filter(function (word) {
+              return word.length > 0;
+            });
+        }
+
+        // letra capital en la primera letra de cada palabra
+        function capFirst(word) {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        }
+
+        function lower(word) {
+          return word.toLowerCase();
+        }
+
+        function upper(word) {
+          return word.toUpperCase();
+        }
+
+        // Cada formato decide qué hacer: trim, separador y letra capital
+        var FORMATS = {
+          trim: { label: 'trim / espacios', apply: function (raw) { return cleanText(raw); } },
+          camel: { label: 'camelCase', apply: function (raw) { var w = splitWords(raw); return w.length ? w[0].toLowerCase() + w.slice(1).map(capFirst).join('') : ''; } },
+          pascal: { label: 'PascalCase', apply: function (raw) { return splitWords(raw).map(capFirst).join(''); } },
+          snake: { label: 'snake_case', apply: function (raw) { return splitWords(raw).map(lower).join('_'); } },
+          kebab: { label: 'kebab-case', apply: function (raw) { return splitWords(raw).map(lower).join('-'); } },
+          constant: { label: 'CONSTANT_CASE', apply: function (raw) { return splitWords(raw).map(upper).join('_'); } },
+          dot: { label: 'dot.case', apply: function (raw) { return splitWords(raw).map(lower).join('.'); } },
+          title: { label: 'Title Case', apply: function (raw) { return splitWords(raw).map(capFirst).join(' '); } },
+          sentence: { label: 'Sentence case', apply: function (raw) { var w = splitWords(raw); if (!w.length) return ''; var rest = w.slice(1).map(lower).join(' '); return capFirst(w[0].toLowerCase()) + (rest ? ' ' + rest : ''); } },
+          upper: { label: 'MAYÚSCULAS', apply: function (raw) { return cleanText(raw).toUpperCase(); } },
+          lower: { label: 'minúsculas', apply: function (raw) { return cleanText(raw).toLowerCase(); } },
+          sql: { label: 'SQL IN list', apply: function (raw) { return splitWords(raw).map(function (w) { return "'" + w + "'"; }).join(', '); } },
+          csv: { label: 'CSV / comas', apply: function (raw) { return splitWords(raw).join(', '); } },
+          json: { label: 'JSON array', apply: function (raw) { return JSON.stringify(splitWords(raw)); } },
+          escape: { label: 'escape de texto', apply: function (raw) { return String(raw).replace(/\\/g, '\\\\').replace(/\r\n|\r|\n/g, '\\n').replace(/\t/g, '\\t').replace(/"/g, '\\"'); } }
+        };
+
+
+        function updateCounter() {
+          var raw = input.value;
+          counter.textContent =
+            raw.length + ' caracteres · ' + splitWords(raw).length + ' palabras';
+        }
+
+        function runFormat(key) {
+          var format = FORMATS[key];
+          if (!format) return;
+          activeFormat = key;
+          var result = format.apply(input.value);
+          output.value = result;
+          output.classList.toggle('filled', result.length > 0);
+          activeLabel.textContent = 'Formato: ' + format.label;
+          buttons.forEach(function (btn) {
+            btn.classList.toggle(
+              'active',
+              btn.getAttribute('data-format') === key
+            );
+          });
+        }
+
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            runFormat(btn.getAttribute('data-format'));
+          });
+        });
+
+        // Re-formatea en vivo mientras se escribe
+        input.addEventListener('input', function () {
+          updateCounter();
+          if (activeFormat) runFormat(activeFormat);
+        });
+
+        // --- Mensajes flotantes ---
+        var toastEl = null;
+        var toastTimer = null;
+        function showToast(message) {
+          if (!toastEl) {
+            toastEl = document.createElement('div');
+            toastEl.className = 'formatter-toast';
+            document.body.appendChild(toastEl);
+          }
+          toastEl.textContent = message;
+          toastEl.classList.add('show');
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(function () {
+            toastEl.classList.remove('show');
+          }, 2200);
+        }
+
+        // --- Copiar resultado ---
+        function fallbackCopy() {
+          var wasReadonly = output.hasAttribute('readonly');
+          output.removeAttribute('readonly');
+          output.select();
+          try {
+            document.execCommand('copy');
+            showToast('Resultado copiado al portapapeles.');
+          } catch (err) {
+            showToast('No se pudo copiar el resultado.');
+          }
+          if (wasReadonly) output.setAttribute('readonly', 'readonly');
+          window.getSelection().removeAllRanges();
+        }
+
+        document.getElementById('copyBtn').addEventListener('click', function () {
+          if (!output.value) {
+            showToast('No hay nada que copiar todavía.');
+            return;
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(output.value).then(
+              function () {
+                showToast('Resultado copiado al portapapeles.');
+              },
+              fallbackCopy
+            );
+          } else {
+            fallbackCopy();
+          }
+        });
+
+        // --- Usar el resultado como nueva entrada ---
+        document.getElementById('swapBtn').addEventListener('click', function () {
+          if (!output.value) {
+            showToast('No hay resultado para reutilizar.');
+            return;
+          }
+          input.value = output.value;
+          updateCounter();
+          if (activeFormat) runFormat(activeFormat);
+          input.focus();
+        });
+
+        // --- Limpiar entrada y salida ---
+        document.getElementById('clearBtn').addEventListener('click', function () {
+          input.value = '';
+          output.value = '';
+          output.classList.remove('filled');
+          activeFormat = '';
+          activeLabel.textContent = 'Formato: —';
+          buttons.forEach(function (btn) {
+            btn.classList.remove('active');
+          });
+          updateCounter();
+          input.focus();
+        });
+
+        // --- Estado inicial: ambas cajas vacías, sólo se muestra el placeholder ---
+        updateCounter();
+      })();
+    </script>
+  </body>
+</html>
+

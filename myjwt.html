@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyJWT | Luis Armando</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script defer src="assets/js/i18n.js"></script>
+    <style>
+      /* ========== MYJWT ========== */
+      .jwt-nav {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .jwt-tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: #e5e7eb;
+        color: #374151;
+        border: none;
+        border-radius: 12px;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+
+      .jwt-tab:hover {
+        background: #d1d5db;
+      }
+
+      .jwt-tab.active {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+      }
+
+      body.dark .jwt-tab {
+        background: #4f4f4f;
+        color: #e5e7eb;
+      }
+
+      body.dark .jwt-tab.active {
+        background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+        color: #fff;
+      }
+
+      .jwt-panel {
+        background: linear-gradient(135deg, #f5f7fa 0%, #fafbfc 100%);
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 24px;
+      }
+
+      body.dark .jwt-panel {
+        background: #666666;
+        border-color: #4f4f4f;
+      }
+
+      .jwt-panel[hidden] {
+        display: none;
+      }
+
+      .jwt-field {
+        margin-bottom: 16px;
+      }
+
+      .jwt-field > label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: #374151;
+        margin-bottom: 8px;
+      }
+
+      .jwt-field > label i {
+        color: #6366f1;
+      }
+
+      body.dark .jwt-field > label {
+        color: #e5e7eb;
+      }
+
+      .jwt-textarea {
+        width: 100%;
+        min-height: 110px;
+        resize: vertical;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 2px solid #e5e7eb;
+        background: #ffffff;
+        color: #111827;
+        font-size: 13px;
+        line-height: 1.5;
+        outline: none;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .jwt-textarea:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+      }
+
+      body.dark .jwt-textarea {
+        background: #3c3c3c;
+        color: #f9fafb;
+        border-color: #4f4f4f;
+      }
+
+      body.dark .jwt-textarea:focus {
+        border-color: #818cf8;
+      }
+
+      .jwt-mono {
+        font-family: 'SFMono-Regular', Menlo, Consolas, 'Courier New', monospace;
+      }
+
+      .jwt-out {
+        background: #f9fafb;
+      }
+
+      body.dark .jwt-out {
+        background: #2f2f2f;
+      }
+      .jwt-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .jwt-grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+      }
+
+      .jwt-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 12px 0 4px;
+      }
+
+      .jwt-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+      }
+
+      .jwt-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(99, 102, 241, 0.45);
+      }
+
+      .jwt-btn.secondary {
+        background: #e5e7eb;
+        color: #374151;
+        box-shadow: none;
+      }
+
+      body.dark .jwt-btn.secondary {
+        background: #4f4f4f;
+        color: #e5e7eb;
+      }
+
+      .jwt-mini {
+        margin-left: auto;
+        background: none;
+        border: 1px solid #d1d5db;
+        color: #6b7280;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        cursor: pointer;
+      }
+
+      .jwt-mini:hover {
+        background: #e5e7eb;
+      }
+
+      body.dark .jwt-mini {
+        border-color: #4f4f4f;
+        color: #d1d5db;
+      }
+
+      body.dark .jwt-mini:hover {
+        background: #4f4f4f;
+      }
+
+      .jwt-status {
+        font-size: 13px;
+        font-weight: 700;
+        color: #6b7280;
+      }
+
+      body.dark .jwt-status {
+        color: #d1d5db;
+      }
+
+      .jwt-status.ok {
+        color: #059669;
+      }
+
+      .jwt-status.error {
+        color: #dc2626;
+      }
+
+      .jwt-status.warn {
+        color: #d97706;
+      }
+
+      .jwt-select {
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 2px solid #e5e7eb;
+        background: #ffffff;
+        color: #111827;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 13px;
+        outline: none;
+      }
+
+      body.dark .jwt-select {
+        background: #3c3c3c;
+        color: #f9fafb;
+        border-color: #4f4f4f;
+      }
+
+      .jwt-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+
+      .jwt-check {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #4b5563;
+      }
+
+      body.dark .jwt-check {
+        color: #d1d5db;
+      }
+
+      .jwt-subtitle {
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #6b7280;
+        margin: 24px 0 10px;
+      }
+
+      body.dark .jwt-subtitle {
+        color: #d1d5db;
+      }
+
+      .jwt-muted {
+        color: #9ca3af;
+        font-size: 13px;
+      }
+
+      .jwt-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .jwt-table th,
+      .jwt-table td {
+        text-align: left;
+        padding: 8px 10px;
+        border-bottom: 1px solid #e5e7eb;
+        vertical-align: top;
+        word-break: break-word;
+      }
+
+      .jwt-table th {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #6b7280;
+      }
+
+      body.dark .jwt-table th,
+      body.dark .jwt-table td {
+        border-bottom-color: #4f4f4f;
+      }
+
+      body.dark .jwt-table td {
+        color: #e5e7eb;
+      }
+
+      .jwt-table .jwt-k {
+        font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+        font-weight: 700;
+        color: #6366f1;
+      }
+
+      .jwt-note {
+        font-size: 12px;
+        color: #9ca3af;
+        margin-top: 12px;
+        line-height: 1.6;
+      }
+
+      body.dark .jwt-note {
+        color: #cbd5e1;
+      }
+
+      .jwt-toast {
+        position: fixed;
+        left: 50%;
+        bottom: 30px;
+        transform: translate(-50%, 20px);
+        background: #111827;
+        color: #fff;
+        padding: 12px 22px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        z-index: 10000;
+      }
+
+      .jwt-toast.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      @media (max-width: 1024px) {
+        .jwt-grid-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .jwt-grid-2,
+        .jwt-grid-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-main">
+      <!-- SIDEBAR IZQUIERDO -->
+      <aside class="sidebar">
+        <div class="profile-section">
+          <img
+            src="assets/img/profile.jpg"
+            alt="Luis Armando"
+            class="profile-image"
+          />
+          <h1 class="profile-name">Luis Armando</h1>
+          <p class="profile-pronouns">Ingeniero de Computación</p>
+          <p class="profile-title" data-i18n="profile.title">
+            16+ Senior QA Automation Engineer | Playwright | Cypress |
+            WebDriverIO | Salesforce QA | AccelQ | Selenium | AWS | AI Driven
+          </p>
+          <br />
+          <p class="profile-company">Última empresa: OLACLICK</p>
+          <div class="social-links">
+            <a href="mailto:luisarmandobr@gmail.com" title="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+            <a href="https://github.com/luisarmandobr" title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="https://linkedin.com/in/luisarmandobr" title="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </div>
+
+          <a href="apps.html" class="apps-btn"><i class="fas fa-th"></i> MyApps</a>
+          <a href="#" class="apps-btn" id="myNotesBtn" style="margin-top: 8px;"><i class="fas fa-book"></i> MyNotes</a>
+          <a href="myformat.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-font"></i> MyFormat</a>
+          <a href="myjwt.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-key"></i> MyJWT</a>
+        </div>
+      </aside>
+
+      <!-- CONTENIDO PRINCIPAL -->
+      <main class="main-content">
+        <!-- HEADER CON NAVEGACIÓN -->
+        <header class="top-header">
+          <div class="header-left">
+            <h2>Luis Armando Benitez Rodriguez</h2>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="index.html" data-i18n="nav.bio">Bio</a></li>
+              <li>
+                <a href="certifications.html" data-i18n="nav.certifications"
+                  >Certificaciones</a
+                >
+              </li>
+              <li>
+                <a href="workhistory.html" data-i18n="nav.workhistory"
+                  >Experiencia</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <div class="header-right">
+            <div class="lang-switch" role="group" aria-label="Language switch">
+              <button class="lang-btn" data-lang="es" aria-pressed="false">
+                ES
+              </button>
+              <button class="lang-btn" data-lang="pt" aria-pressed="false">
+                PT
+              </button>
+              <button class="lang-btn" data-lang="en" aria-pressed="false">
+                EN
+              </button>
+            </div>
+            <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+          </div>
+        </header>
+
+        <!-- SECCIÓN MYJWT -->
+        <section class="professional-section">
+          <div class="section-header">
+            <i class="fas fa-key section-icon"></i>
+            <h2>MyJWT — Decoder / Encoder de JSON Web Tokens</h2>
+          </div>
+          <p class="section-content">
+            Los <strong>JSON Web Tokens (JWT)</strong> son el estándar abierto
+            (RFC 7519) que se usa en la automatización para autenticar APIs,
+            validar sesiones y probar endpoints protegidos. Un JWT tiene tres
+            partes separadas por puntos:
+            <strong>header.payload.signature</strong>, donde header y payload
+            viajan en Base64URL y la firma se calcula con un secret (HMAC) o con
+            un par de llaves pública/privada (RSA / ECDSA).
+            <br />
+            Aquí puedo <strong>decodificar</strong> un token para inspeccionar
+            sus claims y <strong>verificar</strong> su firma, o
+            <strong>codificar/firmar</strong> un token nuevo con mi propia
+            cabecera y payload. Todo el procesamiento ocurre
+            <strong>100% en este navegador</strong>: ningún token ni secret sale
+            de este equipo.
+          </p>
+
+          <div class="jwt-nav">
+            <button type="button" class="jwt-tab active" data-tab="decoder">
+              <i class="fas fa-magnifying-glass"></i> Decoder
+            </button>
+            <button type="button" class="jwt-tab" data-tab="encoder">
+              <i class="fas fa-pen-to-square"></i> Encoder
+            </button>
+          </div>
+
+          <!-- ============ DECODER ============ -->
+          <div class="jwt-panel" id="panel-decoder">
+            <div class="jwt-field">
+              <label for="tokenInput">
+                <i class="fas fa-file-shield"></i> Encoded Token
+              </label>
+              <textarea
+                id="tokenInput"
+                class="jwt-textarea jwt-mono"
+                spellcheck="false"
+                placeholder="Pega aquí tu token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOi..."
+              ></textarea>
+              <div class="jwt-actions">
+                <button type="button" class="jwt-btn" id="loadExampleBtn">
+                  <i class="fas fa-wand-magic-sparkles"></i> Generar ejemplo
+                </button>
+                <button type="button" class="jwt-btn secondary" id="copyTokenBtn">
+                  <i class="fas fa-copy"></i> Copiar
+                </button>
+                <button type="button" class="jwt-btn secondary" id="clearTokenBtn">
+                  <i class="fas fa-trash"></i> Limpiar
+                </button>
+                <span class="jwt-status" id="tokenStatus"></span>
+              </div>
+            </div>
+
+            <div class="jwt-grid-3">
+              <div class="jwt-field">
+                <label for="headerOut">
+                  <i class="fas fa-heading"></i> Header
+                  <button type="button" class="jwt-mini" data-copy-target="headerOut">
+                    Copiar
+                  </button>
+                </label>
+                <textarea
+                  id="headerOut"
+                  class="jwt-textarea jwt-mono jwt-out"
+                  spellcheck="false"
+                  readonly
+                  placeholder="El header decodificado aparecerá aquí..."
+                ></textarea>
+              </div>
+              <div class="jwt-field">
+                <label for="payloadOut">
+                  <i class="fas fa-box-open"></i> Payload
+                  <button type="button" class="jwt-mini" data-copy-target="payloadOut">
+                    Copiar
+                  </button>
+                </label>
+                <textarea
+                  id="payloadOut"
+                  class="jwt-textarea jwt-mono jwt-out"
+                  spellcheck="false"
+                  readonly
+                  placeholder="El payload decodificado aparecerá aquí..."
+                ></textarea>
+              </div>
+              <div class="jwt-field">
+                <label for="signatureOut">
+                  <i class="fas fa-signature"></i> Signature (Base64URL)
+                  <button type="button" class="jwt-mini" data-copy-target="signatureOut">
+                    Copiar
+                  </button>
+                </label>
+                <textarea
+                  id="signatureOut"
+                  class="jwt-textarea jwt-mono jwt-out"
+                  spellcheck="false"
+                  readonly
+                  placeholder="La firma aparecerá aquí..."
+                ></textarea>
+              </div>
+            </div>
+
+            <p class="jwt-subtitle">Claims Breakdown</p>
+            <div id="claimsTable" class="jwt-claims-body">
+              <p class="jwt-muted">Decodifica un token para ver sus claims.</p>
+            </div>
+
+            <p class="jwt-subtitle">JWT Signature Verification (opcional)</p>
+            <div class="jwt-row">
+              <label class="jwt-check" for="verifyAlg">Algoritmo</label>
+              <select id="verifyAlg" class="jwt-select">
+                <option value="">(detectar del header)</option>
+                <option value="HS256">HS256</option>
+                <option value="HS384">HS384</option>
+                <option value="HS512">HS512</option>
+                <option value="RS256">RS256</option>
+                <option value="RS384">RS384</option>
+                <option value="RS512">RS512</option>
+                <option value="PS256">PS256</option>
+                <option value="PS384">PS384</option>
+                <option value="PS512">PS512</option>
+                <option value="ES256">ES256</option>
+                <option value="ES384">ES384</option>
+                <option value="ES512">ES512</option>
+                <option value="none">none</option>
+              </select>
+              <label class="jwt-check">
+                <input type="checkbox" id="verifySecretB64" /> Secret en
+                Base64URL
+              </label>
+            </div>
+            <div class="jwt-field">
+              <label for="verifyKey">
+                <i class="fas fa-unlock"></i> Secret (HMAC) o Public Key (PEM)
+              </label>
+              <textarea
+                id="verifyKey"
+                class="jwt-textarea jwt-mono"
+                spellcheck="false"
+                placeholder="your-256-bit-secret   ·   o la clave pública: -----BEGIN PUBLIC KEY----- ..."
+              ></textarea>
+            </div>
+            <div class="jwt-actions">
+              <button type="button" class="jwt-btn" id="verifyBtn">
+                <i class="fas fa-shield-halved"></i> Verificar firma
+              </button>
+              <button type="button" class="jwt-btn secondary" id="toEncoderBtn">
+                <i class="fas fa-pen-to-square"></i> Editar en el Encoder
+              </button>
+              <span class="jwt-status" id="verifyStatus"></span>
+            </div>
+            <p class="jwt-note">
+              <i class="fas fa-circle-info"></i> La verificación usa WebCrypto
+              del navegador: HMAC necesita el secret; RS/PS/ES necesitan la
+              clave pública en PEM (SPKI).
+            </p>
+          </div>
+
+
+          <!-- ============ ENCODER ============ -->
+          <div class="jwt-panel" id="panel-encoder" hidden>
+            <div class="jwt-row">
+              <label class="jwt-check" for="encAlg">Algoritmo</label>
+              <select id="encAlg" class="jwt-select">
+                <option value="HS256">HS256</option>
+                <option value="HS384">HS384</option>
+                <option value="HS512">HS512</option>
+                <option value="RS256">RS256</option>
+                <option value="RS384">RS384</option>
+                <option value="RS512">RS512</option>
+                <option value="PS256">PS256</option>
+                <option value="PS384">PS384</option>
+                <option value="PS512">PS512</option>
+                <option value="ES256">ES256</option>
+                <option value="ES384">ES384</option>
+                <option value="ES512">ES512</option>
+                <option value="none">none</option>
+              </select>
+              <label class="jwt-check">
+                <input type="checkbox" id="encSecretB64" /> Secret en Base64URL
+              </label>
+            </div>
+
+            <div class="jwt-grid-2">
+              <div class="jwt-field">
+                <label for="encHeader">
+                  <i class="fas fa-heading"></i> Header (JSON editable)
+                </label>
+                <textarea
+                  id="encHeader"
+                  class="jwt-textarea jwt-mono"
+                  spellcheck="false"
+                >{
+  "alg": "HS256",
+  "typ": "JWT"
+}</textarea>
+              </div>
+              <div class="jwt-field">
+                <label for="encPayload">
+                  <i class="fas fa-box-open"></i> Payload (JSON editable)
+                </label>
+                <textarea
+                  id="encPayload"
+                  class="jwt-textarea jwt-mono"
+                  spellcheck="false"
+                >{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "iat": 1516239022
+}</textarea>
+              </div>
+            </div>
+
+            <div class="jwt-field">
+              <label for="encKey" id="encKeyLabel">
+                <i class="fas fa-unlock"></i> Secret (HMAC)
+              </label>
+              <textarea
+                id="encKey"
+                class="jwt-textarea jwt-mono"
+                spellcheck="false"
+                placeholder="your-256-bit-secret"
+              ></textarea>
+            </div>
+
+            <div class="jwt-actions">
+              <button type="button" class="jwt-btn" id="encodeBtn">
+                <i class="fas fa-file-shield"></i> Generar token
+              </button>
+              <button type="button" class="jwt-btn secondary" id="addDatesBtn">
+                <i class="fas fa-clock"></i> Agregar iat / exp
+              </button>
+              <span class="jwt-status" id="encodeStatus"></span>
+            </div>
+
+            <div class="jwt-field">
+              <label for="encOutput">
+                <i class="fas fa-file-shield"></i> Token generado
+                <button type="button" class="jwt-mini" data-copy-target="encOutput">
+                  Copiar
+                </button>
+              </label>
+              <textarea
+                id="encOutput"
+                class="jwt-textarea jwt-mono jwt-out"
+                spellcheck="false"
+                readonly
+                placeholder="El token firmado aparecerá aquí..."
+              ></textarea>
+            </div>
+
+            <p class="jwt-note">
+              <i class="fas fa-triangle-exclamation"></i> Para RS/PS/ES pega la
+              clave PRIVADA en PEM (PKCS#8). Nunca uses claves privadas reales
+              en herramientas de terceros.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+
+    <script>
+      (function () {
+        // --- Acceso a MyNotes (mismo gate que el resto del portafolio) ---
+        var myNotesBtn = document.getElementById('myNotesBtn');
+        if (myNotesBtn) {
+          myNotesBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var storedHash = 'NDA5MTY3ODBFcnM=';
+            var pwd = prompt('Ingrese contrase\u00f1a para acceder a MyNotes:', '');
+            if (pwd === null) return;
+            if (btoa(pwd) === storedHash) {
+              window.location.href = 'mynotes.html';
+            } else {
+              alert('Credenciales incorrectas. Acceso denegado.');
+              myNotesBtn.style.display = 'none';
+            }
+          });
+        }
+
+        // ================= CONSTANTES Y UTILIDADES =================
+        var subtle = (window.crypto && window.crypto.subtle) || null;
+        var textEncoder = new TextEncoder();
+        var textDecoder = new TextDecoder();
+        var HASH_BYTES = { 'SHA-256': 32, 'SHA-384': 48, 'SHA-512': 64 };
+
+        var ALGS = {
+          HS256: { family: 'HMAC', hash: 'SHA-256' },
+          HS384: { family: 'HMAC', hash: 'SHA-384' },
+          HS512: { family: 'HMAC', hash: 'SHA-512' },
+          RS256: { family: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' },
+          RS384: { family: 'RSASSA-PKCS1-v1_5', hash: 'SHA-384' },
+          RS512: { family: 'RSASSA-PKCS1-v1_5', hash: 'SHA-512' },
+          PS256: { family: 'RSA-PSS', hash: 'SHA-256' },
+          PS384: { family: 'RSA-PSS', hash: 'SHA-384' },
+          PS512: { family: 'RSA-PSS', hash: 'SHA-512' },
+          ES256: { family: 'ECDSA', hash: 'SHA-256', curve: 'P-256' },
+          ES384: { family: 'ECDSA', hash: 'SHA-384', curve: 'P-384' },
+          ES512: { family: 'ECDSA', hash: 'SHA-512', curve: 'P-521' },
+          none: { family: 'none' }
+        };
+
+        // Token de ejemplo clásico de jwt.io (HS256 con "your-256-bit-secret")
+        var EXAMPLE_TOKEN =
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
+          'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.' +
+          'SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+        var EXAMPLE_SECRET = 'your-256-bit-secret';
+
+        function strToBytes(str) {
+          return textEncoder.encode(String(str));
+        }
+
+        function bytesToStr(bytes) {
+          return textDecoder.decode(bytes);
+        }
+
+        function b64ToBytes(b64) {
+          var bin = atob(String(b64).replace(/\s+/g, ''));
+          var bytes = new Uint8Array(bin.length);
+          for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+          return bytes;
+        }
+
+        function bytesToB64url(bytes) {
+          var bin = '';
+          for (var i = 0; i < bytes.length; i++) {
+            bin += String.fromCharCode(bytes[i]);
+          }
+          return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        }
+
+        function b64urlToBytes(b64url) {
+          var s = String(b64url).replace(/-/g, '+').replace(/_/g, '/');
+          while (s.length % 4) s += '=';
+          return b64ToBytes(s);
+        }
+
+        function b64urlToStr(b64url) {
+          return bytesToStr(b64urlToBytes(b64url));
+        }
+
+        function strToB64url(str) {
+          return bytesToB64url(strToBytes(str));
+        }
+
+        function pemToBuffer(pem) {
+          var body = String(pem)
+            .replace(/-----BEGIN [^-]+-----/g, '')
+            .replace(/-----END [^-]+-----/g, '')
+            .replace(/\s+/g, '');
+          return b64ToBytes(body).buffer;
+        }
+
+        function escapeHtml(value) {
+          return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+        }
+
+        function setStatus(el, message, kind) {
+          if (!el) return;
+          el.textContent = message || '';
+          el.className = 'jwt-status' + (kind ? ' ' + kind : '');
+        }
+
+
+        function importParamsFor(meta) {
+          if (meta.family === 'HMAC') return { name: 'HMAC', hash: meta.hash };
+          if (meta.family === 'ECDSA') return { name: 'ECDSA', namedCurve: meta.curve };
+          return { name: meta.family, hash: meta.hash };
+        }
+
+        function opParamsFor(meta) {
+          if (meta.family === 'HMAC') return { name: 'HMAC' };
+          if (meta.family === 'ECDSA') return { name: 'ECDSA', hash: meta.hash };
+          if (meta.family === 'RSA-PSS') {
+            return { name: 'RSA-PSS', saltLength: HASH_BYTES[meta.hash] };
+          }
+          return { name: 'RSASSA-PKCS1-v1_5' };
+        }
+
+        function keyBytesFrom(keyMaterial, isB64url) {
+          return isB64url ? b64urlToBytes(keyMaterial) : strToBytes(keyMaterial);
+        }
+
+        async function signToken(alg, signingInput, keyMaterial, isB64url) {
+          var meta = ALGS[alg];
+          if (!meta) throw new Error('algoritmo no soportado: ' + alg);
+          if (alg === 'none') return '';
+          if (!subtle) {
+            throw new Error('WebCrypto no está disponible (abre la página por HTTPS o localhost).');
+          }
+          var data = strToBytes(signingInput);
+          var key;
+          if (meta.family === 'HMAC') {
+            key = await subtle.importKey(
+              'raw',
+              keyBytesFrom(keyMaterial, isB64url),
+              importParamsFor(meta),
+              false,
+              ['sign']
+            );
+          } else {
+            key = await subtle.importKey(
+              'pkcs8',
+              pemToBuffer(keyMaterial),
+              importParamsFor(meta),
+              false,
+              ['sign']
+            );
+          }
+          var signature = await subtle.sign(opParamsFor(meta), key, data);
+          return bytesToB64url(new Uint8Array(signature));
+        }
+
+        async function verifyToken(alg, signingInput, signatureB64url, keyMaterial, isB64url) {
+          var meta = ALGS[alg];
+          if (!meta) throw new Error('algoritmo no soportado: ' + alg);
+          if (alg === 'none') return false;
+          if (!subtle) {
+            throw new Error('WebCrypto no está disponible (abre la página por HTTPS o localhost).');
+          }
+          var data = strToBytes(signingInput);
+          var signature = b64urlToBytes(signatureB64url);
+          var key;
+          if (meta.family === 'HMAC') {
+            key = await subtle.importKey(
+              'raw',
+              keyBytesFrom(keyMaterial, isB64url),
+              importParamsFor(meta),
+              false,
+              ['verify']
+            );
+          } else {
+            key = await subtle.importKey(
+              'spki',
+              pemToBuffer(keyMaterial),
+              importParamsFor(meta),
+              false,
+              ['verify']
+            );
+          }
+          return subtle.verify(opParamsFor(meta), key, signature, data);
+        }
+
+
+        // ================= DECODER =================
+        var tokenInput = document.getElementById('tokenInput');
+        var tokenStatus = document.getElementById('tokenStatus');
+        var headerOut = document.getElementById('headerOut');
+        var payloadOut = document.getElementById('payloadOut');
+        var signatureOut = document.getElementById('signatureOut');
+        var claimsTable = document.getElementById('claimsTable');
+        var verifyAlg = document.getElementById('verifyAlg');
+        var verifyKey = document.getElementById('verifyKey');
+        var verifySecretB64 = document.getElementById('verifySecretB64');
+        var verifyStatus = document.getElementById('verifyStatus');
+
+        function normalizeToken(raw) {
+          return String(raw || '').trim().replace(/^Bearer\s+/i, '');
+        }
+
+        function decodeToken(raw) {
+          var token = normalizeToken(raw);
+          if (!token) return { empty: true };
+          var parts = token.split('.');
+          if (parts.length !== 3) {
+            throw new Error('un JWT debe tener 3 partes separadas por puntos (header.payload.signature).');
+          }
+          var header, payload;
+          try {
+            header = JSON.parse(b64urlToStr(parts[0]));
+          } catch (e) {
+            throw new Error('el header no es un JSON válido codificado en Base64URL.');
+          }
+          try {
+            payload = JSON.parse(b64urlToStr(parts[1]));
+          } catch (e) {
+            throw new Error('el payload no es un JSON válido codificado en Base64URL.');
+          }
+          return {
+            header: header,
+            payload: payload,
+            signature: parts[2],
+            signingInput: parts[0] + '.' + parts[1]
+          };
+        }
+
+        function formatEpoch(seconds) {
+          var date = new Date(Number(seconds) * 1000);
+          if (isNaN(date.getTime())) return '';
+          return date.toLocaleString();
+        }
+
+        function renderClaims(payload) {
+          if (!payload || typeof payload !== 'object') {
+            claimsTable.innerHTML = '<p class="jwt-muted">Sin claims para mostrar.</p>';
+            return;
+          }
+          var keys = Object.keys(payload);
+          if (!keys.length) {
+            claimsTable.innerHTML = '<p class="jwt-muted">El payload está vacío.</p>';
+            return;
+          }
+          var html =
+            '<table class="jwt-table"><thead><tr><th>Claim</th><th>Valor</th><th>Detalle</th></tr></thead><tbody>';
+          keys.forEach(function (key) {
+            var value = payload[key];
+            var detail = '';
+            var dateClaims = ['iat', 'exp', 'nbf', 'auth_time', 'updated_at'];
+            if (dateClaims.indexOf(key) !== -1 && typeof value === 'number') {
+              detail = formatEpoch(value);
+              if (key === 'exp') {
+                detail += Date.now() > value * 1000 ? ' · ⛔ expirado' : ' · ✅ vigente';
+              } else if (key === 'nbf') {
+                detail += Date.now() < value * 1000 ? ' · ⏳ aún no válido' : ' · ✅ válido';
+              }
+            }
+            var shown =
+              typeof value === 'object' && value !== null ? JSON.stringify(value) : String(value);
+            html +=
+              '<tr><td class="jwt-k">' +
+              escapeHtml(key) +
+              '</td><td>' +
+              escapeHtml(shown) +
+              '</td><td class="jwt-muted">' +
+              escapeHtml(detail) +
+              '</td></tr>';
+          });
+          html += '</tbody></table>';
+          claimsTable.innerHTML = html;
+        }
+
+        function clearDecoded() {
+          headerOut.value = '';
+          payloadOut.value = '';
+          signatureOut.value = '';
+          claimsTable.innerHTML = '<p class="jwt-muted">Decodifica un token para ver sus claims.</p>';
+        }
+
+        function decodeAndRender() {
+          if (!normalizeToken(tokenInput.value)) {
+            clearDecoded();
+            setStatus(tokenStatus, '', '');
+            return null;
+          }
+          var info;
+          try {
+            info = decodeToken(tokenInput.value);
+          } catch (e) {
+            clearDecoded();
+            setStatus(tokenStatus, '⛔ Inválido: ' + e.message, 'error');
+            return null;
+          }
+          headerOut.value = JSON.stringify(info.header, null, 2);
+          payloadOut.value = JSON.stringify(info.payload, null, 2);
+          signatureOut.value = info.signature;
+          renderClaims(info.payload);
+          var alg = info.header && info.header.alg ? info.header.alg : '?';
+          setStatus(tokenStatus, '✅ JWT válido · alg: ' + alg + ' · firma no verificada', 'ok');
+          if (alg && ALGS[alg]) verifyAlg.value = alg;
+          return info;
+        }
+
+
+        async function doVerify() {
+          var info;
+          try {
+            info = decodeToken(tokenInput.value);
+          } catch (e) {
+            setStatus(verifyStatus, '⛔ ' + e.message, 'error');
+            return;
+          }
+          if (!info || info.empty) {
+            setStatus(verifyStatus, 'Pega un token primero.', 'warn');
+            return;
+          }
+          var alg = verifyAlg.value || (info.header && info.header.alg) || '';
+          if (!ALGS[alg]) {
+            setStatus(verifyStatus, 'Selecciona un algoritmo válido.', 'warn');
+            return;
+          }
+          if (alg === 'none') {
+            setStatus(verifyStatus, '⚠️ alg "none": el token NO está firmado (inseguro).', 'warn');
+            return;
+          }
+          if (!verifyKey.value.trim()) {
+            setStatus(verifyStatus, 'Ingresa el secret o la clave pública.', 'warn');
+            return;
+          }
+          setStatus(verifyStatus, 'Verificando...', '');
+          try {
+            var ok = await verifyToken(
+              alg,
+              info.signingInput,
+              info.signature,
+              verifyKey.value,
+              verifySecretB64.checked
+            );
+            if (ok) {
+              setStatus(verifyStatus, '✅ Firma verificada con ' + alg + '.', 'ok');
+            } else {
+              setStatus(verifyStatus, '⛔ Firma INVÁLIDA con ' + alg + '.', 'error');
+            }
+          } catch (e) {
+            setStatus(verifyStatus, '⛔ Error: ' + e.message, 'error');
+          }
+        }
+
+        // ================= ENCODER =================
+        var encAlg = document.getElementById('encAlg');
+        var encHeader = document.getElementById('encHeader');
+        var encPayload = document.getElementById('encPayload');
+        var encKey = document.getElementById('encKey');
+        var encKeyLabel = document.getElementById('encKeyLabel');
+        var encSecretB64 = document.getElementById('encSecretB64');
+        var encOutput = document.getElementById('encOutput');
+        var encodeStatus = document.getElementById('encodeStatus');
+
+        function parseJsonField(value, name) {
+          try {
+            return JSON.parse(value);
+          } catch (e) {
+            setStatus(encodeStatus, '⛔ El ' + name + ' no es un JSON válido.', 'error');
+            return null;
+          }
+        }
+
+        function syncEncHeaderAlg() {
+          var header = parseJsonField(encHeader.value, 'header');
+          if (header && typeof header === 'object' && !Array.isArray(header)) {
+            header.alg = encAlg.value;
+            encHeader.value = JSON.stringify(header, null, 2);
+          }
+        }
+
+        function updateKeyLabel() {
+          var meta = ALGS[encAlg.value];
+          if (!meta) return;
+          if (meta.family === 'HMAC') {
+            encKeyLabel.innerHTML = '<i class="fas fa-unlock"></i> Secret (HMAC)';
+            encKey.placeholder = 'your-256-bit-secret';
+          } else if (meta.family === 'none') {
+            encKeyLabel.innerHTML = '<i class="fas fa-unlock"></i> Sin llave (alg "none")';
+            encKey.placeholder = 'No se necesita llave';
+          } else {
+            encKeyLabel.innerHTML = '<i class="fas fa-lock"></i> Private Key (PEM / PKCS#8)';
+            encKey.placeholder = '-----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----';
+          }
+        }
+
+        async function doEncode() {
+          var alg = encAlg.value;
+          var meta = ALGS[alg];
+          if (!meta) {
+            setStatus(encodeStatus, '⛔ Algoritmo no soportado.', 'error');
+            return;
+          }
+          var header = parseJsonField(encHeader.value, 'header');
+          if (header === null) return;
+          if (typeof header !== 'object' || header === null || Array.isArray(header)) {
+            setStatus(encodeStatus, '⛔ El header debe ser un objeto JSON.', 'error');
+            return;
+          }
+          var payload = parseJsonField(encPayload.value, 'payload');
+          if (payload === null) return;
+          header.alg = alg;
+          if (!header.typ) header.typ = 'JWT';
+          encHeader.value = JSON.stringify(header, null, 2);
+          if (alg !== 'none' && !encKey.value.trim()) {
+            setStatus(encodeStatus, 'Ingresa el secret o la clave privada.', 'warn');
+            return;
+          }
+          var headerB64 = strToB64url(JSON.stringify(header));
+          var payloadB64 = strToB64url(JSON.stringify(payload));
+          var signingInput = headerB64 + '.' + payloadB64;
+          setStatus(encodeStatus, 'Firmando...', '');
+          try {
+            var signature = await signToken(alg, signingInput, encKey.value, encSecretB64.checked);
+            var token = signingInput + '.' + signature;
+            encOutput.value = token;
+            if (alg === 'none') {
+              setStatus(encodeStatus, '⚠️ Token generado sin firma (alg "none").', 'warn');
+            } else {
+              setStatus(encodeStatus, '✅ Token firmado con ' + alg + '.', 'ok');
+            }
+            tokenInput.value = token;
+            decodeAndRender();
+          } catch (e) {
+            setStatus(encodeStatus, '⛔ Error al firmar: ' + e.message, 'error');
+          }
+        }
+
+
+        // ================= EVENTOS Y PESTAÑAS =================
+        var tabs = Array.prototype.slice.call(document.querySelectorAll('.jwt-tab'));
+        var decoderPanel = document.getElementById('panel-decoder');
+        var encoderPanel = document.getElementById('panel-encoder');
+
+        function switchTab(name) {
+          tabs.forEach(function (tab) {
+            var active = tab.getAttribute('data-tab') === name;
+            tab.classList.toggle('active', active);
+          });
+          decoderPanel.hidden = name !== 'decoder';
+          encoderPanel.hidden = name !== 'encoder';
+        }
+
+        tabs.forEach(function (tab) {
+          tab.addEventListener('click', function () {
+            switchTab(tab.getAttribute('data-tab'));
+          });
+        });
+
+        // --- Mensajes flotantes ---
+        var toastEl = null;
+        var toastTimer = null;
+        function showToast(message) {
+          if (!toastEl) {
+            toastEl = document.createElement('div');
+            toastEl.className = 'jwt-toast';
+            document.body.appendChild(toastEl);
+          }
+          toastEl.textContent = message;
+          toastEl.classList.add('show');
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(function () {
+            toastEl.classList.remove('show');
+          }, 2200);
+        }
+
+        function fallbackCopyText(text, message) {
+          var helper = document.createElement('textarea');
+          helper.value = text;
+          document.body.appendChild(helper);
+          helper.select();
+          try {
+            document.execCommand('copy');
+            showToast(message);
+          } catch (e) {
+            showToast('No se pudo copiar.');
+          }
+          document.body.removeChild(helper);
+        }
+
+        function copyToClipboard(text, message) {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(
+              function () {
+                showToast(message);
+              },
+              function () {
+                fallbackCopyText(text, message);
+              }
+            );
+          } else {
+            fallbackCopyText(text, message);
+          }
+        }
+
+        Array.prototype.slice.call(document.querySelectorAll('.jwt-mini')).forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var target = document.getElementById(btn.getAttribute('data-copy-target'));
+            if (target && target.value) {
+              copyToClipboard(target.value, 'Copiado al portapapeles.');
+            } else {
+              showToast('No hay nada que copiar todavía.');
+            }
+          });
+        });
+
+        tokenInput.addEventListener('input', decodeAndRender);
+
+        document.getElementById('loadExampleBtn').addEventListener('click', function () {
+          tokenInput.value = EXAMPLE_TOKEN;
+          verifyKey.value = EXAMPLE_SECRET;
+          switchTab('decoder');
+          decodeAndRender();
+          setStatus(verifyStatus, 'Ejemplo cargado. Pulsa "Verificar firma" para comprobarlo.', '');
+        });
+
+        document.getElementById('copyTokenBtn').addEventListener('click', function () {
+          var token = normalizeToken(tokenInput.value);
+          if (token) {
+            copyToClipboard(token, 'Token copiado.');
+          } else {
+            showToast('No hay token que copiar.');
+          }
+        });
+
+        document.getElementById('clearTokenBtn').addEventListener('click', function () {
+          tokenInput.value = '';
+          verifyKey.value = '';
+          verifyAlg.value = '';
+          setStatus(verifyStatus, '', '');
+          decodeAndRender();
+        });
+
+        document.getElementById('verifyBtn').addEventListener('click', doVerify);
+
+        document.getElementById('toEncoderBtn').addEventListener('click', function () {
+          var info = decodeAndRender();
+          if (!info) {
+            setStatus(verifyStatus, 'Decodifica un token antes de editarlo.', 'warn');
+            return;
+          }
+          encHeader.value = JSON.stringify(info.header, null, 2);
+          encPayload.value = JSON.stringify(info.payload, null, 2);
+          if (info.header && ALGS[info.header.alg]) encAlg.value = info.header.alg;
+          updateKeyLabel();
+          switchTab('encoder');
+        });
+
+        encAlg.addEventListener('change', function () {
+          syncEncHeaderAlg();
+          updateKeyLabel();
+        });
+
+        document.getElementById('encodeBtn').addEventListener('click', doEncode);
+
+        document.getElementById('addDatesBtn').addEventListener('click', function () {
+          var payload = parseJsonField(encPayload.value, 'payload');
+          if (payload === null) return;
+          if (typeof payload !== 'object' || payload === null || Array.isArray(payload)) {
+            setStatus(encodeStatus, '⛔ El payload debe ser un objeto JSON.', 'error');
+            return;
+          }
+          var now = Math.floor(Date.now() / 1000);
+          payload.iat = now;
+          payload.exp = now + 3600;
+          encPayload.value = JSON.stringify(payload, null, 2);
+          setStatus(encodeStatus, '✅ iat y exp actualizados (exp = iat + 1 hora).', 'ok');
+        });
+
+        // ================= ESTADO INICIAL =================
+        updateKeyLabel();
+        if (!subtle) {
+          setStatus(
+            encodeStatus,
+            '⚠️ WebCrypto no disponible: podrás decodificar, pero no firmar ni verificar.',
+            'warn'
+          );
+        }
+      })();
+    </script>
+  </body>
+</html>
+
