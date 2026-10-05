@@ -26,6 +26,9 @@ apps.html                  ← Lanzador de apps (grilla de tarjetas)
 mynotes.html               ← Notas de estudio: Uncounables, Frasal Verbs, Irregular Verbs, Chunks & Interviews
 myformat.html              ← Formateador de textos (camelCase, snake_case, kebab-case, etc.)
 myjwt.html                 ← Decoder / Encoder de JSON Web Tokens (JWT) con verificación de firma
+englishevo.html            ← EnglishEvo: vocabulario (Top100) y Phrasal Verbs en cards secuenciales
+data/mds/top_100_words.csv ← Dataset de las 100 palabras más usadas (id,word,meaning)
+data/mds/phrasal_verbs.md  ← Phrasal verbs en formato JSON ({ "verbo": "significado" })
 ```
 
 ## Persistencia (LocalStorage)
@@ -315,3 +318,16 @@ Decodificar, inspeccionar y verificar JSON Web Tokens, y codificar/firmar tokens
 5. El firmado/verificado usa exclusivamente WebCrypto (`crypto.subtle`); no hay backend ni servicio externo.
 6. Nunca se envían tokens, secrets ni claves por la red: todo el procesamiento es local.
 7. La app debe funcionar completamente offline una vez cargada (en contexto seguro: HTTPS o localhost).
+
+### Para `englishevo.html`
+1. **Todo en un solo archivo HTML** (SPA).
+2. Los estilos específicos van dentro de `<style>` en el mismo HTML.
+3. El JavaScript va dentro de `<script>` al final del body.
+4. Sin frameworks ni librerías externas (excepto Font Awesome vía CDN).
+5. El dashboard tiene 3 botones: `Top100`, `Phrasal` y `Top5000`.
+6. `Top100` carga `data/mds/top_100_words.csv` (se omite la cabecera) y muestra cada fila como una card en **orden secuencial** (1…100).
+7. `Phrasal` carga `data/mds/phrasal_verbs.md` (contenido JSON) y muestra cada `"verbo": "significado"` como una card en orden secuencial.
+8. `Top5000` es un placeholder: por ahora **no hace nada**.
+9. La card reutiliza el visor de `flashcards.html`: frente MEMORIZAR (inglés) / reverso RESPUESTA (significado), flip al tocar.
+10. Interacción: tocar la carta gira; tocar de nuevo avanza a la siguiente; además se navega con flechas (desktop), swipe (mobile) y teclado (`←` / `→`).
+11. Los archivos de datos se leen con `fetch` (mismo origen); funciona al servir el sitio por HTTP/HTTPS (p. ej. GitHub Pages).

@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EnglishEvo | Luis Armando</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script defer src="assets/js/i18n.js"></script>
+    <style>
+      /* ========== ANIMACIÓN INICIAL ========== */
+      .cards-animation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 0;
+        perspective: 800px;
+      }
+
+      .flip-card {
+        width: 280px;
+        height: 160px;
+        position: relative;
+        animation: flipCard 3s ease-in-out infinite;
+        transform-style: preserve-3d;
+      }
+
+      .flip-card .card-face {
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        backface-visibility: hidden;
+        border: 2px solid rgba(99, 102, 241, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .flip-card .card-front {
+        background: linear-gradient(145deg, #ffffff, #e6e6e6);
+      }
+
+      .flip-card .card-back {
+        background: linear-gradient(145deg, #e6e6e6, #ffffff);
+        transform: rotateY(180deg);
+      }
+
+      @keyframes flipCard {
+        0%   { transform: perspective(600px) rotateY(0deg); }
+        40%  { transform: perspective(600px) rotateY(180deg); }
+        60%  { transform: perspective(600px) rotateY(180deg); }
+        100% { transform: perspective(600px) rotateY(360deg); }
+      }
+
+      .flip-card i {
+        font-size: 48px;
+        color: #f59e0b;
+        margin-bottom: 6px;
+      }
+
+      .flip-card .card-back i {
+        color: #6366f1;
+      }
+
+      .flip-card .card-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #999;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      body.dark .flip-card .card-front {
+        background: linear-gradient(145deg, #4a4a4a, #3c3c3c);
+        border-color: rgba(129, 140, 248, 0.3);
+      }
+
+      body.dark .flip-card .card-back {
+        background: linear-gradient(145deg, #3c3c3c, #4a4a4a);
+        border-color: rgba(129, 140, 248, 0.3);
+      }
+
+      body.dark .flip-card .card-back i {
+        color: #818cf8;
+      }
+
+      /* ========== DASHBOARD ========== */
+      .flashcard-dashboard { width: 100%; }
+
+      .dashboard-nav {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .dashboard-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      }
+
+      .dashboard-btn i { font-size: 16px; }
+
+      .dashboard-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      }
+
+      body.dark .dashboard-btn {
+        background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+        box-shadow: 0 4px 15px rgba(129, 140, 248, 0.3);
+      }
+
+      body.dark .dashboard-btn:hover {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        box-shadow: 0 6px 20px rgba(129, 140, 248, 0.5);
+      }
+
+      /* ========== NOTIFICACIONES ========== */
+      .notification {
+        display: none;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        padding: 14px 22px;
+        border-radius: 10px;
+        text-align: center;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .notification.visible { display: block; }
+
+      .notification.success {
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+      }
+
+      .notification.error {
+        color: #ef4444;
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+      }
+
+      .notification.info {
+        color: #6366f1;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+      }
+
+      body.dark .notification.success {
+        background: rgba(16, 185, 129, 0.15);
+        border-color: rgba(16, 185, 129, 0.3);
+      }
+
+      body.dark .notification.error {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+
+      body.dark .notification.info {
+        background: rgba(99, 102, 241, 0.15);
+        border-color: rgba(99, 102, 241, 0.3);
+      }
+
+      /* ========== VISOR DE CARDS ========== */
+      .flashcard-viewer {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .flashcard-viewer.visible {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .viewer-empty {
+        text-align: center;
+        color: #999;
+        padding: 40px 0;
+      }
+
+      .viewer-empty i {
+        font-size: 64px;
+        color: #d1d5db;
+        margin-bottom: 16px;
+      }
+
+      .viewer-empty p {
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      body.dark .viewer-empty i { color: #5a5a5a; }
+      body.dark .viewer-empty p { color: #9ca3af; }
+
+      .viewer-card-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .viewer-nav-arrow {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .viewer-nav-arrow:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+      }
+
+      .viewer-nav-arrow:active {
+        transform: scale(0.95);
+      }
+
+      body.dark .viewer-nav-arrow {
+        background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+      }
+
+      .viewer-card-container {
+        width: 320px;
+        height: 200px;
+        perspective: 800px;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: pan-y;
+      }
+
+      .viewer-card {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease;
+      }
+
+      .viewer-card.flipped {
+        transform: rotateY(180deg);
+      }
+
+      .viewer-card .viewer-face {
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+        backface-visibility: hidden;
+        border: 2px solid rgba(99, 102, 241, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        word-break: break-word;
+        overflow-y: auto;
+      }
+
+      .viewer-card .viewer-front {
+        background: linear-gradient(145deg, #ffffff, #e6e6e6);
+      }
+
+      .viewer-card .viewer-back {
+        background: linear-gradient(145deg, #e6e6e6, #ffffff);
+        transform: rotateY(180deg);
+      }
+
+      .viewer-face h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 4px;
+      }
+
+      .viewer-face p {
+        font-size: 15px;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      .viewer-face .viewer-label {
+        font-size: 11px;
+        font-weight: 600;
+        color: #999;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      body.dark .viewer-card .viewer-front {
+        background: linear-gradient(145deg, #4a4a4a, #3c3c3c);
+        border-color: rgba(129, 140, 248, 0.3);
+      }
+
+      body.dark .viewer-card .viewer-back {
+        background: linear-gradient(145deg, #3c3c3c, #4a4a4a);
+        border-color: rgba(129, 140, 248, 0.3);
+      }
+
+      body.dark .viewer-face h3 { color: #f9fafb; }
+      body.dark .viewer-face p { color: #cbd5e1; }
+      body.dark .viewer-face .viewer-label { color: #9ca3af; }
+
+      .viewer-counter {
+        font-size: 13px;
+        color: #999;
+        font-weight: 500;
+      }
+
+      body.dark .viewer-counter { color: #9ca3af; }
+
+      .viewer-hint {
+        font-size: 12px;
+        color: #aaa;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      body.dark .viewer-hint { color: #9ca3af; }
+
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 50%, 90% { transform: translateX(-8px); }
+        30%, 70% { transform: translateX(8px); }
+      }
+
+      .viewer-card-container.shake .viewer-card {
+        animation: shake 0.5s ease-in-out;
+      }
+
+      @media (max-width: 600px) {
+        .viewer-nav-arrow { display: none; }
+        .viewer-card-container { width: 280px; height: 180px; }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-main">
+      <aside class="sidebar">
+        <div class="profile-section">
+          <img src="assets/img/profile.jpg" alt="Luis Armando" class="profile-image" />
+          <h1 class="profile-name">Luis Armando</h1>
+          <p class="profile-pronouns">Ingeniero de Computación</p>
+          <p class="profile-title" data-i18n="profile.title">
+            16+ Senior QA Automation Engineer | Playwright | Cypress | WebDriverIO | Salesforce QA | AccelQ | Selenium | AWS | AI Driven
+          </p>
+          <br />
+          <p class="profile-company">Última empresa: OLACLICK</p>
+          <div class="social-links">
+            <a href="mailto:luisarmandobr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/luisarmandobr" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/luisarmandobr" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </div>
+          <a href="apps.html" class="apps-btn"><i class="fas fa-th"></i> MyApps</a>
+          <a href="#" class="apps-btn" id="myNotesBtn" style="margin-top: 8px;"><i class="fas fa-book"></i> MyNotes</a>
+          <a href="myformat.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-font"></i> MyFormat</a>
+          <a href="myjwt.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-key"></i> MyJWT</a>
+          <a href="englishevo.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-language"></i> EnglishEvo</a>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="top-header">
+          <div class="header-left">
+            <h2>Luis Armando Benitez Rodriguez</h2>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="index.html" data-i18n="nav.bio">Bio</a></li>
+              <li><a href="certifications.html" data-i18n="nav.certifications">Certificaciones</a></li>
+              <li><a href="workhistory.html" data-i18n="nav.workhistory">Experiencia</a></li>
+            </ul>
+          </nav>
+          <div class="header-right">
+            <div class="lang-switch" role="group" aria-label="Language switch">
+              <button class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
+              <button class="lang-btn" data-lang="pt" aria-pressed="false">PT</button>
+              <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+            </div>
+            <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+          </div>
+        </header>
+
+
+        <!-- ENGLISH EVO DASHBOARD -->
+        <section class="professional-section">
+          <div class="section-header">
+            <i class="fas fa-language section-icon"></i>
+            <h2>EnglishEvo</h2>
+          </div>
+
+          <div class="flashcard-dashboard">
+            <div class="dashboard-nav">
+              <button class="dashboard-btn" id="btnTop100"><i class="fas fa-list-ol"></i> Top100</button>
+              <button class="dashboard-btn" id="btnPhrasal"><i class="fas fa-comments"></i> Phrasal</button>
+              <button class="dashboard-btn" id="btnTop5000"><i class="fas fa-layer-group"></i> Top5000</button>
+            </div>
+
+            <!-- NOTIFICACIÓN GLOBAL -->
+            <div id="globalNotification" class="notification"></div>
+
+            <!-- ANIMACIÓN INICIAL -->
+            <div class="cards-animation" id="cardsAnimation">
+              <div class="flip-card">
+                <div class="card-face card-front">
+                  <i class="fas fa-sun"></i>
+                  <span class="card-label">MEMORIZAR</span>
+                </div>
+                <div class="card-face card-back">
+                  <i class="fas fa-lightbulb"></i>
+                  <span class="card-label">RESPUESTA</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- VISOR DE CARDS -->
+            <div class="flashcard-viewer" id="flashcardViewer">
+              <div class="viewer-empty" id="viewerEmpty">
+                <i class="fas fa-layer-group"></i>
+                <p>Selecciona una sección para empezar</p>
+              </div>
+
+              <div class="viewer-card-wrapper" id="viewerWrapper" style="display:none;">
+                <button class="viewer-nav-arrow" id="navPrev"><i class="fas fa-chevron-left"></i></button>
+
+                <div class="viewer-card-container" id="viewerCardContainer">
+                  <div class="viewer-card" id="viewerCard">
+                    <div class="viewer-face viewer-front">
+                      <span class="viewer-label">MEMORIZAR</span>
+                      <h3 id="viewerTitle">Título</h3>
+                    </div>
+                    <div class="viewer-face viewer-back">
+                      <span class="viewer-label">RESPUESTA</span>
+                      <p id="viewerMeaning">Significado</p>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="viewer-nav-arrow" id="navNext"><i class="fas fa-chevron-right"></i></button>
+              </div>
+
+              <div class="viewer-counter" id="viewerCounter" style="display:none;"></div>
+              <div class="viewer-hint" id="viewerHint" style="display:none;">
+                Toca la carta para ver la respuesta y vuelve a tocar para avanzar
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // ===== RUTAS DE DATOS =====
+        const CSV_URL = 'data/mds/top_100_words.csv';
+        const PHRASAL_URL = 'data/mds/phrasal_verbs.md';
+
+        // ===== REFERENCIAS DOM =====
+        const btnTop100           = document.getElementById('btnTop100');
+        const btnPhrasal          = document.getElementById('btnPhrasal');
+        const btnTop5000          = document.getElementById('btnTop5000');
+        const cardsAnimation      = document.getElementById('cardsAnimation');
+        const globalNotif         = document.getElementById('globalNotification');
+        const flashcardViewer     = document.getElementById('flashcardViewer');
+        const viewerEmpty         = document.getElementById('viewerEmpty');
+        const viewerWrapper       = document.getElementById('viewerWrapper');
+        const viewerCard          = document.getElementById('viewerCard');
+        const viewerCardContainer = document.getElementById('viewerCardContainer');
+        const viewerTitle         = document.getElementById('viewerTitle');
+        const viewerMeaning       = document.getElementById('viewerMeaning');
+        const viewerCounter       = document.getElementById('viewerCounter');
+        const viewerHint          = document.getElementById('viewerHint');
+        const navPrev             = document.getElementById('navPrev');
+        const navNext             = document.getElementById('navNext');
+
+        // ===== ESTADO =====
+        let deck = [];
+        let currentIndex = 0;
+        let isFlipped = false;
+
+        // ===== NOTIFICACIÓN GLOBAL =====
+        function mostrarNotificacion(mensaje, tipo) {
+          globalNotif.className = 'notification ' + tipo + ' visible';
+          globalNotif.textContent = mensaje;
+          clearTimeout(globalNotif._timeout);
+          globalNotif._timeout = setTimeout(function () {
+            globalNotif.classList.remove('visible');
+          }, 4000);
+        }
+
+        function ocultarTodo() {
+          cardsAnimation.style.display = 'none';
+          flashcardViewer.classList.remove('visible');
+        }
+
+        // ===== PARSERS =====
+        // CSV: id,word,meaning  (se omite la cabecera y se conserva el orden)
+        function parseCSV(text) {
+          const lines = text.replace(/\r\n/g, '\n').split('\n').filter(function (l) {
+            return l.trim() !== '';
+          });
+          const cards = [];
+          for (let i = 1; i < lines.length; i++) {
+            const parts = lines[i].split(',');
+            if (parts.length < 3) continue;
+            const english = parts[1].trim();
+            const spanish = parts.slice(2).join(',').trim();
+            if (!english) continue;
+            cards.push({ english: english, spanish: spanish });
+          }
+          return cards;
+        }
+
+        // Phrasal: archivo JSON con { "verbo": "significado" } (se conserva el orden)
+        function parsePhrasal(text) {
+          const obj = JSON.parse(text);
+          return Object.keys(obj).map(function (key) {
+            return { english: key, spanish: obj[key] };
+          });
+        }
+
+
+        // ===== CARGA DEL DECK =====
+        function cargarDeck(url, parser, etiqueta) {
+          // fetch() está bloqueado en file:// : hay que servir el sitio por HTTP/HTTPS
+          if (window.location.protocol === 'file:') {
+            mostrarNotificacion(
+              'Abre EnglishEvo por HTTP (GitHub Pages o un servidor local), no como archivo. ' +
+              'En local: `python3 -m http.server`, luego http://localhost:8000/englishevo.html',
+              'error'
+            );
+            return;
+          }
+          fetch(url)
+            .then(function (res) {
+              if (!res.ok) throw new Error('HTTP ' + res.status);
+              return res.text();
+            })
+            .then(function (text) {
+              const cards = parser(text);
+              if (!cards.length) {
+                mostrarNotificacion('No se encontraron datos en ' + etiqueta + '.', 'error');
+                return;
+              }
+              deck = cards;
+              currentIndex = 0;
+              isFlipped = false;
+              ocultarTodo();
+              flashcardViewer.classList.add('visible');
+              viewerEmpty.style.display = 'none';
+              viewerWrapper.style.display = 'flex';
+              viewerCounter.style.display = 'block';
+              viewerHint.style.display = 'block';
+              mostrarCard(0);
+            })
+            .catch(function (err) {
+              mostrarNotificacion('No se pudo cargar ' + etiqueta + ': ' + err.message, 'error');
+            });
+        }
+
+        function mostrarCard(index) {
+          const card = deck[index];
+          if (!card) return;
+          viewerTitle.textContent = card.english;
+          viewerMeaning.textContent = card.spanish;
+          viewerCounter.textContent = (index + 1) + ' / ' + deck.length;
+          isFlipped = false;
+          viewerCard.classList.remove('flipped');
+        }
+
+        function shake() {
+          viewerCardContainer.classList.remove('shake');
+          void viewerCardContainer.offsetWidth;
+          viewerCardContainer.classList.add('shake');
+          setTimeout(function () { viewerCardContainer.classList.remove('shake'); }, 500);
+        }
+
+        // ===== NAVEGACIÓN =====
+        function navegarSiguiente() {
+          if (deck.length === 0) return;
+          if (currentIndex < deck.length - 1) {
+            currentIndex++;
+            mostrarCard(currentIndex);
+          } else {
+            shake();
+          }
+        }
+
+        function navegarAnterior() {
+          if (deck.length === 0) return;
+          if (currentIndex > 0) {
+            currentIndex--;
+            mostrarCard(currentIndex);
+          } else {
+            shake();
+          }
+        }
+
+        navNext.addEventListener('click', navegarSiguiente);
+        navPrev.addEventListener('click', navegarAnterior);
+
+        // ===== TAP: gira la carta y, si ya está girada, avanza =====
+        viewerCardContainer.addEventListener('click', function () {
+          if (deck.length === 0) return;
+          if (!isFlipped) {
+            isFlipped = true;
+            viewerCard.classList.add('flipped');
+          } else {
+            navegarSiguiente();
+          }
+        });
+
+        // ===== SWIPE MOBILE =====
+        let touchStartX = 0, touchEndX = 0;
+        viewerCardContainer.addEventListener('touchstart', function (e) {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        viewerCardContainer.addEventListener('touchend', function (e) {
+          touchEndX = e.changedTouches[0].screenX;
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) navegarSiguiente();
+            else navegarAnterior();
+          }
+        }, { passive: true });
+
+        // ===== TECLADO =====
+        document.addEventListener('keydown', function (e) {
+          if (!flashcardViewer.classList.contains('visible')) return;
+          if (e.key === 'ArrowRight') { e.preventDefault(); navegarSiguiente(); }
+          else if (e.key === 'ArrowLeft') { e.preventDefault(); navegarAnterior(); }
+        });
+
+        // ===== BOTONES DEL DASHBOARD =====
+        btnTop100.addEventListener('click', function () {
+          cargarDeck(CSV_URL, parseCSV, 'Top100');
+        });
+
+        btnPhrasal.addEventListener('click', function () {
+          cargarDeck(PHRASAL_URL, parsePhrasal, 'Phrasal');
+        });
+
+        // Top5000: por ahora no hace nada
+        btnTop5000.addEventListener('click', function () { /* no-op */ });
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var myNotesBtn = document.getElementById('myNotesBtn');
+        if (myNotesBtn) {
+          myNotesBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var storedHash = 'NDA5MTY3ODBFcnM=';
+            var pwd = prompt('Ingrese contrase\u00f1a para acceder a MyNotes:', '');
+            if (pwd === null) return;
+            var encoded = btoa(pwd);
+            if (encoded === storedHash) {
+              window.location.href = 'mynotes.html';
+            } else {
+              alert('Credenciales incorrectas. Acceso denegado.');
+              myNotesBtn.style.display = 'none';
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
+
