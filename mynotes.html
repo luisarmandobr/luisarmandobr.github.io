@@ -841,6 +841,186 @@
         }
       }
 
+      /* ===== QyA (Questions & Answers) ACCORDION ===== */
+      .qya-container {
+        display: none;
+        width: 100%;
+      }
+
+      .qya-container.visible {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .qya-block {
+        margin-bottom: 28px;
+      }
+
+      .qya-block-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        color: #0f766e;
+        margin: 0 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid rgba(20, 184, 166, 0.35);
+      }
+
+      body.dark .qya-block-title {
+        color: #5eead4;
+        border-bottom-color: rgba(45, 212, 191, 0.35);
+      }
+
+      .qya-item {
+        border: 1.5px solid #14b8a6;
+        border-radius: 14px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        background: #fff;
+        transition: box-shadow 0.2s ease;
+      }
+
+      body.dark .qya-item {
+        background: #4a4a4a;
+        border-color: #2dd4bf;
+      }
+
+      .qya-question {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+        color: #fff;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.3s ease;
+      }
+
+      .qya-question:hover {
+        background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+      }
+
+      body.dark .qya-question {
+        background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+      }
+
+      .qya-num {
+        flex: 0 0 auto;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.28);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .qya-qtext {
+        flex: 1;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      .qya-chevron {
+        flex: 0 0 auto;
+        font-size: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .qya-item.open .qya-chevron {
+        transform: rotate(180deg);
+      }
+
+      .qya-answer {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 18px;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+      }
+
+      .qya-item.open .qya-answer {
+        max-height: 6000px;
+        padding: 16px 18px;
+      }
+
+      .qya-answer p {
+        margin: 0 0 10px;
+        font-size: 13px;
+        color: #555;
+        line-height: 1.65;
+      }
+
+      .qya-answer ul,
+      .qya-answer ol {
+        margin: 4px 0 12px 20px;
+        padding: 0;
+      }
+
+      .qya-answer li {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.65;
+        margin-bottom: 6px;
+      }
+
+      .qya-answer code {
+        background: #f1f5f9;
+        padding: 1px 5px;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #0f766e;
+        font-family: 'Courier New', monospace;
+      }
+
+      .qya-answer pre {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 14px 16px;
+        border-radius: 10px;
+        overflow-x: auto;
+        font-size: 12px;
+        line-height: 1.5;
+        margin: 8px 0 12px;
+      }
+
+      .qya-answer pre code {
+        background: none;
+        color: inherit;
+        padding: 0;
+        font-size: 12px;
+      }
+
+      .qya-answer strong {
+        color: #0f766e;
+      }
+
+      body.dark .qya-answer p,
+      body.dark .qya-answer li {
+        color: #cbd5e1;
+      }
+
+      body.dark .qya-answer code {
+        background: #334155;
+        color: #5eead4;
+      }
+
+      body.dark .qya-answer strong {
+        color: #5eead4;
+      }
+
+      @media (max-width: 768px) {
+        .qya-question { padding: 12px 14px; }
+        .qya-answer { padding: 0 14px; }
+        .qya-item.open .qya-answer { padding: 12px 14px; }
+      }
+
       @keyframes fadeIn {
         from { opacity: 0; transform: translateY(-10px); }
         to { opacity: 1; transform: translateY(0); }
@@ -947,6 +1127,8 @@
               <button class="dashboard-btn" id="btnIrregular" style="background:linear-gradient(135deg,#f59e0b,#d97706);"><i class="fas fa-table"></i> Irregular</button>
               <button class="dashboard-btn" id="btnChunks" style="background:linear-gradient(135deg,#ec4899,#db2777);"><i class="fas fa-comments"></i> Chunks</button>
               <button class="dashboard-btn" id="btnInterviews" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);"><i class="fas fa-question-circle"></i> Interviews</button>
+              <button class="dashboard-btn" id="btnInterviewsEs" style="background:linear-gradient(135deg,#f43f5e,#e11d48);"><i class="fas fa-comment-dots"></i> Interviews SP</button>
+              <button class="dashboard-btn" id="btnQya" style="background:linear-gradient(135deg,#14b8a6,#0d9488);"><i class="fas fa-lightbulb"></i> QyA</button>
             </div>
 
             <!-- UNCOUNTABLE SECTION -->
@@ -992,6 +1174,12 @@
 
             <!-- INTERVIEWS SECTION -->
             <div class="interviews-container" id="interviewsContainer"></div>
+
+            <!-- INTERVIEWS SP (SPANISH) SECTION -->
+            <div class="interviews-container" id="interviewsEsContainer"></div>
+
+            <!-- QyA (QUESTIONS & ANSWERS) SECTION -->
+            <div class="qya-container" id="qyaContainer"></div>
           </div>
         </section>
       </main>
@@ -1051,6 +1239,10 @@
         const chunksContainer = document.getElementById('chunksContainer');
         const btnInterviews = document.getElementById('btnInterviews');
         const interviewsContainer = document.getElementById('interviewsContainer');
+        const btnInterviewsEs = document.getElementById('btnInterviewsEs');
+        const interviewsEsContainer = document.getElementById('interviewsEsContainer');
+        const btnQya = document.getElementById('btnQya');
+        const qyaContainer = document.getElementById('qyaContainer');
 
         // ===== UNCOUNTABLE =====
         function buildAllGrids() {
@@ -1071,10 +1263,12 @@
         }
 
         btnUncountable.addEventListener('click', function () {
+          qyaContainer.classList.remove('visible');
           frasalVerbsContainer.classList.remove('visible');
           irregularContainer.classList.remove('visible');
           chunksContainer.classList.remove('visible');
           interviewsContainer.classList.remove('visible');
+          interviewsEsContainer.classList.remove('visible');
           const isVisible = uncountableContainer.classList.toggle('visible');
           if (isVisible) {
             buildAllGrids();
@@ -1082,7 +1276,58 @@
         });
 
         // ===== FRASAL VERBS DATA =====
-        const frasalVerbsData = [];
+        const frasalVerbsData = [
+          { verb: 'add up', es: 'tener sentido, cuadrar o sumar una cantidad', en: "The numbers don't add up." },
+          { verb: 'back down', es: 'retractarse, ceder o admitir la derrota en una discusión', en: 'He refused to back down.' },
+          { verb: 'break down', es: 'averiarse un vehículo o máquina, o sufrir un colapso emocional', en: 'My car broke down on the highway.' },
+          { verb: 'bring up', es: 'mencionar un tema en una conversación o criar a un niño', en: 'She brought up a good point.' },
+          { verb: 'call off', es: 'cancelar un evento, reunión o compromiso previamente planeado', en: 'They called off the wedding.' },
+          { verb: 'carry on', es: 'continuar haciendo algo o seguir adelante con una actividad', en: 'Please carry on with your work.' },
+          { verb: 'catch up', es: 'ponerse al día con alguien, con trabajo atrasado o alcanzar a alguien', en: 'I need to catch up on emails.' },
+          { verb: 'come across', es: 'encontrar algo o a alguien por casualidad, o dar una impresión específica', en: 'I came across an old photo.' },
+          { verb: 'cut off', es: 'interrumpir a alguien que habla o cortar el suministro de algo', en: 'We were cut off mid-call.' },
+          { verb: 'drop out', es: 'abandonar la escuela, la universidad o retirarse de una competencia', en: 'He dropped out of college.' },
+          { verb: 'figure out', es: 'entender, resolver o encontrar la solución a un problema', en: "I can't figure out this problem." },
+          { verb: 'find out', es: 'descubrir, averiguar o enterarse de información nueva', en: 'We found out the truth later.' },
+          { verb: 'get along', es: 'llevarse bien con alguien o tener una buena relación', en: 'They get along very well.' },
+          { verb: 'give up', es: 'rendirse, abandonar un hábito o dejar de intentar algo', en: 'Never give up on your dreams.' },
+          { verb: 'go on', es: 'continuar, seguir adelante o referirse a algo que está sucediendo', en: "What's going on here?" },
+          { verb: 'grow up', es: 'crecer, madurar o pasar de la infancia a la adultez', en: 'I grew up in a small town.' },
+          { verb: 'hold on', es: 'esperar un momento o sujetarse fuertemente de algo', en: 'Hold on a second, please.' },
+          { verb: 'keep on', es: 'continuar haciendo algo repetidamente sin detenerse', en: 'She kept on talking.' },
+          { verb: 'look after', es: 'cuidar de alguien, de una mascota o de algo', en: 'Can you look after my dog?' },
+          { verb: 'look forward to', es: 'esperar con ansias o entusiasmo que algo suceda en el futuro', en: 'I look forward to meeting you.' },
+          { verb: 'make up', es: 'inventar una excusa o historia, reconciliarse o maquillarse', en: 'He made up an excuse.' },
+          { verb: 'pass out', es: 'desmayarse o perder el conocimiento temporalmente', en: 'She passed out from the heat.' },
+          { verb: 'point out', es: 'señalar, indicar o llamar la atención sobre un hecho específico', en: 'He pointed out my mistake.' },
+          { verb: 'put off', es: 'posponer o retrasar un evento para un momento posterior', en: "Don't put off your homework." },
+          { verb: 'put up with', es: 'tolerar o soportar una situación o persona molesta', en: "I can't put up with this noise." },
+          { verb: 'run out of', es: 'quedarse sin existencias o agotar el suministro de algo', en: 'We ran out of milk.' },
+          { verb: 'set up', es: 'instalar, configurar, establecer un negocio o preparar una trampa', en: 'They set up a new company.' },
+          { verb: 'show up', es: 'aparecer, llegar a un lugar o hacerse notar', en: 'He showed up late again.' },
+          { verb: 'take off', es: 'despegar un avión, quitarse la ropa o irse repentinamente', en: 'The plane took off on time.' },
+          { verb: 'turn out', es: 'resultar ser de cierta manera o asistir a un evento', en: 'It turned out to be great.' },
+          { verb: 'work out', es: 'hacer ejercicio, resolver un problema o que algo salga bien', en: 'Everything worked out fine.' },
+          { verb: 'break up', es: 'terminar una relación romántica o separar algo en pedazos', en: 'They broke up last year.' },
+          { verb: 'calm down', es: 'relajarse después de estar enojado o alterado', en: 'Calm down and breathe.' },
+          { verb: 'check in', es: 'registrarse al llegar a un hotel o aeropuerto', en: 'We checked in at the hotel.' },
+          { verb: 'check out', es: 'pagar y salir de un hotel, o investigar/mirar algo', en: "Let's check out that new cafe." },
+          { verb: 'cheer up', es: 'animarse o hacer que alguien se sienta más feliz', en: 'Cheer up! Things will get better.' },
+          { verb: 'come up with', es: 'pensar en una idea, un plan o una solución', en: 'She came up with a great idea.' },
+          { verb: 'end up', es: 'terminar en una situación o lugar no planeado', en: 'We ended up staying home.' },
+          { verb: 'fall apart', es: 'desmoronarse físicamente o colapsar emocionalmente', en: 'The old house is falling apart.' },
+          { verb: 'get away', es: 'escapar o irse de vacaciones', en: 'We need to get away this weekend.' },
+          { verb: 'get over', es: 'recuperarse de una enfermedad o superar una mala experiencia', en: 'It took months to get over the flu.' },
+          { verb: 'give in', es: 'ceder ante la presión o aceptar la derrota', en: 'He finally gave in.' },
+          { verb: 'hang out', es: 'pasar el rato relajadamente con amigos', en: "Let's hang out this weekend." },
+          { verb: 'look up', es: 'buscar información en un libro, diccionario o internet', en: 'Look up the word in the dictionary.' },
+          { verb: 'pick up', es: 'recoger algo o a alguien, o aprender algo nuevo rápidamente', en: "I'll pick you up at eight." },
+          { verb: 'put on', es: 'vestirse con una prenda de ropa o aplicar crema/maquillaje', en: 'Put on your jacket.' },
+          { verb: 'run into', es: 'encontrarse con alguien por casualidad', en: 'I ran into an old friend.' },
+          { verb: 'stand out', es: 'destacar o ser muy fácil de notar entre los demás', en: 'Her talent really stands out.' },
+          { verb: 'take over', es: 'tomar el control de algo o asumir una responsabilidad', en: 'She took over the project.' },
+          { verb: 'throw away', es: 'tirar algo a la basura o deshacerse de ello', en: 'Throw away those old papers.' }
+        ];
 
         function escapeHtml(text) {
           const div = document.createElement('div');
@@ -1092,16 +1337,58 @@
 
         // ===== BUILD FRASAL VERBS =====
         function buildFrasalVerbs() {
-          // Placeholder - load from backend or external data source
+          frasalVerbsContainer.innerHTML = '';
+
+          // Agrupar por letra inicial
+          const groups = {};
+          frasalVerbsData.forEach(function (item) {
+            const letter = item.verb.charAt(0).toUpperCase();
+            if (!groups[letter]) groups[letter] = [];
+            groups[letter].push(item);
+          });
+
+          Object.keys(groups).sort().forEach(function (letter) {
+            const items = groups[letter];
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'fv-group';
+
+            const header = document.createElement('div');
+            header.className = 'fv-group-header';
+            header.innerHTML = '<h3><i class="fas fa-code-branch"></i> ' + escapeHtml(letter) + ' (' + items.length + ')</h3><i class="fas fa-chevron-down"></i>';
+
+            const body = document.createElement('div');
+            body.className = 'fv-group-body';
+
+            header.addEventListener('click', function () {
+              body.classList.toggle('collapsed');
+              header.classList.toggle('collapsed');
+            });
+
+            items.forEach(function (it) {
+              const card = document.createElement('div');
+              card.className = 'fv-card';
+              card.innerHTML =
+                '<div class="fv-phrasal">' + escapeHtml(it.verb) + '</div>' +
+                '<div class="fv-es">' + escapeHtml(it.es) + '</div>' +
+                (it.en ? '<div class="fv-en">' + escapeHtml(it.en) + '</div>' : '');
+              body.appendChild(card);
+            });
+
+            groupDiv.appendChild(header);
+            groupDiv.appendChild(body);
+            frasalVerbsContainer.appendChild(groupDiv);
+          });
         }
 
         let frasalVerbsBuilt = false;
 
         btnFrasalVerbs.addEventListener('click', function () {
+          qyaContainer.classList.remove('visible');
           uncountableContainer.classList.remove('visible');
           irregularContainer.classList.remove('visible');
           chunksContainer.classList.remove('visible');
           interviewsContainer.classList.remove('visible');
+          interviewsEsContainer.classList.remove('visible');
           frasalVerbsContainer.classList.add('visible');
           if (!frasalVerbsBuilt) {
             buildFrasalVerbs();
@@ -1110,20 +1397,145 @@
         });
 
         // ===== IRREGULAR VERBS DATA =====
-        const irregularVerbsData = [];
+        const irregularVerbsData = [
+          { base: 'be', ps: 'was / were', pp: 'been', sound: '/bi\u02d0/', trans: 'ser / estar' },
+          { base: 'become', ps: 'became', pp: 'become', sound: '/b\u026a\u02c8k\u028cm/', trans: 'convertirse en' },
+          { base: 'begin', ps: 'began', pp: 'begun', sound: '/b\u026a\u02c8\u0261\u026an/', trans: 'comenzar' },
+          { base: 'break', ps: 'broke', pp: 'broken', sound: '/bre\u026ak/', trans: 'romper' },
+          { base: 'bring', ps: 'brought', pp: 'brought', sound: '/br\u026a\u014b/', trans: 'traer' },
+          { base: 'buy', ps: 'bought', pp: 'bought', sound: '/ba\u026a/', trans: 'comprar' },
+          { base: 'catch', ps: 'caught', pp: 'caught', sound: '/k\u00e6t\u0283/', trans: 'atrapar' },
+          { base: 'choose', ps: 'chose', pp: 'chosen', sound: '/t\u0283u\u02d0z/', trans: 'elegir' },
+          { base: 'come', ps: 'came', pp: 'come', sound: '/k\u028cm/', trans: 'venir' },
+          { base: 'cost', ps: 'cost', pp: 'cost', sound: '/k\u0252st/', trans: 'costar' },
+          { base: 'cut', ps: 'cut', pp: 'cut', sound: '/k\u028ct/', trans: 'cortar' },
+          { base: 'do', ps: 'did', pp: 'done', sound: '/du\u02d0/', trans: 'hacer' },
+          { base: 'draw', ps: 'drew', pp: 'drawn', sound: '/dr\u0254\u02d0/', trans: 'dibujar' },
+          { base: 'drink', ps: 'drank', pp: 'drunk', sound: '/dr\u026a\u014bk/', trans: 'beber' },
+          { base: 'drive', ps: 'drove', pp: 'driven', sound: '/dra\u026av/', trans: 'conducir' },
+          { base: 'eat', ps: 'ate', pp: 'eaten', sound: '/i\u02d0t/', trans: 'comer' },
+          { base: 'fall', ps: 'fell', pp: 'fallen', sound: '/f\u0254\u02d0l/', trans: 'caer' },
+          { base: 'feel', ps: 'felt', pp: 'felt', sound: '/fi\u02d0l/', trans: 'sentir' },
+          { base: 'fight', ps: 'fought', pp: 'fought', sound: '/fa\u026at/', trans: 'pelear' },
+          { base: 'find', ps: 'found', pp: 'found', sound: '/fa\u026and/', trans: 'encontrar' },
+          { base: 'fly', ps: 'flew', pp: 'flown', sound: '/fla\u026a/', trans: 'volar' },
+          { base: 'forget', ps: 'forgot', pp: 'forgotten', sound: '/f\u0259\u02c8\u0261et/', trans: 'olvidar' },
+          { base: 'forgive', ps: 'forgave', pp: 'forgiven', sound: '/f\u0259\u02c8\u0261\u026av/', trans: 'perdonar' },
+          { base: 'get', ps: 'got', pp: 'gotten / got', sound: '/\u0261et/', trans: 'obtener' },
+          { base: 'give', ps: 'gave', pp: 'given', sound: '/\u0261\u026av/', trans: 'dar' },
+          { base: 'go', ps: 'went', pp: 'gone', sound: '/\u0261o\u028a/', trans: 'ir' },
+          { base: 'grow', ps: 'grew', pp: 'grown', sound: '/\u0261ro\u028a/', trans: 'crecer' },
+          { base: 'have', ps: 'had', pp: 'had', sound: '/h\u00e6v/', trans: 'tener' },
+          { base: 'hear', ps: 'heard', pp: 'heard', sound: '/h\u026ar/', trans: 'o\u00edr' },
+          { base: 'hide', ps: 'hid', pp: 'hidden', sound: '/ha\u026ad/', trans: 'esconder' },
+          { base: 'hit', ps: 'hit', pp: 'hit', sound: '/h\u026at/', trans: 'golpear' },
+          { base: 'hold', ps: 'held', pp: 'held', sound: '/ho\u028ald/', trans: 'sostener' },
+          { base: 'keep', ps: 'kept', pp: 'kept', sound: '/ki\u02d0p/', trans: 'guardar' },
+          { base: 'know', ps: 'knew', pp: 'known', sound: '/no\u028a/', trans: 'saber' },
+          { base: 'lead', ps: 'led', pp: 'led', sound: '/li\u02d0d/', trans: 'liderar' },
+          { base: 'learn', ps: 'learned / learnt', pp: 'learned / learnt', sound: '/l\u025c\u02d0rn/', trans: 'aprender' },
+          { base: 'leave', ps: 'left', pp: 'left', sound: '/li\u02d0v/', trans: 'dejar / irse' },
+          { base: 'lend', ps: 'lent', pp: 'lent', sound: '/lend/', trans: 'prestar' },
+          { base: 'lose', ps: 'lost', pp: 'lost', sound: '/lu\u02d0z/', trans: 'perder' },
+          { base: 'make', ps: 'made', pp: 'made', sound: '/me\u026ak/', trans: 'hacer' },
+          { base: 'mean', ps: 'meant', pp: 'meant', sound: '/mi\u02d0n/', trans: 'significar' },
+          { base: 'meet', ps: 'met', pp: 'met', sound: '/mi\u02d0t/', trans: 'conocer / reunirse' },
+          { base: 'pay', ps: 'paid', pp: 'paid', sound: '/pe\u026a/', trans: 'pagar' },
+          { base: 'put', ps: 'put', pp: 'put', sound: '/p\u028at/', trans: 'poner' },
+          { base: 'read', ps: 'read', pp: 'read', sound: '/ri\u02d0d/', trans: 'leer' },
+          { base: 'ride', ps: 'rode', pp: 'ridden', sound: '/ra\u026ad/', trans: 'montar' },
+          { base: 'ring', ps: 'rang', pp: 'rung', sound: '/r\u026a\u014b/', trans: 'sonar / llamar' },
+          { base: 'rise', ps: 'rose', pp: 'risen', sound: '/ra\u026az/', trans: 'subir' },
+          { base: 'run', ps: 'ran', pp: 'run', sound: '/r\u028cn/', trans: 'correr' },
+          { base: 'say', ps: 'said', pp: 'said', sound: '/se\u026a/', trans: 'decir' },
+          { base: 'see', ps: 'saw', pp: 'seen', sound: '/si\u02d0/', trans: 'ver' },
+          { base: 'sell', ps: 'sold', pp: 'sold', sound: '/sel/', trans: 'vender' },
+          { base: 'send', ps: 'sent', pp: 'sent', sound: '/send/', trans: 'enviar' },
+          { base: 'set', ps: 'set', pp: 'set', sound: '/set/', trans: 'fijar / establecer' },
+          { base: 'show', ps: 'showed', pp: 'shown', sound: '/\u0283o\u028a/', trans: 'mostrar' },
+          { base: 'sing', ps: 'sang', pp: 'sung', sound: '/s\u026a\u014b/', trans: 'cantar' },
+          { base: 'sit', ps: 'sat', pp: 'sat', sound: '/s\u026at/', trans: 'sentarse' },
+          { base: 'sleep', ps: 'slept', pp: 'slept', sound: '/sli\u02d0p/', trans: 'dormir' },
+          { base: 'speak', ps: 'spoke', pp: 'spoken', sound: '/spi\u02d0k/', trans: 'hablar' },
+          { base: 'spend', ps: 'spent', pp: 'spent', sound: '/spend/', trans: 'gastar / pasar tiempo' },
+          { base: 'stand', ps: 'stood', pp: 'stood', sound: '/st\u00e6nd/', trans: 'estar de pie' },
+          { base: 'swim', ps: 'swam', pp: 'swum', sound: '/sw\u026am/', trans: 'nadar' },
+          { base: 'take', ps: 'took', pp: 'taken', sound: '/te\u026ak/', trans: 'tomar / llevar' },
+          { base: 'teach', ps: 'taught', pp: 'taught', sound: '/ti\u02d0t\u0283/', trans: 'ense\u00f1ar' },
+          { base: 'tell', ps: 'told', pp: 'told', sound: '/tel/', trans: 'decir / contar' },
+          { base: 'think', ps: 'thought', pp: 'thought', sound: '/\u03b8\u026a\u014bk/', trans: 'pensar' },
+          { base: 'understand', ps: 'understood', pp: 'understood', sound: '/\u02cc\u028cnd\u0259r\u02c8st\u00e6nd/', trans: 'entender' },
+          { base: 'wake', ps: 'woke', pp: 'woken', sound: '/we\u026ak/', trans: 'despertar' },
+          { base: 'wear', ps: 'wore', pp: 'worn', sound: '/wer/', trans: 'llevar puesto' },
+          { base: 'win', ps: 'won', pp: 'won', sound: '/w\u026an/', trans: 'ganar' },
+          { base: 'write', ps: 'wrote', pp: 'written', sound: '/ra\u026at/', trans: 'escribir' }
+        ];
 
         // ===== BUILD IRREGULAR VERBS =====
         function buildIrregularVerbs() {
-          // Placeholder - load from backend or external data source
+          irregularContainer.innerHTML = '';
+
+          const groups = {};
+          irregularVerbsData.forEach(function (item) {
+            const letter = item.base.charAt(0).toUpperCase();
+            if (!groups[letter]) groups[letter] = [];
+            groups[letter].push(item);
+          });
+
+          let globalIndex = 0;
+          Object.keys(groups).sort().forEach(function (letter) {
+            const items = groups[letter];
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'irregular-group';
+
+            const header = document.createElement('div');
+            header.className = 'irregular-group-header';
+            header.innerHTML = '<h3><i class="fas fa-table"></i> ' + escapeHtml(letter) + ' (' + items.length + ')</h3><i class="fas fa-chevron-down"></i>';
+
+            const body = document.createElement('div');
+            body.className = 'irregular-group-body';
+
+            header.addEventListener('click', function () {
+              body.classList.toggle('collapsed');
+              header.classList.toggle('collapsed');
+            });
+
+            const table = document.createElement('table');
+            table.className = 'irregular-table';
+            table.innerHTML =
+              '<thead><tr><th>#</th><th>Base</th><th>Pasado simple</th><th>Participio</th><th>Pronunciaci\u00f3n</th><th>Traducci\u00f3n</th></tr></thead>';
+
+            const tbody = document.createElement('tbody');
+            items.forEach(function (it) {
+              globalIndex++;
+              const tr = document.createElement('tr');
+              tr.innerHTML =
+                '<td class="col-num">' + globalIndex + '</td>' +
+                '<td class="col-base">' + escapeHtml(it.base) + '</td>' +
+                '<td class="col-ps">' + escapeHtml(it.ps) + '</td>' +
+                '<td class="col-pp">' + escapeHtml(it.pp) + '</td>' +
+                '<td class="col-sound">' + escapeHtml(it.sound) + '</td>' +
+                '<td class="col-trans">' + escapeHtml(it.trans) + '</td>';
+              tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+
+            body.appendChild(table);
+            groupDiv.appendChild(header);
+            groupDiv.appendChild(body);
+            irregularContainer.appendChild(groupDiv);
+          });
         }
 
         let irregularBuilt = false;
 
         btnIrregular.addEventListener('click', function () {
+          qyaContainer.classList.remove('visible');
           uncountableContainer.classList.remove('visible');
           frasalVerbsContainer.classList.remove('visible');
           chunksContainer.classList.remove('visible');
           interviewsContainer.classList.remove('visible');
+          interviewsEsContainer.classList.remove('visible');
           irregularContainer.classList.add('visible');
           if (!irregularBuilt) {
             buildIrregularVerbs();
@@ -1132,20 +1544,111 @@
         });
 
         // ===== CHUNKS DATA =====
-        const chunksData = [];
+        const chunksData = [
+          { tipo: 'Social', contexto: 'Saludo informal', chunk: "How's it going?", trans: '\u00bfC\u00f3mo va todo?' },
+          { tipo: 'Social', contexto: 'Saludo tras tiempo', chunk: 'Long time no see!', trans: '\u00a1Cu\u00e1nto tiempo sin verte!' },
+          { tipo: 'Social', contexto: 'Pregunta de rutina', chunk: "What do you do?", trans: '\u00bfA qu\u00e9 te dedicas?' },
+          { tipo: 'Social', contexto: 'Small talk', chunk: 'How was your weekend?', trans: '\u00bfQu\u00e9 tal tu fin de semana?' },
+          { tipo: 'Social', contexto: 'Agradecer', chunk: 'I really appreciate it.', trans: 'Lo agradezco mucho.' },
+          { tipo: 'Social', contexto: 'Disculparse', chunk: 'My bad.', trans: 'Fue mi culpa.' },
+          { tipo: 'Social', contexto: 'Despedida', chunk: 'Take care!', trans: '\u00a1Cu\u00eddate!' },
+          { tipo: 'Social', contexto: 'Despedida informal', chunk: 'Catch you later!', trans: '\u00a1Nos vemos luego!' },
+          { tipo: 'Social', contexto: 'Restar importancia', chunk: 'No worries.', trans: 'No hay problema.' },
+          { tipo: 'Social', contexto: 'Mostrar acuerdo', chunk: 'Sounds good to me.', trans: 'Me parece bien.' },
+          { tipo: 'Reuniones', contexto: 'Abrir la sesi\u00f3n', chunk: "Let's get started.", trans: 'Empecemos.' },
+          { tipo: 'Reuniones', contexto: 'Pedir turno', chunk: 'Can I jump in?', trans: '\u00bfPuedo intervenir?' },
+          { tipo: 'Reuniones', contexto: 'Posponer un tema', chunk: "Let's circle back.", trans: 'Lo retomamos luego.' },
+          { tipo: 'Reuniones', contexto: 'Aclarar', chunk: 'Just to be clear...', trans: 'Solo para aclarar...' },
+          { tipo: 'Reuniones', contexto: 'Seguimiento', chunk: "I'll follow up.", trans: 'Har\u00e9 seguimiento.' },
+          { tipo: 'Reuniones', contexto: 'Alinear posturas', chunk: 'Are we on the same page?', trans: '\u00bfEstamos en sinton\u00eda?' },
+          { tipo: 'Reuniones', contexto: 'Cerrar la sesi\u00f3n', chunk: 'Any questions so far?', trans: '\u00bfAlguna pregunta hasta ahora?' },
+          { tipo: 'Reuniones', contexto: 'Entrar en materia', chunk: "Let's dive in.", trans: 'Entremos en materia.' },
+          { tipo: 'Reuniones', contexto: 'Resumir', chunk: 'To sum up...', trans: 'Para resumir...' },
+          { tipo: 'Reuniones', contexto: 'Mostrar en pantalla', chunk: 'As you can see...', trans: 'Como pueden ver...' },
+          { tipo: 'Correo', contexto: 'Asunto breve', chunk: 'Just a quick note to...', trans: 'Solo una nota r\u00e1pida para...' },
+          { tipo: 'Correo', contexto: 'Adjuntar archivo', chunk: 'Please find attached...', trans: 'Adjunto encontrar\u00e1s...' },
+          { tipo: 'Correo', contexto: 'Cierre', chunk: 'Looking forward to your reply.', trans: 'Quedo atento a tu respuesta.' },
+          { tipo: 'Correo', contexto: 'Ofrecer ayuda', chunk: 'Let me know if you have any questions.', trans: 'Av\u00edsame si tienes preguntas.' },
+          { tipo: 'Estado', contexto: 'Progreso', chunk: "We're on track.", trans: 'Vamos seg\u00fan lo planeado.' },
+          { tipo: 'Estado', contexto: 'Incertidumbre', chunk: "It's up in the air.", trans: 'Est\u00e1 en el aire / sin definir.' },
+          { tipo: 'Estado', contexto: 'Retraso', chunk: "We're behind schedule.", trans: 'Estamos retrasados.' },
+          { tipo: 'Estado', contexto: 'Coordinar', chunk: "Let's touch base tomorrow.", trans: 'Reun\u00e1monos ma\u00f1ana.' },
+          { tipo: 'Estado', contexto: 'Urgencia', chunk: 'as soon as possible', trans: 'lo antes posible' },
+          { tipo: 'Estado', contexto: 'Plazo', chunk: 'by end of day', trans: 'al final del d\u00eda' },
+          { tipo: 'Negociaci\u00f3n', contexto: 'Buscar acuerdo', chunk: "Let's meet halfway.", trans: 'Lleguemos a un punto medio.' },
+          { tipo: 'Negociaci\u00f3n', contexto: 'Aceptar', chunk: 'That works for me.', trans: 'Eso me sirve.' },
+          { tipo: 'Negociaci\u00f3n', contexto: 'Rechazar con tacto', chunk: "I'm afraid that won't work.", trans: 'Me temo que no funcionar\u00e1.' },
+          { tipo: 'Negociaci\u00f3n', contexto: 'Ceder', chunk: 'Can we compromise?', trans: '\u00bfPodemos llegar a un acuerdo?' },
+          { tipo: 'Opini\u00f3n', contexto: 'Dar punto de vista', chunk: 'From my point of view...', trans: 'Desde mi punto de vista...' },
+          { tipo: 'Opini\u00f3n', contexto: 'Dudar', chunk: "I'm not sure about that.", trans: 'No estoy seguro de eso.' },
+          { tipo: 'Opini\u00f3n', contexto: 'Estar de acuerdo', chunk: 'That makes sense.', trans: 'Tiene sentido.' },
+          { tipo: 'Opini\u00f3n', contexto: 'Sinceridad', chunk: 'To be honest...', trans: 'Para ser honesto...' },
+          { tipo: 'Opini\u00f3n', contexto: 'Sin certeza', chunk: 'It depends.', trans: 'Depende.' },
+          { tipo: 'Tel\u00e9fono', contexto: 'Comprobar audio', chunk: 'Can you hear me okay?', trans: '\u00bfMe escuchas bien?' },
+          { tipo: 'Tel\u00e9fono', contexto: 'Mala conexi\u00f3n', chunk: "You're breaking up.", trans: 'Se corta la llamada.' },
+          { tipo: 'Tel\u00e9fono', contexto: 'No entender', chunk: "Sorry, I didn't catch that.", trans: 'Perd\u00f3n, no lo capt\u00e9.' }
+        ];
 
         // ===== BUILD CHUNKS =====
         function buildChunks() {
-          // Placeholder - load from backend or external data source
+          chunksContainer.innerHTML = '';
+
+          const groups = {};
+          chunksData.forEach(function (item) {
+            if (!groups[item.tipo]) groups[item.tipo] = [];
+            groups[item.tipo].push(item);
+          });
+
+          Object.keys(groups).forEach(function (tipo) {
+            const items = groups[tipo];
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'chunks-group';
+
+            const header = document.createElement('div');
+            header.className = 'chunks-group-header';
+            header.innerHTML = '<h3><i class="fas fa-comments"></i> ' + escapeHtml(tipo) + ' (' + items.length + ')</h3><i class="fas fa-chevron-down"></i>';
+
+            const body = document.createElement('div');
+            body.className = 'chunks-group-body';
+
+            header.addEventListener('click', function () {
+              body.classList.toggle('collapsed');
+              header.classList.toggle('collapsed');
+            });
+
+            const table = document.createElement('table');
+            table.className = 'chunks-table';
+            table.innerHTML =
+              '<thead><tr><th>Tipo</th><th>Contexto</th><th>Chunk</th><th>Traducci\u00f3n</th></tr></thead>';
+
+            const tbody = document.createElement('tbody');
+            items.forEach(function (it) {
+              const tr = document.createElement('tr');
+              tr.innerHTML =
+                '<td><span class="col-tipo">' + escapeHtml(it.tipo) + '</span></td>' +
+                '<td class="col-contexto">' + escapeHtml(it.contexto) + '</td>' +
+                '<td class="col-chunk">' + escapeHtml(it.chunk) + '</td>' +
+                '<td class="col-traduccion">' + escapeHtml(it.trans) + '</td>';
+              tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+
+            body.appendChild(table);
+            groupDiv.appendChild(header);
+            groupDiv.appendChild(body);
+            chunksContainer.appendChild(groupDiv);
+          });
         }
 
         let chunksBuilt = false;
 
         btnChunks.addEventListener('click', function () {
+          qyaContainer.classList.remove('visible');
           uncountableContainer.classList.remove('visible');
           frasalVerbsContainer.classList.remove('visible');
           irregularContainer.classList.remove('visible');
           interviewsContainer.classList.remove('visible');
+          interviewsEsContainer.classList.remove('visible');
           chunksContainer.classList.add('visible');
           if (!chunksBuilt) {
             buildChunks();
@@ -1305,19 +1808,165 @@
           { stage: 'Executive', category: 'Soft Skills', num: 143, question: 'How would your ideal team member describe you?', answer: "Probably: passionate about quality but not dogmatic, always willing to help, asks good questions, celebrates successes, genuinely cares about people's growth, makes complex things simple, leads by example. Someone who makes quality feel achievable, not burdensome." }
         ];
 
-        // Build interviews
-        function buildInterviews() {
-          interviewsContainer.innerHTML = '';
+        // ===== INTERVIEWS DATA - SPANISH (ESP) =====
+        const interviewsDataEs = [
+          { stage: 'Filtro', category: 'Experiencia', num: 1, question: 'Cuéntame sobre ti', answer: "Soy un Ingeniero Senior en Automatización de QA con 16 años construyendo calidad a escala en fintech, banca y comercio electrónico. ¿De qué estoy más orgulloso? De transformar equipos. En OLACLICK llevé a una organización del 100% de pruebas manuales a una regresión totalmente automatizada en meses. En DEUNA gestioné la calidad de más de 80 integraciones de proveedores de servicios de pago a la vez: eso es gestionar complejidad. He construido funciones completas de QA desde cero, como en B89, el primer neobanco de Perú, donde contraté y formé al equipo. Hablo tres idiomas, he trabajado en seis países y creo de verdad que la calidad es un deporte en equipo. Mi fortaleza es ver el panorama completo: arquitectura, estrategia, personas, no solo escribir casos de prueba." },
+          { stage: 'Filtro', category: 'Experiencia', num: 2, question: '¿Por qué te interesa este puesto?', answer: "Investigo a fondo las empresas antes de entrevistarme. Lo que me llamó la atención de su organización es su compromiso con [tecnología o valor específico]. Veo una oportunidad para aplicar mis 16 años de experiencia construyendo sistemas de calidad a escala. No busco cualquier puesto de QA: quiero trabajar con equipos que valoren la calidad como ventaja competitiva. Según lo que he aprendido sobre sus desafíos, mi experiencia en transformación de automatización y liderazgo de equipos responde directamente a sus necesidades. Estoy listo para generar impacto." },
+          { stage: 'Filtro', category: 'Compensación', num: 3, question: '¿Cuáles son tus expectativas salariales?', answer: "Busco una compensación que refleje mi nivel de seniority y lo que aporto: dieciséis años de experiencia práctica, capacidad comprobada para transformar el QA a escala, certificaciones ISTQB y capacidad trilingüe. Soy flexible con la estructura exacta: salario base, beneficios, equity y desarrollo profesional, todo cuenta. Más importante aún, quiero trabajar donde pueda tener un impacto real. Dicho esto, he investigado las tarifas de mercado para roles senior de QA y estoy alineado con expectativas realistas. Hablemos de qué significa el éxito para ambos." },
+          { stage: 'Filtro', category: 'Experiencia', num: 4, question: '¿Por qué dejas tu puesto actual?', answer: "En OLACLICK cumplí la misión: migré la organización de pruebas manuales a automatizadas, establecí estándares de CI/CD e implementé procesos de calidad. Fue un trabajo satisfactorio, pero la oportunidad de crecimiento es limitada. Estoy en un punto de mi carrera en el que soy selectivo. Quiero que mi próximo rol sea más grande: sistemas más complejos, mayor impacto, oportunidad de mentorizar a ingenieros senior. Busco un lugar donde pueda escalar mi influencia más allá de las contribuciones individuales. Ahí es donde doy lo mejor de mí." },
+          { stage: 'Filtro', category: 'Técnica', num: 5, question: '¿Cuál es tu experiencia con la automatización de pruebas?', answer: "He arquitectado frameworks de automatización desde cero. En OLACLICK diseñé todo el stack de Playwright + TypeScript: estrategias de datos de prueba, integración con CI/CD y ejecución en paralelo. En DEUNA mantuve frameworks para más de 80 proveedores de servicios de pago, cada uno con integraciones y requisitos distintos. Eso me enseñó a construir soluciones flexibles y mantenibles a escala. Soy competente en Playwright, Cypress, WebdriverIO, Selenium y Appium. Pero más allá de las herramientas, entiendo la arquitectura: cómo estructurar las pruebas para que sobrevivan a los cambios del producto, cómo hacerlas rápidas y cómo lograr que los equipos las adopten. Eso es lo que separa a los buenos testers de los grandes." },
+          { stage: 'Filtro', category: 'Técnica', num: 6, question: '¿Qué tipos de pruebas conoces?', answer: "He hecho todo el espectro. E2E y API son mi trabajo central. Pruebas de rendimiento con JMeter en sistemas bancarios que manejan miles de transacciones por segundo. Pruebas de seguridad: tengo certificaciones de IBM en AppScan y he probado sistemas con estrictos requisitos de cumplimiento. Pruebas de contrato con Pact entre microservicios, BDD con Cucumber, ingeniería del caos y pruebas impulsadas por IA. Pero lo pienso de forma holística. No se prueba todo de la misma manera: se hace una pirámide con muchas pruebas unitarias, menos de integración y E2E selectivas. Ese equilibrio es lo que importa." },
+          { stage: 'Filtro', category: 'Metodología', num: 7, question: 'Describe tu experiencia con Agile/Scrum', answer: "He estado en equipos Agile durante más de una década. La diferencia entre el buen y el mal Agile es si el QA participa desde el primer día. Asisto a las sesiones de refinamiento, cuestiono los criterios de aceptación desde temprano y ayudo al desarrollo a pensar en la testabilidad durante el diseño. En Everis lideré equipos de QA funcional y de automatización en una implementación de Salesforce, lo que exigía gestionar dependencias entre múltiples equipos Scrum. He aprendido que los mejores sprints son aquellos en los que todo el equipo es dueño de la calidad. Eso es lo que aporto." },
+          { stage: 'Filtro', category: 'Habilidades Blandas', num: 8, question: '¿Cómo manejas un bug que los desarrolladores no consideran un bug?', answer: "Esto pasa. Primero, no discuto. Reúno hechos: capturas, pasos exactos de reproducción, logs y contexto. Luego me acerco al desarrollador con respeto: 'Esto es lo que veo, esto es por qué le importa al usuario, ¿qué opinas?'. Nueve de cada diez veces aceptan cuando ven la evidencia. En OLACLICK creamos una 'Matriz de Decisión de QA' para manejar casos límite; si hay un desacuerdo genuino, decide el líder de producto. Eso elimina el ego. Mi trabajo no es ganar discusiones, es proteger la experiencia del usuario." },
+          { stage: 'Filtro', category: 'Herramientas', num: 9, question: '¿Qué herramientas de seguimiento de bugs has usado?', answer: "JIRA es mi herramienta diaria. No solo registro defectos: uso JIRA de forma estratégica. En OLACLICK establecí estándares de documentación para que cualquiera que lea un bug entienda de inmediato qué está roto y por qué. Me integro con Xray para la gestión de pruebas, creo dashboards que muestran tendencias de defectos por componente y sigo métricas de fuga. También he usado Azure DevOps. La herramienta es secundaria; la disciplina en cómo la usas es lo principal." },
+          { stage: 'Filtro', category: 'Técnica', num: 10, question: '¿Cuál es tu experiencia con CI/CD?', answer: "CI/CD es donde la automatización demuestra su valor. En OLACLICK integré todo el framework de Playwright en Bitbucket Pipelines. Cada commit dispara las pruebas. Los desarrolladores reciben retroalimentación en minutos, no en días. También he configurado GitHub Actions, Jenkins y GitLab CI. Entiendo el lado técnico (Docker para entornos de prueba, Infraestructura como Código para aprovisionar) y el lado cultural. El mejor CI/CD es cuando los desarrolladores despliegan con confianza varias veces al día. Esa confianza viene de la automatización de calidad." },
+          { stage: 'Filtro', category: 'Técnica', num: 11, question: '¿Tienes experiencia con pruebas de API?', answer: "Amplia. En DEUNA la mayor parte de mi trabajo fue pruebas de API para más de 80 proveedores de servicios de pago: distintos endpoints REST, distintos formatos de respuesta y distinta autenticación. He construido suites con RestAssured en Java y Karate DSL, excelente para pruebas legibles por el negocio. He probado mutaciones GraphQL, SOAP en sistemas bancarios y gRPC para microservicios. Las pruebas de API son fundamentales: necesitas aserciones sólidas, buen manejo de errores y cobertura de casos límite. También hago pruebas de contrato con Pact para validar la integración de microservicios sin pruebas E2E completas." },
+          { stage: 'Filtro', category: 'Técnica', num: 12, question: '¿Cuál es tu experiencia con pruebas de rendimiento?', answer: "He hecho trabajo serio de rendimiento. JMeter para pruebas de carga en sistemas bancarios bajo picos realistas: Interbank, BCP. K6 para pruebas modernas basadas en la nube. Las pruebas de rendimiento no son solo generar tráfico y mirar dashboards. Es entender qué importa: tiempos de respuesta que afectan los ingresos, saturación de conexiones a base de datos y pausas de recolección de basura. He identificado cuellos de botella, trabajado con equipos de infraestructura para resolverlos y validado las correcciones. Eso es impacto real." },
+          { stage: 'Filtro', category: 'Metodología', num: 13, question: '¿Cómo priorizas los casos de prueba?', answer: "Priorización basada en riesgo. ¿Qué podría costarle dinero a los usuarios? ¿Qué rompe la ruta crítica? Eso se prueba primero y se automatiza primero. En OLACLICK creé una matriz colaborando con producto e ingeniería: los flujos de pago críticos, la autenticación y las integraciones de API recibieron la mayor cobertura; las áreas de menor riesgo recibieron menos. Las pruebas exploratorias no son un añadido: se planifican y tienen propósito. La priorización cambia a lo largo del ciclo de vida del proyecto, así que la mantengo flexible." },
+          { stage: 'Filtro', category: 'Habilidades Blandas', num: 14, question: '¿Cómo manejas los plazos ajustados?', answer: "He trabajado con muchos plazos ajustados en fintech. La clave es ser estratégico, no entrar en pánico. Identifico de inmediato la ruta crítica: ¿qué debe funcionar sí o sí? Eso se prueba primero. También soy honesto con las concesiones. Diré: 'Podemos entregar el viernes si aceptamos este riesgo en el área X, y esta es mi mitigación'. La mayoría de los stakeholders valoran una evaluación honesta más que una falsa confianza. Y automatizo lo que puedo: las pruebas repetitivas son lo primero que se sacrifica bajo presión de tiempo." },
+          { stage: 'Filtro', category: 'Técnica', num: 15, question: '¿Cuál es tu experiencia con pruebas móviles?', answer: "He probado apps de iOS y Android. En TUL trabajé mucho con Flutter (Dart) para híbridos móvil-web. Appium para apps nativas. AWS Device Farm para pruebas en la nube, que elimina la necesidad de un laboratorio de dispositivos. Las pruebas móviles tienen desafíos únicos: fragmentación de dispositivos, problemas de conectividad y procesos en segundo plano. Diseño las pruebas considerando esas variables. También he probado las APIs de backend que consumen los clientes móviles." },
+          { stage: 'Filtro', category: 'Metodología', num: 16, question: '¿Cuál es tu enfoque para la documentación de pruebas?', answer: "La documentación suele pasarse por alto, pero es crítica para escalar equipos. En OLACLICK creé el 'Playbook de QA': estándares para reportes de bugs, casos de prueba y documentación técnica. El objetivo era la consistencia: cualquier miembro del equipo sabe qué hacer. Mantengo matrices de trazabilidad para ver qué pruebas cubren qué requisitos. Para sistemas complejos documento estrategias de datos de prueba. Pero la clave es esta: mantengo la documentación cerca del código, versionada junto a él. Si no se actualiza con el código, es una mentira." },
+          { stage: 'Filtro', category: 'Experiencia', num: 17, question: '¿Qué sabes de nuestra empresa?', answer: "He investigado a fondo su empresa. [Menciona lanzamientos recientes específicos, decisiones tecnológicas o anuncios de negocio]. Lo que me resuena es [aspecto específico de su enfoque]. Entiendo que están escalando, y ahí es donde mi experiencia construyendo y mentorizando equipos de QA se vuelve valiosa. Ya he navegado el crecimiento antes. Sé cómo escalar la calidad sin frenar el impulso." },
+          { stage: 'Filtro', category: 'Experiencia', num: 18, question: '¿Dónde te ves en 5 años?', answer: "Quiero crecer hacia un nivel de arquitecto o director de QA, no por el título sino por la influencia. Quiero moldear cómo los equipos piensan sobre la calidad, definir la estrategia de pruebas a escala y mentorizar a ingenieros senior. También me interesa el lado de producto: ayudar a las empresas a entender cómo las decisiones de calidad impactan las métricas de negocio y la experiencia del usuario. Honestamente, quiero seguir aprendiendo: ya sean nuevos paradigmas de pruebas, tecnología emergente o habilidades de liderazgo. Eso es lo que me mantiene comprometido." },
+          { stage: 'Filtro', category: 'Herramientas', num: 19, question: '¿Cuál es tu experiencia con herramientas de gestión de pruebas?', answer: "JIRA es mi opción por defecto. Lo he personalizado ampliamente e integrado Xray para la gestión de pruebas. Creo dashboards que importan: tendencias de defectos por componente, brechas de cobertura de automatización y las pruebas más inestables. También he escrito scripts de Python para extraer información que los reportes estándar no muestran. Las herramientas son secundarias; lo que importa es la disciplina con los datos. Mides lo que quieres mejorar." },
+          { stage: 'Filtro', category: 'Técnica', num: 20, question: 'Describe un bug desafiante que encontraste', answer: "En DEUNA teníamos una condición de carrera en el procesamiento asíncrono de pagos que solo se manifestaba bajo condiciones específicas de carga. Fallos intermitentes en más de 80 proveedores de servicios de pago. Los usuarios enviaban un pago, veían que se procesaba, pero la transacción fallaba silenciosamente en el backend. No podíamos reproducirlo en desarrollo porque solo ocurría bajo carga realista de producción con fluctuación de red. Dediqué tiempo a analizar logs de CloudWatch, IDs de correlación y patrones de tiempos. Cuando lo aislé a un bloqueo distribuido faltante, trabajé con los ingenieros de backend en la corrección y luego construí pruebas completas de Playwright que cubrían flujos asíncronos, timeouts y solicitudes concurrentes. Eso me enseñó que, a veces, la mejor prueba es entender cómo fallan los sistemas bajo condiciones reales." },
+          { stage: 'Filtro', category: 'Habilidades Blandas', num: 21, question: '¿Qué te hace un mejor candidato?', answer: "Tres cosas. Primero, aporto seniority real: 16 años construyendo calidad en fintech y banca de alto riesgo. Segundo, no soy solo un practicante: he construido equipos de QA desde cero, lideré transformaciones de automatización y mentorizado ingenieros. Soy un estratega. Tercero, genero impacto medible. En OLACLICK transformé lo manual en automatizado. En DEUNA estandaricé las pruebas en más de 80 integraciones. Eso no es suerte, es ejecución. Además hablo tres idiomas, lo que importa para equipos distribuidos." },
+          { stage: 'Filtro', category: 'Habilidades Blandas', num: 22, question: '¿Cómo manejas los conflictos con miembros del equipo?', answer: "Los conflictos son normales en ingeniería. Los abordo directamente pero con respeto. Primero reúno hechos y luego tengo una conversación: 'Esto es lo que observé, esto es cómo nos impacta, ¿cuál es tu perspectiva?'. Escucho más de lo que hablo. Normalmente, el desacuerdo es sobre el enfoque, no sobre los objetivos. En Everis, gestionar equipos de QA y de automatización implicaba navegar prioridades distintas. Encontré terreno común centrándome en el impacto al usuario. Si de verdad no estamos de acuerdo, escalo con criterio, no para crear drama sino para aclarar prioridades. Siempre me centro en el problema, nunca en la crítica personal." },
+          { stage: 'Filtro', category: 'Técnica', num: 23, question: '¿Cuál es tu experiencia con pruebas de base de datos?', answer: "Me manejo bien con SQL. Escribo consultas para validar la integridad de los datos, verificar registros huérfanos y comprobar transformaciones ETL. En DEUNA trabajé con PySpark para probar pipelines de datos. He probado migraciones de datos donde la corrección era crítica. Entiendo índices, rendimiento de consultas y problemas de pool de conexiones. Las pruebas de base de datos suelen pasarse por alto, pero son cruciales para sistemas fintech donde la corrección de los datos no es opcional. Lo abordo de forma sistemática." },
+          { stage: 'Filtro', category: 'Técnica', num: 24, question: '¿Has trabajado con AWS/Azure/GCP?', answer: "AWS es mi zona de confort. S3 para artefactos de prueba, CloudWatch para monitoreo y análisis, EC2/ECS para runners de prueba, Device Farm para pruebas móviles, RDS para bases de datos de prueba y FIS para ingeniería del caos. Azure DevOps es mi plataforma secundaria. La nube cambia el QA fundamentalmente: puedes aprovisionar infraestructura bajo demanda, escalar horizontalmente y tratar la infraestructura como código. Eso habilita prácticas como correr suites completas en paralelo, levantar entornos por rama y probar a escala realista." },
+          { stage: 'Filtro', category: 'Técnica', num: 25, question: '¿Cuál es tu experiencia con la gestión de datos de prueba?', answer: "Los datos de prueba son críticos y muchas veces mal gestionados. Diseño factorías de datos que generan datos de prueba realistas programáticamente, sin configuración manual. He usado Kafka para escenarios de prueba orientados a eventos donde el timing importa. Entiendo el equilibrio entre datos sintéticos y datos de producción enmascarados: a veces necesitas patrones reales pero debes anonimizar datos personales. También he trabajado con WireMock para simular sistemas externos, desacoplando los datos de prueba de dependencias de terceros. En OLACLICK construimos una estrategia de datos de prueba que aseguraba consistencia, paralelización y aislamiento." },
+          { stage: 'Filtro', category: 'Habilidades Blandas', num: 26, question: '¿Cómo te mantienes actualizado sobre las tendencias de testing?', answer: "Soy intencional con el aprendizaje. Las certificaciones ISTQB me mantienen al día con los estándares de la industria. Cursos recientes en TypeScript, Playwright y Ciberseguridad impulsada por IA. Experimento con herramientas en proyectos personales. Leo blogs y sigo comunidades de testing. Pero, honestamente, soy escéptico de perseguir cada herramienta nueva. Me centro en entender principios: la pirámide de pruebas, las pruebas basadas en riesgo y la estrategia de datos de prueba, y aplicarlos según el contexto. La herramienta importa menos que el pensamiento." },
+          { stage: 'Filtro', category: 'Metodología', num: 27, question: '¿Cuál es tu enfoque para las pruebas de regresión?', answer: "Las pruebas de regresión son donde la automatización multiplica tu esfuerzo. En OLACLICK migramos del 100% manual a totalmente automatizado, lo que por sí solo redujo el tiempo de pruebas de días a minutos. Centro la suite en las rutas críticas: autenticación, funciones centrales e integraciones críticas. No automatizo cada caso límite, no es práctico. Uso selección basada en riesgo: ¿qué es probable que se rompa? Eso se automatiza. La regresión completa corre de noche, pero los desarrolladores reciben retroalimentación de sus cambios en minutos mediante ejecución selectiva." },
+          { stage: 'Filtro', category: 'Técnica', num: 28, question: 'Describe tu experiencia con BDD', answer: "BDD se alinea con mi filosofía: pruebas que los stakeholders de negocio entienden. En TUL implementé Cucumber con Gherkin; los product owners podían leer las pruebas y saber qué se validaba. La sintaxis fuerza un pensamiento claro: Dado-Cuando-Entonces. Cuando escribes escenarios con el product owner, detectas ambigüedades temprano. El verdadero beneficio es la colaboración. Ahí es cuando la calidad se vuelve responsabilidad de todos, no solo del QA." },
+          { stage: 'Filtro', category: 'Técnica', num: 29, question: '¿Cuál es tu experiencia con Docker?', answer: "Docker es esencial. Lo uso para levantar entornos de prueba completos: bases de datos, APIs y runners de prueba. He escrito Dockerfiles para imágenes de prueba optimizadas para la iteración. El poder está en la consistencia: las pruebas corren igual en laptops, CI/CD y donde sea. He construido imágenes personalizadas para escenarios específicos, como Firefox con plugins para pruebas de accesibilidad. Kubernetes es el siguiente nivel; lo he tocado, pero me centro primero en dominar Docker." },
+          { stage: 'Filtro', category: 'Habilidades Blandas', num: 30, question: '¿Cómo manejas los problemas del entorno de pruebas?', answer: "Los problemas de entorno matan la productividad. En OLACLICK establecí requisitos de staging que coincidían con producción; perdíamos tiempo probando contra problemas que solo existían en dev. Monitoreo la salud del entorno de forma proactiva: dashboards de CloudWatch, pruebas de humo y alertas de capacidad. Cuando surgen problemas, colaboro rápido con DevOps. También documento procedimientos de recuperación: si la base de datos se cae a las 2 a.m., alguien necesita conocer los pasos. La resiliencia importa." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 31, question: '¿Cuál es la diferencia entre verificación y validación?', answer: "Verificación: ¿lo estamos construyendo bien? Son revisiones de código, análisis estático y probar la implementación contra el diseño. Validación: ¿estamos construyendo lo correcto? Es pruebas de usuario, UAT, comprobar si resuelve el problema real. Ambas importan. La verificación detecta bugs temprano. La validación detecta un malentendido de requisitos antes de enviar el producto equivocado." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 32, question: 'Explica las pruebas de caja negra vs caja blanca', answer: "Caja negra es probar como un usuario: no sabes cómo está construido, solo envías entradas y observas salidas. Es ideal para encontrar problemas realistas. Caja blanca es probar como un ingeniero: entiendes las rutas del código y diseñas pruebas para cubrir ramas y casos límite específicos. Ambas son valiosas. Uso caja negra para E2E, porque refleja el comportamiento real del usuario. Uso el pensamiento de caja blanca para pruebas de API donde entiendo la lógica de negocio." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 33, question: '¿Cuáles son los niveles de prueba?', answer: "Pruebas unitarias (funciones individuales), pruebas de componente (varias funciones), pruebas de integración (varios componentes), pruebas de sistema (toda la aplicación) y UAT (los usuarios validan). También añado pruebas de rendimiento y seguridad en todos los niveles. La clave es la pirámide de pruebas: muchas unitarias porque son rápidas, menos de integración y aún menos de sistema porque son lentas. Eso es eficiencia." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 34, question: '¿Cuál es la diferencia entre pruebas funcionales y no funcionales?', answer: "Funcional: ¿funciona? ¿La autenticación valida correctamente? No funcional: ¿qué tan bien funciona? ¿Qué tan rápida es la autenticación? ¿Cuántos inicios de sesión concurrentes soporta? Ambas importan para un buen producto." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 35, question: '¿Cuál es la diferencia entre regresión y prueba de humo?', answer: "Prueba de humo: verificación rápida de sanidad. ¿Compila esto en absoluto? ¿Puedo iniciar sesión? ¿Puedo navegar? Es una compuerta: si el humo falla, la regresión no corre. Regresión: exhaustiva. Ejecuto todas las pruebas que hemos escrito para asegurar que nada se rompió. El humo es rápido, la regresión es minuciosa. En CI/CD, el humo corre primero; si pasa, corre la regresión completa." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 36, question: '¿Cuál es la diferencia entre caso de prueba y escenario de prueba?', answer: "Un escenario es la historia: 'El usuario inicia sesión y compra un artículo'. Un caso de prueba es el guion detallado: 'Dado que el usuario está en la página de login, cuando ingresa email y contraseña, entonces se le redirige al dashboard'. Los escenarios son para planificar, los casos de prueba para ejecutar." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 37, question: '¿Qué es el análisis de valor límite?', answer: "Los límites son donde se esconden los bugs. Si un sistema acepta edades de 18 a 65, prueba 17 (justo por debajo), 18 (límite), 65 (límite) y 66 (justo por encima). Los bugs suelen vivir en los límites: errores de off-by-one y signos igual faltantes. Es una prueba de alto retorno." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 38, question: '¿Qué es la partición de equivalencia?', answer: "En lugar de probar las edades 18, 19, 20...65 por separado, las agrupo: inválido (menor de 18), válido (18-65) e inválido (mayor de 65). Pruebo una de cada grupo. Es eficiente: obtengo cobertura con menos casos de prueba." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 39, question: '¿Qué es el ciclo de vida de un defecto?', answer: "Nuevo → Triaje → Asignado → En progreso → Corregido → Re-prueba → Reabierto (si falla) → Cerrado (si pasa). Un seguimiento claro de estados evita que los defectos se pierdan entre las grietas." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 40, question: 'Explica las pruebas positivas vs negativas', answer: "Positiva: 'Si ingreso una tarjeta válida, ¿se procesa el pago?'. Negativa: 'Si ingreso una tarjeta inválida, ¿el sistema lo maneja con elegancia?'. La positiva muestra que las rutas felices funcionan. La negativa muestra que el sistema no se rompe con entradas malas." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 41, question: '¿Cuál es la diferencia entre error, defecto y fallo?', answer: "Error: el desarrollador escribe código con bugs. Defecto: lo detectamos en pruebas. Fallo: el usuario lo experimenta en producción. Idealmente, detectamos los errores antes de que se conviertan en defectos. Nunca deberíamos permitir que los defectos lleguen a los usuarios. Si lo hacen, es un fallo." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 42, question: '¿Qué es una matriz de trazabilidad?', answer: "La trazabilidad asegura que nada se pierda. Mantengo una matriz: cada requisito de negocio se mapea a casos de prueba, que se mapean a resultados de ejecución. Si un requisito no tiene pruebas, es una brecha de cobertura. Si una prueba falla, la rastreo hasta el requisito que cubre." },
+          { stage: 'Técnica', category: 'Fundamentos', num: 43, question: '¿Qué son las pruebas basadas en riesgo?', answer: "Pregunto: ¿qué podría perjudicar a los usuarios? ¿Qué podría costar dinero? ¿Qué es probable que se rompa? Las áreas de alto riesgo reciben más pruebas, más ojos y ejecución más temprana. Las de bajo riesgo pueden recibir pruebas exploratorias o automatización mínima. Es una asignación eficiente de recursos." },
+          { stage: 'Técnica', category: 'Automatización', num: 44, question: '¿Qué estructura de framework de automatización sigues?', answer: "Uso el modelo Page Object con separación clara: los PageObjects encapsulan los elementos de UI, las Utilidades manejan acciones comunes, los TestData están centralizados y TestBase provee la configuración y limpieza. El objetivo es la mantenibilidad: si la UI cambia, modifico un page object, no cincuenta casos de prueba." },
+          { stage: 'Técnica', category: 'Automatización', num: 45, question: '¿Qué es el Page Object Model?', answer: "Cada página de la aplicación se convierte en una clase. Esa clase contiene los localizadores y métodos que representan las acciones de la página. Las pruebas usan el page object, no selectores crudos. Beneficio: si el layout de login cambia, lo arreglo en un solo lugar, no en cincuenta pruebas. Es DRY aplicado a la automatización." },
+          { stage: 'Técnica', category: 'Automatización', num: 46, question: '¿Cuáles son las ventajas de TestNG sobre JUnit?', answer: "TestNG es más flexible: anotaciones para agrupar, pruebas parametrizadas para testing orientado a datos, dependencias entre pruebas y mejores reportes. JUnit es más simple. Elige según tus necesidades: para pruebas unitarias simples, JUnit basta; para suites complejas, TestNG escala mejor." },
+          { stage: 'Técnica', category: 'Automatización', num: 47, question: '¿Cómo manejas los elementos dinámicos en Selenium?', answer: "Nunca uses Thread.sleep: hace que las pruebas sean inestables y lentas. Usa WebDriverWait con condiciones explícitas: espera a que el elemento sea clicable, espera a que aparezca el texto. Para IDs dinámicos, usa estrategias de XPath: contains(), starts-with() o coincidencia por atributos en lugar de IDs exactos." },
+          { stage: 'Técnica', category: 'Automatización', num: 48, question: '¿Cuál es la diferencia entre findElement y findElements?', answer: "findElement: devuelve un elemento o lanza una excepción. findElements: devuelve una lista con todas las coincidencias o una lista vacía. Usa findElement cuando esperas exactamente una coincidencia. Usa findElements cuando cuentas coincidencias o iteras varios elementos." },
+          { stage: 'Técnica', category: 'Automatización', num: 49, question: '¿Cómo manejas los timeouts en la automatización?', answer: "Las esperas implícitas son globales y suelen causar confusión. Las esperas explícitas son mejores: WebDriverWait con condiciones específicas. Para casos avanzados, FluentWait permite intervalos de sondeo personalizados. Nunca codifiques Thread.sleep a mano: es un mal olor en las pruebas." },
+          { stage: 'Técnica', category: 'Automatización', num: 50, question: '¿Cuáles son los desafíos de la automatización de pruebas?', answer: "La inestabilidad (flakiness) es el mayor enemigo: pruebas que a veces pasan y a veces fallan. Causas raíz: problemas de timing, inestabilidad del entorno, mal aislamiento de pruebas o selectores malos. Los abordo con esperas explícitas, ejecución paralela con aislamiento de datos y análisis regular de inestabilidad." },
+          { stage: 'Técnica', category: 'Automatización', num: 51, question: '¿Cómo implementas lógica de reintentos para pruebas inestables?', answer: "En TestNG, implementa IRetryAnalyzer para reintentar automáticamente las pruebas que fallan hasta N veces. Registra qué pruebas se reintentaron: es una señal para investigar. Pero el reintento es un parche. La solución real es encontrar la causa raíz: timing, entorno o diseño de la prueba." },
+          { stage: 'Técnica', category: 'Automatización', num: 52, question: '¿Cuáles son las buenas prácticas para la automatización de pruebas?', answer: "Nombres de prueba claros y descriptivos. DRY: sin código copiado y pegado. Pruebas independientes: la prueba B no depende de la prueba A. Aserciones adecuadas: prueba una sola cosa. Buen logging para que los fallos sean fáciles de depurar. Y control de versiones: el código de pruebas es código." },
+          { stage: 'Técnica', category: 'Automatización', num: 53, question: '¿Cuál es tu enfoque para seleccionar herramientas de automatización?', answer: "Evalúo: ¿cuál es el stack tecnológico? ¿Qué lenguajes conoce el equipo? ¿Cuál es el presupuesto? ¿Qué se integra con nuestro CI/CD? ¿Cuál es el soporte de la comunidad? Evito el síndrome de la cosa nueva y brillante. Elijo herramientas que resuelvan el problema en cuestión." },
+          { stage: 'Técnica', category: 'API', num: 54, question: '¿Cuáles son los diferentes métodos HTTP?', answer: "GET recupera datos sin efectos secundarios. POST crea. PUT reemplaza por completo. PATCH actualiza parcialmente. DELETE elimina. HEAD es como GET pero sin cuerpo de respuesta. Entender esto importa para las pruebas: GET debería ser idempotente, POST debería crear, etc." },
+          { stage: 'Técnica', category: 'API', num: 55, question: '¿Cuál es la diferencia entre autenticación y autorización?', answer: "Autenticación: ¿eres quien dices ser? (Login). Autorización: ¿tienes permiso para hacer esto? (¿Puedes ver los datos de este usuario?). Probar ambas importa: verifica que el login funciona y que los controles de acceso impiden acciones no autorizadas." },
+          { stage: 'Técnica', category: 'API', num: 56, question: '¿Cómo pruebas APIs manualmente?', answer: "Postman es mi herramienta principal: envío solicitudes, valido códigos de estado, inspecciono los cuerpos de respuesta y reviso los headers. Organizo las solicitudes en colecciones por endpoint, creo scripts de prueba que ejecutan aserciones y comparto las colecciones con el equipo." },
+          { stage: 'Técnica', category: 'API', num: 57, question: '¿Cómo automatizas las pruebas de API?', answer: "RestAssured para Java: su sintaxis estilo BDD hace las pruebas legibles. La librería requests para Python: simple y potente. Supertest para Node: se integra con Express. La clave es validar la estructura de la respuesta con JSON schema, los códigos de estado y la lógica de negocio." },
+          { stage: 'Técnica', category: 'API', num: 58, question: '¿Qué rangos de códigos de estado conoces?', answer: "1xx informativo (100-199), 2xx éxito (200-299: 200 OK, 201 Created), 3xx redirección (300-399, normalmente 301/302), 4xx errores del cliente (400-499: 400 Bad Request, 401 Unauthorized, 404 Not Found), 5xx errores del servidor (500-599: 500 Internal Server Error). Las pruebas consideran esto: la ruta feliz obtiene 200, una entrada inválida obtiene 400 y lo no autorizado obtiene 401." },
+          { stage: 'Técnica', category: 'API', num: 59, question: '¿Qué son las pruebas de contrato en microservicios?', answer: "El consumidor (servicio A) espera que el proveedor (servicio B) devuelva datos en un formato específico. Las pruebas de contrato verifican ese acuerdo sin requerir pruebas end-to-end completas. Pact registra las expectativas y las verifica. Beneficio: retroalimentación rápida y menos pruebas de integración inestables." },
+          { stage: 'Técnica', category: 'API', num: 60, question: '¿Cómo simulas servicios externos?', answer: "WireMock es potente: define endpoints, respuestas, coincidencias de solicitudes y simula retrasos o errores. Puedes probar escenarios de error (API de terceros caída) sin depender de ese servicio. MockServer es otra opción. El mocking permite pruebas rápidas y confiables independientes de dependencias externas." },
+          { stage: 'Técnica', category: 'Rendimiento', num: 61, question: '¿Cuál es la diferencia entre pruebas de carga y de estrés?', answer: "Pruebas de carga: simular un volumen realista de usuarios (1000 usuarios concurrentes). ¿El sistema lo soporta? ¿Los tiempos de respuesta están bien? Pruebas de estrés: seguir añadiendo usuarios hasta que se rompa. ¿Cuál es el punto de ruptura? ¿Cómo falla? Ambas revelan información distinta." },
+          { stage: 'Técnica', category: 'Rendimiento', num: 62, question: '¿Qué herramientas usas para pruebas de rendimiento?', answer: "JMeter para carga y estrés, K6 para scripting moderno e IBM Rational Performance Tester para proyectos empresariales. He ejecutado pruebas de carga serias en sistemas bancarios bajo picos realistas." },
+          { stage: 'Técnica', category: 'Rendimiento', num: 63, question: '¿Cuáles son las métricas de rendimiento comunes?', answer: "Tiempo de respuesta: ¿qué tan rápido? Rendimiento (throughput): ¿cuántas solicitudes por segundo? Tasa de error: ¿aumentan los fallos bajo carga? CPU y memoria: ¿están los recursos al máximo? Conexiones a base de datos: ¿se están agotando? Distribución de latencia: ¿algunas solicitudes son mucho más lentas?" },
+          { stage: 'Técnica', category: 'Seguridad', num: 64, question: '¿Qué es el OWASP Top 10?', answer: "Principales riesgos: Inyección (SQL injection), Autenticación rota, Exposición de datos sensibles, XXE, Control de acceso roto, Mala configuración, XSS, Deserialización insegura, Dependencias vulnerables y Registro insuficiente. Como tester, me centro en los más impactantes: autenticación, control de acceso e inyección." },
+          { stage: 'Técnica', category: 'Seguridad', num: 65, question: '¿Cómo realizas pruebas de seguridad en QA?', answer: "Análisis estático (SAST), escaneos dinámicos con OWASP ZAP, comprobación de dependencias, pruebas de penetración y regresión de seguridad. Tengo certificaciones de IBM AppScan y he probado sistemas con estrictos requisitos de cumplimiento." },
+          { stage: 'Técnica', category: 'DevOps', num: 66, question: '¿Qué es un pipeline de CI/CD?', answer: "CI: cada commit dispara la compilación y las pruebas automatizadas. Retroalimentación rápida. CD: despliegue automatizado a staging o producción. El objetivo: enviar código con confianza, con frecuencia y con mínimo riesgo." },
+          { stage: 'Técnica', category: 'DevOps', num: 67, question: '¿Cómo configuras un entorno de prueba?', answer: "Usa Docker Compose o Kubernetes para levantar microservicios, bases de datos y mocks. Usa Infraestructura como Código con Terraform para aprovisionar recursos. La nube cambia el QA de forma fundamental." },
+          { stage: 'Técnica', category: 'DevOps', num: 68, question: '¿Qué son los despliegues blue-green?', answer: "Dos entornos de producción: Blue (actual) y Green (nueva versión). Despliega en Green, pruébalo y luego redirige el tráfico. Si aparecen problemas, vuelve a Blue al instante. Cero tiempo de inactividad, rollback instantáneo." },
+          { stage: 'Técnica', category: 'Metodología', num: 69, question: '¿Qué es la pirámide de pruebas?', answer: "Muchas pruebas unitarias en la base (rápidas y baratas), menos pruebas de integración en el medio y aún menos pruebas de UI y E2E en la cima (lentas y costosas). Este equilibrio es una prueba eficiente." },
+          { stage: 'Técnica', category: 'Metodología', num: 70, question: '¿Qué son las pruebas de mutación (mutation testing)?', answer: "Herramientas como Stryker introducen mutaciones (pequeños cambios en el código) para ver si las pruebas las detectan. Un alto kill score significa pruebas sólidas. Es la validación de que tus pruebas realmente están probando algo." },
+          { stage: 'Técnica', category: 'Metodología', num: 71, question: '¿Cuál es el rol del QA en DevOps?', answer: "El QA habilita DevOps. Implemento pruebas automatizadas en los pipelines para que los despliegues sean confiados. Monitoreo métricas de calidad en producción. Uso feature flags para probar nuevas funcionalidades de forma segura. El QA pasa de ser un guardián a un facilitador." },
+          { stage: 'Técnica', category: 'Metodología', num: 72, question: '¿Qué son las pruebas shift-right?', answer: "Probar en producción mediante monitoreo, ingeniería del caos, despliegues canary, pruebas A/B y monitoreo de usuarios reales. Complementan el shift-left." },
+          { stage: 'Técnica', category: 'Metodología', num: 73, question: '¿Qué son las pruebas exploratorias?', answer: "Exploración estructurada: tengo un charter (qué probar), la limito en tiempo (1 hora) y exploro con intención. Encuentro casos límite que la automatización pasó por alto, pruebo rutas de usuario reales y documento los hallazgos. Complementa la automatización." },
+          { stage: 'Técnica', category: 'Metodología', num: 74, question: '¿Qué es continuous testing vs pruebas automatizadas?', answer: "Pruebas automatizadas: escribo scripts y se ejecutan. Continuous testing: las pruebas corren constantemente a lo largo del pipeline, en el commit, antes del merge y después del despliegue. Es automatización a escala, integrada en el flujo de trabajo." },
+          { stage: 'Técnica', category: 'Metodología', num: 75, question: '¿Qué es el desarrollo guiado por pruebas (TDD)?', answer: "Rojo-Verde-Refactorizar: escribe una prueba que falle, escribe código para que pase y luego límpialo. Beneficio: código diseñado para ser testeable, red de seguridad para refactorizar y requisitos claros. Difícil de adoptar, pero da frutos." },
+          { stage: 'Técnica', category: 'Metodología', num: 76, question: '¿Qué es el desarrollo guiado por comportamiento (BDD)?', answer: "BDD alinea los requisitos de negocio con pruebas automatizadas usando la sintaxis Gherkin Dado-Cuando-Entonces. Fuerza un pensamiento claro y habilita la colaboración." },
+          { stage: 'Técnica', category: 'Metodología', num: 77, question: '¿Qué es Event Storming?', answer: "Un taller donde mapeamos los eventos de negocio en una línea de tiempo, entendemos la complejidad del dominio e identificamos escenarios de prueba. Lo uso para descubrir casos límite: '¿Qué pasa si este evento ocurre fuera de orden?'." },
+          { stage: 'Técnica', category: 'Metodología', num: 78, question: '¿Qué es la ingeniería del caos?', answer: "Romper cosas intencionalmente para aprender cómo fallan los sistemas. Matar servidores, retrasar redes, saturar recursos. ¿Se recuperan con elegancia? AWS FIS es una herramienta para esto." },
+          { stage: 'Técnica', category: 'Metodología', num: 79, question: '¿Cuál es la diferencia entre pruebas estáticas y dinámicas?', answer: "Estáticas: revisión de código, herramientas de análisis estático y walkthroughs; encuentran problemas sin ejecutar el código. Dinámicas: ejecutan el código con entradas y validan salidas. Ambas detectan problemas distintos." },
+          { stage: 'Técnica', category: 'Metodología', num: 80, question: '¿Qué es un plan de pruebas?', answer: "Defino: ¿qué estoy probando? ¿Por qué? ¿Quién está en el equipo? ¿Cuánto tiempo tengo? ¿Qué significa el éxito? ¿Qué riesgos hay? Un buen plan de pruebas es flexible; guía sin ser una camisa de fuerza." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 81, question: '¿Cómo construyes confianza entre QA y los desarrolladores?', answer: "Respeta su experiencia, reconoce el buen código y hazles el trabajo más fácil. Trabajo en pareja con ellos, ayudo a depurar y celebro los logros compartidos. La confianza viene de la consistencia y el cumplimiento." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 82, question: '¿Cuál es tu filosofía sobre el QA en Agile?', answer: "El QA es un deporte de equipo, no una sola persona. La calidad es responsabilidad de todos. Mi rol es habilitarlo: construir infraestructura, definir estándares, detectar problemas temprano y apoyar a los desarrolladores." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 83, question: '¿Cómo influyes sin autoridad?', answer: "Los datos son poderosos. Muestro defectos escapados, quejas de clientes y patrones de regresión. Propongo soluciones con un ROI claro. Construyo aliados ayudando a otros a tener éxito." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 84, question: '¿Cómo manejas a un miembro del equipo que no sigue los estándares de calidad?', answer: "Primero una conversación uno a uno. Quizás no entiende el estándar, quizás está bajo presión o quizás es una brecha de habilidad. Escucho antes de asumir. Luego hago coaching: esto es lo que se ve bien, así se llega ahí y estoy aquí para ayudar." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 85, question: '¿Cuál es tu experiencia liderando iniciativas de QA?', answer: "En B89 construí la función de QA desde cero. En OLACLICK lideré la transformación de automatización de manual a Playwright. En DEUNA estandaricé las pruebas en más de 80 integraciones. El liderazgo es visión, ejecución y personas." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 86, question: '¿Cómo manejas los incidentes en producción?', answer: "Mantengo la calma, reúno hechos e identifico la severidad. Si es crítico, estoy en la llamada de coordinación. Lidero el post-mortem: qué pasó, por qué y cómo lo prevenimos. Sin culpar, solo aprender. Doy seguimiento a los puntos de acción." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 87, question: '¿Qué métricas de calidad rastreas?', answer: "Cobertura de automatización, fuga de defectos, densidad de defectos, inestabilidad de las pruebas, tiempo de ejecución de pruebas y problemas reportados por clientes por release. Estas métricas guían las decisiones." },
+          { stage: 'Ejecutiva', category: 'Cultura', num: 88, question: '¿Cómo fomentas una cultura de calidad?', answer: "Predico con el ejemplo: pruebo a fondo, documento decisiones y arreglo problemas rápido. Celebro los logros de calidad: 'Detectamos X antes de que los usuarios lo vieran'. Hago que las conversaciones sobre calidad sean parte de todas las reuniones." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 89, question: '¿Cómo manejas los desacuerdos con los product owners?', answer: "Primero entiendo sus objetivos. Luego propongo: este es el riesgo de calidad de la opción A, esta es la concesión con la opción B. Hablo su idioma: impacto en ingresos, abandono de usuarios y ventaja competitiva." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 90, question: '¿Cuál es tu estilo de liderazgo?', answer: "Líder servicial. Mi trabajo es eliminar obstáculos, proveer recursos y marcar el rumbo. Empodero a las personas para que tomen decisiones y sean dueñas de los resultados. Confío en el equipo y me quito del medio cuando es posible." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 91, question: '¿Cómo priorizas tareas en competencia?', answer: "Pregunto: ¿qué rompe al cliente? ¿Qué habilita el objetivo del sprint? ¿Qué bloquea a otros equipos? Impacto por urgencia. Algunas cosas son importantes pero no urgentes; las agendo. Otras son urgentes pero poco importantes; las delego o las descarto." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 92, question: '¿Cuál es tu experiencia con equipos distribuidos?', answer: "He trabajado con equipos en EE.UU., Europa y Asia. Practico la comunicación escrita clara, grabo las sesiones, respeto las zonas horarias y sobrecomunico las decisiones. El trabajo remoto requiere más estructura." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 93, question: '¿Cómo aseguras la alineación del equipo en los objetivos de calidad?', answer: "Definimos los OKR de calidad juntos: cobertura de automatización por sprint, objetivos de escape de defectos y metas de velocidad de las pruebas. Todos son dueños de ellos. Revisamos el progreso públicamente y celebramos los logros." },
+          { stage: 'Ejecutiva', category: 'Estrategia', num: 94, question: '¿Cuál es tu opinión sobre el ROI de la automatización de QA?', answer: "La automatización se amortiza rápido: 3-6 meses para sistemas de alto volumen. Pero el ROI va más allá del ahorro de costos: es velocidad. Sin automatización, las pruebas de regresión son un cuello de botella. Con ella, los desarrolladores entregan más rápido y con más confianza." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 95, question: '¿Cómo comunicas la calidad al liderazgo?', answer: "Lo traduzco al lenguaje de negocio. Defectos que llegan a los usuarios = riesgo de abandono de clientes. Automatización de pruebas = releases más rápidos = ventaja de mercado. MTTR = continuidad del negocio. Conecto la calidad con los ingresos." },
+          { stage: 'Ejecutiva', category: 'Estrategia', num: 96, question: '¿Cuál es tu experiencia configurando procesos de QA?', answer: "He construido QA desde cero varias veces. Defino la estrategia de pruebas, diseño la arquitectura de automatización, la integro con CI/CD, establezco el flujo de gestión de defectos y creo estándares de documentación." },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 97, question: '¿Cómo manejas los plazos poco realistas?', answer: "Comunico los riesgos temprano, sugiero concesiones de alcance y aseguro que las pruebas se centren en las áreas de mayor riesgo. Escalo con planes de mitigación." },
+          { stage: 'Ejecutiva', category: 'Estrategia', num: 98, question: '¿Cuál es tu visión del QA en el desarrollo moderno?', answer: "El QA evoluciona hacia la ingeniería de calidad integrada en los equipos. Nos movemos hacia la izquierda (probar antes) y hacia la derecha (probar en producción). Pasamos de encontrar bugs a prevenirlos." },
+          { stage: 'Ejecutiva', category: 'Estrategia', num: 99, question: '¿Cómo evalúas el ROI de la automatización de pruebas?', answer: "Horas de prueba manual × frecuencia de regresión = costo anual. La automatización lo ahorra. Costo de desarrollo ÷ ahorro anual = periodo de amortización. Pero también mide la velocidad: retroalimentación más rápida, releases más rápidos y desarrolladores más contentos." },
+          { stage: 'Ejecutiva', category: 'Estrategia', num: 100, question: '¿Cómo propones una nueva herramienta de automatización?', answer: "Primero define el problema: ¿qué estamos resolviendo? Luego una PoC: prueba la herramienta durante una semana. Presenta los hallazgos: costo, curva de aprendizaje, integración y soporte de la comunidad. Deja que el equipo decida con datos." },
+          { stage: 'Ejecutiva', category: 'Cultura', num: 101, question: '¿Cuál es tu enfoque para la mejora continua?', answer: "Cada sprint: ¿qué nos frenó? ¿Qué funcionó bien? Pequeños experimentos: probar una herramienta nueva, ajustar un proceso, medir el impacto. Creo en iterar hasta la excelencia." },
+          { stage: 'Ejecutiva', category: 'Estrategia', num: 102, question: '¿Cómo planificas la escalabilidad en QA?', answer: "Asume el crecimiento. Diseña frameworks modulares y reutilizables. Usa factorías de datos de prueba. Paraleliza la ejecución. Usa la nube para escalado elástico. En DEUNA, gestionando más de 80 PSP, la escalabilidad era esencial." },
+          { stage: 'Ejecutiva', category: 'Estrategia', num: 103, question: '¿Cómo decides qué pruebas automatizar?', answer: "Las pruebas de flujo crítico, de alto riesgo y alta frecuencia se automatizan. Las pruebas manuales permanecen para lo exploratorio, la usabilidad y las funcionalidades de baja frecuencia." },
+          { stage: 'Ejecutiva', category: 'Estrategia', num: 104, question: '¿Cómo manejas una ejecución de pruebas lenta?', answer: "Paraleliza: distribuye entre máquinas. Optimiza: elimina esperas inestables y acelera la configuración. Sé selectivo: ejecuta solo las pruebas relevantes por commit. No corras la suite completa hasta el merge. La retroalimentación rápida vence a la exhaustividad lenta." },
+          { stage: 'Ejecutiva', category: 'Estrategia', num: 105, question: '¿Cómo manejas el aprovisionamiento de entornos de prueba?', answer: "Infraestructura como Código: define los entornos en código (Terraform) y levántalos bajo demanda. Docker Compose para desarrollo local. CI/CD aprovisiona automáticamente por rama. Elimina el 'funciona en mi máquina'." },
+          { stage: 'Ejecutiva', category: 'Comunicación', num: 106, question: '¿Cómo explicas problemas complejos a stakeholders no técnicos?', answer: "Lo traduzco a su lenguaje. En vez de 'condición de carrera', digo 'los pagos a veces fallan silenciosamente y el cliente no sabe si la transacción se completó'. Me centro en el impacto: pérdida de ingresos, frustración del cliente y confianza." },
+          { stage: 'Ejecutiva', category: 'Comunicación', num: 107, question: '¿Cómo generas confianza con clientes internacionales?', answer: "Transparencia y consistencia. Reportes de estado regulares, honestidad sobre los riesgos y cumplimiento de las promesas. He trabajado en seis países; la confianza es la moneda." },
+          { stage: 'Ejecutiva', category: 'Comunicación', num: 108, question: '¿Cómo reúnes requisitos para las pruebas?', answer: "El refinamiento de historias es donde empieza. Hago preguntas difíciles: ¿cuál es la ruta feliz? ¿Qué falla? ¿Cuál es un caso límite? Creo los criterios de aceptación con el product owner antes de que el dev toque el código." },
+          { stage: 'Ejecutiva', category: 'Comunicación', num: 109, question: '¿Cuál es tu enfoque para las pruebas de aceptación de usuario (UAT)?', answer: "Preparo los guiones de prueba, facilito las sesiones de UAT con los stakeholders y recojo el feedback. Soy el puente: si surgen problemas, ayudo al dev a entender la intención del stakeholder." },
+          { stage: 'Ejecutiva', category: 'Comunicación', num: 110, question: '¿Cómo manejas los cambios de alcance durante las pruebas?', answer: "Los cambios de alcance son normales. Evalúo: ¿cómo cambia esto las pruebas? ¿Qué necesitamos validar? Repriorizo. Soy honesto sobre lo que no podemos probar si el cronograma no se mueve." },
+          { stage: 'Ejecutiva', category: 'Comunicación', num: 111, question: '¿Cuál es tu enfoque para los post-mortems de incidentes?', answer: "Sin culpar y objetivo. Identifico la secuencia de eventos, determino la causa raíz, propongo puntos de acción y doy seguimiento a la implementación. Aprender, no culpar." },
+          { stage: 'Ejecutiva', category: 'Comunicación', num: 112, question: '¿Cómo fomentas la colaboración entre QA, Dev y Ops?', answer: "Somos un equipo con distintas especialidades. Revisiones de diseño conjuntas, oncall compartido y retrospectivas con los tres. Cuando alguien de otra disciplina aporta una idea, lo celebro." },
+          { stage: 'Ejecutiva', category: 'Cultura', num: 113, question: '¿Cuál es tu enfoque para el aprendizaje continuo?', answer: "Soy intencional. Las certificaciones ISTQB me mantienen al día. Tomo cursos, experimento con herramientas y leo blogs. Me centro en principios (la pirámide de pruebas, las pruebas basadas en riesgo) y los aplico según el contexto." },
+          { stage: 'Ejecutiva', category: 'Experiencia', num: 114, question: '¿Cuáles son tus metas de carrera?', answer: "Quiero influencia a escala: diseñar estrategias de pruebas para grandes organizaciones, mentorizar a la próxima generación de ingenieros de calidad y fomentar una cultura donde la calidad sea ventaja competitiva. No solo profundidad técnica, sino impacto estratégico." },
+          { stage: 'Ejecutiva', category: 'Experiencia', num: 115, question: '¿Por qué quieres unirte a nuestra empresa?', answer: "Investigo a fondo las empresas. [Menciona iniciativas específicas]. Eso me resuena. Veo una oportunidad para impactar su camino de calidad a escala con mis más de 16 años de experiencia." },
+          { stage: 'Ejecutiva', category: 'Comunicación', num: 116, question: '¿Qué preguntas tienes para mí?', answer: "¿Cuál es el mayor desafío de QA que enfrentan ahora? ¿Cómo mide el liderazgo de ingeniería el éxito de la calidad? ¿Cómo es la relación entre QA y desarrollo actualmente? ¿Cómo se vería el éxito en este rol en 90 días?" },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 117, question: '¿Alguna vez has mentorizado a alguien?', answer: "Por supuesto. Construí y formé al equipo de QA en B89. He mentorizado a testers junior en TUL y DEUNA en prácticas de automatización, calidad de código y desarrollo de carrera. Lo que más me gusta es ver a alguien resolver problemas complejos de forma independiente después de un mes." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 118, question: '¿Cómo manejas el feedback negativo?', answer: "El feedback es un regalo. Escucho para entender, no para defenderme. Si alguien dice que mi documentación de pruebas es poco clara, pregunto: '¿Qué la haría más clara?'. Luego actúo. Demostrar que te tomas en serio el feedback genera confianza." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 119, question: '¿Qué te motiva en el QA?', answer: "El momento en que un desarrollador lanza código con confianza porque confía en la suite de pruebas. Cuando detectamos un bug crítico que habría costado miles. Me energiza resolver problemas difíciles. Me encanta el lado humano: mentorizar, construir equipos y crear una cultura de calidad." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 120, question: '¿Cómo gestionas múltiples proyectos?', answer: "La prioridad lo es todo. Categorizo las tareas por urgencia e importancia. Soy transparente sobre lo que puedo entregar de forma realista. Minimizo el cambio de contexto. En UPWORK gestionaba múltiples clientes compartimentando y comunicando el estado con regularidad." },
+          { stage: 'Ejecutiva', category: 'Técnica', num: 121, question: '¿Qué es un informe resumen de pruebas?', answer: "Post-pruebas: cuántas pruebas, resultados aprobados/fallidos, métricas clave, resumen de defectos, detalles del entorno y recomendación de lanzar o no. Es evidencia de calidad." },
+          { stage: 'Ejecutiva', category: 'Técnica', num: 122, question: '¿Cómo mides las métricas de QA?', answer: "Cobertura de automatización: ¿qué porcentaje está automatizado? Densidad de defectos: defectos por funcionalidad. Fuga: defectos escapados. Tiempo de ejecución: ¿qué tan rápido? Inestabilidad: ¿qué porcentaje de fallos son problemas de la prueba? Estas métricas guían la mejora." },
+          { stage: 'Ejecutiva', category: 'Arquitectura', num: 123, question: '¿Cómo pruebas microservicios?', answer: "Pruebo los servicios individuales de forma aislada, uso pruebas de contrato con Pact para las interacciones y flujos E2E para las rutas críticas. No puedes probarlo todo de forma end-to-end de manera económica." },
+          { stage: 'Ejecutiva', category: 'Arquitectura', num: 124, question: '¿Cómo pruebas arquitecturas orientadas a eventos?', answer: "Pruebo a los publicadores: ¿emiten los eventos correctamente? Pruebo a los suscriptores: ¿los procesan correctamente? Pruebo el orden: ¿los eventos son secuenciales? Pruebo escenarios de error: ¿qué pasa si un suscriptor falla?" },
+          { stage: 'Ejecutiva', category: 'Arquitectura', num: 125, question: '¿Cómo pruebas pipelines de procesamiento de archivos?', answer: "Pruebo la ruta feliz: un archivo válido se procesa correctamente. Pruebo casos límite: archivos vacíos, archivos grandes, caracteres especiales. Pruebo el manejo de errores: datos malformados, formatos no soportados. Valido la transformación y el reporte de errores." },
+          { stage: 'Ejecutiva', category: 'Arquitectura', num: 126, question: '¿Cuál es el rol de los test doubles en las pruebas?', answer: "Stub: devuelve datos fijos. Mock: verifica que un método fue llamado. Fake: implementación ligera. Dummy: marcador de posición. Spy: registra interacciones. Cada uno sirve a necesidades de prueba distintas." },
+          { stage: 'Ejecutiva', category: 'Arquitectura', num: 127, question: '¿Cómo pruebas el rendimiento de bases de datos?', answer: "Ejecuto pruebas de carga con JMeter usando solicitudes JDBC. Monitoreo el tiempo de ejecución de consultas, los aciertos de caché, la contención de bloqueos y la utilización del pool de conexiones. Entiendo la indexación y la optimización de consultas." },
+          { stage: 'Ejecutiva', category: 'Buenas Prácticas', num: 128, question: '¿Cuáles son las buenas prácticas para nombrar pruebas?', answer: "Nombres descriptivos que cuentan una historia: testLoginWithValidCredentialsSucceeds. Usa patrones: shouldReturnErrorWhenUserNotFound. El nombre debe responder: ¿qué se prueba, bajo qué condición y qué se espera?" },
+          { stage: 'Ejecutiva', category: 'Liderazgo', num: 129, question: '¿Cómo construyes confianza entre QA y los desarrolladores?', answer: "Trabajo en pareja con los desarrolladores durante las revisiones de código, ayudo a depurar problemas y escribo pruebas automatizadas temprano en los ciclos de desarrollo, enmarcando la calidad como una responsabilidad compartida." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 130, question: '¿Cómo manejas un bug que los desarrolladores no consideran un bug?', answer: "Cuando hay desacuerdo, baso la conversación en datos y empatía. Comparto el feedback de usuarios o los patrones de uso. La mayoría de los desarrolladores quieren entregar calidad, solo que quizás no ven el impacto desde la perspectiva del usuario." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 131, question: '¿Cuál es tu experiencia con Shift-Left Testing?', answer: "Shift-Left significa mover las pruebas más temprano, idealmente antes de que se escriba el código. Lo practico mediante el grooming de historias, trabajando en pareja con los desarrolladores durante la implementación y configurando compuertas de CI/CD que fallen rápido." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 132, question: '¿Cuáles son tus fortalezas y debilidades?', answer: "Fortalezas: arquitectura de automatización, pruebas de API, liderazgo de equipos y construcción de QA desde cero. He construido equipos de QA y escalado organizaciones. Debilidad: puedo ser perfeccionista. He aprendido a equilibrar: dejarlo lo suficientemente bien para entregar y luego iterar." },
+          { stage: 'Ejecutiva', category: 'Técnica', num: 133, question: '¿Has trabajado en remoto antes?', answer: "Extensamente. He trabajado para empresas de EE.UU. en remoto. Me manejo bien con la comunicación asíncrona: documento decisiones, uso Slack con criterio y grabo las llamadas de Zoom. El trabajo remoto requiere estructura y sobrecomunicación." },
+          { stage: 'Ejecutiva', category: 'Técnica', num: 134, question: '¿Cuál es tu experiencia con pruebas de seguridad?', answer: "Tengo certificaciones de IBM en AppScan. Entiendo el OWASP Top 10 y pruebo vulnerabilidades comunes: ataques de inyección, fallos de autenticación y deserialización insegura. Las pruebas de seguridad no se hacen una vez y se olvidan: son continuas." },
+          { stage: 'Ejecutiva', category: 'Técnica', num: 135, question: '¿Cómo aseguras la cobertura de pruebas?', answer: "La cobertura es un medio, no un fin. Rastreo métricas, pero me centro en una cobertura significativa, no en métricas de vanidad. El 100% de cobertura de código suele ser un desperdicio. Priorizo: las rutas críticas reciben la mayor cobertura y las áreas de bajo riesgo reciben menos." },
+          { stage: 'Ejecutiva', category: 'Técnica', num: 136, question: '¿Cuál es tu experiencia con pruebas no funcionales?', answer: "He ejecutado pruebas de rendimiento con JMeter y K6 en sistemas de pagos de alto volumen. He usado AWS FIS para ingeniería del caos. Las pruebas de contrato validan las integraciones entre servicios. He probado usabilidad, accesibilidad y fiabilidad." },
+          { stage: 'Ejecutiva', category: 'Técnica', num: 137, question: '¿Cuál es tu experiencia con el control de versiones?', answer: "Git es algo natural. Me manejo con estrategias de ramas: ramas de funcionalidad, ramas de release y flujos de hotfix. Hago rebase con criterio. Reviso los PRs buscando testabilidad. La disciplina del control de versiones importa: mensajes de commit claros y commits lógicos." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 138, question: '¿Qué te motiva en el QA?', answer: "El momento en que los desarrolladores lanzan código con confianza. Cuando detectamos bugs antes que los usuarios. Me energiza resolver problemas difíciles. Me encanta construir equipos, mentorizar ingenieros y crear una cultura de calidad. Después de 16 años, sigo aquí porque cada proyecto me enseña algo nuevo." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 139, question: '¿Cómo manejas un bug que los desarrolladores consideran un problema?', answer: "Presento evidencia clara: capturas, logs y pasos exactos. Entiendo su perspectiva. Colaboro: esto es lo que veo, este es el impacto, ¿tú qué opinas? La mayoría de las veces, con hechos, están de acuerdo." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 140, question: '¿Cuál es tu visión para la arquitectura de QA?', answer: "El QA pasa de silos de pruebas a ingeniería de calidad integrada en los equipos. Prevenimos bugs en lugar de encontrarlos. Nos movemos a la izquierda (probar antes) y a la derecha (probar en producción). La calidad es arquitectura, diseño, disciplina de CI/CD y monitoreo, no solo casos de prueba." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 141, question: '¿Cómo sabes cuándo tienes suficiente cobertura de pruebas?', answer: "Cuando los stakeholders y los desarrolladores se sienten seguros desplegando. Cuando el equipo coincide en que hemos probado las rutas críticas y los riesgos principales. Cuando las pruebas exploratorias ya no encuentran problemas nuevos de forma consistente. Es una conversación, no un número." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 142, question: '¿Qué haces cuando descubres defectos generalizados tarde en el ciclo?', answer: "Mantengo la calma. Evalúo la severidad: ¿qué defectos afectan a los usuarios? ¿Cuáles son cosméticos? Priorizo. Comunico claramente los riesgos y las opciones. Trabajo con el equipo en el triaje. Documento las decisiones. Lo prevengo la próxima vez moviendo las pruebas a la izquierda." },
+          { stage: 'Ejecutiva', category: 'Habilidades Blandas', num: 143, question: '¿Cómo te describiría tu miembro ideal del equipo?', answer: "Probablemente: apasionado por la calidad pero no dogmático, siempre dispuesto a ayudar, hace buenas preguntas, celebra los éxitos, se preocupa genuinamente por el crecimiento de las personas, hace simple lo complejo y lidera con el ejemplo. Alguien que hace que la calidad se sienta alcanzable, no una carga." }
+        ];
+
+        // Build interviews (reusable for EN and SP datasets)
+        function buildInterviews(data, container, stageOrder) {
+          container.innerHTML = '';
 
           // Group by stage
           const stageGroups = {};
-          interviewsData.forEach(function (q) {
+          data.forEach(function (q) {
             if (!stageGroups[q.stage]) stageGroups[q.stage] = {};
             if (!stageGroups[q.stage][q.category]) stageGroups[q.stage][q.category] = [];
             stageGroups[q.stage][q.category].push(q);
           });
 
-          const stageOrder = ['Screening', 'Technical', 'Executive'];
           stageOrder.forEach(function (stage) {
             const categories = stageGroups[stage];
             if (!categories) return;
@@ -1349,7 +1998,7 @@
 
               groupDiv.appendChild(header);
               groupDiv.appendChild(body);
-              interviewsContainer.appendChild(groupDiv);
+              container.appendChild(groupDiv);
             });
           });
         }
@@ -1357,22 +2006,173 @@
         let interviewsBuilt = false;
 
         btnInterviews.addEventListener('click', function () {
+          qyaContainer.classList.remove('visible');
           uncountableContainer.classList.remove('visible');
           frasalVerbsContainer.classList.remove('visible');
           irregularContainer.classList.remove('visible');
           chunksContainer.classList.remove('visible');
+          interviewsEsContainer.classList.remove('visible');
           interviewsContainer.classList.add('visible');
           if (!interviewsBuilt) {
-            buildInterviews();
+            buildInterviews(interviewsData, interviewsContainer, ['Screening', 'Technical', 'Executive']);
             interviewsBuilt = true;
+          }
+        });
+
+        let interviewsEsBuilt = false;
+
+        btnInterviewsEs.addEventListener('click', function () {
+          qyaContainer.classList.remove('visible');
+          uncountableContainer.classList.remove('visible');
+          frasalVerbsContainer.classList.remove('visible');
+          irregularContainer.classList.remove('visible');
+          chunksContainer.classList.remove('visible');
+          interviewsContainer.classList.remove('visible');
+          interviewsEsContainer.classList.add('visible');
+          if (!interviewsEsBuilt) {
+            buildInterviews(interviewsDataEs, interviewsEsContainer, ['Filtro', 'Técnica', 'Ejecutiva']);
+            interviewsEsBuilt = true;
+          }
+        });
+
+        // ===== QyA (Questions & Answers) DATA & ACCORDION =====
+        const qyaBlocks = {
+          1: 'Bloque 1: Estrategia de Testing, Calidad y Liderazgo',
+          2: 'Bloque 2: Automatización con Playwright y Cypress',
+          3: 'Bloque 3: Pruebas de Carga y Performance con K6',
+          4: 'Bloque 4: Validación de APIs (REST y SOAP)',
+          5: 'Bloque 5: Testing Mobile (Aplicaciones Nativas)',
+          6: 'Bloque 6: Escenarios Prácticos y Situacionales'
+        };
+
+        const qyaData = [
+          { num: 1, b: 1, q: '¿Cómo estructurarías una estrategia de testing desde cero para una aplicación bancaria nativa que tiene lanzamientos quincenales?', a: `<p>Diseñaría una estrategia basada en <strong>Riesgo (Risk-Based Testing)</strong> y el modelo de Pirámide/Trofeo de Testing adaptado a DevOps.</p><ul><li><strong>Base (Unitarias/Componentes):</strong> Alta cobertura impulsada por devs (Jest/JUnit) integrada en pre-commits y PRs.</li><li><strong>Integración y Contrato (APIs REST/SOAP):</strong> Pruebas automatizadas de contratos (Pact) y servicios ejecutándose en cada pipeline (Postman/Newman o RestAssured).</li><li><strong>E2E UI &amp; Mobile:</strong> Automatización selectiva crítica con Playwright (web si aplica) y Appium/Espresso/XCUITest para la app nativa, enfocada en flujos de negocio clave (onboarding, transferencias, pagos).</li><li><strong>Release Train quincenal:</strong> Regresiones críticas mediante pipelines programados y portales de calidad que bloquean pasos a producción si bajan los umbrales de cobertura o performance (K6).</li></ul>` },
+          { num: 2, b: 1, q: '¿Cómo aplicas el concepto de Shift-Left Testing en el ciclo de vida del desarrollo (SDLC) con equipos multidisciplinarios?', a: `<p>El <em>Shift-Left</em> implica mover el aseguramiento de la calidad a las etapas más tempranas posibles:</p><ul><li><strong>Three Amigos:</strong> Participar en la refinación de historias con Product Owners y Developers para definir los Criterios de Aceptación (BDD/Gherkin) antes de escribir código.</li><li><strong>Validación de Diseños:</strong> Revisar prototipos en Figma para anticipar flujos rotos, accesibilidad o validaciones de campos en mobile.</li><li><strong>Revisión de Código y Contratos:</strong> Validar los contratos de API (OpenAPI/Swagger) antes de que el backend esté finalizado para construir los mocks y las pruebas automatizadas en paralelo.</li></ul>` },
+          { num: 3, b: 1, q: '¿Qué métricas de QA utilizas para medir la efectividad de la automatización y la calidad del producto ante el negocio?', a: `<ul><li><strong>Densidad de Defectos y Fuga de Defectos (Defect Leakage):</strong> Cuántos bugs llegan a producción vs los detectados en etapas tempranas.</li><li><strong>MTTR (Mean Time to Resolution) y MTBF (Mean Time Between Failures):</strong> Estabilidad del producto.</li><li><strong>ROI de la Automatización:</strong> Reducción del tiempo de ciclo de prueba (Cycle Time) y cobertura de regresión automatizada frente al tiempo manual ahorrado.</li><li><strong>Tasa de Flakiness:</strong> Salud y confiabilidad del framework de automatización.</li></ul>` },
+          { num: 4, b: 1, q: '¿Cómo defines la pirámide de pruebas (o el modelo de trofeo de testing) en un proyecto con alta criticidad financiera?', a: `<p>En banca, la estabilidad manda. Utilizo un enfoque pragmático:</p><ul><li>Mucha base de <strong>pruebas unitarias</strong> (lógica de negocio financiera, cálculos de tasas, intereses).</li><li>Una capa robusta de <strong>pruebas de integración y contratos de API</strong> (asegurar que las transacciones y payloads hacia el core bancario viajen correctos).</li><li>Una capa menor pero crítica de <strong>pruebas End-to-End (E2E) en UI/Mobile</strong> para los <em>Happy Paths</em> y transacciones monetarias principales, evitando saturar la pirámide con tests lentos de interfaz.</li></ul>` },
+          { num: 5, b: 1, q: '¿Cómo gestionas la deuda técnica en los frameworks de automatización de pruebas?', a: `<p>La deuda técnica en QA genera tests lentos o <em>flaky</em> que erosionan la confianza del equipo. Lo manejo asignando un <strong>15% a 20% de capacidad en cada sprint</strong> para refactorización del framework, actualización de dependencias, mejora de selectores y eliminación de pruebas obsoletas. Trato al framework de automatización con el mismo rigor de ingeniería de software que el código de producción.</p>` },
+          { num: 6, b: 1, q: '¿Qué criterios de aceptación y "Definition of Ready" / "Definition of Done" exiges antes de iniciar el testing de una nueva funcionalidad?', a: `<ul><li><strong>DoR (Listo para desarrollar/testear):</strong> Historias con criterios de aceptación claros (Gherkin preferentemente), maquetación aprobada, dependencias técnicas mapeadas y mocks/entornos definidos.</li><li><strong>DoD (Listo para liberar):</strong> Código revisado (Code Review), pruebas unitarias pasando con cobertura mínima, pruebas automatizadas de regresión actualizadas y pasando, ausencia de bugs bloqueadores o críticos, y aprobación de seguridad/performance si aplica.</li></ul>` },
+          { num: 7, b: 1, q: '¿Cómo abordas el análisis de riesgos (Risk-Based Testing) cuando los tiempos de entrega son extremadamente ajustados (proyectos de 2 a 4 meses)?', a: `<p>Mapeo la matriz de riesgo cruzando <strong>Probabilidad de falla vs. Impacto en el Negocio</strong>. En banca, cualquier fallo en transferencias, autenticación o saldos tiene impacto crítico. Concentro el 80% del esfuerzo de prueba en los flujos transaccionales y de seguridad, aplicando pruebas exploratorias guiadas por heurísticas en las funcionalidades secundarias o estéticas.</p>` },
+          { num: 8, b: 1, q: '¿Cómo integras el testing de accesibilidad (a11y) y seguridad básica en las etapas tempranas de desarrollo?', a: `<ul><li><strong>Accesibilidad:</strong> Integrando linters estáticos y herramientas como <em>axe-core</em> en los pipelines de UI para validar contraste, etiquetas ARIA y navegación por teclado (esencial para normativas bancarias inclusivas).</li><li><strong>Seguridad:</strong> Incorporando análisis estático de código (SAST) en los pipelines, escaneo de dependencias (SCA) para evitar librerías vulnerables (npm audit / OWASP Dependency-Check) y validaciones automatizadas de cabeceras de seguridad y tokens en las APIs.</li></ul>` },
+          { num: 9, b: 1, q: '¿Cómo manejas los desacuerdos técnicos con desarrolladores o product owners respecto a la criticidad de un bug detectado?', a: `<p>Basándome en <strong>datos y impacto de negocio</strong>, no en opiniones subjetivas. Si un dev minimiza un bug, demuestro el impacto financiero, regulatorio o de experiencia de usuario (ej: <em>"Este fallo en el redondeo afecta el balance contable al final del día"</em>). Involucro al PO mostrando el riesgo hacia el cliente final para re-priorizar el backlog objetivamente.</p>` },
+          { num: 10, b: 1, q: '¿Cómo realizas la estimación de esfuerzo para tareas de automatización y QA en una nueva épica o feature?', a: `<p>Utilizo técnicas de estimación ágil como <em>Planning Poker</em> o estimación basada en complejidad técnica. Desgloso la tarea en: análisis, diseño de casos, codificación de automatización (API / Mobile / UI), integración en CI/CD y estabilización. Siempre añado un factor de contingencia del 20% para lidiar con cambios de última hora en los requerimientos del banco.</p>` },
+          { num: 11, b: 2, q: '¿Cuáles son los principales criterios técnicos por los cuales elegirías Playwright frente a Cypress en un proyecto moderno?', a: `<p>Elegiría <strong>Playwright</strong> si el proyecto requiere soporte nativo para múltiples pestañas, múltiples contextos de navegador independientes (ideal para simular varios usuarios a la vez en la misma sesión), soporte robusto para iFrames, ejecución en navegadores móviles reales simulados, y un modelo nativo <code>async/await</code> basado en JavaScript/TypeScript moderno que evita los dolores de cabeza de las promesas encadenadas de Cypress. Cypress lo dejaría solo para aplicaciones web simples donde el equipo ya tenga un dominio absoluto de su ecosistema.</p>` },
+          { num: 12, b: 2, q: '¿Cómo maneja Cypress el tema de las promesas y su encadenamiento (chaining), y cómo lo contrastas con el modelo async/await nativo de Playwright?', a: `<p>Cypress encola los comandos de manera asíncrona dentro de su propio motor de ejecución, lo que requiere usar su sintaxis de chaining (<code>cy.get().should()</code>) y evita el uso directo de <code>async/await</code> estándar de JS (aunque tiene soporte experimental limitado). Playwright, en cambio, utiliza promesas nativas y el estándar <code>async/await</code>, permitiendo escribir código de prueba imperativo mucho más limpio, fácil de depurar con herramientas estándar y con menor curva de aprendizaje para desarrolladores acostumbrados a Node.js.</p>` },
+          { num: 13, b: 2, q: '¿Cómo solucionas las pruebas en múltiples dominios o cuando hay redireccionamientos de terceros (ej: pasarelas de pago o autenticación OAuth/SAML) en Cypress vs Playwright?', a: `<ul><li>En <strong>Cypress</strong>, los cambios de dominio estricto históricamente requerían comandos especiales (<code>cy.origin()</code>), lo cual complica la lógica de las pruebas al saltar entre tu app y pasarelas de pago externas.</li><li>En <strong>Playwright</strong>, esto se resuelve de forma nativa e intuitiva, ya que su arquitectura no restringe el contexto del navegador por dominio, permitiendo navegar libremente, interceptar peticiones de terceros (<code>page.route()</code>) o simular tokens de autenticación vía API directamente sin pasar por la interfaz gráfica (UI bypass).</li></ul>` },
+          { num: 14, b: 2, q: '¿Cómo implementas el patrón Page Object Model (POM) o alternativas modernas (como Screenplay o componentes) en tus frameworks?', a: `<p>Implemento POM separando la lógica de negocio de la automatización de los localizadores e interacciones técnicas. Cada página o vista clave tiene su clase correspondiente con métodos descriptivos (ej: <code>loginPage.login(user, pass)</code>). En proyectos modernos, prefiero complementarlo con componentes reutilizables (como barras de navegación, modales o menús bancarios) para evitar duplicación de código y mantener la mantenibilidad alta.</p>` },
+          { num: 15, b: 2, q: '¿Cómo manejas la espera de elementos dinámicos y la sincronización para evitar tests flaky (intermitentes) en Playwright?', a: `<p>Aprovecho el mecanismo de <strong>auto-waiting</strong> nativo de Playwright, el cual espera automáticamente a que los elementos sean visibles, estables y reciban eventos antes de interactuar. Evito por completo los timeouts fijos (<code>waitForTimeout</code>). Además, configuro aserciones web robustas que reintentan automáticamente (ej: <code>await expect(locator).toBeVisible()</code>).</p>` },
+          { num: 16, b: 2, q: '¿Cómo estructurarías los reportes de ejecución (ej: Allure, HTML Reports) y su integración en un pipeline de CI/CD (GitHub Actions / GitLab CI)?', a: `<p>Utilizo el reporte nativo HTML de Playwright para ejecuciones locales rápidas y <strong>Allure Report</strong> para reportes ejecutivos en pipelines de CI/CD. Allure permite adjuntar capturas de pantalla, trazas completas (<em>traces</em>), videos de los fallos y métricas históricas de ejecución. En GitHub Actions, configuro la subida de estos reportes como artefactos del workflow o la integración directa con herramientas de notificación (Slack/Teams).</p>` },
+          { num: 17, b: 2, q: '¿Cómo ejecutas pruebas en paralelo de manera eficiente para reducir el tiempo total de feedback en el pipeline?', a: `<p>Configuro la ejecución en paralelo a nivel de workers en el archivo de configuración del framework (ej: <code>fullyParallel: true</code> en Playwright). A nivel de infraestructura de CI/CD, divido los archivos de prueba en matrices de ejecución (<em>test sharding</em>), distribuyendo los tests entre múltiples contenedores o agentes de ejecución simultáneos para reducir drásticamente el tiempo total de feedback (de horas a minutos).</p>` },
+          { num: 18, b: 2, q: '¿Cómo interceptas y mockeas solicitudes de red (API mocking) para aislar las pruebas de interfaz de usuario del backend?', a: `<p>Utilizo las capacidades de intercepción de red del framework (ej: <code>page.route()</code> en Playwright o <code>cy.intercept()</code> en Cypress). Esto me permite simular respuestas exitosas de APIs core del banco, respuestas lentas (para testing de timeouts o estados de carga), o simular respuestas con errores de servidor (500, 401) para validar cómo reacciona la interfaz gráfica ante fallos del backend de forma determinista.</p>` },
+          { num: 19, b: 2, q: '¿Cómo manejas la gestión de datos de prueba (test data management) y la limpieza del estado entre un test y otro?', a: `<p>Evito depender de estados globales o bases de datos compartidas estáticas. Para cada test o suite, prefiero <strong>crear los datos de prueba vía API</strong> antes de ejecutar la prueba de UI (setup programático) y limpiar/eliminar dichos datos al finalizar (<code>afterEach</code> / <code>tearDown</code>). Si el entorno es efímero, utilizo bases de datos en contenedores Docker independientes o transacciones aisladas.</p>` },
+          { num: 20, b: 2, q: '¿Qué estrategia utilizas para la ejecución de pruebas visuales (Visual Regression Testing) con estas herramientas?', a: `<p>Utilizo capacidades de comparación de imágenes integradas (como <code>expect(page).toHaveScreenshot()</code> en Playwright) combinadas con servicios especializados si se requiere control avanzado de diferencias de renderizado por sistemas operativos. Defino umbrales de tolerancia estrictos (<em>maxDiffPixels</em>) para detectar cambios accidentales en componentes críticos de la UI bancaria (tipografías, montos o botones de transferencia).</p>` },
+          { num: 21, b: 3, q: '¿Cómo estructuras un script básico de prueba de carga en K6 utilizando JavaScript/TypeScript?', a: `<p>Un script de K6 se compone de tres partes fundamentales:</p><ol><li><strong>Importaciones:</strong> Módulos de k6 (<code>http</code>, <code>check</code>, <code>sleep</code>).</li><li><strong>Options (Opciones):</strong> Configuración de los escenarios de carga, umbrales (<em>thresholds</em>) y políticas de ejecución.</li><li><strong>Default Function (Virtual User - VU):</strong> El flujo lógico que simula el comportamiento del usuario (ej: POST al endpoint de login, capturar el token, GET al saldo y un <code>sleep</code> de pausa).</li></ol><pre><code>import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export const options = {
+  stages: [
+    { duration: '30s', target: 20 }, // Ramp-up
+    { duration: '1m', target: 20 },  // Steady state
+    { duration: '10s', target: 0 },  // Ramp-down
+  ],
+  thresholds: {
+    http_req_duration: ['p(95)&lt;500'], // 95% responden en menos de 500ms
+    http_req_failed: ['rate&lt;0.01'],   // Menos del 1% de error
+  },
+};
+
+export default function () {
+  let res = http.get('https://api.banco.com/health');
+  check(res, { 'status es 200': (r) =&gt; r.status === 200 });
+  sleep(1);
+}</code></pre>` },
+          { num: 22, b: 3, q: '¿Cómo defines los escenarios de carga (Load, Stress, Spike, Soak testing) en K6 usando el bloque de opciones (options)?', a: `<p>Utilizo el objeto <code>scenarios</code> dentro de <code>options</code> para modelar patrones avanzados:</p><ul><li><strong>Load:</strong> Usando <code>ramping-vus</code> o <code>stages</code> para simular el tráfico esperado en hora pico.</li><li><strong>Stress:</strong> Incrementando progresivamente los usuarios virtuales hasta encontrar el punto de quiebre del sistema.</li><li><strong>Spike:</strong> Introduciendo un salto abrupto y masivo de usuarios en segundos (ej: apertura de campaña de préstamos o preventa).</li><li><strong>Soak (estrés prolongado):</strong> Manteniendo una carga moderada constante durante varias horas para detectar fugas de memoria o degradación de recursos en el backend.</li></ul>` },
+          { num: 23, b: 3, q: '¿Cómo correlacionas datos dinámicos (ej: extraer un token de una respuesta HTTP e incluirlo en la siguiente petición) dentro de un script de K6?', a: `<p>Utilizo el objeto de respuesta retornado por las funciones <code>http.post()</code> o <code>http.get()</code>. Extraigo el token o dato requerido parseando el JSON de la respuesta (ej: <code>res.json('access_token')</code>) y luego paso esa variable directamente en las cabeceras (<em>headers</em>) o el cuerpo (<em>payload</em>) de la siguiente solicitud HTTP dentro de la misma función de iteración de la VU.</p>` },
+          { num: 24, b: 3, q: '¿Cómo manejas las aserciones (check) y los umbrales de rendimiento (thresholds) para determinar si una prueba pasa o falla?', a: `<ul><li>Los <strong><code>check</code></strong> actúan como validaciones funcionales dentro de la iteración (ej: validar que el código HTTP sea 200 o que el JSON contenga una propiedad). No fallan la prueba por sí solos, solo registran tasas de éxito.</li><li>Los <strong><code>thresholds</code></strong> son las reglas globales de fallo a nivel de rendimiento (ej: que el percentil 95 de latencia supere 800ms o que la tasa de error global sea mayor al 0.5%). Si un threshold se incumple, K6 termina la ejecución con código de salida no cero, fallando el pipeline de CI/CD automáticamente.</li></ul>` },
+          { num: 25, b: 3, q: '¿Cómo simulas la concurrencia de usuarios reales geolocalizados o con retardos de red utilizando K6?', a: `<p>K6 permite configurar tiempos de espera (<code>sleep</code>) aleatorios o gaussianos para simular el <em>"thinking time"</em> real de los usuarios. Para escenarios geolocalizados complejos, ejecuto pruebas distribuidas usando instancias de K6 en diferentes regiones geográficas (vía Docker o K6 Cloud), configurando perfiles de red simulados a nivel de proxy o infraestructura si el entorno lo requiere.</p>` },
+          { num: 26, b: 3, q: '¿Cómo integras la ejecución de K6 dentro de un pipeline de integración continua para detectar degradaciones de performance tempranamente?', a: `<p>Integro K6 como un paso posterior a las pruebas unitarias y de integración en ambientes de Staging o Performance dedicados. Mediante la imagen oficial de Docker de K6 (<code>grafana/k6</code>), ejecuto scripts ligeros de humo (<em>smoke tests</em>) en cada PR importante, y pruebas de carga nocturnas o semanales programadas, configurando notificaciones automáticas si los <em>thresholds</em> se rompen.</p>` },
+          { num: 27, b: 3, q: '¿Cómo analizas los resultados de K6 y qué métricas clave (p95, p99, tasa de error, throughput) priorizas para reportar al equipo de arquitectura?', a: `<p>Priorizo el <strong>percentil 95 y 99 (<code>p(95)</code>, <code>p(99)</code>)</strong> sobre el promedio, ya que muestran la experiencia real de los usuarios que sufren latencias altas. Analizo la tasa de solicitudes por segundo (<strong>throughput / rps</strong>) y la tasa de error HTTP. Exporto los resultados a dashboards de Grafana (vía InfluxDB o Prometheus) para visualizar el comportamiento de CPU, memoria y bases de datos del banco durante el pico de carga.</p>` },
+          { num: 28, b: 3, q: '¿Cómo ejecutas pruebas distribuidas de gran escala utilizando K6 (Cloud or Docker)?', a: `<p>Para pruebas masivas que superan la capacidad de una sola máquina virtual, utilizo el operador de K6 para Kubernetes (<strong>K6 Operator</strong>) o ejecuciones distribuidas mediante Docker Swarm / AWS ECS, donde un nodo coordinador gestiona múltiples nodos de prueba (<em>runners</em>) que generan carga de manera sincronizada hacia el objetivo.</p>` },
+          { num: 29, b: 4, q: '¿Cuál es tu enfoque para diseñar una estrategia de pruebas integral para APIs RESTful (contratos, seguridad, funcionalidad)?', a: `<ol><li><strong>Pruebas de Contrato:</strong> Validar que los esquemas JSON coincidan con las especificaciones (OpenAPI/Swagger).</li><li><strong>Pruebas Funcionales:</strong> Validar códigos de estado, estructura de respuestas, manejo de parámetros opcionales y obligatorios con colecciones automatizadas (Postman/Newman o frameworks de código).</li><li><strong>Pruebas de Seguridad y Negocio:</strong> Validar control de accesos por roles (RBAC), inyecciones básicas, validación de esquemas de entrada y manejo correcto de datos sensibles (mascaramiento de tarjetas o cuentas bancarias).</li></ol>` },
+          { num: 30, b: 4, q: '¿Cómo validas la seguridad en APIs (autenticación JWT, OAuth 2.0, control de roles y permisos RBAC)?', a: `<ul><li>Verifico que las rutas protegidas rechacen peticiones sin token o con tokens expirados/inválidos (código 401).</li><li>Valido que un usuario con rol de cliente común no pueda acceder a endpoints administrativos (código 403 / control RBAC).</li><li>Analizo la integridad del token JWT (verificando firma, algoritmos seguros como RS256 en lugar de HS256 vulnerable, y expiración adecuada del token).</li></ul>` },
+          { num: 31, b: 4, q: '¿Cómo realizas pruebas de contrato (Consumer-Driven Contracts) utilizando herramientas como Pact para evitar romper integraciones entre microservicios?', a: `<p>Implemento pruebas donde el consumidor (ej: la app mobile del banco) define un contrato (<em>Pact</em>) especificando qué espera recibir de la API del microservicio backend. Este contrato se publica en un broker (Pact Broker). El proveedor (backend) ejecuta pruebas en su pipeline para verificar que cumple con dicho contrato antes de desplegar, previniendo rupturas en producción por cambios de contrato no comunicados.</p>` },
+          { num: 32, b: 4, q: '¿Qué diferencias clave encuentras al automatizar y validar servicios SOAP (XML, WSDL, WS-Security) frente a REST (JSON, OpenAPI/Swagger)?', a: `<ul><li><strong>SOAP:</strong> Utiliza XML estricto, requiere validación estricta contra esquemas WSDL, incluye cabeceras de seguridad complejas como WS-Security (firmas digitales y cifrado XML), y los endpoints suelen ser únicos (POST con sobre XML).</li><li><strong>REST:</strong> Es más ligero, basado en recursos y verbos HTTP (GET, POST, PUT, DELETE), utiliza JSON y se apoya en especificaciones OpenAPI más sencillas de parsear y validar automáticamente. En automatización, SOAP requiere la construcción y parseo de payloads XML estructurados mediante templates.</li></ul>` },
+          { num: 33, b: 4, q: '¿Cómo manejas los códigos de estado HTTP, cabeceras y estructuras de error estándar en tus validaciones automatizadas?', a: `<p>Configuro aserciones estrictas para asegurar que la semántica HTTP se cumpla: <code>200 OK</code> para consultas exitosas, <code>201 Created</code> para recursos creados, <code>400 Bad Request</code> para errores de validación de cliente, <code>401/403</code> para seguridad, y <code>500</code> para errores de servidor. Valido además que los cuerpos de error devuelvan un formato estándar de la empresa (ej: código de error de negocio interno, mensaje descriptivo y timestamp).</p>` },
+          { num: 34, b: 4, q: '¿Qué herramientas utilizas para la automatización de contratos y pruebas de API (Postman/Newman, RestAssured, SuperTest, Playwright APIRequestContext)?', a: `<p>Depende del stack del equipo:</p><ul><li>Para validaciones rápidas o integradas en JavaScript/TypeScript, prefiero <strong>Playwright <code>APIRequestContext</code></strong> o <strong>SuperTest</strong>, ya que permiten probar APIs de forma nativa sin levantar navegadores web.</li><li>Para entornos donde los analistas funcionales colaboran estrechamente, utilizo <strong>Postman con colecciones ejecutadas mediante Newman</strong> en los pipelines de CI/CD.</li></ul>` },
+          { num: 35, b: 4, q: '¿Cómo validas la idempotencia y el manejo de concurrencia en endpoints críticos de transacciones bancarias?', a: `<p>Envío solicitudes duplicadas idénticas (con la misma cabecera <code>Idempotency-Key</code> si la API lo soporta) para verificar que el sistema procese la transferencia una sola vez y no debite fondos múltiples veces. Para concurrencia, lanzo peticiones simultáneas desde scripts de K6 o llamadas paralelas asíncronas para comprobar cómo el backend maneja bloqueos de registros en base de datos o condiciones de carrera (<em>race conditions</em>).</p>` },
+          { num: 36, b: 5, q: '¿Cuál es tu experiencia y stack técnico preferido para la automatización de aplicaciones mobile nativas (iOS y Android)?', a: `<p>Mi stack preferido para aplicaciones nativas es <strong>Appium con WebDriverIO o Playwright (mediante drivers mobile)</strong>, o el uso directo de frameworks nativos cuando el equipo de desarrollo colabora estrechamente (<strong>Espresso</strong> para Android y <strong>XCUITest</strong> para iOS), ya que ofrecen mayor velocidad de ejecución, menor fragilidad y acceso directo a los elementos internos de la app.</p>` },
+          { num: 37, b: 5, q: '¿Cómo diferencias el enfoque de testing entre una aplicación nativa, una híbrida y una Progressive Web App (PWA)?', a: `<ul><li><strong>Nativa:</strong> Acceso total al hardware, rendimiento óptimo, elementos UI propios de cada sistema operativo (UIKit / Android Views). Requiere testing específico por plataforma y empaquetado binario (.apk / .ipa).</li><li><strong>Híbrida:</strong> Contenedores web (WebView) dentro de una app nativa (ej: Cordova, Capacitor, React Native). Requiere cambiar de contexto (<em>context switching</em>) en la automatización entre el entorno nativo y el entorno web/DOM interno.</li><li><strong>PWA:</strong> Es una aplicación web avanzada que se comporta como app. Se prueba principalmente con frameworks web tradicionales mobile, validando su comportamiento offline y notificaciones web.</li></ul>` },
+          { num: 38, b: 5, q: '¿Cómo manejas la localización de elementos en diferentes plataformas (Xpath/Accessibility IDs en Android con UIAutomator2 vs iOS con XCUITest)?', a: `<p>Priorizo siempre el uso de <strong><code>accessibility id</code></strong> (o <code>content-desc</code> en Android y <code>accessibilityIdentifier</code> en iOS), ya que son estables, independientes del idioma del dispositivo y resistentes ante refactorizaciones de diseño. Evito el uso de XPaths complejos y profundos en mobile, ya que son extremadamente frágiles ante cambios mínimos en el árbol de componentes de la vista.</p>` },
+          { num: 39, b: 5, q: '¿Cómo simulas interrupciones del dispositivo móvil durante una prueba (ej: llamadas entrantes, pérdida de señal, cambios de orientación, notificaciones push, baja batería)?', a: `<p>Utilizo las capacidades de emulación avanzada de Appium o comandos ADB específicos (para Android) y simulación de Xcode (para iOS). Esto me permite simular la pérdida temporal de conectividad de red a mitad de una transacción bancaria para verificar que la app maneje correctamente el estado de la transacción pendiente (timeout y reintentos seguros).</p>` },
+          { num: 40, b: 5, q: '¿Cómo configuras y ejecutas pruebas en dispositivos reales en la nube (BrowserStack, Sauce Labs, AWS Device Farm) versus emuladores/simuladores locales?', a: `<ul><li>Los <strong>emuladores/simuladores locales</strong> se utilizan en las etapas iniciales de desarrollo y feedback rápido por su velocidad y bajo costo.</li><li>Los <strong>dispositivos reales en la nube (BrowserStack/Sauce Labs)</strong> se integran en el pipeline de regresión previa a producción para validar fragmentación de hardware real, versiones específicas de OS (Android antiguo/nuevo, iOS recientes) y evitar falsos positivos derivados de la emulación de software.</li></ul>` },
+          { num: 41, b: 5, q: '¿Cómo abordas las pruebas de regresión visual y de rendimiento específico en dispositivos móviles de gama baja y alta?', a: `<p>Mido métricas de rendimiento en dispositivos reales mediante herramientas de perfilado (Android Studio Profiler / Instruments en Xcode) para controlar el consumo de memoria RAM, picos de CPU y fugas de memoria durante operaciones prolongadas. Para la regresión visual, tomo capturas de pantalla de referencia en distintas resoluciones y densidades de pantalla (mdpi, xhdpi).</p>` },
+          { num: 42, b: 5, q: '¿Cómo integras las pruebas mobile dentro de pipelines de CI/CD para despliegues en tiendas (TestFlight / Google Play Beta)?', a: `<p>Configuro un pipeline donde, tras un tag o rama de release, se ejecutan las pruebas automatizadas de regresión mobile sobre dispositivos en la nube. Si el reporte es exitoso, un paso automatizado (usando Fastlane) compila el binario firmado y lo distribuye automáticamente a <strong>TestFlight</strong> para iOS y <strong>Google Play Internal Testing / Beta</strong> para Android.</p>` },
+          { num: 43, b: 6, q: 'Caso: Un test automatizado en Playwright falla de forma intermitente (flaky) solo en el pipeline de CI/CD pero pasa siempre en local. ¿Cómo debugueas y solucionas este problema?', a: `<ol><li>Analizo el reporte del pipeline y descargo los <em>traces</em>, videos y capturas de pantalla del fallo.</li><li>Reviso si hay problemas de <strong>sincronización o latencia de red</strong> (el pipeline suele tener recursos de CPU/Red más limitados que una PC de desarrollo).</li><li>Verifico que no existan dependencias de datos compartidos entre tests o condiciones de carrera.</li><li><strong>Solución:</strong> Reemplazo esperas implícitas por aserciones web robustas (<code>toBeVisible()</code>) y aseguro la independencia total de los datos de prueba.</li></ol>` },
+          { num: 44, b: 6, q: 'Caso: El equipo de desarrollo despliega una nueva versión de la API de transferencias bancarias que rompe varios contratos y tests automatizados a 2 días del cierre del sprint. ¿Cómo procedes?', a: `<ol><li>Activo la comunicación inmediata en el canal del equipo (<em>Three Amigos</em>).</li><li>Analizo si el cambio en la API responde a un requerimiento de negocio legítimo o a un cambio accidental (breaking change).</li><li>Si es legítimo, actualizo los contratos y los tests automatizados prioritarios junto con los devs.</li><li>Si no estaba documentado, evalúo el riesgo: si vulnera el contrato acordado, se solicita un hotfix al backend mientras QA valida el impacto con pruebas exploratorias enfocadas en el flujo de transferencias.</li></ol>` },
+          { num: 45, b: 6, q: 'Caso: Te entregan una app mobile nativa con componentes altamente customizados donde los localizadores estándar no funcionan o cambian constantemente. ¿Qué estrategia adoptas?', a: `<p>Me reúno inmediatamente con los desarrolladores móviles para acordar la incorporación de <strong>identificadores de accesibilidad estables (<code>accessibilityIdentifier</code>)</strong> en dichos componentes customizados. Esto es una buena práctica de ingeniería. Como medida temporal de mitigación, utilizo coordenadas relativas o selectores basados en jerarquía de clases con precaución, impulsando la estandarización de los IDs en el código fuente.</p>` },
+          { num: 46, b: 6, q: 'Caso: Necesitas simular un escenario de 5,000 usuarios concurrentes realizando pagos simultáneos en la app del banco mediante K6, pero el entorno de Staging se cae por limitaciones de infraestructura. ¿Cómo lo manejas con el equipo?', a: `<p>Utilizo el incidente como una oportunidad de aprendizaje técnico: demuestro con los logs de K6 el punto exacto de ruptura y los cuellos de botella encontrados (ej: saturación de conexiones en la base de datos o límites del API Gateway). Trabajo junto con el equipo de infraestructura y arquitectura para escalar temporalmente el entorno o ajustar los parámetros de concurrencia a niveles tolerables de staging, documentando las recomendaciones de capacidad para producción.</p>` },
+          { num: 47, b: 6, q: 'Caso: Un desarrollador insiste en que un bug encontrado en producción es "un caso borde imposible de replicar" por el usuario. ¿Cómo demuestras el impacto técnico y de negocio?', a: `<p>Presento los datos concretos: los pasos exactos de reproducción, el impacto financiero o legal si un usuario real cae en ese escenario (especialmente en banca, donde un caso borde puede significar una transferencia duplicada o un bloqueo de cuenta), y adjunto los logs del sistema o trazas de red que evidencian el estado erróneo del backend. El foco debe estar en proteger la experiencia del cliente final, no en buscar culpas.</p>` },
+          { num: 48, b: 6, q: 'Caso: Estás en un proyecto ágil de corto plazo (2-4 meses) donde el código legacy no tiene ningún tipo de automatización previa. ¿Por dónde empiezas a automatizar para aportar valor inmediato?', a: `<p>Aplico el principio de <strong>Pareto (80/20)</strong>. No intento automatizar todo el sistema desde el día uno.</p><ol><li>Mapeo los flujos críticos de negocio del banco (ej: Login, Consulta de Saldo, Transferencias).</li><li>Implemento una capa rápida de pruebas automatizadas sobre esos flujos críticos mediante APIs o pruebas de UI esenciales.</li><li>Establezco un portón de calidad para el nuevo código que entra (todo nuevo feature nace con automatización), mientras el equipo maneja los componentes legacy con pruebas exploratorias guiadas por riesgos.</li></ol>` },
+          { num: 49, b: 6, q: 'Caso: ¿Cómo validas flujos críticos end-to-end que combinan una interfaz mobile, llamadas a APIs REST/SOAP y validaciones internas en bases de datos o colas de mensajes (como Kafka/RabbitMQ)?', a: `<p>Diseño un enfoque híbrido:</p><ul><li>Iniciamos la acción en la interfaz mobile (ej: ordenar una transferencia).</li><li>Mediante scripts de automatización, intercepto y valido la llamada a la API REST/SOAP.</li><li>Inmediatamente después, conecto un consumidor de prueba a los tópicos de <strong>Kafka</strong> o colas <strong>RabbitMQ</strong> para verificar que el mensaje de transacción se haya publicado correctamente con el payload esperado.</li><li>Finalmente, realizo una consulta directa a la base de datos de auditoría para asegurar la persistencia correcta del estado financiero.</li></ul>` },
+          { num: 50, b: 6, q: 'Caso: Tienes que liderar una sesión de "Three Amigos" (PO, Dev, QA) para una historia de usuario compleja de alta seguridad financiera. ¿Qué preguntas clave haces para asegurar la calidad antes de picar código?', a: `<p>Las preguntas clave serían:</p><ul><li>¿Cuál es el impacto financiero exacto si esta regla de negocio falla?</li><li>¿Cómo se van a manejar los datos sensibles y el enmascaramiento de información en logs y pantallas?</li><li>¿Qué códigos de error específicos debe devolver la API ante fallos de autorización o validación?</li><li>¿Cuáles son los escenarios de límite (<em>edge cases</em>) y qué sucede si hay interrupción de red a mitad de la operación?</li><li>¿Qué criterios de logging y trazabilidad se requieren para auditoría regulatoria?</li></ul>` }
+        ];
+
+        function buildQya() {
+          const blocks = {};
+          qyaData.forEach(function (item) {
+            if (!blocks[item.b]) blocks[item.b] = [];
+            blocks[item.b].push(item);
+          });
+          Object.keys(blocks).forEach(function (b) {
+            const blockDiv = document.createElement('div');
+            blockDiv.className = 'qya-block';
+            const title = document.createElement('div');
+            title.className = 'qya-block-title';
+            title.innerHTML = '<i class="fas fa-layer-group"></i> ' + qyaBlocks[b];
+            blockDiv.appendChild(title);
+            blocks[b].forEach(function (item) {
+              const itemDiv = document.createElement('div');
+              itemDiv.className = 'qya-item';
+              const header = document.createElement('div');
+              header.className = 'qya-question';
+              header.innerHTML = '<span class="qya-num">' + item.num + '</span>' +
+                '<span class="qya-qtext"></span>' +
+                '<i class="fas fa-chevron-down qya-chevron"></i>';
+              header.querySelector('.qya-qtext').textContent = item.q;
+              const answer = document.createElement('div');
+              answer.className = 'qya-answer';
+              answer.innerHTML = item.a;
+              header.addEventListener('click', function () {
+                const wasOpen = itemDiv.classList.contains('open');
+                qyaContainer.querySelectorAll('.qya-item.open').forEach(function (el) {
+                  el.classList.remove('open');
+                });
+                if (!wasOpen) itemDiv.classList.add('open');
+              });
+              itemDiv.appendChild(header);
+              itemDiv.appendChild(answer);
+              blockDiv.appendChild(itemDiv);
+            });
+            qyaContainer.appendChild(blockDiv);
+          });
+        }
+
+        let qyaBuilt = false;
+
+        btnQya.addEventListener('click', function () {
+          uncountableContainer.classList.remove('visible');
+          frasalVerbsContainer.classList.remove('visible');
+          irregularContainer.classList.remove('visible');
+          chunksContainer.classList.remove('visible');
+          interviewsContainer.classList.remove('visible');
+          interviewsEsContainer.classList.remove('visible');
+          qyaContainer.classList.add('visible');
+          if (!qyaBuilt) {
+            buildQya();
+            qyaBuilt = true;
           }
         });
       });
     </script>
   </body>
 </html>
-</content>
-<parameter name="task_progress">- [x] Read CV and understand Luis Armando's experience
-- [x] Reconstruct INTERVIEWS section with compelling, clear, and senior-level answers
-- [x] Ensure answers demonstrate expertise without being robotic
-- [x] Verify English clarity and professional tone
