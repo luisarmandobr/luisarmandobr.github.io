@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloco | Luis Armando</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script defer src="assets/js/i18n.js"></script>
+    <style>
+      /* ========== BLOCO (Notepad) ========== */
+      .bloco-toolbar {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+      .bloco-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      }
+      .bloco-btn i { font-size: 15px; }
+      .bloco-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      }
+      body.dark .bloco-btn {
+        background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+        box-shadow: 0 4px 15px rgba(129, 140, 248, 0.3);
+      }
+      body.dark .bloco-btn:hover {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        box-shadow: 0 6px 20px rgba(129, 140, 248, 0.5);
+      }
+      .bloco-btn.danger {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+      }
+      .bloco-btn.danger:hover {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+      }
+      .bloco-btn.secondary {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+      }
+      .bloco-btn.secondary:hover {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+      }
+      .bloco-layout {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 20px;
+        align-items: stretch;
+      }
+      .bloco-pane {
+        border: 1.5px solid #6366f1;
+        border-radius: 16px;
+        background: #f8f9fa;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      body.dark .bloco-pane {
+        background: #3c3c3c;
+        border-color: #818cf8;
+      }
+      .bloco-pane-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .bloco-search {
+        padding: 11px 14px;
+        border: none;
+        border-bottom: 1.5px solid rgba(99, 102, 241, 0.25);
+        background: transparent;
+        color: #333;
+        font-size: 14px;
+        outline: none;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      body.dark .bloco-search { color: #e5e7eb; }
+      .bloco-notes-list {
+        flex: 1;
+        overflow-y: auto;
+        max-height: 58vh;
+        padding: 8px;
+      }
+      .bloco-day-group { margin-bottom: 12px; }
+      .bloco-day-title {
+        font-size: 11px;
+        font-weight: 700;
+        color: #818cf8;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 6px 8px;
+      }
+      body.dark .bloco-day-title { color: #a78bfa; }
+      .bloco-note-item {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 1.5px solid transparent;
+        transition: all 0.2s ease;
+        margin-bottom: 4px;
+      }
+      .bloco-note-item:hover { background: rgba(99, 102, 241, 0.1); }
+      .bloco-note-item.active {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.18) 0%, rgba(139, 92, 246, 0.18) 100%);
+        border-color: #6366f1;
+      }
+      .bloco-note-item .b-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #333;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      body.dark .bloco-note-item .b-title { color: #f9fafb; }
+      .bloco-note-item .b-meta {
+        font-size: 11px;
+        color: #999;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .bloco-empty {
+        padding: 24px 12px;
+        text-align: center;
+        color: #999;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .bloco-title-input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 16px 18px;
+        border: none;
+        border-bottom: 1.5px solid rgba(99, 102, 241, 0.25);
+        background: transparent;
+        color: #000;
+        font-size: 20px;
+        font-weight: 700;
+        outline: none;
+      }
+      body.dark .bloco-title-input { color: #f9fafb; }
+      .bloco-textarea {
+        flex: 1;
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 42vh;
+        padding: 16px 18px;
+        border: none;
+        background: transparent;
+        color: #333;
+        font-size: 15px;
+        line-height: 1.7;
+        resize: vertical;
+        outline: none;
+        font-family: inherit;
+      }
+      body.dark .bloco-textarea { color: #e5e7eb; }
+      .bloco-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 10px 16px;
+        border-top: 1.5px solid rgba(99, 102, 241, 0.25);
+        font-size: 12px;
+        color: #999;
+      }
+      .bloco-status.saved { color: #10b981; font-weight: 600; }
+      .bloco-status.pending { color: #f59e0b; font-weight: 600; }
+      @media (max-width: 768px) {
+        .bloco-layout { grid-template-columns: 1fr; }
+        .bloco-notes-list { max-height: 30vh; }
+      }
+      @media print {
+        .sidebar, .bloco-toolbar, .bloco-list-pane, .top-header, .bloco-footer {
+          display: none !important;
+        }
+        .main-content { box-shadow: none; padding: 0; overflow: visible; }
+        .bloco-layout { grid-template-columns: 1fr; display: block; }
+        .bloco-pane { border: none; background: #fff; }
+        .bloco-title-input { border: none; font-size: 22px; }
+        .bloco-textarea { min-height: auto; height: auto; overflow: visible; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-main">
+      <!-- SIDEBAR IZQUIERDO -->
+      <aside class="sidebar">
+        <div class="profile-section">
+          <img
+            src="assets/img/profile.jpg"
+            alt="Luis Armando"
+            class="profile-image"
+          />
+          <h1 class="profile-name">Luis Armando</h1>
+          <p class="profile-pronouns">Ingeniero de Computación<br />Gestión de Proyectos Internacional</p>
+          <p class="profile-title" data-i18n="profile.title">
+            16+ Senior QA Automation Engineer | Playwright | Cypress |
+            WebDriverIO | Salesforce QA | AccelQ | Selenium | AWS | AI Driven
+          </p>
+          <br />
+          <p class="profile-company">Última empresa: OLACLICK</p>
+          <div class="social-links">
+            <a href="mailto:luisarmandobr@gmail.com" title="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+            <a href="https://github.com/luisarmandobr" title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="https://linkedin.com/in/luisarmandobr" title="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </div>
+
+          <a href="apps.html" class="apps-btn"><i class="fas fa-th"></i> MyApps</a>
+          <a href="mynotes.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-book"></i> MyNotes</a>
+          <a href="myformat.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-font"></i> MyFormat</a>
+          <a href="myjwt.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-key"></i> MyJWT</a>
+          <a href="englishevo.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-language"></i> EnglishEvo</a>
+          <a href="bloco.html" class="apps-btn" style="margin-top: 8px;"><i class="fas fa-note-sticky"></i> Bloco</a>
+        </div>
+      </aside>
+
+      <!-- CONTENIDO PRINCIPAL -->
+      <main class="main-content">
+        <!-- HEADER CON NAVEGACIÓN -->
+        <header class="top-header">
+          <div class="header-left">
+            <h2>Luis Armando Benitez Rodriguez</h2>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="index.html" data-i18n="nav.bio">Bio</a></li>
+              <li>
+                <a href="certifications.html" data-i18n="nav.certifications"
+                  >Certificaciones</a
+                >
+              </li>
+              <li>
+                <a href="workhistory.html" data-i18n="nav.workhistory"
+                  >Experiencia</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <div class="header-right">
+            <div class="lang-switch" role="group" aria-label="Language switch">
+              <button class="lang-btn" data-lang="es" aria-pressed="false">
+                ES
+              </button>
+              <button class="lang-btn" data-lang="pt" aria-pressed="false">
+                PT
+              </button>
+              <button class="lang-btn" data-lang="en" aria-pressed="false">
+                EN
+              </button>
+            </div>
+            <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+          </div>
+        </header>
+
+        <!-- BLOCO -->
+        <section class="professional-section">
+          <div class="section-header">
+            <i class="fas fa-note-sticky section-icon"></i>
+            <h2>Bloco</h2>
+          </div>
+          <div class="bloco-toolbar">
+            <button class="bloco-btn" id="btnNew"><i class="fas fa-plus"></i> Novo</button>
+            <button class="bloco-btn secondary" id="btnSave"><i class="fas fa-floppy-disk"></i> Salvar</button>
+            <button class="bloco-btn secondary" id="btnExport"><i class="fas fa-file-arrow-down"></i> Exportar .txt</button>
+            <button class="bloco-btn" id="btnPrint" style="background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 4px 15px rgba(245,158,11,0.3);"><i class="fas fa-print"></i> Imprimir</button>
+            <button class="bloco-btn danger" id="btnDelete"><i class="fas fa-trash"></i> Excluir</button>
+          </div>
+
+          <div class="bloco-layout">
+            <!-- LISTA DE NOTAS -->
+            <div class="bloco-pane bloco-list-pane">
+              <div class="bloco-pane-header">
+                <i class="fas fa-list"></i> Mis notas (<span id="noteCount">0</span>)
+              </div>
+              <input
+                type="search"
+                id="searchInput"
+                class="bloco-search"
+                placeholder="Buscar notas..."
+              />
+              <div class="bloco-notes-list" id="notesList"></div>
+            </div>
+
+            <!-- EDITOR -->
+            <div class="bloco-pane bloco-editor-pane">
+              <input
+                type="text"
+                id="titleInput"
+                class="bloco-title-input"
+                placeholder="Título de la nota..."
+              />
+              <textarea
+                id="contentInput"
+                class="bloco-textarea"
+                placeholder="Empieza a escribir aquí... Todo se guarda automáticamente en la memoria del navegador (localStorage)."
+              ></textarea>
+              <div class="bloco-footer">
+                <span id="stats">0 palabras · 0 caracteres</span>
+                <span id="status" class="bloco-status"></span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      (function () {
+        var STORAGE_KEY = 'bloco_notes_v1';
+        var ACTIVE_KEY = 'bloco_active_v1';
+
+        var notesList = document.getElementById('notesList');
+        var noteCount = document.getElementById('noteCount');
+        var searchInput = document.getElementById('searchInput');
+        var titleInput = document.getElementById('titleInput');
+        var contentInput = document.getElementById('contentInput');
+        var stats = document.getElementById('stats');
+        var status = document.getElementById('status');
+        var btnNew = document.getElementById('btnNew');
+        var btnSave = document.getElementById('btnSave');
+        var btnExport = document.getElementById('btnExport');
+        var btnPrint = document.getElementById('btnPrint');
+        var btnDelete = document.getElementById('btnDelete');
+
+        var notes = [];
+        var activeId = null;
+        var searchTerm = '';
+        var saveTimer = null;
+
+        function uid() {
+          return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+        }
+
+        function load() {
+          try {
+            notes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+          } catch (e) {
+            notes = [];
+          }
+          if (!Array.isArray(notes)) notes = [];
+          activeId = localStorage.getItem(ACTIVE_KEY);
+        }
+
+        function persist() {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+        }
+
+        function getActive() {
+          return notes.filter(function (n) { return n.id === activeId; })[0] || null;
+        }
+
+        function dayKey(d) {
+          var dt = new Date(d);
+          return dt.getFullYear() + '-' +
+            String(dt.getMonth() + 1).padStart(2, '0') + '-' +
+            String(dt.getDate()).padStart(2, '0');
+        }
+
+        function dayLabel(d) {
+          var dt = new Date(d);
+          var today = new Date();
+          var yest = new Date();
+          yest.setDate(today.getDate() - 1);
+          var fmt = String(dt.getDate()).padStart(2, '0') + '/' +
+            String(dt.getMonth() + 1).padStart(2, '0') + '/' + dt.getFullYear();
+          if (dayKey(d) === dayKey(today)) return 'Hoy · ' + fmt;
+          if (dayKey(d) === dayKey(yest)) return 'Ayer · ' + fmt;
+          return fmt;
+        }
+
+        function timeLabel(d) {
+          var dt = new Date(d);
+          return String(dt.getHours()).padStart(2, '0') + ':' +
+            String(dt.getMinutes()).padStart(2, '0');
+        }
+
+        function title(n) {
+          if (n.title && n.title.trim()) return n.title.trim();
+          var first = (n.content || '').split('\n').filter(function (l) { return l.trim(); })[0];
+          return first ? first.trim().slice(0, 40) : 'Nota sin título';
+        }
+
+        function escapeHtml(s) {
+          var d = document.createElement('div');
+          d.textContent = s;
+          return d.innerHTML;
+        }
+
+        function renderList() {
+          var term = searchTerm.trim().toLowerCase();
+          var filtered = notes.filter(function (n) {
+            if (!term) return true;
+            return (title(n) + ' ' + (n.content || '')).toLowerCase().indexOf(term) !== -1;
+          });
+          noteCount.textContent = notes.length;
+          notesList.innerHTML = '';
+          if (!notes.length) {
+            notesList.innerHTML =
+              '<div class="bloco-empty">No tienes notas todavía.<br />Pulsa <strong>Novo</strong> para crear la primera.</div>';
+            return;
+          }
+          if (!filtered.length) {
+            notesList.innerHTML =
+              '<div class="bloco-empty">Sin resultados para "' + escapeHtml(searchTerm) + '".</div>';
+            return;
+          }
+          var groups = {};
+          var order = [];
+          filtered.forEach(function (n) {
+            var k = dayKey(n.createdAt);
+            if (!groups[k]) { groups[k] = []; order.push(k); }
+            groups[k].push(n);
+          });
+          order.sort().reverse();
+          order.forEach(function (k) {
+            var g = document.createElement('div');
+            g.className = 'bloco-day-group';
+            var gt = document.createElement('div');
+            gt.className = 'bloco-day-title';
+            gt.textContent = dayLabel(groups[k][0].createdAt);
+            g.appendChild(gt);
+            groups[k].slice()
+              .sort(function (a, b) { return new Date(b.updatedAt) - new Date(a.updatedAt); })
+              .forEach(function (n) {
+                var item = document.createElement('div');
+                item.className = 'bloco-note-item' + (n.id === activeId ? ' active' : '');
+                var t = document.createElement('div');
+                t.className = 'b-title';
+                t.textContent = title(n);
+                var m = document.createElement('div');
+                m.className = 'b-meta';
+                m.textContent = timeLabel(n.createdAt) + ' · ' + (n.content || '').length + ' car.';
+                item.appendChild(t);
+                item.appendChild(m);
+                item.addEventListener('click', function () { selectNote(n.id); });
+                g.appendChild(item);
+              });
+            notesList.appendChild(g);
+          });
+        }
+
+        function renderEditor() {
+          var n = getActive();
+          if (!n) {
+            titleInput.value = '';
+            contentInput.value = '';
+            titleInput.disabled = true;
+            contentInput.disabled = true;
+            updateStats();
+            return;
+          }
+          titleInput.disabled = false;
+          contentInput.disabled = false;
+          titleInput.value = n.title || '';
+          contentInput.value = n.content || '';
+          updateStats();
+        }
+
+        function updateStats() {
+          var text = contentInput.value || '';
+          var words = text.trim() ? text.trim().split(/\s+/).length : 0;
+          stats.textContent = words + ' palabras · ' + text.length + ' caracteres';
+        }
+
+        function setStatus(cls, txt) {
+          status.className = 'bloco-status ' + cls;
+          status.textContent = txt;
+        }
+
+        function selectNote(id) {
+          activeId = id;
+          localStorage.setItem(ACTIVE_KEY, id);
+          renderList();
+          renderEditor();
+        }
+
+        function createNote() {
+          var now = new Date().toISOString();
+          var n = { id: uid(), title: '', content: '', createdAt: now, updatedAt: now };
+          notes.push(n);
+          persist();
+          selectNote(n.id);
+          titleInput.focus();
+        }
+
+        function deleteNote() {
+          var n = getActive();
+          if (!n) return;
+          if (!confirm('¿Eliminar la nota "' + title(n) + '"? Esta acción no se puede deshacer.')) return;
+          notes = notes.filter(function (x) { return x.id !== n.id; });
+          persist();
+          activeId = notes.length ? notes[notes.length - 1].id : null;
+          if (activeId) localStorage.setItem(ACTIVE_KEY, activeId);
+          else localStorage.removeItem(ACTIVE_KEY);
+          renderList();
+          renderEditor();
+        }
+
+        function saveNow() {
+          var n = getActive();
+          if (!n) return;
+          n.title = titleInput.value;
+          n.content = contentInput.value;
+          n.updatedAt = new Date().toISOString();
+          persist();
+          setStatus('saved', '● Guardado');
+          renderList();
+        }
+
+        function scheduleSave() {
+          setStatus('pending', '● Editando...');
+          clearTimeout(saveTimer);
+          saveTimer = setTimeout(saveNow, 500);
+        }
+
+        function exportTxt() {
+          var n = getActive();
+          if (!n) { alert('No hay ninguna nota seleccionada.'); return; }
+          var name = (title(n) || 'nota').replace(/[^a-z0-9-_ ]/gi, '').trim().slice(0, 50) || 'nota';
+          var header = title(n) + '\n' + new Date(n.updatedAt).toLocaleString() + '\n' +
+            '----------------------------------------\n\n';
+          download(name + '.txt', header + (n.content || ''));
+        }
+
+        function download(filename, text) {
+          var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        }
+
+        btnNew.addEventListener('click', createNote);
+        btnSave.addEventListener('click', saveNow);
+        btnDelete.addEventListener('click', deleteNote);
+        btnExport.addEventListener('click', exportTxt);
+        btnPrint.addEventListener('click', function () { window.print(); });
+
+        titleInput.addEventListener('input', scheduleSave);
+        contentInput.addEventListener('input', function () { updateStats(); scheduleSave(); });
+        searchInput.addEventListener('input', function () {
+          searchTerm = searchInput.value;
+          renderList();
+        });
+
+        window.addEventListener('keydown', function (e) {
+          if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+            e.preventDefault();
+            saveNow();
+          }
+        });
+
+        // init
+        load();
+        if (!notes.length) {
+          createNote();
+        } else {
+          var exists = notes.some(function (n) { return n.id === activeId; });
+          if (!activeId || !exists) {
+            activeId = notes[notes.length - 1].id;
+            localStorage.setItem(ACTIVE_KEY, activeId);
+          }
+          renderList();
+          renderEditor();
+        }
+      })();
+    </script>
+  </body>
+</html>

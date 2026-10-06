@@ -93,12 +93,29 @@ body.dark .feature-list li::before { background: linear-gradient(135deg, #2563eb
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .profile-section {
   width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Keep text blocks at full sidebar width while it is a flex column */
+.profile-section .profile-name,
+.profile-section .profile-pronouns,
+.profile-section .profile-title,
+.profile-section .profile-company {
+  width: 100%;
+}
+
+/* The <br> between title and company is no longer needed as a flex item */
+.profile-section > br {
+  display: none;
 }
 
 .profile-image {
@@ -120,14 +137,14 @@ body.dark .feature-list li::before { background: linear-gradient(135deg, #2563eb
 .profile-pronouns {
   font-size: 14px;
   color: #999;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .profile-title {
   font-size: 16px;
   font-weight: 600;
   color: #6366f1;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 /* Dark mode override for profile title color */
@@ -138,14 +155,17 @@ body.dark .profile-title {
 .profile-company {
   font-size: 14px;
   color: #666;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .social-links {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
   flex-wrap: wrap;
+  /* Push the social icons to the very bottom of the sidebar */
+  margin-top: auto;
+  order: 10;
 }
 
 .social-links a {
@@ -171,7 +191,7 @@ body.dark .profile-title {
 /* APPS BUTTON */
 .apps-btn {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 0;
   padding: 10px 24px;
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   color: #fff;
